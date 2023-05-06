@@ -16,7 +16,7 @@
 # include <sys/types.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-# include "libft/libft.h"
+# include "libft/includes/libft.h"
 
 # include "class.h"
 
@@ -30,66 +30,56 @@
 # define WHT    "\x1B[37m"
 # define RESET  "\x1B[0m"
 
-typedef struct s_intra_red
-{
-	char				*file;
-	char				*red;
-}	t_intra_red;
-/*
-typedef struct s_cmd
-{
-	char			*cmd;
-	char			*path;
-	t_intra_red		*red;
-	char			**arg;
-	char			*argument; //
-	char			*pip;
-	pid_t			pid;
-	int				tub[2];
-	struct s_cmd	*next;
-	struct s_cmd	*prev;
-
-}	t_cmd;
-*/
 
 // OK
 typedef struct s_env
 {
-	char	*var_name;
-	char	*var_value;
+	char			*var_name;
+	char			*var_value;
 	struct s_env	*next;
 }	t_env;
+
+typedef struct s_token
+{
+	char				*content;
+	int					id;
+	struct s_token		*next;
+}						t_token;
 
 /* GETENVP */
 t_env	**get_envp(char **envp);
 
-// NOT OK
-int	sig_handler(void);
+/* PARSING - SYNTAX ERROR CHECK */
+int		word_extraction(char *line, int ind);
+int		syntax_error_check(char *s);
+int		quotes_word_extraction(char *line, int ind, char c);
+char	*get_words(char *line);
+
+/* WORD_EXTRACTION */
+int		character_extraction(char *line, int ind);
+
+/* IS SOMETHING */ 
+int		is_blank(char c);
+int		is_operator(char c);
+int		is_variable(char c);
+int		is_metacharacter(char c);
+int		is_word(char c);
+int		is_delimiter(char c);
+int		is_simple_quote(char c);
+int		is_double_quote(char c);
+
+	// NOT OK
+int		sig_handler(void);
 
 // prototypes
 void	handler_ctr_c(int code);
-void	handler_ctr_d(int code);
-void	handler_ctr_4(int code);
 
 //int	parsing_av(char *str);
 char	**ft_splitpath(char *s, char c);
 
 void	*free_tab(void **a_free);
-int	free_all(int ret);
+int		free_all(int ret);
 
 
-void	parsing_1(void);
-int	is_blank(char c);
-int	is_operator(char c);
-int	is_variable(char c);
-int	is_metacharacter(char c);
-int	character_extraction(char *line, int ind);
-int	word_extraction(char *line, int ind);
-int	quotes_word_extraction(char *line, int ind, char c);
-char	*get_words(char *line);
-int	is_word(char c);
-int	is_delimiter(char c);
-int	is_simple_quote(char c);
-int	is_double_quote(char c);
 
 #endif
