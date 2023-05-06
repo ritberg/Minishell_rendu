@@ -64,7 +64,7 @@ delete_last_el	libft/libft/ft_lstdel_last_el 2.c	/^void	delete_last_el(t_list **
 delete_last_el	libft/libft/ft_lstdel_last_el.c	/^void	delete_last_el(t_list **a)$/;"	f
 delimiter	class.h	/^	char	*delimiter;$/;"	m	struct:s_redir
 envp	class.h	/^	char			**envp;$/;"	m	struct:s_var
-exit_status	token_routine.c	/^int exit_status = 0;$/;"	v
+exit_status	parsing_words_extraction.c	/^int	exit_status = 0;$/;"	v
 fd	class.h	/^	int		fd;$/;"	m	struct:s_file
 fd_in	class.h	/^	int		fd_in;$/;"	m	struct:s_pipe
 fd_in	class.h	/^	int		fd_in;$/;"	m	struct:s_redir
@@ -252,8 +252,8 @@ link_env	envp_routine.c	/^int	link_env(t_env **head, t_env *last)$/;"	f
 link_env	test_getenv.c	/^int	link_env(t_env **head, t_env *last)$/;"	f
 link_token	token_routine.c	/^int	link_token(t_token **head, t_token *new)$/;"	f
 main	main.c	/^int	main(int ac, char **av, char **envp)$/;"	f
+main	parsing_words_extraction.c	/^int	main(int ac, char **av)$/;"	f
 main	test_getenv.c	/^int	main(int ac, char **av, char **envp)$/;"	f
-main	token_routine.c	/^int	main(int ac, char **av)$/;"	f
 mypaths	class.h	/^	char	**mypaths;$/;"	m	struct:s_cmd
 name	class.h	/^	char	*name;$/;"	m	struct:s_file
 new_env	envp_routine.c	/^t_env	*new_env(char *envp)$/;"	f

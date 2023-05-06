@@ -6,12 +6,12 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:00:31 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/06 18:00:33 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/06 19:26:26 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
-// int	exit_status = 0;
+//extern int	exit_status = 0;
 
 void	print_error_syntax(char *str)
 {

@@ -28,6 +28,7 @@
 # define WHT    "\x1B[37m"
 # define RESET  "\x1B[0m"
 
+extern int	exit_status;
 
 // OK
 typedef struct s_env
@@ -48,13 +49,22 @@ typedef struct s_token
 t_env	**get_envp(char **envp);
 
 /* PARSING - SYNTAX ERROR CHECK */
-int		word_extraction(char *line, int ind);
 int		syntax_error_check(char *s);
-int		quotes_word_extraction(char *line, int ind, char c);
-char	*get_words(char *line);
+int	count_metachar(char *s, char *c, int num);
+int	count_quotes(char *s, char *c);
+void	print_error_syntax(char *str);
 
 /* WORD_EXTRACTION */
 int		character_extraction(char *line, int ind);
+int		word_extraction(char *line, int ind);
+int		quotes_word_extraction(char *line, int ind, char c);
+t_token	*get_words(char *line);
+
+/* WORD EXTRACTION - TOKEN LINKED LIST */
+t_token	*new_token(char *line, int start, int len);
+int		token_linked_list(t_token **head, char *line, int start, int len);
+int	link_token(t_token **head, t_token *new);
+void	free_token(t_token **head);
 
 /* IS SOMETHING */ 
 int		is_blank(char c);
@@ -65,6 +75,7 @@ int		is_word(char c);
 int		is_delimiter(char c);
 int		is_simple_quote(char c);
 int		is_double_quote(char c);
+
 
 	// NOT OK
 int		sig_handler(void);
