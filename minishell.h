@@ -18,8 +18,6 @@
 # include <readline/history.h>
 # include "libft/includes/libft.h"
 
-# include "class.h"
-
 # define RED    "\x1b[31m"
 # define BLU    "\x1B[34m"
 # define BLU_2 "\e[1;34m"

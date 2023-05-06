@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:00:21 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/06 18:09:58 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/06 18:35:02 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -69,7 +69,7 @@ t_token	*get_words(char *line)
 	int	i;
 	int	len;
 	char	*content;
-	t_token	*token;
+	t_token	*head;
 	i = 0;
 	len = 0;
 	if (!synax_error(line))
@@ -89,6 +89,13 @@ t_token	*get_words(char *line)
 			else
 				printf("Error: number of quotes is not even\n");
 		}
+		head = new_token(content, line, i, len);
+		if (!head)
+			return (NULL);
+		if (head)
+		{
+			
+
 		i += len;
 	}
 	return (NULL);
