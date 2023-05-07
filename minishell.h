@@ -16,7 +16,8 @@
 # include <sys/types.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-# include "libft/includes/libft.h"
+//# include "libft/includes/libft.h"
+# include "libft/libft.h"
 
 # define RED    "\x1b[31m"
 # define BLU    "\x1B[34m"

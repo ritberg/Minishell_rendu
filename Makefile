@@ -1,10 +1,11 @@
-SRCS	= 	main.c\
-		envp_routine.c \
-		errors_syntax.c \
-		word_extraction.c
-		is_smth.c \
-		launch_setup.c
-
+SRCS	= main.c\
+		  envp_routine.c\
+		  is_smth.c\
+		  launch_setup.c\
+		  handler_ctr_c.c\
+		  token_routine.c\
+		  parsing_syntax_errors.c\
+		  parsing_words_extraction.c\
 
 OBJS	= ${SRCS:.c=.o}
 
@@ -20,7 +21,7 @@ INC_LIBFT	= libft
 
 DEPS		= ${INC_LIBFT}/libft.h
 
-CFLAGS		+= -Wall -Wextra -Werror -I. 
+CFLAGS		+= -Wall -Wextra -Werror -I.
 
 READLINE	= -lreadline
 
@@ -36,7 +37,7 @@ ${NAME}:	${OBJS} ${HEADERS}
 
 all:		${NAME}
 
-clean:		
+clean:
 			${RM} ${OBJS}
 			${RM}
 			${MAKE} -C ${INC_LIBFT} clean

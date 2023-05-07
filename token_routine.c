@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:11:25 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/06 19:51:27 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/07 15:29:50 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -26,12 +26,16 @@ void	free_token(t_token **head)
 		tmp = ptr;
 		ptr = tmp->next;
 		free(tmp->content);
-	//	free(tmp->(&id));
 		free(tmp);
 	}
 	*head = NULL;
 }
 
+/*
+   - malloc of the structure t_token (if not, error message and exit status)
+   - extract the word with ft_substr (if not, error message and exit status)
+   - id = 0 ?? why? it's head? .....
+*/
 t_token	*new_token(char *line, int start, int len)
 {
 	t_token	*token;
@@ -54,6 +58,9 @@ t_token	*new_token(char *line, int start, int len)
 	return (token);
 }
 
+/*
+   Link tokens together from head
+*/
 int	link_token(t_token **head, t_token *new)
 {
 	t_token	*ptr;
@@ -71,6 +78,14 @@ int	link_token(t_token **head, t_token *new)
 	return (1);
 }
 
+/*
+   Goal - create tokens with length found during parsing before
+
+   - create a new token
+   - free if there is a problem
+   - link tokens together
+   - free if there is a problem
+*/
 int	token_linked_list(t_token **head, char *line, int start, int len)
 {
 	t_token	*new;
@@ -87,6 +102,7 @@ int	token_linked_list(t_token **head, char *line, int start, int len)
 	return (1);
 }
 
+// Main to test token_linked_list function
 /*
 int	main(int ac, char **av)
 {

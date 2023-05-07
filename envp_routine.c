@@ -6,7 +6,7 @@
 /*   By: mmakarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:59:31 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/05/05 17:01:12 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/05/07 14:11:03 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -30,6 +30,13 @@ void	free_env(t_env **head)
 	*head = NULL;
 }
 
+/*
+   Copy env keys as var_name and values as var_value
+
+   - malloc of t_env structure
+   - for var_name, we stop at '=', '=' including
+   - for var_value, we stop at '\0'
+*/
 t_env	*new_env(char *envp)
 {
 	t_env	*env;
@@ -56,6 +63,9 @@ t_env	*new_env(char *envp)
 	return (env);
 }
 
+/*
+   link all elements of the copied env together
+*/
 int	link_env(t_env **head, t_env *last)
 {
 	t_env	*ptr;
@@ -73,6 +83,13 @@ int	link_env(t_env **head, t_env *last)
 	return (0);
 }
 
+/*
+   Goal - create a copy of env saving keys and values of env as a linked list
+
+   - save var_name and var_value in the fuction new_env
+   - the first line of env becomes head
+   - link each element of the linked list in the function link_env
+*/
 t_env	**get_envp(char **envp)
 {
 	t_env	**head;
@@ -89,10 +106,7 @@ t_env	**get_envp(char **envp)
 	while (envp[i])
 	{
 		if (link_env(head, new_env(envp[i])) < 0)
-		{
-			free_env(head);
-			return (NULL);
-		}
+			return (free_env(head), NULL);
 		i++;
 	}
 	return (head);
