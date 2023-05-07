@@ -25,8 +25,13 @@ CFLAGS		+= -Wall -Wextra -Werror -I.
 
 READLINE	= -lreadline
 
+#for 42 mac
 CFLAGS += -I$(HOME)/.brew/opt/readline/include
 READLINE += -L$(HOME)/.brew/opt/readline/lib
+
+#for home mac
+#READLINE +="-L/usr/local/opt/readline/lib"
+#CFLAGS +="-I/usr/local/opt/readline/include"
 
 .c.o:
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}

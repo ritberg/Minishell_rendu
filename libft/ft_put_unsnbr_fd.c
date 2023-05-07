@@ -9,7 +9,7 @@
 /*   Updated: 2022/12/21 13:29:39 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../includes/ft_printf.h"
+#include "libft.h"
 
 void	ft_put_unsnbr_fd(unsigned int n, int fd)
 {

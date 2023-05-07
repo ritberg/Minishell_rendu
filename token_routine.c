@@ -34,7 +34,7 @@ void	free_token(t_token **head)
 /*
    - malloc of the structure t_token (if not, error message and exit status)
    - extract the word with ft_substr (if not, error message and exit status)
-   - id = 0 ?? why? it's head? .....
+   - id = 0 ? because it's head? ..
 */
 t_token	*new_token(char *line, int start, int len)
 {
@@ -89,9 +89,7 @@ int	link_token(t_token **head, t_token *new)
 int	token_linked_list(t_token **head, char *line, int start, int len)
 {
 	t_token	*new;
-	int		i;
 
-	i = 0;
 	if (!head)
 		return (1);
 	new = new_token(line, start, len);

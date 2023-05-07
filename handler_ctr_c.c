@@ -3,9 +3,7 @@
 
 void	handler_ctr_c(int code)
 {
-	int	i;
 
-	i = 0;
 	(void)code;
 	printf("\n");
 	rl_replace_line("", 0);

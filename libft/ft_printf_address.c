@@ -9,7 +9,7 @@
 /*   Updated: 2022/12/21 13:26:58 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../includes/ft_printf.h"
+#include "libft.h"
 
 void	ft_put_uintptr_fd(uintptr_t n, int fd, int *count);
 

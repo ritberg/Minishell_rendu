@@ -9,7 +9,6 @@
 /*   Updated: 2023/05/07 15:16:35 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "minishell.h"
 
 //extern int	exit_status = 0;
@@ -46,9 +45,10 @@ int	count_quotes(char *s, char *c)
 }
 
 /*
-   We check if we have too many characters and return 0 if yes
+   We check if there are too many characters and return 0 if yes
    We ignore blanks
-   if (is_metacharacter(s[i]) || is_operator......
+   if we see more metacharacters or operators than needed
+       (for ex., more than |, < or >>), we print error and return an exit status
 
 */
 int	count_metachar(char *s, char *c, int num)
@@ -80,7 +80,8 @@ int	count_metachar(char *s, char *c, int num)
    Goal - print an error message and return an exit status
 
    inside the while loop:
-   - if there are quotes that are not closed, return 0, else ....
+   - if there are quotes that are not closed, return 0,
+      else if there are more metacharcaters or operators than needed, return 0
    - if we have more chevrons and pipes than |, >, >>, <, <<, return 0
 */
 int	syntax_error_check(char *s)
@@ -109,7 +110,6 @@ int	syntax_error_check(char *s)
 	}
 	return (1);
 }
-
 // Main to test syntax errors
 /*
 int	main(int ac, char **av)

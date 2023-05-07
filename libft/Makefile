@@ -33,6 +33,16 @@ SRCS	= ft_isalpha.c\
 		   	ft_putstr_fd.c\
 		   	ft_putendl_fd.c\
 		   	ft_putnbr_fd.c\
+				ft_printf_fd.c\
+				ft_printf_hexa.c\
+				ft_printf_int.c\
+				ft_printf_str.c\
+				ft_printf_unsint.c\
+				ft_count_int.c\
+				ft_count_unsigned_int.c\
+				ft_printf_address.c\
+				ft_printf_char.c\
+				ft_put_unsnbr_fd.c\
 
 BONUS	= ft_lstnew.c\
 			ft_lstadd_front.c\

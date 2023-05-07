@@ -9,7 +9,7 @@
 /*   Updated: 2022/12/21 13:27:17 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../includes/ft_printf.h"
+#include "libft.h"
 
 void	ft_printf_char(char c, int fd, int *count)
 {
