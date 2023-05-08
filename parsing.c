@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:00:49 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/08 14:15:23 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/08 18:33:34 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -14,7 +14,9 @@
 void	print_token(t_token **head)
 {
 	t_token	*tmp;
-
+	
+	if (!*head)
+		return ;
 	tmp = *head;
 	while (tmp)
 	{
@@ -23,17 +25,17 @@ void	print_token(t_token **head)
 	}
 }
 
-int	parsing(char *line)
+t_token	*parsing(char *line)
 {
 	t_token	*token;
 
 	if (!syntax_error_check(line))
-		return (free(line), 1);
+		return (free(line), NULL);
 	token = get_tokens(line);
 	if (!token)
-		return (0);
+		return (NULL);
 	print_token(&token);
-	return (1);
+	return (token);
 }
 
 

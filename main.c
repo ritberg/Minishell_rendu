@@ -25,31 +25,31 @@ int	main(int ac, char **av, char **envp)
 	(void)ac;
 	char	*line;
 	t_env	*env;
+	t_token	*token;
 	
+	exit_status = 0;
 	if (sig_handler() == -1) // a modifier apres le parsing
-		return (-1);
-	env = *get_envp(envp);
-	if (!env)
-		return (1);
+		return (0);
 	while (1)
 	{
+		env = *get_envp(envp);
+		if (!env)
+			return (1);
 		line = NULL;
 		line = readline(BLU_2"minishell$ "RESET);
-		if (line == 0)
+		if (!line) // s'il y a une erreur de malloc ou CNTR+D
     	{
-			free(line);
 			rl_clear_history();
-			return (-1);
+			free_env(&env);
+			return (0);
     	}
 		if (line[0])
 			add_history(line);
-		if (!parsing(line))
-		{
-		   printf("EXIT STATUS %d\n", exit_status);
-		   return (exit_status);
-		}
 		printf("EXIT STATUS %d\n", exit_status);
+		token = parsing(line);
 		exit_status = 0;
+		free_token(&token);
+		free_env(&env);
 	}
 	return (0);
 }

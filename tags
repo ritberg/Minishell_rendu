@@ -7,7 +7,7 @@
 BLU	minishell.h	/^# define BLU /;"	d
 BLU_2	minishell.h	/^# define BLU_2 /;"	d
 BUFFER_SIZE	libft/includes/get_next_line.h	/^#  define BUFFER_SIZE /;"	d
-CC	Makefile	/^CC		= gcc$/;"	m
+CC	Makefile	/^CC			= gcc$/;"	m
 CC	libft/Makefile	/^CC		= gcc$/;"	m
 CFLAGS	libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
 COLOR_END	libft/Makefile	/^COLOR_END = \\033[0m$/;"	m
@@ -19,19 +19,21 @@ GREEN	libft/Makefile	/^GREEN = \\033[32;6m$/;"	m
 GRN	minishell.h	/^# define GRN /;"	d
 HEADERS	Makefile	/^HEADERS		= minishell.h$/;"	m
 INC_LIBFT	Makefile	/^INC_LIBFT	= libft$/;"	m
+LIBFT	Makefile	/^LIBFT		= -Llibft -lft$/;"	m
 LIBFT_H	libft/includes/libft.h	/^# define LIBFT_H$/;"	d
 MAG	minishell.h	/^# define MAG /;"	d
 MINISHELL_H	minishell.h	/^# define MINISHELL_H$/;"	d
-NAME	Makefile	/^NAME	= minishell$/;"	m
+NAME	Makefile	/^NAME		= minishell$/;"	m
 NAME	libft/Makefile	/^NAME = libft.a$/;"	m
-OBJS	Makefile	/^OBJS	= ${SRCS:.c=.o}$/;"	m
+OBJS	Makefile	/^OBJS		= ${SRCS:.c=.o}$/;"	m
 OBJS	libft/Makefile	/^OBJS =  ${SRCS_LIBFT:.c=.o} ${SRCS_LSTCHAINE:.c=.o} ${SRCS_PRINTF:.c=.o} ${SRCS_GNL:.c=.o} \\$/;"	m
-READLINE	Makefile	/^READLINE	= -lreadline$/;"	m
+READLINE	Makefile	/^READLINE	=  -L$(HOME)\/.brew\/opt\/readline\/lib -lreadline$/;"	m
+READLINE	Makefile	/^READLINE 	= -L\/usr\/local\/opt\/readline\/lib$/;"	m
 RED	minishell.h	/^# define RED /;"	d
 RESET	minishell.h	/^# define RESET /;"	d
-RM	Makefile	/^RM		= rm -f$/;"	m
+RM	Makefile	/^RM			= rm -f$/;"	m
 RM	libft/Makefile	/^RM		= rm -f$/;"	m
-SRCS	Makefile	/^SRCS	= main.c \\$/;"	m
+SRCS	Makefile	/^SRCS		= main.c \\$/;"	m
 SRCS_GNL	libft/Makefile	/^SRCS_GNL = 			get_next_line\/get_next_line.c \\$/;"	m
 SRCS_LIBFT	libft/Makefile	/^SRCS_LIBFT = 		libft\/ft_memset.c \\$/;"	m
 SRCS_LSTCHAINE	libft/Makefile	/^SRCS_LSTCHAINE = 	libft\/ft_lstnew.c \\$/;"	m
@@ -153,19 +155,19 @@ link_env	envp_routine.c	/^int	link_env(t_env **head, t_env *last)$/;"	f
 link_token	token_routine.c	/^int	link_token(t_token **head, t_token *new)$/;"	f
 main	main.c	/^int	main(int ac, char **av, char **envp)$/;"	f
 main	test_getenv.c	/^int	main(int ac, char **av, char **envp)$/;"	f
+malloc_error_print_message	malloc_error_print_message.c	/^void	malloc_error_print_message(char *s)$/;"	f
 new_env	envp_routine.c	/^t_env	*new_env(char *envp)$/;"	f
 new_token	token_routine.c	/^t_token	*new_token(char *line, int start, int len)$/;"	f
 next	libft/includes/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list::s_list
 next	minishell.h	/^	struct s_env	*next;$/;"	m	struct:s_env	typeref:struct:s_env::s_env
 next	minishell.h	/^	struct s_token		*next;$/;"	m	struct:s_token	typeref:struct:s_token::s_token
-parsing	parsing.c	/^int	parsing(char *line)$/;"	f
+parsing	parsing.c	/^t_token	*parsing(char *line)$/;"	f
 power	libft/libft/power.c	/^int	power(int str_base, int power)$/;"	f
 prepare_forstash	libft/get_next_line/get_next_line_utils.c	/^void	prepare_forstash(char **line, char **buffer)$/;"	f
 print_syntax_error_char	parsing_syntax_errors_print_message.c	/^void	print_syntax_error_char(char c)$/;"	f
 print_syntax_error_dchar	parsing_syntax_errors_print_message.c	/^void	print_syntax_error_dchar(char c)$/;"	f
 print_syntax_error_str	parsing_syntax_errors_print_message.c	/^void	print_syntax_error_str(char *s)$/;"	f
 print_token	parsing.c	/^void	print_token(t_token **head)$/;"	f
-quotes_word_extraction	parsing_token_extraction.c	/^int	quotes_word_extraction(char *line, int ind, char c)$/;"	f
 read_fd	libft/get_next_line/get_next_line.c	/^char	*read_fd(char *line, int fd, int *error)$/;"	f
 s_env	minishell.h	/^typedef struct s_env$/;"	s
 s_list	libft/includes/libft.h	/^typedef struct s_list$/;"	s

@@ -55,9 +55,10 @@ typedef struct s_token
 
 /* GETENVP */
 t_env	**get_envp(char **envp);
+void	free_env(t_env **head);
 
 /* PARSING - SYNTAX ERROR CHECK */
-int		parsing(char *line);
+t_token	*parsing(char *line);
 int		syntax_error_check(char *s);
 int		count_metachar(char *s, char c, int num);
 int		count_quotes(char *s, char c);

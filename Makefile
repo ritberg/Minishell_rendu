@@ -6,7 +6,7 @@
 #    By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 12:23:37 by mdanchev          #+#    #+#              #
-#    Updated: 2023/05/08 14:16:39 by mdanchev         ###   lausanne.ch        #
+#    Updated: 2023/05/08 18:52:15 by mdanchev         ###   lausanne.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,8 @@ INC_LIBFT	= libft
 
 DEPS		= ${INC_LIBFT}/includes/libft.h
 
-CFLAGS		+= -Wall -Wextra -Werror -I. -g3 -fsanitize=address
+CFLAGS		+= -Wall -Wextra -Werror -I. 
+# -g3 -fsanitize=address 
 
 
 LIBFT		= -Llibft -lft
