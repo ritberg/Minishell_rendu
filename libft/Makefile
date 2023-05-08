@@ -1,91 +1,114 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mdanchev <mdanchev@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/08/15 12:21:59 by mdanchev          #+#    #+#              #
+#    Updated: 2023/03/28 09:07:13 by mdanchev         ###   lausanne.ch        #
+#                                                                              #
+# **************************************************************************** #
 
-SRCS	= ft_isalpha.c\
-			ft_isdigit.c\
-			ft_isalnum.c\
-			ft_isascii.c\
-			ft_isprint.c\
-			ft_strlen.c\
-		   	ft_memset.c\
-		   	ft_bzero.c\
-		   	ft_memcpy.c\
-		   	ft_memmove.c\
-		   	ft_strlcpy.c\
-		   	ft_strlcat.c\
-		   	ft_toupper.c\
-		   	ft_tolower.c\
-		   	ft_strchr.c\
-		   	ft_strrchr.c\
-			ft_strncmp.c\
-			ft_memchr.c\
-		   	ft_memcmp.c\
-		   	ft_strnstr.c\
-		   	ft_atoi.c\
-		   	ft_calloc.c\
-		   	ft_strdup.c\
-		   	ft_substr.c\
-		   	ft_strjoin.c\
-		   	ft_strtrim.c\
-		   	ft_split.c\
-		   	ft_itoa.c\
-		   	ft_strmapi.c\
-		   	ft_striteri.c\
-		   	ft_putchar_fd.c\
-		   	ft_putstr_fd.c\
-		   	ft_putendl_fd.c\
-		   	ft_putnbr_fd.c\
-				ft_printf_fd.c\
-				ft_printf_hexa.c\
-				ft_printf_int.c\
-				ft_printf_str.c\
-				ft_printf_unsint.c\
-				ft_count_int.c\
-				ft_count_unsigned_int.c\
-				ft_printf_address.c\
-				ft_printf_char.c\
-				ft_put_unsnbr_fd.c\
+SRCS_LIBFT = 		libft/ft_memset.c \
+					libft/ft_bzero.c \
+					libft/ft_memcpy.c \
+					libft/ft_isalpha.c \
+					libft/ft_memmove.c \
+					libft/ft_memchr.c \
+					libft/ft_isdigit.c \
+					libft/ft_isalnum.c \
+					libft/ft_isascii.c \
+					libft/ft_isprint.c \
+					libft/ft_strlen.c \
+					libft/ft_memcmp.c \
+					libft/ft_strlcpy.c \
+					libft/ft_strcpy.c \
+					libft/ft_strlcat.c \
+					libft/ft_strchr.c \
+					libft/ft_strrchr.c \
+	   				libft/ft_strnstr.c \
+					libft/ft_strncmp.c \
+					libft/ft_toupper.c \
+					libft/ft_tolower.c \
+					libft/ft_atoi.c \
+					libft/ft_calloc.c \
+					libft/ft_strdup.c \
+					libft/ft_substr.c \
+					libft/ft_strjoin.c \
+					libft/ft_strtrim.c \
+					libft/ft_split.c \
+					libft/ft_itoa.c \
+					libft/ft_strmapi.c \
+					libft/ft_striteri.c \
+					libft/ft_putchar_fd.c \
+					libft/ft_putnbr_fd.c \
+					libft/ft_putstr_fd.c \
+					libft/power.c \
+					libft/ft_atoi_base.c \
+					libft/ft_strcspn.c \
+					libft/ft_strspn.c \
+					libft/ft_strpbrk.c \
+					libft/del.c \
+					libft/str_lowercase.c 
+		
+SRCS_LSTCHAINE = 	libft/ft_lstnew.c \
+					libft/ft_lstadd_front.c \
+					libft/ft_lstsize.c \
+					libft/ft_lstlast.c \
+					libft/ft_lstadd_back.c \
+					libft/ft_lstdelone.c \
+					libft/ft_lstclear.c \
+					libft/ft_lstiter.c \
+					libft/ft_lstmap.c
 
-BONUS	= ft_lstnew.c\
-			ft_lstadd_front.c\
-			ft_lstsize.c\
-			ft_lstlast.c\
-			ft_lstadd_back.c\
-			ft_lstdelone.c\
-			ft_lstclear.c\
-			ft_lstiter.c\
-			ft_lstmap.c\
+SRCS_PRINTF = 		ft_printf/ft_printf.c \
+					ft_printf/ft_dprintf.c \
+					ft_printf/ft_printf_char.c \
+					ft_printf/ft_printf_str.c \
+					ft_printf/ft_printf_int.c \
+					ft_printf/ft_count_int.c \
+					ft_printf/ft_put_unsnbr_fd.c \
+					ft_printf/ft_printf_unsint.c \
+					ft_printf/ft_count_unsigned_int.c \
+					ft_printf/ft_printf_address.c \
+					ft_printf/ft_printf_hexa.c
 
-OBJS	= ${SRCS:.c=.o}
+SRCS_GNL = 			get_next_line/get_next_line.c \
+					get_next_line/get_next_line_utils.c \
+					get_next_line/get_next_line_bonus.c \
 
-BONUS_OBJS	= ${BONUS:.c=.o}
 
-NAME	= libft.a
+
+OBJS =  ${SRCS_LIBFT:.c=.o} ${SRCS_LSTCHAINE:.c=.o} ${SRCS_PRINTF:.c=.o} ${SRCS_GNL:.c=.o} \
+		${SRCS_RANK02:.c=.o}
+
+NAME = libft.a
 
 CC		= gcc
-
 RM		= rm -f
 
-HEADERS	= libft.h
+CFLAGS = -Wall -Wextra -Werror
 
-CFLAGS	= -Wall -Wextra -Werror
+GREEN = \033[32;6m
+
+COLOR_END = \033[0m
 
 .c.o:
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+	@	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-${NAME}:	${OBJS} ${HEADERS}
-			@ar rc ${NAME} ${OBJS}
-			@ranlib ${NAME}
+all:	${NAME}
 
-all:		${NAME}
-
-bonus:		$ ${OBJS} ${BONUS_OBJS} ${HEADERS}
-			@ar rc ${NAME} ${OBJS} ${BONUS_OBJS}
+$(NAME): ${OBJS}
+	@	ar rcs ${NAME} ${OBJS}
 
 clean:
-			${RM} ${OBJS} ${BONUS_OBJS}
+	@	${RM} ${OBJS}
 
-fclean:		clean
-			${RM} ${NAME}
+fclean:	clean
+	@	${RM} ${NAME}
+	@echo "${GREEN} clean ${NAME} done ${COLOR_END}"
 
-re:			fclean all
+re:		fclean all
 
-.PHONY:	all clean fclean re bonus
+.PHONY:	all clean fclean re

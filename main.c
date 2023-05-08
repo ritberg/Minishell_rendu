@@ -3,6 +3,22 @@
 
 extern int exit_status;
 
+// FOR TESTING PRINTING ENV
+/*
+void	print_env(t_env	**head)
+{
+	t_env	*ptr;
+
+	ptr = *head;
+	while (ptr)
+	{
+		ft_printf("print_env function: %s\n", ptr->var_name);
+		ft_printf("print_env function: %s\n", ptr->var_value);
+		ptr = ptr->next;
+	}
+}
+*/
+
 int	main(int ac, char **av, char **envp)
 {
 	(void)av;
@@ -27,7 +43,8 @@ int	main(int ac, char **av, char **envp)
     	}
 		if (line[0])
 			add_history(line);
-	   get_words(line);
+	   if (!parsing(line))
+		   return (exit_status);
 	}
 	return (1);
 }

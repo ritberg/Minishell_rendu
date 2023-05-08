@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:11:25 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/07 15:29:50 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/05/08 11:59:27 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -43,14 +43,13 @@ t_token	*new_token(char *line, int start, int len)
 	token = malloc(sizeof(t_token));
 	if (!token)
 	{
-		ft_printf_fd(2, "minishell: malloc: %s\n", strerror(errno));
-		exit_status = 1;
+		malloc_error_print_message(strerror(errno));
 		return (NULL);
 	}
 	token->content = ft_substr(line, start, len);
 	if (!token->content)
 	{
-		exit_status = 1;
+		malloc_error_print_message(strerror(errno));
 		return(free_token(&token), NULL);
 	}
 	token->id = 0;

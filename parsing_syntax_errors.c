@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:00:31 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/07 15:16:35 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/05/08 11:09:29 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -14,31 +14,21 @@
 //extern int	exit_status = 0;
 
 /*
-   We print error message, which character has a problem and
-   return exit status for syntax errors (258)
+   if quotes are not closed, call the print_error function
+   to print the error message on the STDERR and set exit_status to 258.
+   Then return 0 and exit the program
 */
-void	print_error_syntax(char *str)
-{
-	ft_putstr_fd("minishell: syntax error near unexpected token \'", 2);
-	ft_putstr_fd(str, 2);
-	ft_putstr_fd("\'\n", 2);
-	exit_status = 258;
-}
-
-/*
-   if quotes are not closed, print error and return 0
-*/
-int	count_quotes(char *s, char *c)
+int	count_quotes(char *s, char c)
 {
 	int	i;
 
 	i = 0;
 	i++;
-	while (s[i] && s[i] != c[0])
+	while (s[i] && s[i] != c)
 		i++;
-	if (s[i] != c[0])
+	if (s[i] != c)
 	{
-		print_error_syntax(c);
+		print_syntax_error_char(c);
 		return (0);
 	}
 	return (1);
@@ -51,28 +41,35 @@ int	count_quotes(char *s, char *c)
        (for ex., more than |, < or >>), we print error and return an exit status
 
 */
-int	count_metachar(char *s, char *c, int num)
+int	count_metachar(char *s, char c, int num)
 {
 	int	i;
 
 	i = 0;
 	i++;
-	while (s[i] && s[i] == c[0])
+	while (s[i] && s[i] == c)
 		i++;
 	if (i > num)
 	{
-		print_error_syntax(c);
+		if (is_quote(c))
+			print_syntax_error_dchar(c);
+		else if (is_pipeline(c))
+			print_syntax_error_char(c);
 		return (0);
 	}
 	while (s[i] && is_blank(s[i]))
 		i++;
-	if (is_metacharacter(s[i]) || is_operator(s[i]))
+	if (is_operator(s[i]))
 	{
-		ft_printf_fd(2, "minishell: ");
-		ft_printf_fd(2, "syntax error near unexpected token \'%c\'\n", s[i]);
-		exit_status = 258;
+		c = s[i];
+		if (is_chevron(c) && is_chevron(s[i + 1]))
+				print_syntax_error_dchar(c);
+		else
+			print_syntax_error_char(c);
 		return (0);
 	}
+	else if (s[i] == '\0')
+		print_syntax_error_str("newline");
 	return (1);
 }
 
@@ -87,25 +84,25 @@ int	count_metachar(char *s, char *c, int num)
 int	syntax_error_check(char *s)
 {
 	int		i;
-	char	c[2];
+	char	c;
 
-	c[0] = 0;
-	c[1] = 0;
 	i = 0;
 	while (s[i++])
 	{
-		if (s[i] == '\'' || s[i] == '\"')
+		if (is_quote(s[i]))
 		{
-			c[0] = s[i];
-			if (!count_quotes(&s[i], c))
+			if (!count_quotes(&s[i], s[i]))
 				return (0);
 			else
-				while (s[++i] && s[i] != c[0]) //?
+			{
+				c = s[i];
+				while (s[++i] && s[i] != c) //?
 					i++;
+			}
 		}
-		else if ((s[i] == '<' && !count_metachar(&s[i], "<", 2)) || \
-				(s[i] == '>' && !count_metachar(&s[i], ">", 2)) || \
-				(s[i] == '|' && !count_metachar(&s[i], "|", 1)))
+		else if ((s[i] == '<' && !count_metachar(&s[i], '<', 2)) || \
+				(s[i] == '>' && !count_metachar(&s[i], '>', 2)) || \
+				(s[i] == '|' && !count_metachar(&s[i], '|', 1)))
 				return (0);
 	}
 	return (1);

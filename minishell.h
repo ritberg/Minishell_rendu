@@ -17,7 +17,7 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 //# include "libft/includes/libft.h"
-# include "libft/libft.h"
+# include "libft/includes/libft.h"
 
 # define RED    "\x1b[31m"
 # define BLU    "\x1B[34m"
@@ -50,33 +50,42 @@ typedef struct s_token
 t_env	**get_envp(char **envp);
 
 /* PARSING - SYNTAX ERROR CHECK */
+int		parsing(char *line);
 int		syntax_error_check(char *s);
-int	count_metachar(char *s, char *c, int num);
-int	count_quotes(char *s, char *c);
-void	print_error_syntax(char *str);
+int		count_metachar(char *s, char c, int num);
+int		count_quotes(char *s, char c);
+void	print_syntax_error_char(char c);
+void	print_syntax_error_dchar(char c);
+void	print_syntax_error_str(char *s);
 
-/* WORD_EXTRACTION */
+/* TOKEN EXTRACTION */
 int		character_extraction(char *line, int ind);
-int		word_extraction(char *line, int ind);
+int		token_extraction(char *line, int ind);
 int		quotes_word_extraction(char *line, int ind, char c);
-t_token	*get_words(char *line);
+t_token	*get_tokens(char *line);
 
-/* WORD EXTRACTION - TOKEN LINKED LIST */
+/* MALLOC ERROR PRINT MESSAGE */ 
+void	malloc_error_print_message(char *s);
+
+/* TOKEN EXTRACTION - TOKEN LINKED LIST */
 t_token	*new_token(char *line, int start, int len);
 int		token_linked_list(t_token **head, char *line, int start, int len);
-int	link_token(t_token **head, t_token *new);
+int		link_token(t_token **head, t_token *new);
 void	free_token(t_token **head);
 
 /* IS SOMETHING */ 
-int		is_blank(char c);
+int		is_dollar(char c);
+int		is_pipeline(char c);
+int		is_chevron(char c);
 int		is_operator(char c);
-int		is_variable(char c);
+int		is_newline(char c);
+int		is_blank(char c);
 int		is_metacharacter(char c);
-int		is_word(char c);
 int		is_delimiter(char c);
-int		is_simple_quote(char c);
+int		is_word(char c);
 int		is_double_quote(char c);
-
+int		is_simple_quote(char c);
+int		is_quote(char c);
 
 	// NOT OK
 int		sig_handler(void);
