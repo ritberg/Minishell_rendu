@@ -40,26 +40,27 @@ INC_LIBFT	= libft
 
 DEPS		= ${INC_LIBFT}/includes/libft.h
 
-CFLAGS		+= -Wall -Wextra -Werror -I. 
+CFLAGS		+= -Wall -Wextra -Werror -I.
 # -g3 -fsanitize=address 
 
 
 LIBFT		= -Llibft -lft
 
 ifeq ($(USER), margaritamakarova)
-READLINE 	= -L/usr/local/opt/readline/lib
-CFLAGS		+= -I/usr/local/opt/readline/include
+READLINE 	= -L/opt/homebrew/opt/readline/lib -lreadline
+CFLAGS		+= -I/opt/homebrew/opt/readline/include
 else
 READLINE	=  -L$(HOME)/.brew/opt/readline/lib -lreadline
 CFLAGS		+= -I$(HOME)/.brew/opt/readline/include
 endif
+
 
 .c.o:
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}:	${OBJS} ${HEADERS}
 			${MAKE} -C ${INC_LIBFT}
-			${CC} ${CFLAGS} ${READLINE} ${LIBFT} -o ${NAME} ${OBJS}
+			${CC} ${CFLAGS}  ${LIBFT} -o ${NAME} ${OBJS} ${READLINE}
 
 all:		${NAME}
 

@@ -106,6 +106,8 @@ char	**ft_splitpath(char *s, char c);
 void	*free_tab(void **a_free);
 int		free_all(int ret);
 
+// Prototype de readline
+void  rl_replace_line(const char *test, int clear_undo);
 
 
 #endif
