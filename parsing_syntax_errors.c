@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:00:31 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/08 11:09:29 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/08 13:21:56 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -96,7 +96,8 @@ int	syntax_error_check(char *s)
 			else
 			{
 				c = s[i];
-				while (s[++i] && s[i] != c) //?
+				i++;
+				while (s[i] && s[i] != c) //?
 					i++;
 			}
 		}
