@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:00:21 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/08 12:00:02 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/08 14:46:24 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,27 +42,13 @@ int	word_extraction(char *line, int ind)
 	{
 		if (is_quote(line[ind]))
 		{
-			ind++;
 			c = line[ind];
+			ind++;
 			while (line[ind] && line[ind] != c)
 				ind++;
 		}
 		ind++;
 	}
-	return (ind - start);
-}
-
-/*
-   is it correct ??
-*/
-int	quotes_word_extraction(char *line, int ind, char c)
-{
-	int	start;
-
-	start = ind;
-	ind++;
-	while (line[ind] && line[ind] != c)
-		ind++;
 	return (ind - start);
 }
 
@@ -82,6 +68,19 @@ int	quotes_word_extraction(char *line, int ind, char c)
 		- if there is a head already at this iteration, create a
 			linked list of tokens with thi function token_linked_list
 */
+/*
+typedef	struct s_point
+{
+	int	start;
+	int	size;
+}
+
+t_point	*get_token_size(char *line, )
+{
+	t_point	*point;
+
+}
+*/
 t_token	*get_tokens(char *line) // A RACCOURCIR
 {
 	int			i;
@@ -98,27 +97,19 @@ t_token	*get_tokens(char *line) // A RACCOURCIR
 		while (is_blank(line[i]))
 			i++;
 		if (is_word(line[i]))
-			len = word_extraction(line, i); //il faut enlever des quotes ""
+			len = word_extraction(line, i);
 		else if (is_operator(line[i]))
 			len = character_extraction(line, i);
 		if (flag == 0)
 		{
 			head = new_token(line, i, len);
 			if (!head)
-			{
-				printf(" NULL from head");   // A SUPPRIMER
 				return (free_token(&head), NULL);
-			}
 			flag = 1;
 		}
 		else
-		{
 			if (!token_linked_list(&head, line, i, len))
-			{
-				printf(" NULL from list");    // A SUPPRIMER
 				return (free_token(&head), free(line), NULL);
-			}
-		}
 		i += len;
 	}
 	return (free(line), head);

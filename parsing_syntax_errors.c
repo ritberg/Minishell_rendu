@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:00:31 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/08 13:21:56 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/08 15:10:01 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -51,7 +51,7 @@ int	count_metachar(char *s, char c, int num)
 		i++;
 	if (i > num)
 	{
-		if (is_quote(c))
+		if (is_chevron(c))
 			print_syntax_error_dchar(c);
 		else if (is_pipeline(c))
 			print_syntax_error_char(c);
@@ -69,7 +69,13 @@ int	count_metachar(char *s, char c, int num)
 		return (0);
 	}
 	else if (s[i] == '\0')
-		print_syntax_error_str("newline");
+	{
+		if (is_pipeline(c))
+			print_syntax_error_char(c);
+		else
+			print_syntax_error_str("newline");
+		return (0);
+	}
 	return (1);
 }
 
@@ -87,7 +93,7 @@ int	syntax_error_check(char *s)
 	char	c;
 
 	i = 0;
-	while (s[i++])
+	while (s[i])
 	{
 		if (is_quote(s[i]))
 		{
@@ -105,6 +111,7 @@ int	syntax_error_check(char *s)
 				(s[i] == '>' && !count_metachar(&s[i], '>', 2)) || \
 				(s[i] == '|' && !count_metachar(&s[i], '|', 1)))
 				return (0);
+		i++;
 	}
 	return (1);
 }

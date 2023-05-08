@@ -25,7 +25,7 @@ int	main(int ac, char **av, char **envp)
 	(void)ac;
 	char	*line;
 	t_env	*env;
-
+	
 	if (sig_handler() == -1) // a modifier apres le parsing
 		return (-1);
 	env = *get_envp(envp);
@@ -43,8 +43,13 @@ int	main(int ac, char **av, char **envp)
     	}
 		if (line[0])
 			add_history(line);
-	   if (!parsing(line))
+		if (!parsing(line))
+		{
+		   printf("EXIT STATUS %d\n", exit_status);
 		   return (exit_status);
+		}
+		printf("EXIT STATUS %d\n", exit_status);
+		exit_status = 0;
 	}
-	return (1);
+	return (0);
 }

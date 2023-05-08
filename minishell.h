@@ -28,7 +28,14 @@
 # define CYN    "\x1B[36m"
 # define WHT    "\x1B[37m"
 # define RESET  "\x1B[0m"
-
+/*
+# define 1	WORD
+# define 2	PIPELINE
+# define 3	LESS
+# define 4	GREAT
+# define 5	DLESS
+# define 6	DGREAT
+*/
 extern int	exit_status;
 
 // OK
@@ -61,7 +68,6 @@ void	print_syntax_error_str(char *s);
 /* TOKEN EXTRACTION */
 int		character_extraction(char *line, int ind);
 int		token_extraction(char *line, int ind);
-int		quotes_word_extraction(char *line, int ind, char c);
 t_token	*get_tokens(char *line);
 
 /* MALLOC ERROR PRINT MESSAGE */ 
