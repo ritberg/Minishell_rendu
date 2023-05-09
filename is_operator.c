@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 10:39:10 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/08 10:41:17 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/09 14:01:48 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -22,9 +22,23 @@ int	is_pipeline(char c)
 
 /* CHEVRON IS A METACHARACTER AND REDIRECTION OPERATOR */
 
+int	is_lchevron(char c)
+{
+	if (c == '<')
+		return (1);
+	return (0);
+}
+
+int	is_rchevron(char c)
+{
+	if (c == '>')
+		return (1);
+	return (0);
+}
+
 int	is_chevron(char c)
 {
-	if (c == '>' || c == '<')
+	if (is_lchevron(c) || is_rchevron(c))
 		return (1);
 	return (0);
 }

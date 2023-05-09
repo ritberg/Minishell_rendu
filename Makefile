@@ -6,7 +6,7 @@
 #    By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 12:23:37 by mdanchev          #+#    #+#              #
-#    Updated: 2023/05/09 10:42:31 by mdanchev         ###   lausanne.ch        #
+#    Updated: 2023/05/09 15:31:20 by mdanchev         ###   lausanne.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,11 @@ CFLAGS		+= -Wall -Wextra -Werror
 
 SANITIZE	?= 0
 
+## DE MARIYA
+# J'AI AJOUTE UN VARIABLE SANITIZE
+# SI TU FAIT LE MAKE AVEC LA COMMANDE: "make SANITIZE=1"
+# LA COMPILATION S'EFFECTUERA AVEC LE FLAG "-fsanitize=address"
+# SINON, CE SERA SANS LE FLAG ET ON POURRAIT UTILISER LEAKS AT EXIT
 ifeq ($(SANITIZE), 1)
 CFLAGS += -g3 -fsanitize=address
 CFLAGS += -fno-omit-frame-pointer

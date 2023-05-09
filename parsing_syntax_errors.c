@@ -6,26 +6,10 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:00:31 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/09 13:21:14 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/09 15:12:28 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
-
-int	count_quotes(char *s, char c)
-{
-	int	i;
-
-	i = 0;
-	i++;
-	while (s[i] && s[i] != c)
-		i++;
-	if (s[i] != c)
-	{
-		print_syntax_error_char(c);
-		return (0);
-	}
-	return (1);
-}
 
 int	check_multiple_operators_error(int i, int num, char c)
 {
@@ -40,18 +24,6 @@ int	check_multiple_operators_error(int i, int num, char c)
 	return (1);
 }
 
-void	operator_before_newline_error(char c)
-{
-	if (is_pipeline(c))
-		print_syntax_error_char(c);
-	else
-		print_syntax_error_str("newline");
-}
-
-//DE MARIYA:
-//POUR RACCOURCIR LA FONCTION count_metachar
-//J'AI CREE DEUX FONCTIONS SUPPLEMENTAIRES CI-DESSUS
-//operator_before_newline_error ET check_multiple_operators_error
 int	count_metachar(char *s, char c, int num)
 {
 	int	i;
@@ -67,29 +39,63 @@ int	count_metachar(char *s, char c, int num)
 	{
 		c = s[i];
 		if (is_chevron(c) && is_chevron(s[i + 1]))
-				print_syntax_error_dchar(c);
+			print_syntax_error_dchar(c);
 		else
 			print_syntax_error_char(c);
 		return (0);
 	}
 	else if (s[i] == '\0')
 	{
-		operator_before_newline_error(c);
+		print_syntax_error_str("newline");
 		return (0);
 	}
-	pipeline(check);
+	return (1);
+}
+
+int	check_quotes_errors(char *s, char c, int *i)
+{
+	int	j;
+
+	j = *i + 1;
+	while (s[j] && s[j] != c)
+		j++;
+	if (s[j] != c)
+	{
+		print_syntax_error_char(c);
+		return (0);
+	}
+	(*i)++;
+	while (s[*i] && s[*i] != c)
+		(*i)++;
+	return (1);
+}
+
+int	check_pipeline_errors(char *s, int i, char c, int num)
+{
+	int	j;
+
+	j = 0;
+	while (s[j] && is_blank(s[j]))
+		j++;
+	if (s[j] == c)
+	{
+		print_syntax_error_char(c);
+		return (0);
+	}
+	if (!count_metachar(&s[i], c, num))
+		return (0);
 	return (1);
 }
 
 /*
  * syntax_error_check function:
- * GOAL - before token splitting, check for syntax error
- * 		  print an error message and exit status the status to 258
+ * GOAL - before token splitting, check for syntax error;
+ * 		  if errors -> print an error message and exit status the status to 258
  *
  * Inside the while loop:
- *	- if it find a quote -> call count_quotes function
+ *	- if it find a quote -> call check_quotes_errors function
  *	  
- *	  count_quotes function:
+ *	  check_quotes_errors function:
  *	  	- verifies if quotes are closed or not.
  *	  	- all metacharcter loose their special meaning inside quotes.
  *	  	  If a metacharcter is found inside quotes, 
@@ -97,42 +103,52 @@ int	count_metachar(char *s, char c, int num)
  *	  	- if quotes is unclosed, the function prints error message 
  *	  	  and sets the exit status to 258
  *  
- *  - if it finds a metacharcater (<, >, |) -> call the count_metachar function
+ *  - if it finds a chevron (<, >) -> call the count_metachar function
+ *  - if it finds a pipeline (|) -> call the check_pipeline_errors function
  * 	  
+ * 	  check_pipeline_errors function:
+ * 	  - verifies if there is a pipeline at the beginning of the line (ex. |word)
+ * 	  - verifies if there is a pipeline at the end of the line (ex. word|)
+ * 	  - if one of these conditions is true, the function prints error message
+ * 	    and sets the exit status to 258
+ * 	  - else, the function calls the count_metachar function
+ *
  * 	  count_metachar function:
  * 	  	- verifies whether there are too many metacharacters (ex. >>>, |||)
- * 	  	- verifies if there are two operators in a row (ex. > <, | |, > |)
- * 	  	- verfies if there is a newline after a metacharacter (ex. >\n, |\n)
- * 	  	- for pipeline verifies if there are caracters from both sides of the pipe
- * 	  	  (|test -> error, test| -> error, test1|test2 -> ok)
+ * 	  	- verifies if there are two operators in a row (ex. ><, ||, >|, ><|)
+ * 	  	- verfies if there is a \0 after a metacharacter (ex. >\0, |\0)
  * 	  If one of these conditions is true, the function prints error message
  * 	  and sets the exit status to 258
+ *
+ * 	- if an error occurs while looping, 
+ * 	the function frees the string and returns 0
+ *
+ * 	NOTE: char	*s is the string that was previously malloced 
+ * 		  in the main function by readline
 */
 
+//DE MARIYA:
+//ICI J'AI DU CREER UNE FONCTION SUPPLEMENTAIRE PARCE QUE 
+//J'AI DU TRAITE UN CAS SPECIFIQUE CONCERNANT PIPELINE
+//J'AI EGALEMENT FREE LA STRING S SI UNE ERREUR SE PRODUIT
+//LA STRING S EST EN FAIT LA LINE DE READLINE
 int	syntax_error_check(char *s)
 {
 	int		i;
-	char	c;
 
 	i = 0;
 	while (s[i])
 	{
 		if (is_quote(s[i]))
 		{
-			if (!count_quotes(&s[i], s[i]))
-				return (0);
-			else
-			{
-				c = s[i];
-				i++;
-				while (s[i] && s[i] != c) //?
-					i++;
-			}
+			if (!check_quotes_errors(s, s[i], &i))
+				return (free(s), 0);
 		}
-		else if ((s[i] == '<' && !count_metachar(&s[i], '<', 2)) || \
-				(s[i] == '>' && !count_metachar(&s[i], '>', 2)) || \
-				(s[i] == '|' && !count_metachar(&s[i], '|', 1)))
-				return (0);
+		else if ((is_lchevron(s[i]) && !count_metachar(&s[i], '<', 2)) || \
+				(is_rchevron(s[i]) && !count_metachar(&s[i], '>', 2)))
+			return (free(s), 0);
+		else if (is_pipeline(s[i]) && !check_pipeline_errors(s, i, '|', 1))
+			return (free(s), 0);
 		i++;
 	}
 	return (1);

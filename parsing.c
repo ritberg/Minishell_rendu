@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:00:49 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/08 18:33:34 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/09 14:35:10 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -30,7 +30,7 @@ t_token	*parsing(char *line)
 	t_token	*token;
 
 	if (!syntax_error_check(line))
-		return (free(line), NULL);
+		return (NULL);
 	token = get_tokens(line);
 	if (!token)
 		return (NULL);

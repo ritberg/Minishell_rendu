@@ -57,13 +57,15 @@ typedef struct s_token
 t_env	**get_envp(char **envp);
 void	free_env(t_env **head);
 
-/* PARSING - SYNTAX ERROR CHECK */
+
 t_token	*parsing(char *line);
+
+/* PARSING - SYNTAX ERROR CHECK */
 int		syntax_error_check(char *s);
+int		check_pipeline_errors(char *s, int i, char c, int num);
+int		check_quotes_errors(char *s, char c, int *i);	
 int		count_metachar(char *s, char c, int num);
 int		check_multiple_operators_error(int i, int num, char c);
-void	operator_before_newline_error(char c);
-int		count_quotes(char *s, char c);
 void	print_syntax_error_char(char c);
 void	print_syntax_error_dchar(char c);
 void	print_syntax_error_str(char *s);
@@ -88,6 +90,8 @@ void	free_token(t_token **head);
 int		is_dollar(char c);
 int		is_pipeline(char c);
 int		is_chevron(char c);
+int		is_lchevron(char c);
+int		is_rchevron(char c);
 int		is_operator(char c);
 int		is_newline(char c);
 int		is_blank(char c);
