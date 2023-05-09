@@ -6,18 +6,16 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:11:25 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/08 11:59:27 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/09 12:50:46 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
-
-// int exit_status = 0;
 
 void	free_token(t_token **head)
 {
 	t_token	*ptr;
 	t_token	*tmp;
-	
+
 	if (!head || !*head)
 		return ;
 	ptr = *head;
@@ -32,14 +30,22 @@ void	free_token(t_token **head)
 }
 
 /*
-   - malloc of the structure t_token (if not, error message and exit status)
-   - extract the word with ft_substr (if not, error message and exit status)
-   - id = 0 ? because it's head? ..
+ * new_token function:
+ * GOAL: Create a t_token node.
+ *	- malloc of the structure t_token
+ *	- if malloc fails, malloc_error_print_message function 
+ *	  will print the error message and set the exit status to 1
+ *	- extract the token in token->content with ft_substr 
+ *	- if ft_substr fails, malloc_error_print_message function
+ *	  will print the error message and set the exit status to 1
+ *	  and new_token function will free the current token
+ *	- set token->id to 0 (default value)
+ *	- set token->next to NULL
 */
 t_token	*new_token(char *line, int start, int len)
 {
 	t_token	*token;
-	
+
 	token = malloc(sizeof(t_token));
 	if (!token)
 	{
@@ -50,7 +56,7 @@ t_token	*new_token(char *line, int start, int len)
 	if (!token->content)
 	{
 		malloc_error_print_message(strerror(errno));
-		return(free_token(&token), NULL);
+		return (free_token(&token), NULL);
 	}
 	token->id = 0;
 	token->next = NULL;
@@ -58,8 +64,12 @@ t_token	*new_token(char *line, int start, int len)
 }
 
 /*
-   Link tokens together from head
-*/
+ * link_token function:
+ * GOAL: Link a t_token node to the end of a linked list.
+ * 	- protection: if the node was not created, return 0 (error)
+ * 	- find the end: start from the head and loop through it
+ */
+
 int	link_token(t_token **head, t_token *new)
 {
 	t_token	*ptr;
@@ -78,13 +88,26 @@ int	link_token(t_token **head, t_token *new)
 }
 
 /*
-   Goal - create tokens with length found during parsing before
-
-   - create a new token
-   - free if there is a problem
-   - link tokens together
-   - free if there is a problem
+ * token_linked_list function:
+ * GOAl: Create a linked list of tokens defined as a t_token structure
+ * 	- protection: if head was not created, don't do anything
+ *	- create a t_token node with new_token function
+ *		- len was found during parsing 
+ *		  in get_tokens function from parsing_token_extraction.c file
+ *	- if there was a malloc problen,return 0 (error)
+ *	  	(new_token function print the error message 
+ *	  	 and set the exit status to 1;
+ *	  	 get_tokens function will free the linked list and the line)
+ *	- link t_token nodes with link_token function
+ *	- if there was a problem while linking, return 0 (error)
+ *	  	(get_tokens function will free the linked list and the line)
 */
+
+//DE MARIYA:
+//ICI J'AI SUPPRIME LES FREE LORSQU'ON RETOURNE 0 POUR ERREUR
+//CAR J'AI REMARQUE QU'ON FREE UNE DEUXIEME FOIS DANS GET_TOKENS
+//JE ME SUIS DIT ALORS D'UTILISER CETTE FONCTION COMME IN INDICATEUR
+//DE FLAG POUR SAVOIR SI ON DOIT FREE OU PAS DANS GET_TOKENS
 int	token_linked_list(t_token **head, char *line, int start, int len)
 {
 	t_token	*new;
@@ -93,55 +116,8 @@ int	token_linked_list(t_token **head, char *line, int start, int len)
 		return (1);
 	new = new_token(line, start, len);
 	if (!new)
-		return (free_token(head), 0);
+		return (0);
 	if (!link_token(head, new))
-		return (free_token(head), 0);
+		return (0);
 	return (1);
 }
-
-// Main to test token_linked_list function
-/*
-int	main(int ac, char **av)
-{
-	(void)ac;
-	t_token	*head;
-	t_token	*ptr;
-	int		i;
-	int		j;
-	char	**line;
-
-	i = 0;
-	j = 1;
-	line = malloc(sizeof(char *) * ac);
-	while (av[j])
-	{
-		line[i] = ft_strdup(av[j]);
-		i++;
-		j++;
-	}
-	line[i] = NULL;
-	head = NULL;
-	head = new_token(line[0], 0, ft_strlen(line[0]));
-	if (!head)
-	{
-		printf("malloc: %s\n", strerror(errno));
-		return (1);
-	}
-	i = 1;
-	while (line[i])
-	{
-		token_linked_list(&head, line[i], 0, ft_strlen(line[i]));
-		i++;
-	}
-	i = 0;
-	ptr = head;
-	while (ptr)
-	{
-		printf("%s\n", ptr->content);
-		ptr = ptr->next;
-		i++;
-	}
-	free_token(&head);
-	return (exit_status);
-}
-*/

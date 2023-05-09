@@ -6,7 +6,7 @@
 /*   By: mmakarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:59:31 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/05/07 14:11:03 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/05/09 13:15:35 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -48,7 +48,7 @@ t_env	*new_env(char *envp)
 	env = malloc(sizeof(t_env));
 	if (!env)
 	{
-		printf("malloc: %s\n", strerror(errno));
+		malloc_error_print_message(strerror(errno));
 		return (NULL);
 	}
 	while (envp[end] != '=')

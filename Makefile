@@ -6,7 +6,7 @@
 #    By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 12:23:37 by mdanchev          #+#    #+#              #
-#    Updated: 2023/05/08 18:52:15 by mdanchev         ###   lausanne.ch        #
+#    Updated: 2023/05/09 10:42:31 by mdanchev         ###   lausanne.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,22 +36,28 @@ RM			= rm -f
 
 HEADERS		= minishell.h
 
-INC_LIBFT	= libft
+LIBFT_FOLD	= libft
 
-DEPS		= ${INC_LIBFT}/includes/libft.h
+# DEPS		= ${INC_LIBFT}/includes/libft.h
 
-CFLAGS		+= -Wall -Wextra -Werror -I.
-# -g3 -fsanitize=address 
+CFLAGS		+= -Wall -Wextra -Werror
 
+SANITIZE	?= 0
 
-LIBFT		= -Llibft -lft
+ifeq ($(SANITIZE), 1)
+CFLAGS += -g3 -fsanitize=address
+CFLAGS += -fno-omit-frame-pointer
+endif
+
+CFLAGS		+= -I. -Ilibft/includes
+LIBFT		= -L./libft -lft
 
 ifeq ($(USER), margaritamakarova)
-READLINE 	= -L/opt/homebrew/opt/readline/lib -lreadline
 CFLAGS		+= -I/opt/homebrew/opt/readline/include
+READLINE 	= -L/opt/homebrew/opt/readline/lib -lreadline
 else
-READLINE	=  -L$(HOME)/.brew/opt/readline/lib -lreadline
 CFLAGS		+= -I$(HOME)/.brew/opt/readline/include
+READLINE	=  -L$(HOME)/.brew/opt/readline/lib -lreadline
 endif
 
 
@@ -59,17 +65,17 @@ endif
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}:	${OBJS} ${HEADERS}
-			${MAKE} -C ${INC_LIBFT}
-			${CC} ${CFLAGS}  ${LIBFT} -o ${NAME} ${OBJS} ${READLINE}
+			${MAKE} -C ${LIBFT_FOLD}
+			${CC} ${CFLAGS} ${LIBFT} ${READLINE} -o ${NAME} ${OBJS}
 
 all:		${NAME}
 
 clean:
 			${RM} ${OBJS}
-			${RM}
-			${MAKE} -C ${INC_LIBFT} clean
+			${MAKE} -C ${LIBFT_FOLD} clean
 
 fclean:		clean
+			${MAKE} -C ${LIBFT_FOLD} fclean
 			${RM} ${NAME}
 
 re:			fclean all

@@ -36,7 +36,7 @@
 # define 5	DLESS
 # define 6	DGREAT
 */
-extern int	exit_status;
+int	g_exit_status;
 
 // OK
 typedef struct s_env
@@ -61,6 +61,8 @@ void	free_env(t_env **head);
 t_token	*parsing(char *line);
 int		syntax_error_check(char *s);
 int		count_metachar(char *s, char c, int num);
+int		check_multiple_operators_error(int i, int num, char c);
+void	operator_before_newline_error(char c);
 int		count_quotes(char *s, char c);
 void	print_syntax_error_char(char c);
 void	print_syntax_error_dchar(char c);
@@ -70,6 +72,8 @@ void	print_syntax_error_str(char *s);
 int		character_extraction(char *line, int ind);
 int		token_extraction(char *line, int ind);
 t_token	*get_tokens(char *line);
+int		get_tokens_size(char *line, int *i);
+t_token	*create_token_head(char *line, int i, int len, int *flag);
 
 /* MALLOC ERROR PRINT MESSAGE */ 
 void	malloc_error_print_message(char *s);

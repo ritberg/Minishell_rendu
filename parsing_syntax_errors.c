@@ -6,18 +6,11 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:00:31 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/08 17:11:14 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/09 13:21:14 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
-//extern int	exit_status = 0;
-
-/*
-   if quotes are not closed, call the print_error function
-   to print the error message on the STDERR and set exit_status to 258.
-   Then return 0 and exit the program
-*/
 int	count_quotes(char *s, char c)
 {
 	int	i;
@@ -34,21 +27,8 @@ int	count_quotes(char *s, char c)
 	return (1);
 }
 
-/*
-   We check if there are too many characters and return 0 if yes
-   We ignore blanks
-   if we see more metacharacters or operators than needed
-       (for ex., more than |, < or >>), we print error and return an exit status
-
-*/
-int	count_metachar(char *s, char c, int num)
+int	check_multiple_operators_error(int i, int num, char c)
 {
-	int	i;
-
-	i = 0;
-	i++;
-	while (s[i] && s[i] == c)
-		i++;
 	if (i > num)
 	{
 		if (is_chevron(c))
@@ -57,6 +37,30 @@ int	count_metachar(char *s, char c, int num)
 			print_syntax_error_char(c);
 		return (0);
 	}
+	return (1);
+}
+
+void	operator_before_newline_error(char c)
+{
+	if (is_pipeline(c))
+		print_syntax_error_char(c);
+	else
+		print_syntax_error_str("newline");
+}
+
+//DE MARIYA:
+//POUR RACCOURCIR LA FONCTION count_metachar
+//J'AI CREE DEUX FONCTIONS SUPPLEMENTAIRES CI-DESSUS
+//operator_before_newline_error ET check_multiple_operators_error
+int	count_metachar(char *s, char c, int num)
+{
+	int	i;
+
+	i = 1;
+	while (s[i] && s[i] == c)
+		i++;
+	if (!check_multiple_operators_error(i, num, c))
+		return (0);
 	while (s[i] && is_blank(s[i]))
 		i++;
 	if (is_operator(s[i]))
@@ -70,23 +74,41 @@ int	count_metachar(char *s, char c, int num)
 	}
 	else if (s[i] == '\0')
 	{
-		if (is_pipeline(c))
-			print_syntax_error_char(c);
-		else
-			print_syntax_error_str("newline");
+		operator_before_newline_error(c);
 		return (0);
 	}
+	pipeline(check);
 	return (1);
 }
 
 /*
-   Goal - print an error message and return an exit status
-
-   inside the while loop:
-   - if there are quotes that are not closed, return 0,
-      else if there are more metacharcaters or operators than needed, return 0
-   - if we have more chevrons and pipes than |, >, >>, <, <<, return 0
+ * syntax_error_check function:
+ * GOAL - before token splitting, check for syntax error
+ * 		  print an error message and exit status the status to 258
+ *
+ * Inside the while loop:
+ *	- if it find a quote -> call count_quotes function
+ *	  
+ *	  count_quotes function:
+ *	  	- verifies if quotes are closed or not.
+ *	  	- all metacharcter loose their special meaning inside quotes.
+ *	  	  If a metacharcter is found inside quotes, 
+ *	  	  it is considered as a regular character.
+ *	  	- if quotes is unclosed, the function prints error message 
+ *	  	  and sets the exit status to 258
+ *  
+ *  - if it finds a metacharcater (<, >, |) -> call the count_metachar function
+ * 	  
+ * 	  count_metachar function:
+ * 	  	- verifies whether there are too many metacharacters (ex. >>>, |||)
+ * 	  	- verifies if there are two operators in a row (ex. > <, | |, > |)
+ * 	  	- verfies if there is a newline after a metacharacter (ex. >\n, |\n)
+ * 	  	- for pipeline verifies if there are caracters from both sides of the pipe
+ * 	  	  (|test -> error, test| -> error, test1|test2 -> ok)
+ * 	  If one of these conditions is true, the function prints error message
+ * 	  and sets the exit status to 258
 */
+
 int	syntax_error_check(char *s)
 {
 	int		i;
@@ -115,15 +137,3 @@ int	syntax_error_check(char *s)
 	}
 	return (1);
 }
-// Main to test syntax errors
-/*
-int	main(int ac, char **av)
-{
-	(void)ac;
-	char	*line;
-	line = ft_strdup(av[1]);
-	syntax_error_check(line);
-	printf("exit_status = %d\n", exit_status);
-	return (exit_status);
-}
-*/

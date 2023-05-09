@@ -1,7 +1,10 @@
 
 #include "minishell.h"
 
-extern int exit_status;
+//DE MARIYA:
+//SELON NORMINETTE, LE NOM DE LA VARIABLE GLOBALE
+//DOIT COMMENCER PAR g_
+int g_exit_status;
 
 // FOR TESTING PRINTING ENV
 /*
@@ -27,7 +30,7 @@ int	main(int ac, char **av, char **envp)
 	t_env	*env;
 	t_token	*token;
 	
-	exit_status = 0;
+	g_exit_status = 0;
 	if (sig_handler() == -1) // a modifier apres le parsing
 		return (0);
 	while (1)
@@ -45,9 +48,9 @@ int	main(int ac, char **av, char **envp)
     	}
 		if (line[0])
 			add_history(line);
-		printf("EXIT STATUS %d\n", exit_status);
 		token = parsing(line);
-		exit_status = 0;
+		printf("from main EXIT STATUS %d\n", g_exit_status);
+		g_exit_status = 0;
 		free_token(&token);
 		free_env(&env);
 	}
