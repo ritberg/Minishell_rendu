@@ -67,8 +67,9 @@ int	main(int ac, char **av, char **envp)
 		if (!line) // s'il y a une erreur de malloc ou CNTR+D
     	{
 			rl_clear_history();
-			free_shell();
-			return (0);
+			break ;
+			//free_shell();
+			//return (0);
     	}
 		if (line[0])
 			add_history(line);
