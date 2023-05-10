@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   malloc_error_print_message.c                       :+:      :+:    :+:   */
+/*   envp_routine_shlvl.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/08 11:22:35 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/10 15:19:23 by mdanchev         ###   lausanne.ch       */
+/*   Created: 2023/05/10 17:19:26 by mdanchev          #+#    #+#             */
+/*   Updated: 2023/05/10 17:20:59 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
-void	malloc_error_print_message(char *s)
+void	envp_routine_shlvl(void)
 {
-	ft_dprintf(2, "minishell: malloc: %s\n", s);
-	g_shell->exit_status = 1;
+	t_env	*tmp;
+
+	tmp = *head;
+	if 
+
 }

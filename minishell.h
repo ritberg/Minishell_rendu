@@ -28,15 +28,17 @@
 # define CYN    "\x1B[36m"
 # define WHT    "\x1B[37m"
 # define RESET  "\x1B[0m"
-/*
-# define 1	WORD
-# define 2	PIPELINE
-# define 3	LESS
-# define 4	GREAT
-# define 5	DLESS
-# define 6	DGREAT
-*/
-int	g_exit_status;
+
+# define WORD		1
+# define PIPELINE	2
+# define L_CHEVRON	3
+# define R_CHEVRON	4
+# define APPEND		5
+# define HERE_DOC	6
+# define DOLLAR		7
+# define QUESTION	8
+
+//int	g_exit_status;
 
 // OK
 typedef struct s_env
@@ -50,8 +52,18 @@ typedef struct s_token
 {
 	char				*content;
 	int					id;
+//	t_env				**env;
 	struct s_token		*next;
 }						t_token;
+
+typedef struct s_shell
+{
+	t_env	**env;
+	int		exit_status;
+}	t_shell;
+
+
+extern	t_shell	*g_shell;
 
 /* GETENVP */
 t_env	**get_envp(char **envp);
@@ -80,8 +92,9 @@ t_token	*create_token_head(char *line, int i, int len, int *flag);
 /* MALLOC ERROR PRINT MESSAGE */ 
 void	malloc_error_print_message(char *s);
 
-/* TOKEN EXTRACTION - TOKEN LINKED LIST */
+/* TOKEN EXTRACTION - TOKEN LINKED LIST (token_routine_.c) */
 t_token	*new_token(char *line, int start, int len);
+void	set_id(t_token *token);
 int		token_linked_list(t_token **head, char *line, int start, int len);
 int		link_token(t_token **head, t_token *new);
 void	free_token(t_token **head);
@@ -113,9 +126,6 @@ char	**ft_splitpath(char *s, char c);
 
 void	*free_tab(void **a_free);
 int		free_all(int ret);
-
-// Prototype de readline
-void  rl_replace_line(const char *test, int clear_undo);
 
 
 #endif

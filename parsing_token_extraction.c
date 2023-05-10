@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:00:21 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/09 12:50:08 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/10 15:22:51 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -60,8 +60,7 @@ int	word_extraction(char *line, int ind)
 	return (ind - start);
 }
 
-//DE MARIYA:
-// JE DOIS UTILISER L'ADRESSE DE i POUR MODIFIER SA VALEUR
+/* JE DOIS UTILISER L'ADRESSE DE i POUR MODIFIER SA VALEUR */
 int	get_tokens_size(char *line, int *i)
 {
 	int	len;
@@ -76,9 +75,11 @@ int	get_tokens_size(char *line, int *i)
 	return (len);
 }
 
-//DE MARIYA:
-// JE DOIS UTILISER L'ADRESSE DE flag POUR MODIFIER SA VALEUR 
-// ET ECONOMISER UNE LIGNE DE CODE
+/* 
+ * Ici on utilise l'adresse de flag pour modifier 
+ * sa valeur et economiser une ligne de code
+ * */
+
 t_token	*create_token_head(char *line, int i, int len, int *flag)
 {
 	t_token	*head;

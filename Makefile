@@ -6,7 +6,7 @@
 #    By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 12:23:37 by mdanchev          #+#    #+#              #
-#    Updated: 2023/05/09 15:31:20 by mdanchev         ###   lausanne.ch        #
+#    Updated: 2023/05/10 18:05:01 by mdanchev         ###   lausanne.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS		= main.c \
 			  launch_setup.c \
 			  handler_ctr_c.c \
 			  token_routine.c \
+			  token_routine_set_id.c \
 			  parsing_syntax_errors.c\
 			  parsing_syntax_errors_print_message.c \
 			  parsing_token_extraction.c\
