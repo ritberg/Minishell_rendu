@@ -58,17 +58,17 @@ typedef struct s_token
 
 typedef struct s_shell
 {
-	t_env	**env;
+	t_env	*env;
 	int		exit_status;
 }	t_shell;
 
 
 extern	t_shell	*g_shell;
 
+
 /* GETENVP */
 t_env	**get_envp(char **envp);
 void	free_env(t_env **head);
-
 
 t_token	*parsing(char *line);
 
@@ -123,9 +123,6 @@ void	handler_ctr_c(int code);
 
 //int	parsing_av(char *str);
 char	**ft_splitpath(char *s, char c);
-
-void	*free_tab(void **a_free);
-int		free_all(int ret);
 
 
 #endif
