@@ -16,8 +16,8 @@ void	free_env(t_env **head)
 	t_env	*ptr;
 	t_env	*tmp;
 
-/*	if (!head || !*head)
-		return ;*/
+//if (!head || !*head)
+//	return ;
 	ptr = *head;
 	while (ptr != NULL)
 	{
@@ -28,7 +28,7 @@ void	free_env(t_env **head)
 		free(tmp->var_value);
 		free(tmp);
 	}
-	*head = NULL;
+  *head = NULL;
 }
 
 /*
