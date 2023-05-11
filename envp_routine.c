@@ -6,7 +6,7 @@
 /*   By: mmakarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:59:31 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/05/11 16:07:05 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/05/11 17:00:54 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -43,6 +43,8 @@ t_env	*new_env(char *envp)
 	int	end;
 	int	start;
 	
+	if (!envp)
+		return (NULL);
 	start = 0;
 	end = 0;
 	env = malloc(sizeof(t_env));

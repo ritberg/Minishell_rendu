@@ -27,7 +27,6 @@ void	free_shell(void)
 {
 	free_env(&g_shell->env);
 	free(g_shell);
-	//g_shell = NULL;
 }
 
 int	init_shell(char **envp)
