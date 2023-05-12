@@ -54,7 +54,17 @@ typedef struct s_token
 	int					id;
 //  t_env				**env;
 	struct s_token		*next;
-}						t_token;
+}	t_token;
+
+//NOT OK
+typedef	struct	s_cmd
+{
+	char	**cmd;
+	char	**redir;
+	int		fdin;
+	int		fdout;
+	int		fd[2];
+}	t_cmd;
 
 typedef struct s_shell
 {
@@ -65,6 +75,8 @@ typedef struct s_shell
 
 extern	t_shell	*g_shell;
 
+/* BUILTINS */
+int	pwd(t_cmd *cmd);
 
 /* ENV COPIED */
 char	**env_copied(char **envp);

@@ -58,6 +58,7 @@ int	main(int ac, char **av, char **envp)
 	char	*line;
 	t_token	*token;
 	char	**save_env;
+	t_cmd	*cmd;
 
 	if (!init_shell(envp))
 		return (1);
@@ -89,6 +90,14 @@ int	main(int ac, char **av, char **envp)
 			return (0);
 		}
 		free_tab(save_env);
+		/* RITA : TESTING PWD BUILTIN */
+		cmd = malloc(sizeof(t_cmd));
+		if (!cmd)
+			return (0);
+		if (fork() == 0)
+			pwd(cmd);
+		else
+			printf("rien\n");
 	}
 	return (0);
 }

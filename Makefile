@@ -6,7 +6,7 @@
 #    By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 12:23:37 by mdanchev          #+#    #+#              #
-#    Updated: 2023/05/12 15:28:00 by mmakarov         ###   ########.fr        #
+#    Updated: 2023/05/12 19:09:37 by mmakarov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCS		= main.c \
 			  parsing_token_extraction.c\
 			  malloc_error_print_message.c\
 			  env_copied.c\
+			  builtins.c\
 
 OBJS		= ${SRCS:.c=.o}
 
