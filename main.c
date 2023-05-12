@@ -57,6 +57,7 @@ int	main(int ac, char **av, char **envp)
 	(void)ac;
 	char	*line;
 	t_token	*token;
+	char	**save_env;
 
 	if (!init_shell(envp))
 		return (1);
@@ -79,6 +80,15 @@ int	main(int ac, char **av, char **envp)
 		printf("from main EXIT STATUS %d\n", g_shell->exit_status);
 		g_shell->exit_status = 0;
 		free_token(&token);
+		/* RITA : SAVE THE WHOLE ENVP*/
+		save_env = env_copied(envp);
+		if (!save_env)
+		{
+			free_tab(save_env);
+			ft_dprintf(2, "minishell: malloc: %s\n", strerror(errno));
+			return (0);
+		}
+		free_tab(save_env);
 	}
 	return (0);
 }

@@ -66,13 +66,18 @@ typedef struct s_shell
 extern	t_shell	*g_shell;
 
 
+/* ENV COPIED */
+char	**env_copied(char **envp);
+void	free_tab(char **table);
+
 /* GETENVP */
 t_env	*get_envp(char **envp);
 void	free_env(t_env **head);
 
-t_token	*parsing(char *line);
 
 /* PARSING - SYNTAX ERROR CHECK */
+t_token	*parsing(char *line);
+
 int		syntax_error_check(char *s);
 int		check_pipeline_errors(char *s, int i, char c, int num);
 int		check_quotes_errors(char *s, char c, int *i);	
