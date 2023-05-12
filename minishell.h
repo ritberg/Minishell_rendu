@@ -67,7 +67,7 @@ extern	t_shell	*g_shell;
 
 
 /* GETENVP */
-t_env	**get_envp(char **envp);
+t_env	*get_envp(char **envp);
 void	free_env(t_env **head);
 
 t_token	*parsing(char *line);

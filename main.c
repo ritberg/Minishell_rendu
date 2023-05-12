@@ -37,7 +37,7 @@ int	init_shell(char **envp)
 		ft_dprintf(2, "minishell: malloc: %s\n", strerror(errno));
 		return (0);
 	}
-	g_shell->env = *get_envp(envp);
+	g_shell->env = get_envp(envp);
 	if (!g_shell->env)
 	{
 		free(g_shell);

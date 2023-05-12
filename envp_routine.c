@@ -6,7 +6,7 @@
 /*   By: mmakarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:59:31 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/05/11 17:00:54 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/05/12 11:21:44 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -95,8 +95,12 @@ int	link_env(t_env **head, t_env *last)
    - save var_name and var_value in the fuction new_env
    - the first line of env becomes head
    - link each element of the linked list in the function link_env
+
+   P.S. Rita : 
+   If this function returns t_env * and not t_env ** and if we have
+   an empty envp, there is no segfault
 */
-t_env	**get_envp(char **envp)
+t_env	*get_envp(char **envp)
 {
 	t_env	**head;
 	t_env	*env;
@@ -117,5 +121,5 @@ t_env	**get_envp(char **envp)
 			return (free_env(head), NULL);
 		i++;
 	}
-	return (head);
+	return (*head);
 }
