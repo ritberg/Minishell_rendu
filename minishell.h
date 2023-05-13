@@ -80,6 +80,10 @@ typedef struct s_shell
 
 
 extern	t_shell	*g_shell;
+/* EXPANSION */
+void		expansion(t_token **token);
+void		expand_var(t_token **head, int *i, int pos);
+void		check_dollar(t_token **head);
 
 /* BUILTINS */
 int	pwd(t_cmd *cmd);
@@ -95,7 +99,6 @@ void	free_env(t_env **head);
 
 /* PARSING - SYNTAX ERROR CHECK */
 t_token	*parsing(char *line);
-
 int		syntax_error_check(char *s);
 int		check_pipeline_errors(char *s, int i, char c, int num);
 int		check_quotes_errors(char *s, char c, int *i);	
@@ -130,6 +133,7 @@ int		is_lchevron(char c);
 int		is_rchevron(char c);
 int		is_operator(char c);
 int		is_newline(char c);
+int		is_white_space(char c);
 int		is_blank(char c);
 int		is_metacharacter(char c);
 int		is_delimiter(char c);
@@ -137,6 +141,8 @@ int		is_word(char c);
 int		is_double_quote(char c);
 int		is_simple_quote(char c);
 int		is_quote(char c);
+int		is_question(char c);
+int		is_punct(char c);
 
 	// NOT OK
 int		sig_handler(void);

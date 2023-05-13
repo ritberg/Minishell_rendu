@@ -87,6 +87,7 @@ YEL	rita 08.05 safe/minishell.h	/^# define YEL /;"	d
 bin_access	cmd_is_bin.c	/^int	bin_access(t_token *token)$/;"	f
 character_extraction	parsing_token_extraction.c	/^int	character_extraction(char *line, int ind)$/;"	f
 character_extraction	rita 08.05 safe/parsing_token_extraction.c	/^int	character_extraction(char *line, int ind)$/;"	f
+check_dollar	parsing_expansion.c	/^void	check_dollar(t_token **head)$/;"	f
 check_errors	libft/get_next_line/get_next_line.c	/^int	check_errors(int fd, char **line)$/;"	f
 check_errors	rita 08.05 safe/libft/get_next_line/get_next_line.c	/^int	check_errors(int fd, char **line)$/;"	f
 check_multiple_operators_error	parsing_syntax_errors.c	/^int	check_multiple_operators_error(int i, int num, char c)$/;"	f
@@ -118,6 +119,8 @@ envp_routine_shlvl	envp_routine_shlvl.c	/^void	envp_routine_shlvl(void)$/;"	f
 exit_status	main_parsing_token_extraction.c	/^int	exit_status = 0;$/;"	v
 exit_status	minishell.h	/^	int		exit_status;$/;"	m	struct:s_shell
 exit_status	rita 08.05 safe/parsing_token_extraction.c	/^int	exit_status = 0;$/;"	v
+expand_var	parsing_expansion.c	/^void	expand_var(t_token **head, int *i)$/;"	f
+expansion	parsing_expansion.c	/^void	expansion(t_token **head)$/;"	f
 fd	minishell.h	/^	int		fd[2];$/;"	m	struct:s_cmd
 fdin	minishell.h	/^	int		fdin;$/;"	m	struct:s_cmd
 fdout	minishell.h	/^	int		fdout;$/;"	m	struct:s_cmd
@@ -323,11 +326,14 @@ is_operator	is_operator.c	/^int	is_operator(char c)$/;"	f
 is_operator	rita 08.05 safe/is_operator.c	/^int	is_operator(char c)$/;"	f
 is_pipeline	is_operator.c	/^int	is_pipeline(char c)$/;"	f
 is_pipeline	rita 08.05 safe/is_operator.c	/^int	is_pipeline(char c)$/;"	f
+is_punct	is_question.c	/^int is_punct(char c)$/;"	f
+is_question	is_question.c	/^int	is_question(char c)$/;"	f
 is_quote	is_quote.c	/^int	is_quote(char c)$/;"	f
 is_quote	rita 08.05 safe/is_quote.c	/^int	is_quote(char c)$/;"	f
 is_rchevron	is_operator.c	/^int	is_rchevron(char c)$/;"	f
 is_simple_quote	is_quote.c	/^int	is_simple_quote(char c)$/;"	f
 is_simple_quote	rita 08.05 safe/is_quote.c	/^int	is_simple_quote(char c)$/;"	f
+is_white_space	is_white_space.c	/^int	is_white_space(char c)$/;"	f
 is_word	is_token.c	/^int	is_word(char c)$/;"	f
 is_word	rita 08.05 safe/is_token.c	/^int	is_word(char c)$/;"	f
 link_env	envp_routine.c	/^int	link_env(t_env **head, t_env *last)$/;"	f
@@ -383,7 +389,6 @@ s_list	rita 08.05 safe/libft/includes/libft.h	/^typedef struct s_list$/;"	s
 s_shell	minishell.h	/^typedef struct s_shell$/;"	s
 s_token	minishell.h	/^typedef struct s_token$/;"	s
 s_token	rita 08.05 safe/minishell.h	/^typedef struct s_token$/;"	s
-save_env	minishell.h	/^	char	**save_env;$/;"	m	struct:s_shell
 set_id	token_routine_set_id.c	/^void	set_id(t_token *token)$/;"	f
 sig_handler	launch_setup.c	/^int	sig_handler(void)$/;"	f
 sig_handler	rita 08.05 safe/launch_setup.c	/^int	sig_handler(void)$/;"	f

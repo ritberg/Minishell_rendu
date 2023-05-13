@@ -6,7 +6,7 @@
 #    By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 12:23:37 by mdanchev          #+#    #+#              #
-#    Updated: 2023/05/12 19:09:37 by mmakarov         ###   ########.fr        #
+#    Updated: 2023/05/13 13:34:14 by mdanchev         ###   lausanne.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS		= main.c \
 			  is_dollar.c \
 			  is_quote.c \
 			  is_white_space.c \
+			  is_question.c \
 			  launch_setup.c \
 			  handler_ctr_c.c \
 			  token_routine.c \
@@ -25,6 +26,7 @@ SRCS		= main.c \
 			  parsing_syntax_errors.c\
 			  parsing_syntax_errors_print_message.c \
 			  parsing_token_extraction.c\
+			  parsing_expansion.c \
 			  malloc_error_print_message.c\
 			  env_copied.c\
 			  builtins.c\
