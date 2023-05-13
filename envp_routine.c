@@ -6,7 +6,7 @@
 /*   By: mmakarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:59:31 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/05/12 11:21:44 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/05/13 17:22:17 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -55,10 +55,10 @@ t_env	*new_env(char *envp)
 	}
 	while (envp[end] != '=')
 		end++;
-	end++;
 	env->var_name = ft_substr(envp, 0, end);
 	if (!env->var_name)
 		return (NULL);
+	end++;
 	start = end;
 	while (envp[end] != '\0')
 		end++;

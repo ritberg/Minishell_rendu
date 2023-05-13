@@ -16,7 +16,7 @@ void	print_env(t_env	**head)
 		return ;
 	while (ptr)
 	{
-		ft_printf("print_env function: %s", ptr->var_name);
+		ft_printf("print_env function: %s\n", ptr->var_name);
 		ft_printf("print_env function: %s\n", ptr->var_value);
 		ptr = ptr->next;
 	}
@@ -91,7 +91,7 @@ int	main(int ac, char **av, char **envp)
 		}
 		
 		token = parsing(line);
-		printf("EXIT STATUS %d\n", g_shell->exit_status);
+//		printf("EXIT STATUS %d\n", g_shell->exit_status);
 		g_shell->exit_status = 0;
 		free_token(&token);
 	}

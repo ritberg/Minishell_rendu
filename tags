@@ -113,13 +113,14 @@ delete_first_el	libft/libft/ft_lstdel_first_el.c	/^void	delete_first_el(t_list *
 delete_first_el	rita 08.05 safe/libft/libft/ft_lstdel_first_el.c	/^void	delete_first_el(t_list **a)$/;"	f
 delete_last_el	libft/libft/ft_lstdel_last_el.c	/^void	delete_last_el(t_list **a)$/;"	f
 delete_last_el	rita 08.05 safe/libft/libft/ft_lstdel_last_el.c	/^void	delete_last_el(t_list **a)$/;"	f
+delete_token	parsing_expansion.c	/^void	delete_token(t_token **head)$/;"	f
 env	minishell.h	/^	t_env	*env;$/;"	m	struct:s_shell
 env_copied	env_copied.c	/^char	**env_copied(char **envp)$/;"	f
 envp_routine_shlvl	envp_routine_shlvl.c	/^void	envp_routine_shlvl(void)$/;"	f
 exit_status	main_parsing_token_extraction.c	/^int	exit_status = 0;$/;"	v
 exit_status	minishell.h	/^	int		exit_status;$/;"	m	struct:s_shell
 exit_status	rita 08.05 safe/parsing_token_extraction.c	/^int	exit_status = 0;$/;"	v
-expand_var	parsing_expansion.c	/^void	expand_var(t_token **head, int *i)$/;"	f
+expand_var	parsing_expansion.c	/^void	expand_var(t_token **head)$/;"	f
 expansion	parsing_expansion.c	/^void	expansion(t_token **head)$/;"	f
 fd	minishell.h	/^	int		fd[2];$/;"	m	struct:s_cmd
 fdin	minishell.h	/^	int		fdin;$/;"	m	struct:s_cmd
@@ -336,6 +337,7 @@ is_simple_quote	rita 08.05 safe/is_quote.c	/^int	is_simple_quote(char c)$/;"	f
 is_white_space	is_white_space.c	/^int	is_white_space(char c)$/;"	f
 is_word	is_token.c	/^int	is_word(char c)$/;"	f
 is_word	rita 08.05 safe/is_token.c	/^int	is_word(char c)$/;"	f
+join_expanded_tokens	parsing_expansion.c	/^t_token	*join_expanded_tokens(t_token **head)$/;"	f
 link_env	envp_routine.c	/^int	link_env(t_env **head, t_env *last)$/;"	f
 link_env	rita 08.05 safe/envp_routine.c	/^int	link_env(t_env **head, t_env *last)$/;"	f
 link_token	rita 08.05 safe/token_routine.c	/^int	link_token(t_token **head, t_token *new)$/;"	f
@@ -367,14 +369,17 @@ path_line_index	cmd_is_bin.c	/^int	path_line_index(t_env *env)$/;"	f
 path_value	cmd_is_bin.c	/^t_env	*path_value(t_env *env, int nb)$/;"	f
 power	libft/libft/power.c	/^int	power(int str_base, int power)$/;"	f
 power	rita 08.05 safe/libft/libft/power.c	/^int	power(int str_base, int power)$/;"	f
+prepare_expand	parsing_expansion.c	/^void	prepare_expand(t_token **head, int i, int pos)$/;"	f
 prepare_forstash	libft/get_next_line/get_next_line_utils.c	/^void	prepare_forstash(char **line, char **buffer)$/;"	f
 prepare_forstash	rita 08.05 safe/libft/get_next_line/get_next_line_utils.c	/^void	prepare_forstash(char **line, char **buffer)$/;"	f
+print_env	main.c	/^void	print_env(t_env	**head)$/;"	f
 print_syntax_error_char	parsing_syntax_errors_print_message.c	/^void	print_syntax_error_char(char c)$/;"	f
 print_syntax_error_char	rita 08.05 safe/parsing_syntax_errors_print_message.c	/^void	print_syntax_error_char(char c)$/;"	f
 print_syntax_error_dchar	parsing_syntax_errors_print_message.c	/^void	print_syntax_error_dchar(char c)$/;"	f
 print_syntax_error_dchar	rita 08.05 safe/parsing_syntax_errors_print_message.c	/^void	print_syntax_error_dchar(char c)$/;"	f
 print_syntax_error_str	parsing_syntax_errors_print_message.c	/^void	print_syntax_error_str(char *s)$/;"	f
 print_syntax_error_str	rita 08.05 safe/parsing_syntax_errors_print_message.c	/^void	print_syntax_error_str(char *s)$/;"	f
+print_test_expansion	parsing_expansion.c	/^void	print_test_expansion(t_token **head)$/;"	f
 print_token	parsing.c	/^void	print_token(t_token **head)$/;"	f
 print_token	rita 08.05 safe/parsing.c	/^void	print_token(t_token **head)$/;"	f
 pwd	builtins.c	/^int	pwd(t_cmd *cmd)$/;"	f
@@ -392,6 +397,7 @@ s_token	rita 08.05 safe/minishell.h	/^typedef struct s_token$/;"	s
 set_id	token_routine_set_id.c	/^void	set_id(t_token *token)$/;"	f
 sig_handler	launch_setup.c	/^int	sig_handler(void)$/;"	f
 sig_handler	rita 08.05 safe/launch_setup.c	/^int	sig_handler(void)$/;"	f
+split_and_join_var	parsing_expansion.c	/^t_token	*split_and_join_var(t_token **head, int start, int len)$/;"	f
 split_var_value	cmd_is_bin.c	/^char	**split_var_value(char *value)$/;"	f
 str_lowercase	libft/libft/str_lowercase.c	/^char	*str_lowercase(char *str)$/;"	f
 str_lowercase	rita 08.05 safe/libft/libft/str_lowercase.c	/^char	*str_lowercase(char *str)$/;"	f
@@ -409,6 +415,7 @@ there_is_n	libft/get_next_line/get_next_line_utils.c	/^int	there_is_n(char *line
 there_is_n	rita 08.05 safe/libft/get_next_line/get_next_line_utils.c	/^int	there_is_n(char *line)$/;"	f
 token_linked_list	rita 08.05 safe/token_routine.c	/^int	token_linked_list(t_token **head, char *line, int start, int len)$/;"	f
 token_linked_list	token_routine.c	/^int	token_linked_list(t_token **head, char *line, int start, int len)$/;"	f
+token_list_size	parsing_expansion.c	/^int	token_list_size(t_token	**head)$/;"	f
 transform	libft/libft/ft_atoi_base.c	/^int	transform(char c)$/;"	f
 transform	rita 08.05 safe/libft/libft/ft_atoi_base.c	/^int	transform(char c)$/;"	f
 var_name	minishell.h	/^	char			*var_name;$/;"	m	struct:s_env

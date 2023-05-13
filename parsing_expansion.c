@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 12:13:21 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/13 16:58:45 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/13 18:36:17 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -26,6 +26,88 @@ void	print_test_expansion(t_token **head)
 	printf("---------end test expansion---------\n");
 }
 
+int	token_list_size(t_token	**head)
+{
+	t_token	*tmp;
+	int		count;
+
+	tmp = *head;
+	count = 0;
+	while (tmp)
+	{
+		count++;
+		tmp = tmp->next;
+	}
+	return (count);
+}
+
+t_token	*join_expanded_tokens(t_token **head)
+{
+	t_token	*tmp;
+	int		size;
+	char	*ptr;
+	char	*new_str;
+
+	tmp = *head;
+	new_str = NULL;
+	size = token_list_size(head);
+	if (size == 1)
+	{
+		new_str = ft_strdup(tmp->content);
+		tmp = new_token(new_str, 0, ft_strlen(new_str));
+		free(new_str);
+		free_token(head);
+		return (tmp);
+	}
+	ptr = ft_strjoin(tmp->content, tmp->next->content);
+	tmp = tmp->next->next;
+	if (tmp)
+		new_str = ft_strjoin(ptr, tmp->content);
+	else
+		new_str = ft_strdup(ptr);
+	free(ptr);
+	ptr = NULL;
+	free_token(head);
+	tmp = new_token(new_str, 0, ft_strlen(new_str));
+	free(new_str);
+	return (tmp);
+}
+
+// NE MARCHE
+void	delete_token(t_token **head)
+{
+	int		size;
+	int		i;
+	t_token *ptr;
+	t_token *tmp;
+
+	i = 0;
+	ptr = *head;
+	tmp = *head;
+	size = token_list_size(head);
+	if (size == 1)
+		free_token(head);
+	while (ptr)
+	{
+		if (ptr->content[0] == '$' && i != 0)
+		{
+			tmp->next = tmp->next->next;
+			free(ptr->content);
+			free(ptr);
+			ptr = tmp;
+		}
+		else if (ptr->content[0] == '$' && i == 0)
+		{
+			ptr->next = NULL;
+			free(ptr->content);
+			free(ptr);
+		}
+		tmp = ptr;
+		ptr = ptr->next;
+		i++;
+	}
+}
+
 void	expand_var(t_token **head)
 {
 	t_token *tmp;
@@ -41,8 +123,7 @@ void	expand_var(t_token **head)
 	}
 	while (g_shell->env)
 	{
-		if (ft_strncmp(&tmp->content[1], g_shell->env->var_name, \
-					ft_strlen(&tmp->content[1])) == 0)
+		if (ft_strncmp(g_shell->env->var_name, &tmp->content[1], ft_strlen(tmp->content)) == 0)
 		{
 			free(tmp->content);
 			tmp->content = NULL;
@@ -52,11 +133,12 @@ void	expand_var(t_token **head)
 		}
 		g_shell->env = g_shell->env->next;
 	}
+//	delete_token(head);
 	g_shell->env = save;
 }
 
 
-void	split_var(t_token **head, int start, int len)
+t_token	*split_and_join_var(t_token **head, int start, int len)
 {	
 	t_token	*tmp;
 	t_token	*new;
@@ -79,12 +161,8 @@ void	split_var(t_token **head, int start, int len)
 		i++;
 	if (i != start)
 		token_linked_list(&new, tmp->content,start, i);
-	print_test_expansion(&new);
 	expand_var(&new);
-	print_test_expansion(&new);
-	free_token(&new);
-	new = NULL;
-	
+	return (join_expanded_tokens(&new));
 }
 
 
@@ -94,8 +172,8 @@ void	prepare_expand(t_token **head, int i, int pos)
 	t_token *new;
 	int		start;
 	int		len;
-	
 	(void)pos;
+	
 	tmp = *head;
 	start = i;
 	len = 0;
@@ -110,13 +188,9 @@ void	prepare_expand(t_token **head, int i, int pos)
 		i++;
 		len++;
 	}
-	split_var(&tmp, start, len + 1);
-	//insert
-	new = new_token(tmp->content, start, len + 1);
-	new->id = WORD;
-	printf("expanded = %s\n", new->content);
-	free_token(&new);
-
+	new = split_and_join_var(&tmp, start, len + 1);
+	printf("new: %s\n", new->content);
+//	insert_token(head, &new, pos);
 }
 
 void	check_dollar(t_token **head)
