@@ -82,8 +82,6 @@ typedef struct s_shell
 extern	t_shell	*g_shell;
 /* EXPANSION */
 void		expansion(t_token **token);
-void		expand_var(t_token **head, int *i, int pos);
-void		check_dollar(t_token **head);
 
 /* BUILTINS */
 int	pwd(t_cmd *cmd);

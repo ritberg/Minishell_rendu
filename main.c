@@ -6,7 +6,7 @@ t_shell	*g_shell;
 //extern int g_exit_status;
 
 // FOR TESTING PRINTING ENV
-/*
+
 void	print_env(t_env	**head)
 {
 	t_env	*ptr;
@@ -16,12 +16,12 @@ void	print_env(t_env	**head)
 		return ;
 	while (ptr)
 	{
-		ft_printf("print_env function: %s\n", ptr->var_name);
+		ft_printf("print_env function: %s", ptr->var_name);
 		ft_printf("print_env function: %s\n", ptr->var_value);
 		ptr = ptr->next;
 	}
 }
-*/
+
 
 void	free_shell(void)
 {
@@ -52,7 +52,7 @@ int	init_shell(char **envp)
 		return (0);
 	}
 	g_shell->exit_status = 0;
-//	print_env(g_shell->env);
+	print_env(&g_shell->env);
 	return (1);
 }
 
