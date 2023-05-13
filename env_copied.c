@@ -6,7 +6,7 @@
 /*   By: mmakarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:04:33 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/05/12 15:53:49 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/05/13 11:48:26 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -21,6 +21,8 @@ void	free_tab(char **table)
 	int	i;
 
 	i = 0;
+	if (!table)
+		return ;
 	while (table && table[i])
 		free(table[i++]);
 	free(table);
@@ -33,7 +35,10 @@ char	*malloc_strcpy(char *envp)
 
 	str = malloc(sizeof(char) * (ft_strlen(envp) + 1));
 	if (!str)
-		return (free(str), NULL);
+	{
+		ft_dprintf(2, "minishell: malloc: %s\n", strerror(errno));
+		return (NULL);
+	}
 	i = 0;
 	while (envp[i])
 	{
@@ -54,22 +59,36 @@ size_t	col_count(char **table)
 	return (len);
 }
 
+// A MODIFIER POUR UTILISATION AVANT EXECVE
+	
+/*
+ * g_shell->save_env = env_copied(envp);
+	if (!g_shell->save_env)
+	{
+		free_shell();
+		ft_dprintf(2, "minishell: malloc: %s\n", strerror(errno));
+		return (0);
+	}
+*/
 char	**env_copied(char **envp)
 {
 	size_t	i;
 	size_t	len;
 	char	**env_copied;
 
+	i = 0;
 	len = col_count(envp);
 	env_copied = malloc(sizeof(char *) * (len + 1));
 	if (!env_copied)
+	{
+		ft_dprintf(2, "minishell: malloc: %s\n", strerror(errno));
 		return (free_tab(env_copied), NULL);
-	i = 0;
+	}
 	while (envp[i])
 	{
 		env_copied[i] = malloc_strcpy(envp[i]);
 		if (!env_copied[i])
-			return (free(env_copied[i]), NULL);
+			return (free_tab(env_copied), NULL);
 		i++;
 	}
 	env_copied[i] = NULL;

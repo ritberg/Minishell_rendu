@@ -1,0 +1,5 @@
+union
+{
+	char **cmd;
+	bool check = FALSE;
+}

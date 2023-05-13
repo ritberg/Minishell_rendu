@@ -4,6 +4,7 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+APPEND	minishell.h	/^# define APPEND	/;"	d
 BLU	minishell.h	/^# define BLU /;"	d
 BLU	rita 08.05 safe/minishell.h	/^# define BLU /;"	d
 BLU_2	minishell.h	/^# define BLU_2 /;"	d
@@ -21,6 +22,7 @@ COLOR_END	rita 08.05 safe/libft/Makefile	/^COLOR_END = \\033[0m$/;"	m
 CYN	minishell.h	/^# define CYN /;"	d
 CYN	rita 08.05 safe/minishell.h	/^# define CYN /;"	d
 DEPS	rita 08.05 safe/Makefile	/^DEPS		= ${INC_LIBFT}\/includes\/libft.h$/;"	m
+DOLLAR	minishell.h	/^# define DOLLAR	/;"	d
 FT_PRINTF_H	libft/includes/ft_printf.h	/^# define FT_PRINTF_H$/;"	d
 FT_PRINTF_H	rita 08.05 safe/libft/includes/ft_printf.h	/^# define FT_PRINTF_H$/;"	d
 GET_NEXT_LINE_H	libft/includes/get_next_line.h	/^# define GET_NEXT_LINE_H$/;"	d
@@ -31,12 +33,14 @@ GRN	minishell.h	/^# define GRN /;"	d
 GRN	rita 08.05 safe/minishell.h	/^# define GRN /;"	d
 HEADERS	Makefile	/^HEADERS		= minishell.h$/;"	m
 HEADERS	rita 08.05 safe/Makefile	/^HEADERS		= minishell.h$/;"	m
+HERE_DOC	minishell.h	/^# define HERE_DOC	/;"	d
 INC_LIBFT	rita 08.05 safe/Makefile	/^INC_LIBFT	= libft$/;"	m
 LIBFT	Makefile	/^LIBFT		= -L.\/libft -lft$/;"	m
 LIBFT	rita 08.05 safe/Makefile	/^LIBFT		= -Llibft -lft$/;"	m
 LIBFT_FOLD	Makefile	/^LIBFT_FOLD	= libft$/;"	m
 LIBFT_H	libft/includes/libft.h	/^# define LIBFT_H$/;"	d
 LIBFT_H	rita 08.05 safe/libft/includes/libft.h	/^# define LIBFT_H$/;"	d
+L_CHEVRON	minishell.h	/^# define L_CHEVRON	/;"	d
 MAG	minishell.h	/^# define MAG /;"	d
 MAG	rita 08.05 safe/minishell.h	/^# define MAG /;"	d
 MINISHELL_H	minishell.h	/^# define MINISHELL_H$/;"	d
@@ -49,6 +53,8 @@ OBJS	Makefile	/^OBJS		= ${SRCS:.c=.o}$/;"	m
 OBJS	libft/Makefile	/^OBJS =  ${SRCS_LIBFT:.c=.o} ${SRCS_LSTCHAINE:.c=.o} ${SRCS_PRINTF:.c=.o} ${SRCS_GNL:.c=.o} \\$/;"	m
 OBJS	rita 08.05 safe/Makefile	/^OBJS		= ${SRCS:.c=.o}$/;"	m
 OBJS	rita 08.05 safe/libft/Makefile	/^OBJS =  ${SRCS_LIBFT:.c=.o} ${SRCS_LSTCHAINE:.c=.o} ${SRCS_PRINTF:.c=.o} ${SRCS_GNL:.c=.o} \\$/;"	m
+PIPELINE	minishell.h	/^# define PIPELINE	/;"	d
+QUESTION	minishell.h	/^# define QUESTION	/;"	d
 READLINE	Makefile	/^READLINE	=  -L$(HOME)\/.brew\/opt\/readline\/lib -lreadline$/;"	m
 READLINE	Makefile	/^READLINE 	= -L\/opt\/homebrew\/opt\/readline\/lib -lreadline$/;"	m
 READLINE	rita 08.05 safe/Makefile	/^READLINE	=  -L$(HOME)\/.brew\/opt\/readline\/lib -lreadline$/;"	m
@@ -61,6 +67,7 @@ RM	Makefile	/^RM			= rm -f$/;"	m
 RM	libft/Makefile	/^RM		= rm -f$/;"	m
 RM	rita 08.05 safe/Makefile	/^RM			= rm -f$/;"	m
 RM	rita 08.05 safe/libft/Makefile	/^RM		= rm -f$/;"	m
+R_CHEVRON	minishell.h	/^# define R_CHEVRON	/;"	d
 SANITIZE	Makefile	/^SANITIZE	?= 0$/;"	m
 SRCS	Makefile	/^SRCS		= main.c \\$/;"	m
 SRCS	rita 08.05 safe/Makefile	/^SRCS		= main.c \\$/;"	m
@@ -74,8 +81,10 @@ SRCS_PRINTF	libft/Makefile	/^SRCS_PRINTF = 		ft_printf\/ft_printf.c \\$/;"	m
 SRCS_PRINTF	rita 08.05 safe/libft/Makefile	/^SRCS_PRINTF = 		ft_printf\/ft_printf.c \\$/;"	m
 WHT	minishell.h	/^# define WHT /;"	d
 WHT	rita 08.05 safe/minishell.h	/^# define WHT /;"	d
+WORD	minishell.h	/^# define WORD	/;"	d
 YEL	minishell.h	/^# define YEL /;"	d
 YEL	rita 08.05 safe/minishell.h	/^# define YEL /;"	d
+bin_access	cmd_is_bin.c	/^int	bin_access(t_token *token)$/;"	f
 character_extraction	parsing_token_extraction.c	/^int	character_extraction(char *line, int ind)$/;"	f
 character_extraction	rita 08.05 safe/parsing_token_extraction.c	/^int	character_extraction(char *line, int ind)$/;"	f
 check_errors	libft/get_next_line/get_next_line.c	/^int	check_errors(int fd, char **line)$/;"	f
@@ -83,6 +92,8 @@ check_errors	rita 08.05 safe/libft/get_next_line/get_next_line.c	/^int	check_err
 check_multiple_operators_error	parsing_syntax_errors.c	/^int	check_multiple_operators_error(int i, int num, char c)$/;"	f
 check_pipeline_errors	parsing_syntax_errors.c	/^int	check_pipeline_errors(char *s, int i, char c, int num)$/;"	f
 check_quotes_errors	parsing_syntax_errors.c	/^int	check_quotes_errors(char *s, char c, int *i)$/;"	f
+cmd	minishell.h	/^	char	**cmd;$/;"	m	struct:s_cmd
+col_count	env_copied.c	/^size_t	col_count(char **table)$/;"	f
 content	libft/includes/libft.h	/^	void			*content;$/;"	m	struct:s_list
 content	minishell.h	/^	char				*content;$/;"	m	struct:s_token
 content	rita 08.05 safe/libft/includes/libft.h	/^	void			*content;$/;"	m	struct:s_list
@@ -101,13 +112,20 @@ delete_first_el	libft/libft/ft_lstdel_first_el.c	/^void	delete_first_el(t_list *
 delete_first_el	rita 08.05 safe/libft/libft/ft_lstdel_first_el.c	/^void	delete_first_el(t_list **a)$/;"	f
 delete_last_el	libft/libft/ft_lstdel_last_el.c	/^void	delete_last_el(t_list **a)$/;"	f
 delete_last_el	rita 08.05 safe/libft/libft/ft_lstdel_last_el.c	/^void	delete_last_el(t_list **a)$/;"	f
-env	minishell.h	/^	t_env	**env;$/;"	m	struct:s_shell
+env	minishell.h	/^	t_env	*env;$/;"	m	struct:s_shell
+env_copied	env_copied.c	/^char	**env_copied(char **envp)$/;"	f
+envp_routine_shlvl	envp_routine_shlvl.c	/^void	envp_routine_shlvl(void)$/;"	f
 exit_status	main_parsing_token_extraction.c	/^int	exit_status = 0;$/;"	v
 exit_status	minishell.h	/^	int		exit_status;$/;"	m	struct:s_shell
 exit_status	rita 08.05 safe/parsing_token_extraction.c	/^int	exit_status = 0;$/;"	v
+fd	minishell.h	/^	int		fd[2];$/;"	m	struct:s_cmd
+fdin	minishell.h	/^	int		fdin;$/;"	m	struct:s_cmd
+fdout	minishell.h	/^	int		fdout;$/;"	m	struct:s_cmd
+find_cmd_bin	cmd_is_bin.c	/^int	find_cmd_bin(char **paths, t_env *env, t_token *token)$/;"	f
 free_env	envp_routine.c	/^void	free_env(t_env **head)$/;"	f
 free_env	rita 08.05 safe/envp_routine.c	/^void	free_env(t_env **head)$/;"	f
 free_shell	main.c	/^void	free_shell(void)$/;"	f
+free_tab	env_copied.c	/^void	free_tab(char **table)$/;"	f
 free_token	rita 08.05 safe/token_routine.c	/^void	free_token(t_token **head)$/;"	f
 free_token	token_routine.c	/^void	free_token(t_token **head)$/;"	f
 ft_atoi	libft/libft/ft_atoi.c	/^int	ft_atoi(const char *str)$/;"	f
@@ -271,7 +289,7 @@ ft_toupper	rita 08.05 safe/libft/libft/ft_toupper.c	/^int	ft_toupper(int c)$/;"	
 g_exit_status	main_parsing_syntax_errors.c	/^int g_exit_status = 0;$/;"	v
 g_exit_status	main_token_routine.c	/^int g_exit_status = 0;$/;"	v
 g_shell	main.c	/^t_shell	*g_shell;$/;"	v
-get_envp	envp_routine.c	/^t_env	**get_envp(char **envp)$/;"	f
+get_envp	envp_routine.c	/^t_env	*get_envp(char **envp)$/;"	f
 get_envp	rita 08.05 safe/envp_routine.c	/^t_env	**get_envp(char **envp)$/;"	f
 get_next_line	libft/get_next_line/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f
 get_next_line	rita 08.05 safe/libft/get_next_line/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f
@@ -287,6 +305,7 @@ id	rita 08.05 safe/minishell.h	/^	int					id;$/;"	m	struct:s_token
 init_shell	main.c	/^int	init_shell(char **envp)$/;"	f
 is_blank	is_white_space.c	/^int	is_blank(char c)$/;"	f
 is_blank	rita 08.05 safe/is_white_space.c	/^int	is_blank(char c)$/;"	f
+is_built_in	cmd_is_builtin.c	/^int is_built_in(t_token *token)$/;"	f
 is_chevron	is_operator.c	/^int	is_chevron(char c)$/;"	f
 is_chevron	rita 08.05 safe/is_operator.c	/^int	is_chevron(char c)$/;"	f
 is_delimiter	is_token.c	/^int	is_delimiter(char c)$/;"	f
@@ -324,6 +343,7 @@ main	rita 08.05 safe/test_getenv.c	/^int	main(int ac, char **av, char **envp)$/;
 main	test_getenv.c	/^int	main(int ac, char **av, char **envp)$/;"	f
 malloc_error_print_message	malloc_error_print_message.c	/^void	malloc_error_print_message(char *s)$/;"	f
 malloc_error_print_message	rita 08.05 safe/malloc_error_print_message.c	/^void	malloc_error_print_message(char *s)$/;"	f
+malloc_strcpy	env_copied.c	/^char	*malloc_strcpy(char *envp)$/;"	f
 new_env	envp_routine.c	/^t_env	*new_env(char *envp)$/;"	f
 new_env	rita 08.05 safe/envp_routine.c	/^t_env	*new_env(char *envp)$/;"	f
 new_token	rita 08.05 safe/token_routine.c	/^t_token	*new_token(char *line, int start, int len)$/;"	f
@@ -336,6 +356,9 @@ next	rita 08.05 safe/minishell.h	/^	struct s_env	*next;$/;"	m	struct:s_env	typer
 next	rita 08.05 safe/minishell.h	/^	struct s_token		*next;$/;"	m	struct:s_token	typeref:struct:s_token::s_token
 parsing	parsing.c	/^t_token	*parsing(char *line)$/;"	f
 parsing	rita 08.05 safe/parsing.c	/^t_token	*parsing(char *line)$/;"	f
+path	minishell.h	/^	char	**path;$/;"	m	struct:s_cmd
+path_line_index	cmd_is_bin.c	/^int	path_line_index(t_env *env)$/;"	f
+path_value	cmd_is_bin.c	/^t_env	*path_value(t_env *env, int nb)$/;"	f
 power	libft/libft/power.c	/^int	power(int str_base, int power)$/;"	f
 power	rita 08.05 safe/libft/libft/power.c	/^int	power(int str_base, int power)$/;"	f
 prepare_forstash	libft/get_next_line/get_next_line_utils.c	/^void	prepare_forstash(char **line, char **buffer)$/;"	f
@@ -348,8 +371,11 @@ print_syntax_error_str	parsing_syntax_errors_print_message.c	/^void	print_syntax
 print_syntax_error_str	rita 08.05 safe/parsing_syntax_errors_print_message.c	/^void	print_syntax_error_str(char *s)$/;"	f
 print_token	parsing.c	/^void	print_token(t_token **head)$/;"	f
 print_token	rita 08.05 safe/parsing.c	/^void	print_token(t_token **head)$/;"	f
+pwd	builtins.c	/^int	pwd(t_cmd *cmd)$/;"	f
 read_fd	libft/get_next_line/get_next_line.c	/^char	*read_fd(char *line, int fd, int *error)$/;"	f
 read_fd	rita 08.05 safe/libft/get_next_line/get_next_line.c	/^char	*read_fd(char *line, int fd, int *error)$/;"	f
+redir	minishell.h	/^	char	**redir;$/;"	m	struct:s_cmd
+s_cmd	minishell.h	/^typedef	struct	s_cmd$/;"	s
 s_env	minishell.h	/^typedef struct s_env$/;"	s
 s_env	rita 08.05 safe/minishell.h	/^typedef struct s_env$/;"	s
 s_list	libft/includes/libft.h	/^typedef struct s_list$/;"	s
@@ -357,19 +383,22 @@ s_list	rita 08.05 safe/libft/includes/libft.h	/^typedef struct s_list$/;"	s
 s_shell	minishell.h	/^typedef struct s_shell$/;"	s
 s_token	minishell.h	/^typedef struct s_token$/;"	s
 s_token	rita 08.05 safe/minishell.h	/^typedef struct s_token$/;"	s
+save_env	minishell.h	/^	char	**save_env;$/;"	m	struct:s_shell
 set_id	token_routine_set_id.c	/^void	set_id(t_token *token)$/;"	f
 sig_handler	launch_setup.c	/^int	sig_handler(void)$/;"	f
 sig_handler	rita 08.05 safe/launch_setup.c	/^int	sig_handler(void)$/;"	f
+split_var_value	cmd_is_bin.c	/^char	**split_var_value(char *value)$/;"	f
 str_lowercase	libft/libft/str_lowercase.c	/^char	*str_lowercase(char *str)$/;"	f
 str_lowercase	rita 08.05 safe/libft/libft/str_lowercase.c	/^char	*str_lowercase(char *str)$/;"	f
 syntax_error_check	parsing_syntax_errors.c	/^int	syntax_error_check(char *s)$/;"	f
 syntax_error_check	rita 08.05 safe/parsing_syntax_errors.c	/^int	syntax_error_check(char *s)$/;"	f
+t_cmd	minishell.h	/^}	t_cmd;$/;"	t	typeref:struct:s_cmd
 t_env	minishell.h	/^}	t_env;$/;"	t	typeref:struct:s_env
 t_env	rita 08.05 safe/minishell.h	/^}	t_env;$/;"	t	typeref:struct:s_env
 t_list	libft/includes/libft.h	/^}					t_list;$/;"	t	typeref:struct:s_list
 t_list	rita 08.05 safe/libft/includes/libft.h	/^}					t_list;$/;"	t	typeref:struct:s_list
 t_shell	minishell.h	/^}	t_shell;$/;"	t	typeref:struct:s_shell
-t_token	minishell.h	/^}						t_token;$/;"	t	typeref:struct:s_token
+t_token	minishell.h	/^}	t_token;$/;"	t	typeref:struct:s_token
 t_token	rita 08.05 safe/minishell.h	/^}						t_token;$/;"	t	typeref:struct:s_token
 there_is_n	libft/get_next_line/get_next_line_utils.c	/^int	there_is_n(char *line)$/;"	f
 there_is_n	rita 08.05 safe/libft/get_next_line/get_next_line_utils.c	/^int	there_is_n(char *line)$/;"	f

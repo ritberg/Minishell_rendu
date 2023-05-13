@@ -16,8 +16,8 @@
 # include <sys/types.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-//# include "libft/includes/libft.h"
 # include "libft/includes/libft.h"
+//# include <boolean.h>
 
 # define RED    "\x1b[31m"
 # define BLU    "\x1B[34m"
@@ -59,10 +59,15 @@ typedef struct s_token
 //NOT OK
 typedef	struct	s_cmd
 {
+//	bool	flag;
 	char	**cmd;
 	char	**redir;
-	int		fdin;
+	char	**path;
+//	int		ffd_in;
+//	int		ffd_out;
+//	int		pfd[2];
 	int		fdout;
+	int		fdin;
 	int		fd[2];
 }	t_cmd;
 
@@ -70,6 +75,7 @@ typedef struct s_shell
 {
 	t_env	*env;
 	int		exit_status;
+//	char	**save_env;
 }	t_shell;
 
 

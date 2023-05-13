@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins.c                                         :+:      :+:    :+:   */
+/*   parsing_expansion.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmakarov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 18:26:55 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/05/13 11:08:47 by mdanchev         ###   lausanne.ch       */
+/*   Created: 2023/05/13 12:13:21 by mdanchev          #+#    #+#             */
+/*   Updated: 2023/05/13 12:18:49 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "minishell.h"
 
-int	pwd(t_cmd *cmd)
+int	expansion(t_token *token)
 {
-	char	*cwd;
 
-//	cmd = malloc(sizeof(t_cmd));
-//	if (!cmd)
-//		return (0);
-	cwd = getcwd(NULL, 0);
-	ft_putstr_fd(cwd, 1); // testing with strdout
-	ft_putstr_fd("\n", cmd->fdout);
-	free(cwd);
-//	exit(0);
-	return (1);
-}
+	
+
+} 

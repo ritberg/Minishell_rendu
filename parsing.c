@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:00:49 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/10 18:02:06 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/13 12:20:30 by marvin           ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -51,6 +51,7 @@ t_token	*parsing(char *line)
 	if (!token)
 		return (NULL);
 	print_token(&token); // FOR TESTING
+//	expansion(&token);
 	return (token);
 }
 
