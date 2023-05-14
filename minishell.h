@@ -84,7 +84,8 @@ extern	t_shell	*g_shell;
 void		expansion(t_token **token);
 
 /* BUILTINS */
-int	pwd(t_cmd *cmd);
+int	_pwd(t_cmd *cmd);
+int	_env(t_env *env);
 
 /* ENV COPIED */
 char	**env_copied(char **envp);
