@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:00:49 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/15 16:20:28 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/15 16:14:57 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -23,20 +23,20 @@ void	print_token(t_token **head)
 	while (tmp)
 	{
 		if (tmp->id == L_CHEVRON)
-			printf("L_CHEVRON: ");
+			printf("id = L_CHEVRON\n");
 		else if (tmp->id == R_CHEVRON)
-			printf("R_CHEVRON: ");
+			printf("id = R_CHEVRON\n");
 		else if (tmp->id == PIPELINE)
-			printf("PIPELINE: ");
+			printf("id = PIPELINE\n");
 		else if (tmp->id == WORD)
-			printf("WORD: ");
+			printf("id = WORD\n");
 		else if (tmp->id == APPEND)
-			printf("APPEND: ");
+			printf("id = APPEND\n");
 		else if (tmp->id == HERE_DOC)
-			printf("HERE_DOC: ");
+			printf("id = HERE_DOC\n");
 		else if (tmp->id == DOLLAR)
-			printf("DOLLAR: ");
-		printf("|%s|\n", tmp->content);
+			printf("id = DOLLAR\n");
+		printf("%s\n", tmp->content);
 		tmp = tmp->next;
 	}
 }
@@ -50,8 +50,9 @@ t_token	*parsing(char *line)
 	token = get_tokens(line);
 	if (!token)
 		return (NULL);
+//	print_token(&token); // FOR TESTING
 	expansion(&token, 0);
-	print_token(&token); // FOR TESTING
+	//quote_removing
 	return (token);
 }
 
