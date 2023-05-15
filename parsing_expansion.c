@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 12:13:21 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/15 16:39:11 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/15 17:54:16 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -56,6 +56,8 @@ t_token	*join_expanded_tokens(t_token **head)
 		new_str = ft_strdup(tmp->content);
 		tmp = new_token(new_str, 0, ft_strlen(new_str));
 		free(new_str);
+		if ((*head)->id == -1)
+			tmp->id = -1;
 		free_token(head);
 		return (tmp);
 	}
@@ -67,10 +69,47 @@ t_token	*join_expanded_tokens(t_token **head)
 		new_str = ft_strdup(ptr);
 	free(ptr);
 	ptr = NULL;
-	free_token(head);
 	tmp = new_token(new_str, 0, ft_strlen(new_str));
+	if ((*head)->id == -1)
+		tmp->id = -1;
 	free(new_str);
+	free_token(head);
 	return (tmp);
+}
+
+void	delete_token(t_token **head, int pos)
+{
+	int		i;
+	int		size;
+	t_token	*curr;
+	t_token	*prev;
+	
+	i = 0;
+	size = token_list_size(head);
+	curr = *head;
+	prev = *head;
+	while (i < pos)
+	{
+		prev = curr;
+		curr = curr->next;
+		i++;
+	}
+	if (i == 0 && size == 1)
+	{
+		free((*head)->content);
+		free(*head);
+		head = NULL;
+		return ;
+	}
+	else if (i == 0 && size > 1)
+		(*head) = (*head)->next;
+	else if (i == size - 1)
+		prev->next = NULL;
+	else
+		prev->next = curr->next;
+	free(curr->content);
+	free(curr);
+	(*head)->id = -1;
 }
 
 
@@ -100,7 +139,7 @@ void	expand_var(t_token **head, int pos)
 		}
 		g_shell->env = g_shell->env->next;
 	}
-//	delete_token(head);
+	delete_token(head, pos);
 	g_shell->env = save;
 }
 
@@ -157,7 +196,14 @@ int	prepare_expand(t_token *tmp, int i)
 	free(tmp->content);
 	tmp->content = NULL;
 	tmp->content = ft_strdup(new->content);
-	set_id(tmp); //REECRIRE NOUVELLE FCT
+	set_id(tmp); //REECRIRE NOUVELLE FC
+	if (new->id == -1)
+	{
+		free_token(&new);
+		return (start);
+
+	}
+	free_token(&new);
 	return(len + start);
 }
 

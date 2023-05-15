@@ -67,7 +67,8 @@ int	main(int ac, char **av, char **envp)
 	if (!init_shell(envp))
 		return (1);
 	line = NULL;
-	line = ft_strdup("$$USER");
+	line = ft_strdup("$coucou???$SHELL$$");
+	printf("%s\n", line);
 	token = parsing(line);
 //		printf("EXIT STATUS %d\n", g_shell->exit_status);
 	g_shell->exit_status = 0;
