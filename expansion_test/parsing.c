@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:00:49 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/15 17:36:32 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/16 16:32:31 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -17,25 +17,25 @@ void	print_token(t_token **head)
 {
 	t_token	*tmp;
 	
-	if (!*head)
+	if (!*head || !head)
 		return ;
 	tmp = *head;
 	while (tmp)
 	{
 		if (tmp->id == L_CHEVRON)
-			printf("id = L_CHEVRON\n");
+			printf("L_CHEVRON: ");
 		else if (tmp->id == R_CHEVRON)
-			printf("id = R_CHEVRON\n");
+			printf("R_CHEVRON: ");
 		else if (tmp->id == PIPELINE)
-			printf("id = PIPELINE\n");
+			printf("PIPELINE: ");
 		else if (tmp->id == WORD)
-			printf("id = WORD\n");
+			printf("WORD: ");
 		else if (tmp->id == APPEND)
-			printf("id = APPEND\n");
+			printf("APPEND: ");
 		else if (tmp->id == HERE_DOC)
-			printf("id = HERE_DOC\n");
+			printf("HERE_DOC: ");
 		else if (tmp->id == DOLLAR)
-			printf("id = DOLLAR\n");
+			printf("DOLLAR:");
 		printf("%s\n", tmp->content);
 		tmp = tmp->next;
 	}

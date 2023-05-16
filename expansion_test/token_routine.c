@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:11:25 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/10 17:05:25 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/16 17:49:31 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -46,6 +46,7 @@ t_token	*new_token(char *line, int start, int len)
 {
 	t_token	*token;
 
+	token = NULL;
 	token = malloc(sizeof(t_token));
 	if (!token)
 	{

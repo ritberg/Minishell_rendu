@@ -6,7 +6,7 @@
 #    By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 12:23:37 by mdanchev          #+#    #+#              #
-#    Updated: 2023/05/13 13:34:14 by mdanchev         ###   lausanne.ch        #
+#    Updated: 2023/05/16 16:53:07 by mdanchev         ###   lausanne.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,10 +23,12 @@ SRCS		= main.c \
 			  handler_ctr_c.c \
 			  token_routine.c \
 			  token_routine_set_id.c \
+			  token_routine_delete.c \
 			  parsing_syntax_errors.c\
 			  parsing_syntax_errors_print_message.c \
 			  parsing_token_extraction.c\
 			  parsing_expansion.c \
+			  parsing_expansion_helper.c \
 			  malloc_error_print_message.c\
 			  env_copied.c\
 			  builtins.c\
@@ -62,9 +64,12 @@ endif
 CFLAGS		+= -I. -Ilibft/includes
 LIBFT		= -L./libft -lft
 
-ifeq ($(USER), margaritamakarova)
-CFLAGS		+= -I/opt/homebrew/opt/readline/include
-READLINE 	= -L/opt/homebrew/opt/readline/lib -lreadline
+# ifeq ($(USER), margaritamakarova)
+# CFLAGS		+= -I/opt/homebrew/opt/readline/include
+# READLINE 	= -L/opt/homebrew/opt/readline/lib -lreadline
+ifeq ($(USER), mariyadancheva)
+CFLAGS		+= -I/opt/homebrew/Cellar/readline/8.2.1/include
+READLINE	= -L/opt/homebrew/Cellar/readline/8.2.1/lib -lreadline
 else
 CFLAGS		+= -I$(HOME)/.brew/opt/readline/include
 READLINE	=  -L$(HOME)/.brew/opt/readline/lib -lreadline

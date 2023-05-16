@@ -6,10 +6,19 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:26:32 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/10 17:07:18 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/16 11:30:31 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
+
+void	set_id_expansion(t_token *token)
+{
+	if (ft_strchr(token->content, '$'))
+		token->id = DOLLAR;
+	else
+		token->id = WORD;
+	return ;
+}
 
 void	set_id(t_token *token)
 {

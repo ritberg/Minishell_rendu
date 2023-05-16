@@ -37,6 +37,8 @@
 # define HERE_DOC	6
 # define DOLLAR		7
 # define QUESTION	8
+# define EXPAND		9
+# define DELETE	10
 
 //int	g_exit_status;
 
@@ -81,8 +83,13 @@ typedef struct s_shell
 
 extern	t_shell	*g_shell;
 /* EXPANSION */
-void		expansion(t_token **token, int pos);
-
+void	expansion(t_token **token, int pos);
+int	join_tokens(t_token **new, t_token *tmp);
+void	delete_token(t_token **head);
+int		token_list_size(t_token	**head);
+int	expand_var(t_token **head);
+int	prepare_expand(t_token *tmp, int i);
+void	set_id_expansion(t_token *token);
 /* BUILTINS */
 int	_pwd(t_cmd *cmd);
 int	_env(t_env *env);
