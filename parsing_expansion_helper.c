@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 11:07:14 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/17 10:32:29 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/17 14:44:59 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -22,11 +22,20 @@ int	get_new_size(t_token **new)
 	ptr = *new;
 	while (ptr)
 	{
-		if (ptr->id != DELETE)
+		if (ptr->id == EXPANDED)
 		{
-			while (ptr->content[i] && is_white_space(ptr->content[i]))
+			while (is_white_space(ptr->content[i]))
 				i++;
 			while (ptr->content[i] && !is_white_space(ptr->content[i]))
+			{
+				i++;
+				size++;
+			}
+			i = 0;
+		}
+		else if (ptr->id != DELETE)
+		{
+			while (ptr->content[i])
 			{
 				size++;
 				i++;
@@ -38,51 +47,6 @@ int	get_new_size(t_token **new)
 	return (size);
 }
 
-//void	join_tokens_word_splitting(t_token **new, t_token *curr)
-//{
-//	(void)curr;
-//	t_token *tmp;
-//	t_token	*split;
-//	int		i;
-//	int		size;
-//	int		start;
-//
-//	i = 0;
-//	size = 0;
-//	start = 0;
-//	tmp = *new;
-//	split = NULL;
-//	while (tmp)
-//	{
-//		if (tmp->id == EXPANDED)
-//			break;
-//		tmp = tmp->next;
-//	}
-//	while (tmp->content[i])
-//	{
-//		while(tmp->content[i] && is_white_space(tmp->content[i]))
-//				i++;
-//		start = i;
-//		while (tmp->content[i] && !is_white_space(tmp->content[i]))
-//		{
-//			i++;
-//			size++;
-//		}
-//		if (!split)
-//			split = new_token(tmp->content, start, size);
-//		else
-//			token_linked_list(&split,tmp->content,  start, size);
-//	}
-//	t_token *ptr;
-//	ptr = split;
-//	while (ptr)
-//	{
-//		printf("split = %s\n", ptr->content);
-//		ptr = ptr->next;
-//	}
-//	return ;
-//
-//}
 
 int	join_tokens(t_token **new, t_token *curr)
 {
@@ -93,9 +57,6 @@ int	join_tokens(t_token **new, t_token *curr)
 
 	i = 0;
 	j = 0;
-//	word_splitting(new, curr);
-//	if (word_splitting(new, curr) > 1)
-//		join_tokens_word_splitting(new, curr);
 	size = get_new_size(new);
 	free(curr->content);
 	curr->content = NULL;
@@ -113,11 +74,22 @@ int	join_tokens(t_token **new, t_token *curr)
 	{
 		if (ptr->id == DELETE)
 			ptr = ptr->next;
-		else
+		else if (ptr->id == EXPANDED)
 		{
 			while (ptr->content[j] && is_white_space(ptr->content[j]))
 				j++;
 			while (ptr->content[j] && !is_white_space(ptr->content[j]))
+			{
+				curr->content[i] = ptr->content[j];
+				j++;
+				i++;
+			}
+			j = 0;
+			ptr = ptr->next;
+		}
+		else
+		{
+			while (ptr->content[j])
 			{
 				curr->content[i] = ptr->content[j];
 				i++;
