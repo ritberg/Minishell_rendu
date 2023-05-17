@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 12:13:21 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/16 17:32:07 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/17 12:05:18 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -29,76 +29,68 @@ int	loop_simple_quotes(char *s, int i)
 
 }
 
-int check_dollar(t_token *tmp, int pos)
+int check_dollar(t_token *curr, int pos)
 {
 	int		i;
 
 	i = pos;
-	while (tmp->content[i])
+	while (curr->content[i])
 	{
-		if (is_simple_quote(tmp->content[i]))
-			i = loop_simple_quotes(tmp->content, i);
-		if (is_dollar(tmp->content[i]))
+		if (is_simple_quote(curr->content[i]))
+			i = loop_simple_quotes(curr->content, i);
+		if (is_dollar(curr->content[i]))
 		{
-			if (is_question(tmp->content[i + 1]) || \
-				(!is_quote(tmp->content[i + 1]) && \
-				 !is_dollar(tmp->content[i + 1]) && \
-				 !is_punct(tmp->content[i + 1]) && \
-				 tmp->content[i + 1] != '\0'))
+			if (is_question(curr->content[i + 1]) || \
+				(!is_quote(curr->content[i + 1]) && \
+				 !is_dollar(curr->content[i + 1]) && \
+				 !is_punct(curr->content[i + 1]) && \
+				 curr->content[i + 1] != '\0'))
 			{
 				
-				i = prepare_expand(tmp, i);
+				i = prepare_expand(curr, i);
 				return (i);
 			}
-			else if (is_dollar(tmp->content[i + 1]))
-				i = loop_dollars(tmp->content, i);
-			else if (tmp->content[i + 1] == '\0')
+			else if (is_dollar(curr->content[i + 1]))
+				i = loop_dollars(curr->content, i);
+			else if (curr->content[i + 1] == '\0')
 				break ;
+			else
+				i++;
 		}
 		else
 			i++;
 	}
-	tmp->id = WORD;
+	curr->id = WORD;
 	return (i);
 }
 
-void	expansion(t_token **head, int pos)
+void	expansion(t_token **head, t_token *curr, int pos)
 {
-	t_token	*tmp;
-	t_token	*next;
-	
-	tmp = *head;
-	next = NULL;
 	if (!*head)
 		return;
-	if (tmp)
+	if (curr)
 	{
-		if (tmp->id == DOLLAR)
+		if (curr->id == DOLLAR)
 		{
-			pos = check_dollar(tmp, pos);
-			if (tmp->id == DELETE)
+			pos = check_dollar(curr, pos);
+			if (curr->id == DELETE)
 			{
-				delete_token(head);
-				if (*head && tmp->next)
-				{
-					next = tmp->next;
-					expansion(&next, pos);
-				}
-				else
+				curr = delete_token(head);
+				if (!curr)
 				{
 					head = NULL;
 					return;
 				}
 			}
-			expansion(&tmp, pos);
+			expansion(head, curr, pos);
 		}
 		else
 		{
 			pos = 0;
-			if (tmp->next)
+			if (curr->next)
 			{
-				tmp = tmp->next;
-				expansion(&tmp, pos);
+				curr = curr->next;
+				expansion(head, curr, pos);
 			}
 		}
 	}
@@ -107,15 +99,15 @@ void	expansion(t_token **head, int pos)
 
 
 
-	/*	else if (is_quote(tmp->content[i + 1]))
+	/*	else if (is_quote(curr->content[i + 1]))
 		{
-	//		trim_dollar(&tmp, &i, i);
+	//		trim_dollar(&curr, &i, i);
 			i++;
 		}*/
-		/*else if (is_punct(tmp->content[i + 1]))
+		/*else if (is_punct(curr->content[i + 1]))
 		{
 			i++;
-			while (!is_white_space(tmp->content[i]) && tmp->content[i])
+			while (!is_white_space(curr->content[i]) && tmp->content[i])
 				i++;
 		}
 		}*/

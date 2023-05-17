@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:00:49 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/16 17:28:25 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/17 08:53:40 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -29,14 +29,14 @@ void	print_token(t_token **head)
 		else if (tmp->id == PIPELINE)
 			printf("PIPELINE: ");
 		else if (tmp->id == WORD)
-			printf("WORD:     ");
+			printf("WORD: ");
 		else if (tmp->id == APPEND)
-			printf("APPEND:   ");
+			printf("APPEND: ");
 		else if (tmp->id == HERE_DOC)
 			printf("HERE_DOC: ");
 		else if (tmp->id == DOLLAR)
 			printf("DOLLAR:");
-		printf("|%-s|\n", tmp->content);
+		printf("%s\n", tmp->content);
 		tmp = tmp->next;
 	}
 }
@@ -50,7 +50,7 @@ t_token	*parsing(char *line)
 	token = get_tokens(line);
 	if (!token)
 		return (NULL);
-	expansion(&token, 0);
+	expansion(&token, token, 0);
 	print_token(&token); // FOR TESTING
 	//quote_removing
 	return (token);

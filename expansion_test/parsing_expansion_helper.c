@@ -6,25 +6,10 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 11:07:14 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/16 17:53:40 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/17 10:32:29 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
-
-void	print_test_expansion(t_token **head)
-{
-	t_token *tmp;
-
-	tmp = *head;
-	printf("---------test expansion---------\n");
-	while (tmp)
-	{
-		printf("%s|", tmp->content);
-		tmp = tmp->next;
-	}
-	printf("\n");
-	printf("---------end test expansion---------\n");
-}
 
 int	get_new_size(t_token **new)
 {
@@ -39,7 +24,9 @@ int	get_new_size(t_token **new)
 	{
 		if (ptr->id != DELETE)
 		{
-			while (ptr->content[i])
+			while (ptr->content[i] && is_white_space(ptr->content[i]))
+				i++;
+			while (ptr->content[i] && !is_white_space(ptr->content[i]))
 			{
 				size++;
 				i++;
@@ -51,6 +38,51 @@ int	get_new_size(t_token **new)
 	return (size);
 }
 
+//void	join_tokens_word_splitting(t_token **new, t_token *curr)
+//{
+//	(void)curr;
+//	t_token *tmp;
+//	t_token	*split;
+//	int		i;
+//	int		size;
+//	int		start;
+//
+//	i = 0;
+//	size = 0;
+//	start = 0;
+//	tmp = *new;
+//	split = NULL;
+//	while (tmp)
+//	{
+//		if (tmp->id == EXPANDED)
+//			break;
+//		tmp = tmp->next;
+//	}
+//	while (tmp->content[i])
+//	{
+//		while(tmp->content[i] && is_white_space(tmp->content[i]))
+//				i++;
+//		start = i;
+//		while (tmp->content[i] && !is_white_space(tmp->content[i]))
+//		{
+//			i++;
+//			size++;
+//		}
+//		if (!split)
+//			split = new_token(tmp->content, start, size);
+//		else
+//			token_linked_list(&split,tmp->content,  start, size);
+//	}
+//	t_token *ptr;
+//	ptr = split;
+//	while (ptr)
+//	{
+//		printf("split = %s\n", ptr->content);
+//		ptr = ptr->next;
+//	}
+//	return ;
+//
+//}
 
 int	join_tokens(t_token **new, t_token *curr)
 {
@@ -61,6 +93,9 @@ int	join_tokens(t_token **new, t_token *curr)
 
 	i = 0;
 	j = 0;
+//	word_splitting(new, curr);
+//	if (word_splitting(new, curr) > 1)
+//		join_tokens_word_splitting(new, curr);
 	size = get_new_size(new);
 	free(curr->content);
 	curr->content = NULL;
@@ -80,7 +115,9 @@ int	join_tokens(t_token **new, t_token *curr)
 			ptr = ptr->next;
 		else
 		{
-			while (ptr->content[j])
+			while (ptr->content[j] && is_white_space(ptr->content[j]))
+				j++;
+			while (ptr->content[j] && !is_white_space(ptr->content[j]))
 			{
 				curr->content[i] = ptr->content[j];
 				i++;
@@ -127,6 +164,22 @@ int	check_var_exist(t_token *tmp)
 	return (0);
 }
 
+int	size_var(char *s)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while(s[i] && is_white_space(s[i]))
+		i++;
+	while (s[i] && !is_white_space(s[i]))
+	{
+		count++;
+		i++;
+	}
+	return (count);
+}
 
 int	expand_var(t_token **new)
 {
@@ -141,9 +194,9 @@ int	expand_var(t_token **new)
 	{
 		if (check_var_exist(tmp))
 		{
-			tmp->id = WORD;
+			tmp->id = EXPANDED;
 			g_shell->env = save;
-			return (ft_strlen(tmp->content));
+			return (size_var(tmp->content));
 		}
 		g_shell->env = g_shell->env->next;
 	}
@@ -153,30 +206,25 @@ int	expand_var(t_token **new)
 }
 
 
-t_token	*split_tokens(char *s, int start, int len)
+void	split_tokens(t_token **new, char *s, int start, int len)
 {
-	t_token *new;
-
-	new = NULL;
 	if (start != 0)
 	{
-		new = new_token(s, 0, start);
-		token_linked_list(&new, s, start, len);
-		new->next->id = EXPAND;
+		*new = new_token(s, 0, start);
+		token_linked_list(new, s, start, len);
+		(*new)->next->id = EXPAND;
 	}
 	else
 	{
-		new = new_token(s, start, len);
-		printf("%p\n", new);
-		new->id = EXPAND;
+		*new = new_token(s, start, len);
+		(*new)->id = EXPAND;
 	}
 	len = start + len;
 	start = len;
 	while (s[len])
 		len++;
 	if (len != start)
-		token_linked_list(&new, s,start, len);
-	return (new);
+		token_linked_list(new, s,start, len);
 }
 
 int	var_len(char *s, int i)
@@ -210,7 +258,7 @@ int	prepare_expand(t_token *curr, int i)
 
 	new = NULL;
 	len = var_len(curr->content, i);
-	new = split_tokens(curr->content, i, len + 1);
+	split_tokens(&new, curr->content, i, len + 1);
 	len = expand_var(&new);
 	join_tokens(&new, curr);
 	if (curr->id == DELETE)
