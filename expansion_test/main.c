@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/17 16:41:09 by mdanchev          #+#    #+#             */
+/*   Updated: 2023/05/17 19:46:35 by mdanchev         ###   lausanne.ch       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "minishell.h"
 
@@ -67,7 +78,7 @@ int	main(int ac, char **av, char **envp)
 	if (!init_shell(envp))
 		return (1);
 	line = NULL;
-	line = ft_strdup("$a \" dhd $'USER' | h    $UShg djh\"");
+	line = ft_strdup("'$SHELL' $a \"$juhtgfd | $USER $SHELL \"$\'coucouc\'wqd\" $\"fwfwef\"\" \"coucou $fd hello\"");
 	printf("LINE = %s\n", line);
 	token = parsing(line);
 //		printf("EXIT STATUS %d\n", g_shell->exit_status);
