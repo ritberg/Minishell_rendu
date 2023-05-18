@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:55:29 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/18 10:11:24 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/18 18:23:22 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -81,11 +81,6 @@ static void	copy_helper(t_token **new, t_token *curr)
 
 static int	copy_join_tokens(t_token **new, t_token *curr, int size)
 {
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
 	free(curr->content);
 	curr->content = NULL;
 	curr->content = malloc((size + 1) * sizeof(char));

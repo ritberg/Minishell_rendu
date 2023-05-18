@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 17:24:54 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/18 12:31:15 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/18 18:26:27 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -64,6 +64,6 @@ int	trim_dollar(t_token *curr, int pos)
 		i++;
 	}
 	if (!copy_string(curr, &s, pos))
-		return (0);
-	return (1);
+		return (ERROR_EXIT);
+	return (0);
 }

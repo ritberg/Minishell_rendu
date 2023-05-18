@@ -6,21 +6,24 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 17:54:34 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/18 13:36:18 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/18 19:05:32 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
 /* used in trim_dollar*/
-int	loop_simple_quotes(char *s, int i)
+/*
+ * int	loop_simple_quotes(char *s, int i)
 {
 	i++;
 	while (!is_simple_quote(s[i]))
 		i++;
 	return (i);
 }
+*/
 
 /* used in trim_dollar*/
+/*
 int	loop_double_quotes(char *s, int i)
 {
 	int		j;
@@ -44,6 +47,7 @@ int	loop_double_quotes(char *s, int i)
 		return (0);
 	return (1);
 }
+*/
 
 /* used in check_dollar*/
 int	loop_dollars(char *s, int i)
@@ -51,10 +55,7 @@ int	loop_dollars(char *s, int i)
 	while (is_dollar(s[i]) && s[i])
 		i++;
 	if (s[i] != '\0' && !is_white_space(s[i]))
-	{
 		i--;
-		printf ("i = %d\n", i);
-	}
 	return (i);
 }
 

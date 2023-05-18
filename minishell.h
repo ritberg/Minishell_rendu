@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:16:33 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/18 14:12:52 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/18 19:12:59 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,8 @@ int			trim_dollar(t_token *curr, int pos);
 /* 			EXPANSION (parsing_expansion_looping.c)*/
 int			loop_dollars(char *s, int i);
 int			loop_through(char *s, int i);
-int			loop_simple_quotes(char *s, int i);
-int			loop_double_quotes(char *s, int i);
+//int			loop_simple_quotes(char *s, int i);
+//int			loop_double_quotes(char *s, int i);
 
 /* 			EXPANSION (parsing_expansion_expand_var_helper.c)*/
 int			size_var(char *s);

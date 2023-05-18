@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 11:07:14 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/18 15:20:57 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/05/18 18:57:49 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -58,8 +58,8 @@ int	split_tokens(t_token **new, char *s, int start, int len)
 			return (ERROR_EXIT);
 		(*new)->id = EXPAND;
 	}
-	len = start + len;
-	start = len;
+	start += len;
+	len = start;
 	while (s[len])
 		len++;
 	if (len != start)
@@ -108,6 +108,11 @@ int	new_id(t_token **new)
 	return(set_id_expansion(ptr->next));
 }
 
+/*
+ * prepare_expand() function
+ * GOAL: prepare the expansion of a variable and the next caracter 
+ * 		 to be checked in expansion()
+*/
 int	prepare_expand(t_token *curr, int i)
 {
 	t_token	*new;

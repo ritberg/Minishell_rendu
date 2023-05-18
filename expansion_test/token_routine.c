@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:11:25 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/18 10:19:17 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/18 19:09:25 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -27,6 +27,7 @@ void	free_token(t_token **head)
 		free(tmp);
 	}
 	*head = NULL;
+	head = 	NULL;
 }
 
 /*

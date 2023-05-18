@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:22:28 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/18 13:18:27 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/18 19:43:16 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -46,7 +46,7 @@ int	string_replace(t_token *curr, int start, int pos)
 	int		save;
 	char	*new_str;
 
-	new_str = malloc(sizeof(char) * (ft_strlen(curr->content) - 1));
+	new_str = malloc(sizeof(char) * (ft_strlen(curr->content) - 2 + 1));
 	if (!new_str)
 	{
 		malloc_error_print_message(strerror(errno));
@@ -89,13 +89,10 @@ int	quote_removing(t_token **head, t_token *curr, int pos)
 	{
 		pos = remove_q(curr, pos);
 		if (pos == ERROR_EXIT)
-		{
-			free_token(head);
-			return (0);
-		}
+			return (free_token(head), 0);
 		quote_removing(head, curr, pos);
 	}
-	else if (!is_quote(curr->content[pos]) && curr->content[pos] != 0)
+	else
 	{
 		pos++;
 		quote_removing(head, curr, pos);

@@ -189,6 +189,7 @@ loop_through	parsing_expansion_looping.c	/^int	loop_through(char *s, int i)$/;"	
 main	main.c	/^int	main(int ac, char **av, char **envp)$/;"	f
 malloc_error_print_message	malloc_error_print_message.c	/^void	malloc_error_print_message(char *s)$/;"	f
 new_env	envp_routine.c	/^t_env	*new_env(char *envp)$/;"	f
+new_id	parsing_expansion_helper.c	/^int	new_id(t_token **new)$/;"	f
 new_token	token_routine.c	/^t_token	*new_token(char *line, int start, int len)$/;"	f
 next	libft/includes/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list::s_list
 next	minishell.h	/^	struct s_env	*next;$/;"	m	struct:s_env	typeref:struct:s_env::s_env
@@ -215,7 +216,7 @@ s_list	libft/includes/libft.h	/^typedef struct s_list$/;"	s
 s_shell	minishell.h	/^typedef struct s_shell$/;"	s
 s_token	minishell.h	/^typedef struct s_token$/;"	s
 set_id	token_routine_set_id.c	/^void	set_id(t_token *token)$/;"	f
-set_id_expansion	token_routine_set_id.c	/^void	set_id_expansion(t_token *token)$/;"	f
+set_id_expansion	token_routine_set_id.c	/^int	set_id_expansion(t_token *token)$/;"	f
 size_var	parsing_expansion_expand_var_helper.c	/^int	size_var(char *s)$/;"	f
 split_tokens	parsing_expansion_helper.c	/^int	split_tokens(t_token **new, char *s, int start, int len)$/;"	f
 str_lowercase	libft/libft/str_lowercase.c	/^char	*str_lowercase(char *str)$/;"	f

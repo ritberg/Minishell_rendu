@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 17:17:33 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/18 14:21:46 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/18 18:30:32 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -46,6 +46,7 @@ int	is_dollar_to_expand(t_token *curr, int i)
 		(!is_dollar(curr->content[i + 1]) && \
 		!is_quote(curr->content[i + 1]) && \
 		!is_punct(curr->content[i + 1]) && \
+		!is_white_space(curr->content[i + 1]) && \
 		curr->content[i + 1] != '\0'))
 	{
 		return (1);
