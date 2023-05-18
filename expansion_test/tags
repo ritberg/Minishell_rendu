@@ -15,7 +15,8 @@ CONTINUE	minishell.h	/^# define CONTINUE /;"	d
 CYN	minishell.h	/^# define CYN /;"	d
 DELETE	minishell.h	/^# define DELETE	/;"	d
 DOLLAR	minishell.h	/^# define DOLLAR	/;"	d
-ERROR	minishell.h	/^# define ERROR	/;"	d
+ERROR_EXIT	minishell.h	/^# define ERROR_EXIT	/;"	d
+ERROR_EXIT_	minishell.h	/^# define ERROR_EXIT_	/;"	d
 EXPAND	minishell.h	/^# define EXPAND	/;"	d
 EXPANDED	minishell.h	/^# define EXPANDED	/;"	d
 FT_PRINTF_H	libft/includes/ft_printf.h	/^# define FT_PRINTF_H$/;"	d
@@ -48,10 +49,12 @@ check_errors	libft/get_next_line/get_next_line.c	/^int	check_errors(int fd, char
 check_multiple_operators_error	parsing_syntax_errors.c	/^int	check_multiple_operators_error(int i, int num, char c)$/;"	f
 check_pipeline_errors	parsing_syntax_errors.c	/^int	check_pipeline_errors(char *s, int i, char c, int num)$/;"	f
 check_quotes_errors	parsing_syntax_errors.c	/^int	check_quotes_errors(char *s, char c, int *i)$/;"	f
-check_var_exist	parsing_expansion_helper.c	/^int	check_var_exist(t_token *tmp)$/;"	f
+check_var_exist	parsing_expansion_expand_var_helper.c	/^int	check_var_exist(t_token *tmp)$/;"	f
 cmd	minishell.h	/^	char	**cmd;$/;"	m	struct:s_cmd
 content	libft/includes/libft.h	/^	void			*content;$/;"	m	struct:s_list
 content	minishell.h	/^	char				*content;$/;"	m	struct:s_token
+copy_helper	parsing_expansion_join_tokens.c	/^static void	copy_helper(t_token **new, t_token *curr)$/;"	f	file:
+copy_join_tokens	parsing_expansion_join_tokens.c	/^static int	copy_join_tokens(t_token **new, t_token *curr, int size)$/;"	f	file:
 copy_string	parsing_expansion_trim_dollar.c	/^static int	copy_string(t_token *curr, char **s, int pos)$/;"	f	file:
 count_metachar	parsing_syntax_errors.c	/^int	count_metachar(char *s, char c, int num)$/;"	f
 create_nextline	libft/get_next_line/get_next_line.c	/^char	*create_nextline(char *result, char *line)$/;"	f
@@ -64,7 +67,7 @@ delete_token	token_routine_delete.c	/^t_token	*delete_token(t_token **head)$/;"	
 env	minishell.h	/^	t_env	*env;$/;"	m	struct:s_shell
 exit_status	minishell.h	/^	int		exit_status;$/;"	m	struct:s_shell
 expand_var	parsing_expansion_helper.c	/^int	expand_var(t_token **new)$/;"	f
-expansion	parsing_expansion.c	/^void	expansion(t_token **head, t_token *curr, int pos)$/;"	f
+expansion	parsing_expansion.c	/^int expansion(t_token **head, t_token *curr, int pos)$/;"	f
 fd	minishell.h	/^	int		fd[2];$/;"	m	struct:s_cmd
 fdin	minishell.h	/^	int		fdin;$/;"	m	struct:s_cmd
 fdout	minishell.h	/^	int		fdout;$/;"	m	struct:s_cmd
@@ -147,7 +150,8 @@ ft_tolower	libft/libft/ft_tolower.c	/^int	ft_tolower(int c)$/;"	f
 ft_toupper	libft/libft/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f
 g_shell	main.c	/^t_shell	*g_shell;$/;"	v
 get_envp	envp_routine.c	/^t_env	*get_envp(char **envp)$/;"	f
-get_new_size	parsing_expansion_helper.c	/^int	get_new_size(t_token **new)$/;"	f
+get_expanded_size	parsing_expansion_join_tokens.c	/^static int	get_expanded_size(char *s, int i)$/;"	f	file:
+get_new_size	parsing_expansion_join_tokens.c	/^static int	get_new_size(t_token **new)$/;"	f	file:
 get_next_line	libft/get_next_line/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f
 get_next_line_maxopen	libft/get_next_line/get_next_line_bonus.c	/^char	*get_next_line_maxopen(int fd)$/;"	f
 get_tokens	parsing_token_extraction.c	/^t_token	*get_tokens(char *line)$/;"	f
@@ -172,13 +176,13 @@ is_rchevron	is_operator.c	/^int	is_rchevron(char c)$/;"	f
 is_simple_quote	is_quote.c	/^int	is_simple_quote(char c)$/;"	f
 is_white_space	is_white_space.c	/^int	is_white_space(char c)$/;"	f
 is_word	is_token.c	/^int	is_word(char c)$/;"	f
-join_tokens	parsing_expansion_helper.c	/^int	join_tokens(t_token **new, t_token *curr)$/;"	f
+join_tokens	parsing_expansion_join_tokens.c	/^int	join_tokens(t_token **new, t_token *curr)$/;"	f
 link_env	envp_routine.c	/^int	link_env(t_env **head, t_env *last)$/;"	f
 link_token	token_routine.c	/^int	link_token(t_token **head, t_token *new)$/;"	f
 loop_dollars	parsing_expansion_looping.c	/^int	loop_dollars(char *s, int i)$/;"	f
 loop_double_quotes	parsing_expansion_looping.c	/^int	loop_double_quotes(char *s, int i)$/;"	f
 loop_simple_quotes	parsing_expansion_looping.c	/^int	loop_simple_quotes(char *s, int i)$/;"	f
-loop_through	parsing_expansion_looping.c	/^int	loop_through(char *s, int i, int pos)$/;"	f
+loop_through	parsing_expansion_looping.c	/^int	loop_through(char *s, int i)$/;"	f
 main	main.c	/^int	main(int ac, char **av, char **envp)$/;"	f
 malloc_error_print_message	malloc_error_print_message.c	/^void	malloc_error_print_message(char *s)$/;"	f
 new_env	envp_routine.c	/^t_env	*new_env(char *envp)$/;"	f
@@ -199,6 +203,7 @@ print_syntax_error_str	parsing_syntax_errors_print_message.c	/^void	print_syntax
 print_token	parsing.c	/^void	print_token(t_token **head)$/;"	f
 read_fd	libft/get_next_line/get_next_line.c	/^char	*read_fd(char *line, int fd, int *error)$/;"	f
 redir	minishell.h	/^	char	**redir;$/;"	m	struct:s_cmd
+replace_content	parsing_expansion_expand_var_helper.c	/^static int	replace_content(t_token *tmp, char *s)$/;"	f	file:
 s_cmd	minishell.h	/^typedef	struct	s_cmd$/;"	s
 s_env	minishell.h	/^typedef struct s_env$/;"	s
 s_list	libft/includes/libft.h	/^typedef struct s_list$/;"	s
@@ -206,8 +211,8 @@ s_shell	minishell.h	/^typedef struct s_shell$/;"	s
 s_token	minishell.h	/^typedef struct s_token$/;"	s
 set_id	token_routine_set_id.c	/^void	set_id(t_token *token)$/;"	f
 set_id_expansion	token_routine_set_id.c	/^void	set_id_expansion(t_token *token)$/;"	f
-size_var	parsing_expansion_helper.c	/^int	size_var(char *s)$/;"	f
-split_tokens	parsing_expansion_helper.c	/^void	split_tokens(t_token **new, char *s, int start, int len)$/;"	f
+size_var	parsing_expansion_expand_var_helper.c	/^int	size_var(char *s)$/;"	f
+split_tokens	parsing_expansion_helper.c	/^int	split_tokens(t_token **new, char *s, int start, int len)$/;"	f
 str_lowercase	libft/libft/str_lowercase.c	/^char	*str_lowercase(char *str)$/;"	f
 syntax_error_check	parsing_syntax_errors.c	/^int	syntax_error_check(char *s)$/;"	f
 t_cmd	minishell.h	/^}	t_cmd;$/;"	t	typeref:struct:s_cmd
@@ -220,7 +225,7 @@ token_linked_list	token_routine.c	/^int	token_linked_list(t_token **head, char *
 token_list_size	token_routine_delete.c	/^int	token_list_size(t_token	**head)$/;"	f
 transform	libft/libft/ft_atoi_base.c	/^int	transform(char c)$/;"	f
 trim_dollar	parsing_expansion_trim_dollar.c	/^int trim_dollar(t_token *curr, int pos)$/;"	f
-var_len	parsing_expansion_helper.c	/^int	var_len(char *s, int i)$/;"	f
+var_len	parsing_expansion_helper.c	/^static int	var_len(char *s, int i)$/;"	f	file:
 var_name	minishell.h	/^	char			*var_name;$/;"	m	struct:s_env
 var_value	minishell.h	/^	char			*var_value;$/;"	m	struct:s_env
 word_extraction	parsing_token_extraction.c	/^int	word_extraction(char *line, int ind)$/;"	f

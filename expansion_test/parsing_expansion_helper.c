@@ -6,15 +6,14 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 11:07:14 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/17 19:48:09 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/18 10:10:41 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
-
 int	expand_var(t_token **new)
 {
-	t_token *tmp;
+	t_token	*tmp;
 	t_env	*save;
 	int		res;
 
@@ -40,7 +39,6 @@ int	expand_var(t_token **new)
 	return (-1);
 }
 
-
 int	split_tokens(t_token **new, char *s, int start, int len)
 {
 	if (start != 0)
@@ -64,7 +62,7 @@ int	split_tokens(t_token **new, char *s, int start, int len)
 	while (s[len])
 		len++;
 	if (len != start)
-		if(!token_linked_list(new, s,start, len))
+		if (!token_linked_list(new, s, start, len))
 			return (ERROR_EXIT);
 	return (1);
 }
@@ -72,7 +70,7 @@ int	split_tokens(t_token **new, char *s, int start, int len)
 static int	var_len(char *s, int i)
 {
 	int		len;
-	
+
 	len = 0;
 	i++;
 	if (is_question(s[i]))
@@ -94,10 +92,10 @@ static int	var_len(char *s, int i)
 }
 
 /*
- */
+*/
 int	prepare_expand(t_token *curr, int i)
 {
-	t_token *new;
+	t_token	*new;
 	int		len;
 
 	new = NULL;
@@ -112,5 +110,5 @@ int	prepare_expand(t_token *curr, int i)
 	if (curr->id == DELETE)
 		return (0);
 	set_id_expansion(curr);
-	return(len + i);
+	return (len + i);
 }

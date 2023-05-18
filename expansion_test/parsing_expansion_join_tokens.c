@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:55:29 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/17 19:28:54 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/18 10:11:24 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -31,7 +31,7 @@ static int	get_new_size(t_token **new)
 	t_token	*ptr;
 	int		size;
 	int		i;
-	
+
 	size = 0;
 	ptr = *new;
 	while (ptr)
@@ -57,7 +57,7 @@ static void	copy_helper(t_token **new, t_token *curr)
 	int		i;
 	int		j;
 	t_token	*ptr;
-	
+
 	i = 0;
 	j = 0;
 	ptr = *new;
@@ -83,7 +83,7 @@ static int	copy_join_tokens(t_token **new, t_token *curr, int size)
 {
 	int		i;
 	int		j;
-	
+
 	i = 0;
 	j = 0;
 	free(curr->content);
@@ -97,7 +97,6 @@ static int	copy_join_tokens(t_token **new, t_token *curr, int size)
 	copy_helper(new, curr);
 	free_token(new);
 	return (0);
-
 }
 
 int	join_tokens(t_token **new, t_token *curr)

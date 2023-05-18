@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 17:24:54 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/17 17:59:59 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/18 10:12:30 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -21,7 +21,7 @@ static int	copy_string(t_token *curr, char **s, int pos)
 
 	i = 0;
 	j = 0;
-	*s = malloc(sizeof(char) * ft_strlen(curr->content) + 1);
+	*s = malloc(sizeof(char) * ft_strlen(curr->content));
 	if (!*s)
 		return (0);
 	i = 0;
@@ -43,12 +43,11 @@ static int	copy_string(t_token *curr, char **s, int pos)
  * if copy_string return 0 -> there is a malloc error
  * -> exit the program
  */
-int trim_dollar(t_token *curr, int pos)
+int	trim_dollar(t_token *curr, int pos)
 {
 	int		i;
 	int		j;
 	char	*s;
-
 
 	s = NULL;
 	i = 0;

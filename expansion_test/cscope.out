@@ -1,4 +1,4 @@
-cscope 15 $HOME/Documents/GitHub/minishell/rita/expansion_test -c -q 0000000336 0000065678
+cscope 15 $HOME/Documents/GitHub/minishell/rita/expansion_test -c -q 0000000342 0000067098
 	@envp_routine.c
 
 12 #include 
@@ -7833,7 +7833,7 @@ NULL
 line
  = 
 	`ft_strdup
-("$juhtgfd $SHELL \"$\'coucouc\'wqd\" $\"fwfwef\"");
+("$SHELL'$SHELL' $a \"$juhtgfd | $USER $SHELL \"$\'coucouc\'wqd\" $\"fwfwef\"\" \"coucou $fd hello\"");
 
 82 
 	`printf
@@ -8104,112 +8104,118 @@ MINISHELL_H
 	)
 
 44 #define 
-	#ERROR
- -2
+	#ERROR_EXIT
+ -169
 
 	)
 
-49 typedef struct 
+45 #define 
+	#ERROR_EXIT_
+ 0
+
+	)
+
+50 typedef struct 
 	ss_env
 
 
-51 char *
+52 char *
 	mvar_name
 ;
 
-52 char *
+53 char *
 	mvar_value
 ;
 
-53 struct 
+54 struct 
 s_env
  *
 	mnext
 ;
 
-54 } 
+55 } 
 	tt_env
 ;
 
-56 typedef struct 
+57 typedef struct 
 	ss_token
 
 
-58 char *
+59 char *
 	mcontent
 ;
 
-59 int 
+60 int 
 	mid
 ;
 
-61 struct 
+62 struct 
 s_token
  *
 	mnext
 ;
 
-62 } 
+63 } 
 	tt_token
 ;
 
-65 typedef struct 
+66 typedef struct 
 	ss_cmd
 
 
-68 char **
+69 char **
 	mcmd
 ;
 
-69 char **
+70 char **
 	mredir
 ;
 
-70 char **
+71 char **
 	mpath
 ;
 
-74 int 
+75 int 
 	mfdout
 ;
 
-75 int 
+76 int 
 	mfdin
 ;
 
-76 int 
+77 int 
 	mfd
 [2];
 
-77 } 
+78 } 
 	tt_cmd
 ;
 
-79 typedef struct 
+80 typedef struct 
 	ss_shell
 
 
-81 
+82 
 t_env
  *
 	menv
 ;
 
-82 int 
+83 int 
 	mexit_status
 ;
 
-84 } 
+85 } 
 	tt_shell
 ;
 
-87 extern 
+88 extern 
 t_shell
  *
 g_shell
 ;
 
-90 void 
+91 int 
 expansion
 (
 t_token
@@ -8221,7 +8227,7 @@ curr
 pos
 );
 
-91 int 
+92 int 
 check_dollar
 (
 t_token
@@ -8231,7 +8237,7 @@ curr
 i
 );
 
-92 int 
+93 int 
 trim_dollar
 (
 t_token
@@ -8241,7 +8247,7 @@ curr
 pos
 );
 
-95 int 
+96 int 
 is_dollar_to_expand
 (
 t_token
@@ -8251,7 +8257,7 @@ curr
 i
 );
 
-96 int 
+97 int 
 not_within_squotes
 (
 t_token
@@ -8261,7 +8267,7 @@ curr
 pos
 );
 
-99 int 
+100 int 
 trim_dollar
 (
 t_token
@@ -8271,7 +8277,7 @@ curr
 pos
 );
 
-102 int 
+103 int 
 loop_dollars
 (char *
 s
@@ -8279,18 +8285,8 @@ s
 i
 );
 
-103 int 
-loop_through
-(char *
-s
-, int 
-i
-, int 
-pos
-);
-
 104 int 
-loop_simple_quotes
+loop_through
 (char *
 s
 , int 
@@ -8298,6 +8294,14 @@ i
 );
 
 105 int 
+loop_simple_quotes
+(char *
+s
+, int 
+i
+);
+
+106 int 
 loop_double_quotes
 (char *
 s
@@ -8305,23 +8309,31 @@ s
 i
 );
 
-107 
-t_token
- *
-delete_token
-(t_token **
-head
+109 int 
+size_var
+(char *
+s
 );
 
-108 int 
-token_list_size
+110 int 
+check_var_exist
+(
+t_token
+ *
+tmp
+);
+
+113 int 
+join_tokens
 (
 t_token
  **
-head
+new
+, t_token *
+curr
 );
 
-109 int 
+116 int 
 prepare_expand
 (
 t_token
@@ -8331,7 +8343,7 @@ tmp
 i
 );
 
-110 void 
+117 void 
 set_id_expansion
 (
 t_token
@@ -8339,7 +8351,23 @@ t_token
 token
 );
 
-114 int 
+119 
+t_token
+ *
+delete_token
+(t_token **
+head
+);
+
+120 int 
+token_list_size
+(
+t_token
+ **
+head
+);
+
+123 int 
 _pwd
 (
 t_cmd
@@ -8347,7 +8375,7 @@ t_cmd
 cmd
 );
 
-115 int 
+124 int 
 _env
 (
 t_env
@@ -8355,19 +8383,19 @@ t_env
 env
 );
 
-118 char **
+127 char **
 env_copied
 (char **
 envp
 );
 
-119 void 
+128 void 
 free_tab
 (char **
 table
 );
 
-122 
+131 
 t_env
  *
 get_envp
@@ -8375,7 +8403,7 @@ get_envp
 envp
 );
 
-123 void 
+132 void 
 free_env
 (
 t_env
@@ -8383,7 +8411,7 @@ t_env
 head
 );
 
-127 
+136 
 t_token
  *
 parsing
@@ -8391,13 +8419,13 @@ parsing
 line
 );
 
-128 int 
+137 int 
 syntax_error_check
 (char *
 s
 );
 
-129 int 
+138 int 
 check_pipeline_errors
 (char *
 s
@@ -8409,7 +8437,7 @@ c
 num
 );
 
-130 int 
+139 int 
 check_quotes_errors
 (char *
 s
@@ -8419,7 +8447,7 @@ c
 i
 );
 
-131 int 
+140 int 
 count_metachar
 (char *
 s
@@ -8429,7 +8457,7 @@ c
 num
 );
 
-132 int 
+141 int 
 check_multiple_operators_error
 (int 
 i
@@ -8439,25 +8467,25 @@ num
 c
 );
 
-133 void 
+142 void 
 print_syntax_error_char
 (char 
 c
 );
 
-134 void 
+143 void 
 print_syntax_error_dchar
 (char 
 c
 );
 
-135 void 
+144 void 
 print_syntax_error_str
 (char *
 s
 );
 
-138 int 
+147 int 
 character_extraction
 (char *
 line
@@ -8465,7 +8493,7 @@ line
 ind
 );
 
-139 int 
+148 int 
 token_extraction
 (char *
 line
@@ -8473,7 +8501,7 @@ line
 ind
 );
 
-140 
+149 
 t_token
  *
 get_tokens
@@ -8481,7 +8509,7 @@ get_tokens
 line
 );
 
-141 int 
+150 int 
 get_tokens_size
 (char *
 line
@@ -8489,7 +8517,7 @@ line
 i
 );
 
-142 
+151 
 t_token
  *
 create_token_head
@@ -8503,13 +8531,13 @@ len
 flag
 );
 
-145 void 
+154 void 
 malloc_error_print_message
 (char *
 s
 );
 
-148 
+157 
 t_token
  *
 new_token
@@ -8521,7 +8549,7 @@ start
 len
 );
 
-149 void 
+158 void 
 set_id
 (
 t_token
@@ -8529,7 +8557,7 @@ t_token
 token
 );
 
-150 int 
+159 int 
 token_linked_list
 (
 t_token
@@ -8543,7 +8571,7 @@ start
 len
 );
 
-151 int 
+160 int 
 link_token
 (
 t_token
@@ -8553,7 +8581,7 @@ head
 new
 );
 
-152 void 
+161 void 
 free_token
 (
 t_token
@@ -8561,119 +8589,119 @@ t_token
 head
 );
 
-155 int 
+164 int 
 is_dollar
 (char 
 c
 );
 
-156 int 
+165 int 
 is_pipeline
 (char 
 c
 );
 
-157 int 
+166 int 
 is_chevron
 (char 
 c
 );
 
-158 int 
+167 int 
 is_lchevron
 (char 
 c
 );
 
-159 int 
+168 int 
 is_rchevron
 (char 
 c
 );
 
-160 int 
+169 int 
 is_operator
 (char 
 c
 );
 
-161 int 
+170 int 
 is_newline
 (char 
 c
 );
 
-162 int 
+171 int 
 is_white_space
 (char 
 c
 );
 
-163 int 
+172 int 
 is_blank
 (char 
 c
 );
 
-164 int 
+173 int 
 is_metacharacter
 (char 
 c
 );
 
-165 int 
+174 int 
 is_delimiter
 (char 
 c
 );
 
-166 int 
+175 int 
 is_word
 (char 
 c
 );
 
-167 int 
+176 int 
 is_double_quote
 (char 
 c
 );
 
-168 int 
+177 int 
 is_simple_quote
 (char 
 c
 );
 
-169 int 
+178 int 
 is_quote
 (char 
 c
 );
 
-170 int 
+179 int 
 is_question
 (char 
 c
 );
 
-171 int 
+180 int 
 is_punct
 (char 
 c
 );
 
-174 int 
+183 int 
 sig_handler
 (void);
 
-177 void 
+186 void 
 handler_ctr_c
 (int 
 code
 );
 
-180 char **
+189 char **
 ft_splitpath
 (char *
 s
@@ -8857,23 +8885,27 @@ token
 NULL
 );
 
-53 
+53 if (!
 	`expansion
 (&
 token
-, token, 0);
+, token, 0))
 
-54 
+54 return (
+NULL
+);
+
+55 
 	`print_token
 (&
 token
 );
 
-56 return (
+57 return (
 token
 );
 
-57 
+58 
 	}
 }
 
@@ -8921,19 +8953,15 @@ curr
 i
 ))
 
-22 
-i
- = 
+22 return (
 	`prepare_expand
 (
 curr
-, i);
-
-23 return (
+, 
 i
-);
+));
 
-25 else if (
+24 else if (
 	`is_dollar
 (
 curr
@@ -8943,7 +8971,7 @@ content
 i
  + 1]))
 
-26 
+25 
 i
  = 
 	`loop_dollars
@@ -8953,7 +8981,7 @@ curr
 content
 , i);
 
-27 else if (
+26 else if (
 	`is_quote
 (
 curr
@@ -8963,15 +8991,23 @@ content
 i
  + 1]))
 
-28 
-i
- += 
+28 if(!
 	`trim_dollar
 (
 curr
-, i);
+, 
+i
+))
 
-29 else if (
+29 return (
+ERROR_EXIT
+);
+
+31 
+i
+++;
+
+33 else if (
 curr
 ->
 content
@@ -8979,15 +9015,15 @@ content
 i
  + 1] == '\0')
 
-32 
+36 
 i
 ++;
 
-35 
+39 
 i
 ++;
 
-37 
+41 
 curr
 ->
 id
@@ -8995,15 +9031,15 @@ id
 WORD
 ;
 
-38 return (
+42 return (
 i
 );
 
-39 
+43 
 	}
 }
 
-41 void 
+45 int 
 	$expansion
 (
 t_token
@@ -9015,15 +9051,11 @@ curr
 pos
 )
 
-43 if (!*
-head
-)
-
-45 if (
+47 if (
 curr
 )
 
-47 if (
+49 if (
 curr
 ->
 id
@@ -9031,7 +9063,7 @@ id
 DOLLAR
 )
 
-49 
+51 
 pos
  = 
 	`check_dollar
@@ -9039,7 +9071,19 @@ pos
 curr
 , pos);
 
-50 if (
+52 if (
+pos
+ == 
+ERROR_EXIT
+)
+
+53 return (
+	`free_token
+(
+head
+), 0);
+
+54 if (
 curr
 ->
 id
@@ -9047,7 +9091,7 @@ id
 DELETE
 )
 
-52 
+56 
 curr
  = 
 	`delete_token
@@ -9055,17 +9099,21 @@ curr
 head
 );
 
-53 if (!
+57 if (!
 curr
 )
 
-55 
+59 
 head
  = 
 NULL
 ;
 
-59 
+62 
+pos
+ = 0;
+
+64 
 	`expansion
 (
 head
@@ -9075,27 +9123,33 @@ curr
 pos
 );
 
-63 if (
+68 
+pos
+ = 0;
+
+69 if (
 curr
 ->
 next
 )
 
-65 
+71 
 curr
  = curr->
 next
 ;
 
-66 
+72 
 	`expansion
 (
 head
 , 
 curr
-, 0);
+, 
+pos
+);
 
-71 
+77 
 	}
 }
 
@@ -9105,7 +9159,7 @@ curr
 	~"minishell.h
 "
 
-14 int 
+16 int 
 	$not_within_squotes
 (
 t_token
@@ -9115,23 +9169,23 @@ curr
 pos
 )
 
-16 int 
+18 int 
 i
 ;
 
-17 int 
+19 int 
 start
 ;
 
-19 
+21 
 i
  = 0;
 
-20 
+22 
 start
  = 0;
 
-21 if (!
+23 if (!
 	`is_dollar
 (
 curr
@@ -9141,17 +9195,15 @@ content
 pos
 ]))
 
-23 while (
+25 while (
 curr
 ->
 content
 [
 i
-] && i < 
-pos
- )
+])
 
-25 if (
+27 if (
 	`is_double_quote
 (
 curr
@@ -9161,7 +9213,7 @@ content
 i
 ]))
 
-26 
+28 
 i
  = 
 	`loop_through
@@ -9169,11 +9221,9 @@ i
 curr
 ->
 content
-, i, 
-pos
-);
+, i);
 
-27 else if (
+29 else if (
 	`is_simple_quote
 (
 curr
@@ -9183,13 +9233,13 @@ content
 i
 ]))
 
-29 
+31 
 start
  = 
 i
 ;
 
-30 
+32 
 i
  = 
 	`loop_through
@@ -9197,11 +9247,9 @@ i
 curr
 ->
 content
-, i, 
-pos
-);
+, i);
 
-31 if (
+33 if (
 pos
  > 
 start
@@ -9209,15 +9257,15 @@ start
 i
 )
 
-35 
+36 
 i
 ++;
 
-38 
+39 
 	}
 }
 
-40 int 
+41 int 
 	$is_dollar_to_expand
 (
 t_token
@@ -9227,7 +9275,7 @@ curr
 i
 )
 
-42 if (
+43 if (
 	`is_question
 (
 curr
@@ -9237,7 +9285,7 @@ content
 i
  + 1]) || \
 
-43 (!
+44 (!
 	`is_dollar
 (
 curr
@@ -9247,7 +9295,7 @@ content
 i
  + 1]) && \
 
-44 !
+45 !
 	`is_quote
 (
 curr
@@ -9257,7 +9305,7 @@ content
 i
  + 1]) && \
 
-45 !
+46 !
 	`is_punct
 (
 curr
@@ -9267,7 +9315,7 @@ content
 i
  + 1]) && \
 
-46 
+47 
 curr
 ->
 content
@@ -9275,379 +9323,71 @@ content
 i
  + 1] != '\0'))
 
-51 
+52 
 	}
 }
 
-	@parsing_expansion_helper.c
+	@parsing_expansion_expand_var_helper.c
 
 12 #include 
 	~"minishell.h
 "
 
-14 int 
-	$get_new_size
+14 static int 
+	$replace_content
 (
 t_token
- **
-new
+ *
+tmp
+, char *
+s
 )
 
 16 
-t_token
- *
-ptr
-;
-
-17 int 
-size
-;
-
-18 int 
-i
-;
-
-20 
-size
- = 0;
-
-21 
-i
- = 0;
-
-22 
-ptr
- = *
-new
-;
-
-23 while (
-ptr
-)
-
-25 if (
-ptr
-->
-id
- == 
-EXPANDED
-)
-
-27 while (
-	`is_white_space
-(
-ptr
-->
-content
-[
-i
-]))
-
-28 
-i
-++;
-
-29 while (
-ptr
-->
-content
-[
-i
-] && !
-	`is_white_space
-(ptr->content[i]))
-
-31 
-i
-++;
-
-32 
-size
-++;
-
-34 
-i
- = 0;
-
-36 else if (
-ptr
-->
-id
- != 
-DELETE
-)
-
-38 while (
-ptr
-->
-content
-[
-i
-])
-
-40 
-size
-++;
-
-41 
-i
-++;
-
-43 
-i
- = 0;
-
-45 
-ptr
- = ptr->
-next
-;
-
-47 return (
-size
-);
-
-48 
-	}
-}
-
-51 int 
-	$join_tokens
-(
-t_token
- **
-new
-, t_token *
-curr
-)
-
-53 int 
-size
-;
-
-54 
-t_token
- *
-ptr
-;
-
-55 int 
-i
-;
-
-56 int 
-j
-;
-
-58 
-i
- = 0;
-
-59 
-j
- = 0;
-
-60 
-size
- = 
-	`get_new_size
-(
-new
-);
-
-61 
 	`free
 (
-curr
+tmp
 ->
 content
 );
 
-62 
-curr
+17 
+tmp
 ->
 content
  = 
 NULL
 ;
 
-63 if (
-size
- == 0)
-
-65 
-	`free_token
-(
-new
-);
-
-66 
-curr
-->
-id
- = 
-DELETE
-;
-
-69 
-curr
+18 
+tmp
 ->
 content
  = 
-	`malloc
-((
-size
- + 1) * sizeof(char));
-
-70 if (!
-curr
-->
-content
-)
-
-72 
-ptr
- = *
-new
-;
-
-73 while (
-ptr
-)
-
-75 if (
-ptr
-->
-id
- == 
-DELETE
-)
-
-76 
-ptr
- = ptr->
-next
-;
-
-77 else if (
-ptr
-->
-id
- == 
-EXPANDED
-)
-
-79 while (
-ptr
-->
-content
-[
-j
-] && 
-	`is_white_space
-(ptr->content[j]))
-
-80 
-j
-++;
-
-81 while (
-ptr
-->
-content
-[
-j
-] && !
-	`is_white_space
-(ptr->content[j]))
-
-83 
-curr
-->
-content
-[
-i
-] = 
-ptr
-->content[
-j
-];
-
-84 
-j
-++;
-
-85 
-i
-++;
-
-87 
-j
- = 0;
-
-88 
-ptr
- = ptr->
-next
-;
-
-92 while (
-ptr
-->
-content
-[
-j
-])
-
-94 
-curr
-->
-content
-[
-i
-] = 
-ptr
-->content[
-j
-];
-
-95 
-i
-++;
-
-96 
-j
-++;
-
-98 
-ptr
- = ptr->
-next
-;
-
-99 
-j
- = 0;
-
-102 
-curr
-->
-content
-[
-i
-] = '\0';
-
-103 
-	`free_token
+	`ft_strdup
 (
-new
+s
 );
 
-105 
+19 if (!
+tmp
+->
+content
+)
+
+21 
+	`malloc_error_print_message
+("ft_strdup failed");
+
+22 return (
+ERROR_EXIT
+);
+
+25 
 	}
 }
 
-108 int 
+27 int 
 	$check_var_exist
 (
 t_token
@@ -9655,7 +9395,7 @@ t_token
 tmp
 )
 
-110 if (
+29 if (
 	`ft_strncmp
 (&
 tmp
@@ -9663,47 +9403,19 @@ tmp
 content
 [1], "?", 1) == 0)
 
-112 
-	`free
+31 return (
+	`replace_content
 (
 tmp
-->
-content
-);
-
-113 
-tmp
-->
-content
- = 
-NULL
-;
-
-114 
-tmp
-->
-content
- = 
-	`ft_strdup
-(
+, 
 	`ft_itoa
 (
 g_shell
 ->
 exit_status
-));
+)));
 
-115 if (!
-tmp
-->
-content
-)
-
-117 
-	`malloc_error_print_message
-("ft_strdup failed");
-
-123 else if (
+33 else if (
 	`ft_strncmp
 (
 g_shell
@@ -9717,7 +9429,7 @@ tmp
 content
 [1], \
 
-124 
+34 
 	`ft_strlen
 (
 tmp
@@ -9725,73 +9437,45 @@ tmp
 content
 )) == 0)
 
-126 
-	`free
+36 return (
+	`replace_content
 (
 tmp
-->
-content
-);
-
-127 
-tmp
-->
-content
- = 
-NULL
-;
-
-128 
-tmp
-->
-content
- = 
-	`ft_strdup
-(
+, 
 g_shell
 ->
 env
 ->
 var_value
-);
+));
 
-129 if (!
-tmp
-->
-content
-)
-
-131 
-	`malloc_error_print_message
-("ft_strdup failed");
-
-137 
+39 
 	}
 }
 
-139 int 
+41 int 
 	$size_var
 (char *
 s
 )
 
-141 int 
+43 int 
 i
 ;
 
-142 int 
+44 int 
 count
 ;
 
-144 
+46 
 i
  = 0;
 
-145 
+47 
 count
  = 0;
 
-146 while(
+48 while(
 s
 [
 i
@@ -9799,11 +9483,11 @@ i
 	`is_white_space
 (s[i]))
 
-147 
+49 
 i
 ++;
 
-148 while (
+50 while (
 s
 [
 i
@@ -9811,23 +9495,29 @@ i
 	`is_white_space
 (s[i]))
 
-150 
+52 
 count
 ++;
 
-151 
+53 
 i
 ++;
 
-153 return (
+55 return (
 count
 );
 
-154 
+56 
 	}
 }
 
-156 int 
+	@parsing_expansion_helper.c
+
+12 #include 
+	~"minishell.h
+"
+
+15 int 
 	$expand_var
 (
 t_token
@@ -9835,25 +9525,29 @@ t_token
 new
 )
 
-158 
+17 
 t_token
  *
 tmp
 ;
 
-159 
+18 
 t_env
  *
 save
 ;
 
-161 
+19 int 
+res
+;
+
+21 
 tmp
  = *
 new
 ;
 
-162 
+22 
 save
  = 
 g_shell
@@ -9861,7 +9555,7 @@ g_shell
 env
 ;
 
-163 while (
+23 while (
 tmp
 ->
 id
@@ -9869,25 +9563,41 @@ id
 EXPAND
 )
 
-164 
+24 
 tmp
  = tmp->
 next
 ;
 
-165 while (
+25 while (
 g_shell
 ->
 env
 )
 
-167 if (
+27 
+res
+ = 
 	`check_var_exist
 (
 tmp
-))
+);
 
-169 
+28 if (
+res
+ == 
+ERROR_EXIT
+)
+
+29 return (
+ERROR_EXIT
+);
+
+30 else if (
+res
+ == 1)
+
+32 
 tmp
 ->
 id
@@ -9895,7 +9605,7 @@ id
 EXPANDED
 ;
 
-170 
+33 
 g_shell
 ->
 env
@@ -9903,7 +9613,7 @@ env
 save
 ;
 
-171 return (
+34 return (
 	`size_var
 (
 tmp
@@ -9911,7 +9621,7 @@ tmp
 content
 ));
 
-173 
+36 
 g_shell
 ->
 env
@@ -9919,7 +9629,7 @@ env
 next
 ;
 
-175 
+38 
 tmp
 ->
 id
@@ -9927,7 +9637,7 @@ id
 DELETE
 ;
 
-176 
+39 
 g_shell
 ->
 env
@@ -9935,11 +9645,11 @@ env
 save
 ;
 
-178 
+41 
 	}
 }
 
-181 void 
+44 int 
 	$split_tokens
 (
 t_token
@@ -9953,11 +9663,11 @@ start
 len
 )
 
-183 if (
+46 if (
 start
  != 0)
 
-185 *
+48 *
 new
  = 
 	`new_token
@@ -9967,7 +9677,15 @@ s
 start
 );
 
-186 
+49 if (!*
+new
+)
+
+50 return (
+ERROR_EXIT
+);
+
+51 if (!
 	`token_linked_list
 (
 new
@@ -9977,9 +9695,13 @@ s
 start
 , 
 len
+))
+
+52 return (
+ERROR_EXIT
 );
 
-187 (*
+53 (*
 new
 )->
 next
@@ -9989,7 +9711,7 @@ id
 EXPAND
 ;
 
-191 *
+57 *
 new
  = 
 	`new_token
@@ -10001,7 +9723,15 @@ start
 len
 );
 
-192 (*
+58 if (!*
+new
+)
+
+59 return (
+ERROR_EXIT
+);
+
+60 (*
 new
 )->
 id
@@ -10009,35 +9739,35 @@ id
 EXPAND
 ;
 
-194 
+62 
 len
  = 
 start
  + len;
 
-195 
+63 
 start
  = 
 len
 ;
 
-196 while (
+64 while (
 s
 [
 len
 ])
 
-197 
+65 
 len
 ++;
 
-198 if (
+66 if (
 len
  != 
 start
 )
 
-199 
+67 if(!
 	`token_linked_list
 (
 new
@@ -10047,13 +9777,17 @@ s
 start
 , 
 len
+))
+
+68 return (
+ERROR_EXIT
 );
 
-200 
+70 
 	}
 }
 
-202 int 
+72 static int 
 	$var_len
 (char *
 s
@@ -10061,19 +9795,19 @@ s
 i
 )
 
-204 int 
+74 int 
 len
 ;
 
-206 
+76 
 len
  = 0;
 
-207 
+77 
 i
 ++;
 
-208 if (
+78 if (
 	`is_question
 (
 s
@@ -10081,13 +9815,13 @@ s
 i
 ]))
 
-212 while (
+82 while (
 s
 [
 i
 ] && \
 
-213 !
+83 !
 	`is_white_space
 (
 s
@@ -10095,7 +9829,7 @@ s
 i
 ]) && \
 
-214 !
+84 !
 	`is_quote
 (
 s
@@ -10103,7 +9837,7 @@ s
 i
 ]) && \
 
-215 !
+85 !
 	`is_question
 (
 s
@@ -10111,7 +9845,7 @@ s
 i
 ]) && \
 
-216 !
+86 !
 	`is_dollar
 (
 s
@@ -10119,7 +9853,7 @@ s
 i
 ]) && \
 
-217 !
+87 !
 	`is_punct
 (
 s
@@ -10127,23 +9861,23 @@ s
 i
 ]))
 
-219 
+89 
 i
 ++;
 
-220 
+90 
 len
 ++;
 
-223 return (
+93 return (
 len
 );
 
-224 
+94 
 	}
 }
 
-226 int 
+98 int 
 	$prepare_expand
 (
 t_token
@@ -10153,23 +9887,23 @@ curr
 i
 )
 
-228 
+100 
 t_token
  *
 new
 ;
 
-229 int 
+101 int 
 len
 ;
 
-231 
+103 
 new
  = 
 NULL
 ;
 
-232 
+104 
 len
  = 
 	`var_len
@@ -10181,7 +9915,7 @@ content
 i
 );
 
-233 
+105 if (
 	`split_tokens
 (&
 new
@@ -10193,9 +9927,19 @@ content
 i
 , 
 len
- + 1);
+ + 1) == 
+ERROR_EXIT
+)
 
-234 
+106 return (
+	`free_token
+(&
+new
+), 
+ERROR_EXIT
+);
+
+107 
 len
  = 
 	`expand_var
@@ -10203,15 +9947,39 @@ len
 new
 );
 
-235 
+108 if (
+len
+ == 
+ERROR_EXIT
+)
+
+109 return (
+	`free_token
+(&
+new
+), 
+ERROR_EXIT
+);
+
+110 if (
 	`join_tokens
 (&
 new
 , 
 curr
+) == 
+ERROR_EXIT
+)
+
+111 return (
+	`free_token
+(&
+new
+), 
+ERROR_EXIT
 );
 
-236 if (
+112 if (
 curr
 ->
 id
@@ -10219,23 +9987,461 @@ id
 DELETE
 )
 
-238 
+114 
 	`set_id_expansion
 (
 curr
 );
 
-239 if (
-len
- == -1)
-
-241 return(
+115 return(
 len
  + 
 i
 );
 
-242 
+116 
+	}
+}
+
+	@parsing_expansion_join_tokens.c
+
+12 #include 
+	~"minishell.h
+"
+
+14 static int 
+	$get_expanded_size
+(char *
+s
+, int 
+i
+)
+
+16 int 
+size
+;
+
+18 
+size
+ = 0;
+
+19 while (
+	`is_white_space
+(
+s
+[
+i
+]))
+
+20 
+i
+++;
+
+21 while (
+s
+[
+i
+] && !
+	`is_white_space
+(s[i]))
+
+23 
+i
+++;
+
+24 
+size
+++;
+
+26 return (
+size
+);
+
+27 
+	}
+}
+
+29 static int 
+	$get_new_size
+(
+t_token
+ **
+new
+)
+
+31 
+t_token
+ *
+ptr
+;
+
+32 int 
+size
+;
+
+33 int 
+i
+;
+
+35 
+size
+ = 0;
+
+36 
+ptr
+ = *
+new
+;
+
+37 while (
+ptr
+)
+
+39 
+i
+ = 0;
+
+40 if (
+ptr
+->
+id
+ == 
+EXPANDED
+)
+
+41 
+size
+ += 
+	`get_expanded_size
+(
+ptr
+->
+content
+, 
+i
+);
+
+42 else if (
+ptr
+->
+id
+ != 
+DELETE
+)
+
+44 while (
+ptr
+->
+content
+[
+i
+])
+
+46 
+size
+++;
+
+47 
+i
+++;
+
+50 
+ptr
+ = ptr->
+next
+;
+
+52 return (
+size
+);
+
+53 
+	}
+}
+
+55 static void 
+	$copy_helper
+(
+t_token
+ **
+new
+, t_token *
+curr
+)
+
+57 int 
+i
+;
+
+58 int 
+j
+;
+
+59 
+t_token
+ *
+ptr
+;
+
+61 
+i
+ = 0;
+
+62 
+j
+ = 0;
+
+63 
+ptr
+ = *
+new
+;
+
+64 while (
+ptr
+)
+
+66 if (
+ptr
+->
+id
+ == 
+EXPANDED
+)
+
+68 while (
+ptr
+->
+content
+[
+j
+] && 
+	`is_white_space
+(ptr->content[j]))
+
+69 
+j
+++;
+
+70 while (
+ptr
+->
+content
+[
+j
+] && !
+	`is_white_space
+(ptr->content[j]))
+
+71 
+curr
+->
+content
+[
+i
+++] = 
+ptr
+->content[
+j
+++];
+
+73 else if (
+ptr
+->
+id
+ != 
+DELETE
+)
+
+74 while (
+ptr
+->
+content
+[
+j
+])
+
+75 
+curr
+->
+content
+[
+i
+++] = 
+ptr
+->content[
+j
+++];
+
+76 
+ptr
+ = ptr->
+next
+;
+
+77 
+j
+ = 0;
+
+79 
+curr
+->
+content
+[
+i
+] = '\0';
+
+80 
+	}
+}
+
+82 static int 
+	$copy_join_tokens
+(
+t_token
+ **
+new
+, t_token *
+curr
+, int 
+size
+)
+
+84 int 
+i
+;
+
+85 int 
+j
+;
+
+87 
+i
+ = 0;
+
+88 
+j
+ = 0;
+
+89 
+	`free
+(
+curr
+->
+content
+);
+
+90 
+curr
+->
+content
+ = 
+NULL
+;
+
+91 
+curr
+->
+content
+ = 
+	`malloc
+((
+size
+ + 1) * sizeof(char));
+
+92 if (!
+curr
+->
+content
+)
+
+94 
+	`malloc_error_print_message
+(
+	`strerror
+(
+errno
+));
+
+95 return (
+ERROR_EXIT
+);
+
+97 
+	`copy_helper
+(
+new
+, 
+curr
+);
+
+98 
+	`free_token
+(
+new
+);
+
+101 
+	}
+}
+
+103 int 
+	$join_tokens
+(
+t_token
+ **
+new
+, t_token *
+curr
+)
+
+105 int 
+size
+;
+
+107 
+size
+ = 
+	`get_new_size
+(
+new
+);
+
+108 if (
+size
+ == 0)
+
+110 
+	`free_token
+(
+new
+);
+
+111 
+curr
+->
+id
+ = 
+DELETE
+;
+
+114 if (
+	`copy_join_tokens
+(
+new
+, 
+curr
+, 
+size
+) == 
+ERROR_EXIT
+)
+
+115 return (
+ERROR_EXIT
+);
+
+117 
 	}
 }
 
@@ -10399,8 +10605,6 @@ i
 s
 , int 
 i
-, int 
-pos
 )
 
 68 char 
@@ -10425,8 +10629,6 @@ s
 i
 ] && s[i] != 
 c
- && i < 
-pos
 )
 
 73 
@@ -10447,7 +10649,7 @@ i
 	~"minishell.h
 "
 
-14 static int 
+17 static int 
 	$copy_string
 (
 t_token
@@ -10459,23 +10661,23 @@ s
 pos
 )
 
-16 int 
+19 int 
 i
 ;
 
-17 int 
+20 int 
 j
 ;
 
-19 
+22 
 i
  = 0;
 
-20 
+23 
 j
  = 0;
 
-21 *
+24 *
 s
  = 
 	`malloc
@@ -10487,15 +10689,15 @@ curr
 content
 ) + 1);
 
-22 if (!*
+25 if (!*
 s
 )
 
-24 
+27 
 i
  = 0;
 
-25 while (
+28 while (
 curr
 ->
 content
@@ -10503,17 +10705,17 @@ content
 i
 ])
 
-27 if (
+30 if (
 i
  == 
 pos
 )
 
-28 
+31 
 i
 ++;
 
-29 (*
+32 (*
 s
 )[
 j
@@ -10525,21 +10727,21 @@ content
 i
 ];
 
-30 
+33 
 i
 ++;
 
-31 
+34 
 j
 ++;
 
-33 (*
+36 (*
 s
 )[
 j
 ] = '\0';
 
-34 
+37 
 	`free
 (
 curr
@@ -10547,7 +10749,7 @@ curr
 content
 );
 
-35 
+38 
 curr
 ->
 content
@@ -10555,11 +10757,11 @@ content
 s
 ;
 
-37 
+40 
 	}
 }
 
-39 int 
+46 int 
 	$trim_dollar
 (
 t_token
@@ -10569,33 +10771,33 @@ curr
 pos
 )
 
-41 int 
+48 int 
 i
 ;
 
-42 int 
+49 int 
 j
 ;
 
-43 char *
+50 char *
 s
 ;
 
-46 
+53 
 s
  = 
 NULL
 ;
 
-47 
+54 
 i
  = 0;
 
-48 
+55 
 j
  = 0;
 
-49 if (
+56 if (
 curr
 ->
 content
@@ -10603,7 +10805,7 @@ content
 pos
  + 1] == '\'')
 
-51 while (
+58 while (
 curr
 ->
 content
@@ -10611,7 +10813,7 @@ content
 i
 ] && i++)
 
-53 if (
+60 if (
 	`is_double_quote
 (
 curr
@@ -10621,7 +10823,7 @@ content
 i
 ]))
 
-55 
+62 
 j
  = 
 	`loop_double_quotes
@@ -10633,11 +10835,11 @@ content
 i
 );
 
-56 if (
+63 if (
 j
  == 0)
 
-60 if (!
+67 if (!
 	`copy_string
 (
 curr
@@ -10647,7 +10849,7 @@ s
 pos
 ))
 
-63 
+70 
 	}
 }
 
@@ -12175,15 +12377,35 @@ t_token
 token
 )
 
-16 if (
-	`ft_strchr
+16 int 
+i
+;
+
+18 
+i
+ = 0;
+
+19 while (
+token
+->
+content
+[
+i
+])
+
+21 if (
+	`is_dollar
 (
 token
 ->
 content
-, '$'))
+[
+i
+]) && 
+	`not_within_squotes
+(token, i))
 
-17 
+23 
 token
 ->
 id
@@ -12191,7 +12413,11 @@ id
 DOLLAR
 ;
 
-19 
+26 
+i
+++;
+
+28 
 token
 ->
 id
@@ -12199,11 +12425,11 @@ id
 WORD
 ;
 
-21 
+30 
 	}
 }
 
-23 void 
+32 void 
 	$set_id
 (
 t_token
@@ -12211,7 +12437,7 @@ t_token
 token
 )
 
-25 if (
+34 if (
 	`ft_strncmp
 (
 token
@@ -12219,7 +12445,7 @@ token
 content
 , "|", 2) == 0)
 
-26 
+35 
 token
 ->
 id
@@ -12227,7 +12453,7 @@ id
 PIPELINE
 ;
 
-27 else if (
+36 else if (
 	`ft_strncmp
 (
 token
@@ -12235,7 +12461,7 @@ token
 content
 , "<", 2) == 0)
 
-28 
+37 
 token
 ->
 id
@@ -12243,7 +12469,7 @@ id
 L_CHEVRON
 ;
 
-29 else if (
+38 else if (
 	`ft_strncmp
 (
 token
@@ -12251,7 +12477,7 @@ token
 content
 , ">", 2) == 0)
 
-30 
+39 
 token
 ->
 id
@@ -12259,7 +12485,7 @@ id
 R_CHEVRON
 ;
 
-31 else if (
+40 else if (
 	`ft_strncmp
 (
 token
@@ -12267,7 +12493,7 @@ token
 content
 , "<<", 3) == 0)
 
-32 
+41 
 token
 ->
 id
@@ -12275,7 +12501,7 @@ id
 HERE_DOC
 ;
 
-33 else if (
+42 else if (
 	`ft_strncmp
 (
 token
@@ -12283,7 +12509,7 @@ token
 content
 , ">>", 3) == 0)
 
-34 
+43 
 token
 ->
 id
@@ -12291,7 +12517,7 @@ id
 APPEND
 ;
 
-35 else if (
+44 else if (
 	`ft_strchr
 (
 token
@@ -12299,7 +12525,7 @@ token
 content
 , '$'))
 
-36 
+45 
 token
 ->
 id
@@ -12307,7 +12533,7 @@ id
 DOLLAR
 ;
 
-38 
+47 
 token
 ->
 id
@@ -12315,7 +12541,7 @@ id
 WORD
 ;
 
-40 
+49 
 	}
 }
 
@@ -12323,8 +12549,8 @@ WORD
 1
 .
 0
-96
-2471
+98
+2541
 envp_routine.c
 is_dollar.c
 is_operator.c
@@ -12411,7 +12637,9 @@ minishell.h
 parsing.c
 parsing_expansion.c
 parsing_expansion_dollar_conditions.c
+parsing_expansion_expand_var_helper.c
 parsing_expansion_helper.c
+parsing_expansion_join_tokens.c
 parsing_expansion_looping.c
 parsing_expansion_trim_dollar.c
 parsing_expansion_word_splitting.c

@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:28:54 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/17 18:56:20 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/18 10:07:59 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -45,7 +45,7 @@ int	size_var(char *s)
 
 	i = 0;
 	count = 0;
-	while(s[i] && is_white_space(s[i]))
+	while (s[i] && is_white_space(s[i]))
 		i++;
 	while (s[i] && !is_white_space(s[i]))
 	{

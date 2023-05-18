@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 13:33:22 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/13 14:56:02 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/18 10:15:16 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -18,7 +18,7 @@ int	is_question(char c)
 	return (0);
 }
 
-int is_punct(char c)
+int	is_punct(char c)
 {
 	if ((c >= 33 && c <= 47) || \
 		(c >= 58 && c <= 64) || \

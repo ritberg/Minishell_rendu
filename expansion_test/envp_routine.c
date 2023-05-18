@@ -6,7 +6,7 @@
 /*   By: mmakarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:59:31 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/05/13 17:22:17 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/18 11:46:11 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -40,19 +40,16 @@ void	free_env(t_env **head)
 t_env	*new_env(char *envp)
 {
 	t_env	*env;
-	int	end;
-	int	start;
-	
+	int		end;
+	int		start;
+
 	if (!envp)
 		return (NULL);
 	start = 0;
 	end = 0;
 	env = malloc(sizeof(t_env));
 	if (!env)
-	{
-		malloc_error_print_message(strerror(errno));
-		return (NULL);
-	}
+		return (malloc_error_print_message(strerror(errno)), NULL);
 	while (envp[end] != '=')
 		end++;
 	env->var_name = ft_substr(envp, 0, end);

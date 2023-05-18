@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:26:32 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/17 19:46:26 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/18 10:20:27 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -21,7 +21,7 @@ void	set_id_expansion(t_token *token)
 		if (is_dollar(token->content[i]) && not_within_squotes(token, i))
 		{
 			token->id = DOLLAR;
-			return;
+			return ;
 		}
 		i++;
 	}
