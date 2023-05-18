@@ -6,12 +6,14 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 17:17:33 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/18 10:07:26 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/18 14:21:46 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
 // does expansion for '$USER' !! A MODIFIER
+
+
 
 int	not_within_squotes(t_token *curr, int pos)
 {

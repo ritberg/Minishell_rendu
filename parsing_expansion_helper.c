@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 11:07:14 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/18 10:10:41 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/18 15:20:57 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -36,7 +36,7 @@ int	expand_var(t_token **new)
 	}
 	tmp->id = DELETE;
 	g_shell->env = save;
-	return (-1);
+	return (0);
 }
 
 int	split_tokens(t_token **new, char *s, int start, int len)
@@ -46,6 +46,7 @@ int	split_tokens(t_token **new, char *s, int start, int len)
 		*new = new_token(s, 0, start);
 		if (!*new)
 			return (ERROR_EXIT);
+		(*new)->id = WORD;
 		if (!token_linked_list(new, s, start, len))
 			return (ERROR_EXIT);
 		(*new)->next->id = EXPAND;
@@ -91,12 +92,27 @@ static int	var_len(char *s, int i)
 	return (len);
 }
 
-/*
-*/
+int	new_id(t_token **new)
+{
+	t_token *ptr;
+
+	ptr = *new;
+	while (ptr)
+	{
+		if (ptr->id == DELETE || ptr->id == EXPANDED)
+			break;
+		ptr = ptr->next;
+	}
+	if (ptr->next == NULL)
+		return (WORD);
+	return(set_id_expansion(ptr->next));
+}
+
 int	prepare_expand(t_token *curr, int i)
 {
 	t_token	*new;
 	int		len;
+	int		id;
 
 	new = NULL;
 	len = var_len(curr->content, i);
@@ -105,10 +121,11 @@ int	prepare_expand(t_token *curr, int i)
 	len = expand_var(&new);
 	if (len == ERROR_EXIT)
 		return (free_token(&new), ERROR_EXIT);
+	id = new_id (&new);
 	if (join_tokens(&new, curr) == ERROR_EXIT)
 		return (free_token(&new), ERROR_EXIT);
 	if (curr->id == DELETE)
 		return (0);
-	set_id_expansion(curr);
+	curr->id = id ;
 	return (len + i);
 }

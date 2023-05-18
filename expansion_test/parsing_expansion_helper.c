@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 11:07:14 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/18 14:30:07 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/18 15:20:57 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -36,7 +36,7 @@ int	expand_var(t_token **new)
 	}
 	tmp->id = DELETE;
 	g_shell->env = save;
-	return (-1);
+	return (0);
 }
 
 int	split_tokens(t_token **new, char *s, int start, int len)
