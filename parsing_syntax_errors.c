@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:00:31 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/10 14:14:07 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/18 11:44:27 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -39,19 +39,13 @@ int	count_metachar(char *s, char c, int num)
 	{
 		c = s[i];
 		if (is_chevron(c) && is_chevron(s[i + 1]))
-		{
-			print_syntax_error_dchar(c);
-			return (0);
-		}
+			return (print_syntax_error_dchar(c), 0);
 		else
 			print_syntax_error_char(c);
 		return (0);
 	}
 	else if (s[i] == '\0')
-	{
-		print_syntax_error_str("newline");
-		return (0);
-	}
+		return (print_syntax_error_str("newline"), 0);
 	return (1);
 }
 

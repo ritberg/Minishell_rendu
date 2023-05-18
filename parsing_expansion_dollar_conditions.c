@@ -1,69 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_expansion_trim_dollar.c                    :+:      :+:    :+:   */
+/*   parsing_expansion_dollar_conditions.c              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/17 17:24:54 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/18 12:31:27 by mdanchev         ###   lausanne.ch       */
+/*   Created: 2023/05/17 17:17:33 by mdanchev          #+#    #+#             */
+/*   Updated: 2023/05/18 10:07:26 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
-/*
- * If malloc error -> function return 0
- */
-static int	copy_string(t_token *curr, char **s, int pos)
-{
-	int	i;
-	int	j;
+// does expansion for '$USER' !! A MODIFIER
 
-	i = 0;
-	j = 0;
-	*s = malloc(sizeof(char) * ft_strlen(curr->content));
-	if (!*s)
-		return (0);
-	i = 0;
-	while (curr->content[i])
-	{
-		if (i == pos)
-			i++;
-		(*s)[j] = curr->content[i];
-		i++;
-		j++;
-	}
-	(*s)[j] = '\0';
-	free(curr->content);
-	curr->content = *s;
-	return (1);
-}
-
-/*
- * if copy_string return 0 -> there is a malloc error
- * -> exit the program
- */
-int	trim_dollar(t_token *curr, int pos)
+int	not_within_squotes(t_token *curr, int pos)
 {
 	int		i;
 	int		start;
-	char	*s;
 
-	s = NULL;
 	i = 0;
 	start = 0;
+	if (!is_dollar(curr->content[pos]))
+		return (0);
 	while (curr->content[i])
 	{
 		if (is_double_quote(curr->content[i]))
+			i = loop_through(curr->content, i);
+		else if (is_simple_quote(curr->content[i]))
 		{
 			start = i;
 			i = loop_through(curr->content, i);
 			if (pos > start && pos < i)
-				return (1);
+				return (0);
 		}
 		i++;
 	}
-	if (!copy_string(curr, &s, pos))
-		return (0);
 	return (1);
+}
+
+int	is_dollar_to_expand(t_token *curr, int i)
+{
+	if (is_question(curr->content[i + 1]) || \
+		(!is_dollar(curr->content[i + 1]) && \
+		!is_quote(curr->content[i + 1]) && \
+		!is_punct(curr->content[i + 1]) && \
+		curr->content[i + 1] != '\0'))
+	{
+		return (1);
+	}
+	return (0);
 }

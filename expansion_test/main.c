@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 16:41:09 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/18 11:44:01 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/18 12:11:45 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	main(int ac, char **av, char **envp)
 		return (1);
 	line = NULL;
 //	line = ft_strdup("$SHELL'$SHELL' $a \"$juhtgfd | $USER $SHELL \"$\'coucouc\'wqd\" $\"fwfwef\"\" \"coucou $fd hello\"");
-	line = ft_strdup("\"\"$US\"\"ER\"\" \"\" < <<");
+	line = ft_strdup("\"$\"");
 	printf("LINE = %s\n", line);
 	token = parsing(line);
 //		printf("EXIT STATUS %d\n", g_shell->exit_status);

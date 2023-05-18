@@ -6,13 +6,12 @@
 #    By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 12:23:37 by mdanchev          #+#    #+#              #
-#    Updated: 2023/05/16 16:53:07 by mdanchev         ###   lausanne.ch        #
+#    Updated: 2023/05/18 12:00:22 by mdanchev         ###   lausanne.ch        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS		= main.c \
 			  envp_routine.c \
-			  parsing.c \
 			  is_token.c \
 			  is_operator.c \
 			  is_dollar.c \
@@ -24,14 +23,21 @@ SRCS		= main.c \
 			  token_routine.c \
 			  token_routine_set_id.c \
 			  token_routine_delete.c \
+			  parsing.c \
 			  parsing_syntax_errors.c\
 			  parsing_syntax_errors_print_message.c \
 			  parsing_token_extraction.c\
 			  parsing_expansion.c \
 			  parsing_expansion_helper.c \
+			  parsing_expansion_dollar_conditions.c \
+			  parsing_expansion_expand_var_helper.c \
+			  parsing_expansion_looping.c \
+			  parsing_expansion_trim_dollar.c \
+			  parsing_expansion_join_tokens.c \
+			  parsing_quote_removing.c \
 			  malloc_error_print_message.c\
-			  env_copied.c\
 			  builtins.c\
+
 
 OBJS		= ${SRCS:.c=.o}
 

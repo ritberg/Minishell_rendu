@@ -6,10 +6,10 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 11:10:32 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/08 11:10:35 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/18 10:15:40 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
-# include "minishell.h"
+#include "minishell.h"
 
 /* A METACHARACTER IS A BLANK, A NEWLINE, A CHEVRON OR A PIPELINE */
 
@@ -37,5 +37,3 @@ int	is_word(char c)
 		return (1);
 	return (0);
 }
-
-

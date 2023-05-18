@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/18 10:16:33 by mdanchev          #+#    #+#             */
+/*   Updated: 2023/05/18 10:53:31 by mdanchev         ###   lausanne.ch       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
@@ -40,10 +52,13 @@
 # define EXPAND		9
 # define DELETE		10
 # define EXPANDED	11
+# define CONTINUE  	-1
+# define ERROR_EXIT		-169
+# define ERROR_EXIT_	 0	
 
 //int	g_exit_status;
 
-// OK
+/* OK */
 typedef struct s_env
 {
 	char			*var_name;
@@ -55,7 +70,6 @@ typedef struct s_token
 {
 	char				*content;
 	int					id;
-//  t_env				**env;
 	struct s_token		*next;
 }	t_token;
 
@@ -82,16 +96,41 @@ typedef struct s_shell
 }	t_shell;
 
 
-extern	t_shell	*g_shell;
+extern t_shell	*g_shell;
+/*			EXPANSION (parsing_expansion.c)*/
+int			expansion(t_token **token, t_token *curr, int pos);
+int			check_dollar(t_token *curr, int i);
+int			trim_dollar(t_token *curr, int pos);
 
-/* EXPANSION */
-void	expansion(t_token **token, t_token *curr, int pos);
-t_token *delete_token(t_token **head);
-int		token_list_size(t_token	**head);
-int		prepare_expand(t_token *tmp, int i);
-void	set_id_expansion(t_token *token);
-//int		word_splitting(t_token **new, t_token *curr);
+/* 			EXPANSION (parsing_expansion_dollar_conditions.c)*/
+int			is_dollar_to_expand(t_token *curr, int i);
+int			not_within_squotes(t_token *curr, int pos);
 
+/* 			EXPANSION (parsing_expansion_trim_dollar.c)*/
+int			trim_dollar(t_token *curr, int pos);
+
+/* 			EXPANSION (parsing_expansion_looping.c)*/
+int			loop_dollars(char *s, int i);
+int			loop_through(char *s, int i);
+int			loop_simple_quotes(char *s, int i);
+int			loop_double_quotes(char *s, int i);
+
+/* 			EXPANSION (parsing_expansion_expand_var_helper.c)*/
+int			size_var(char *s);
+int			check_var_exist(t_token *tmp);
+
+/* 			EXPANSION (parsing_expansion_join_tokens.c)*/
+int			join_tokens(t_token **new, t_token *curr);
+
+/*			EXPANSION (parsing_expansion_helper.c)*/
+int			prepare_expand(t_token *tmp, int i);
+void		set_id_expansion(t_token *token);
+
+/*			QUOTE REMOVING (parsing_quote_removing.c)*/
+int			quote_removing(t_token **head, t_token *curr, int pos);
+
+t_token		*delete_token(t_token **head);
+int			token_list_size(t_token	**head);
 
 /* BUILTINS */
 int	_pwd(t_cmd *cmd);
