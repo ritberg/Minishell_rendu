@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:16:33 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/18 10:53:31 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/18 14:12:52 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ int			join_tokens(t_token **new, t_token *curr);
 
 /*			EXPANSION (parsing_expansion_helper.c)*/
 int			prepare_expand(t_token *tmp, int i);
-void		set_id_expansion(t_token *token);
+int			set_id_expansion(t_token *token);
 
 /*			QUOTE REMOVING (parsing_quote_removing.c)*/
 int			quote_removing(t_token **head, t_token *curr, int pos);

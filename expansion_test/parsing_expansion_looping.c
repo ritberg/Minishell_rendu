@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 17:54:34 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/18 12:20:10 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/18 13:36:18 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -50,8 +50,11 @@ int	loop_dollars(char *s, int i)
 {
 	while (is_dollar(s[i]) && s[i])
 		i++;
-	if (s[i] != '\0')
+	if (s[i] != '\0' && !is_white_space(s[i]))
+	{
 		i--;
+		printf ("i = %d\n", i);
+	}
 	return (i);
 }
 

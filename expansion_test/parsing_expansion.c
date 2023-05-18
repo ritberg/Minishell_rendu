@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 12:13:21 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/18 10:06:12 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/18 12:17:30 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -26,7 +26,7 @@ int	check_dollar(t_token *curr, int i)
 				if (!trim_dollar(curr, i))
 					return (ERROR_EXIT);
 				else
-					i++;
+					i = i + 2;
 			}
 			else if (curr->content[i + 1] == '\0')
 				break ;

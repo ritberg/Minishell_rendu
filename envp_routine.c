@@ -6,7 +6,7 @@
 /*   By: mmakarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:59:31 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/05/18 11:46:11 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/18 12:57:55 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -61,7 +61,7 @@ t_env	*new_env(char *envp)
 		end++;
 	env->var_value = ft_substr(envp, start, end - start);
 	if (!env->var_value)
-		return (NULL);
+		return (malloc_error_print_message("ft stubstr failed"), NULL);
 	env->next = NULL;
 	return (env);
 }

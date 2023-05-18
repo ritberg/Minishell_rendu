@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:22:28 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/18 11:24:03 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/18 13:18:27 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -73,7 +73,9 @@ int	remove_q(t_token *curr, int pos)
 
 int	quote_removing(t_token **head, t_token *curr, int pos)
 {
-	if (curr->content[pos] == 0)
+	if (!head || !*head)
+		return (1);
+	if (curr->content[pos] == '\0')
 	{
 		if (curr->next)
 		{
@@ -81,6 +83,7 @@ int	quote_removing(t_token **head, t_token *curr, int pos)
 			curr = curr->next;
 			quote_removing(head, curr, pos);
 		}
+		return (1);
 	}
 	else if (is_quote(curr->content[pos]))
 	{

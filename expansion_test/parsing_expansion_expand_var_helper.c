@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:28:54 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/18 10:07:59 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/18 13:20:14 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -30,10 +30,13 @@ int	check_var_exist(t_token *tmp)
 	{
 		return (replace_content(tmp, ft_itoa(g_shell->exit_status)));
 	}
-	else if (ft_strncmp(g_shell->env->var_name, &tmp->content[1], \
-				ft_strlen(tmp->content)) == 0)
+	else if (g_shell && g_shell->env && g_shell->env->var_name)
 	{
-		return (replace_content(tmp, g_shell->env->var_value));
+		if (ft_strncmp(g_shell->env->var_name, &tmp->content[1], \
+					ft_strlen(tmp->content)) == 0)
+		{
+			return (replace_content(tmp, g_shell->env->var_value));
+		}
 	}
 	return (0);
 }
