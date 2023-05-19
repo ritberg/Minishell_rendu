@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 16:41:09 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/19 13:13:09 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/05/19 17:23:04 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int	init_shell(char **envp)
 	}
 	g_shell->exit_status = 0;
 //	print_env(&g_shell->env);
+	g_shell->save_env = copy_env_tab(g_shell->env); //where to put it?
 	return (1);
 }
 
