@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:16:33 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/18 19:12:59 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/19 22:30:10 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ typedef struct s_shell
 {
 	t_env	*env;
 	int		exit_status;
-//	char	**save_env;
+	char	**save_env; //
 }	t_shell;
 
 
@@ -201,5 +201,7 @@ void	handler_ctr_c(int code);
 //int	parsing_av(char *str);
 char	**ft_splitpath(char *s, char c);
 
+// tmp
+char	**copy_env_tab(t_env *env);
 
 #endif

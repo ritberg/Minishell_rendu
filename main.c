@@ -70,6 +70,7 @@ int	init_shell(char **envp)
 	}
 	g_shell->exit_status = 0;
 	printf("%s\n", g_shell->env->var_name);
+	g_shell->save_env = copy_env_tab(g_shell->env); //
 	print_env();
 	return (1);
 }
