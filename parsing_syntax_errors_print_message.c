@@ -6,14 +6,14 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 10:24:58 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/11 14:38:08 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/05/19 11:52:10 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
 /*
    We print error message, which character has a problem and
-   return exit status for syntax errors (258)
+   set exit status for syntax errors to 258
 */
 
 void	print_syntax_error_char(char c)

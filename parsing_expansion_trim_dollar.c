@@ -6,13 +6,13 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 17:24:54 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/18 18:26:27 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/19 11:50:58 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
 /*
- * If malloc error -> function return 0
+ * If malloc error -> function returns 0
  */
 static int	copy_string(t_token *curr, char **s, int pos)
 {
@@ -40,7 +40,7 @@ static int	copy_string(t_token *curr, char **s, int pos)
 }
 
 /*
- * if copy_string return 0 -> there is a malloc error
+ * if copy_string returns 0 -> there is a malloc error
  * -> exit the program
  */
 int	trim_dollar(t_token *curr, int pos)

@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:00:49 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/18 19:32:03 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/19 11:19:13 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -52,7 +52,7 @@ void	print_token(t_token **head)
 
 /*
  * parsing() function
- * GOAL: this the main function of the parsing part of the minishell.
+ * GOAL: this is the main function of the parsing part of the minishell.
  * 		Each function returns 1 for success and 0 for failure.
  * 		Failure may occur if the syntax is incorrect or if malloc fails.
  * 
@@ -62,9 +62,9 @@ void	print_token(t_token **head)
  * 	2. get_tokens() - splits the line into tokens 
  * 	   				  and stores them in a linked list.
  *		- Each token represents a word or metacharacter 
- *		 (a metacharacter is pipe or redirection operator).
+ *		 (a metacharacter is a pipe or a redirection operator).
  *		- If a word contains a dollar sign, this function 
- *		  marks the token id as dollar. 
+ *		  marks the token with a DOLLAR id. 
  *
  * 3. expansion() - recursivly expands the dollar sign in the token that was
  * 			        previously marked by get_tokens().

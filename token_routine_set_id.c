@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:26:32 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/18 14:29:19 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/19 12:02:27 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -14,7 +14,7 @@
 int	set_id_expansion(t_token *token)
 {
 	if (ft_strchr(token->content, '$'))
-		return(DOLLAR);
+		return (DOLLAR);
 	return (WORD);
 }
 

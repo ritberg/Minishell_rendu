@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 12:13:21 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/18 18:53:08 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/19 12:20:41 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -14,31 +14,30 @@
  * check_dollar() function:
  * GOAL: This function checks if the dollar is valid to expand.
  *
- * If an malloc error occurs, the function recieves ERROR_EXIT signal.
+ * If a malloc error occurs, the function recieves ERROR_EXIT signal.
  * Otherwise, it returns the index of the next character to check.
  *
  * - If the current character is a dollar sign 
  *   and it is not within simple quotes, we will proceed to expansion
  *  - else, we increment i until we find a dollar or EOF
  *
- *   1. If the next caracter is a a word or question mark or underscore
+ *   1. If the next character is a word, a question mark, or an underscore
  *   	(in othere words: a delimiter is a white space, a quote, 
  *   	 a dollar sign, a punctuation sign (except for ? and _) and not the EOF)
  *   		-> we will expand the dollar
- *   2. If the next caracter is a dollar sign, we loop through until 
- *   	the last dollars. 
- *   		- If the following caracter is a delimiter, we 
- *   	      will prints all these dollars.
- *   	    - If the following caracter is a word, or ? or _, we will print
- *   	      all dollars, except the last one. The last one will be expanded.
- *   3. If the next caracter is a quote, 
+ *   2. If the next character is a dollar sign, we loop through until 
+ *   	the last dollar. 
+ *   		- If the following character is a delimiter, we 
+ *   	      will print all these dollars.
+ *   	    - If the following character is a word, or ? or _, we will print
+ *   	      all dollars, except for the last one.The last one will be expanded.
+ *   3. If the next character is a quote, 
  *   	we will check if we need to trim the dollar.
  *   		- If the dollar is within double quotes -> we print the dollar;
  *   		- If the dollar is unquoted -> we trim the dollar.
- *   4. If the next caracter is EOF, we will print the dollar and mark 
+ *   4. If the next character is EOF, we will print the dollar and mark 
  *      the token as WORD.
  */
-
 int	check_dollar(t_token *curr, int i)
 {
 	int	res;
@@ -84,15 +83,15 @@ static void	expansion_next_token(t_token **head, t_token *curr, int pos)
  * expansion() function:
  * GOAL: This function is called recursively to expand the tokens.
  *
- * If an malloc error occurs, the function recieves ERROR_EXIT 
- * and return 0 for failure. Otherwise, it returns 1 for success.
+ * If a malloc error occurs, the function recieves ERROR_EXIT 
+ * and returns 0 for failure. Otherwise, it returns 1 for success.
  *
  * - If the token is marked as DOLLAR, 
  *	 we check if it is a valid dollar to expand with check_dollar().
- * - If the expansion let to empty string, we delete the token 
+ * - If the expansion leads to empty strings, we delete the token 
  *   with delete_token() and reset curr and pos.
  * - If the current token is not marked as DOLLAR,
- *   we call the next token by calling the function expansion_next_token().
+ *   we call the next token in the function expansion_next_token().
  *
  * NOTE: 
  * if(!curr) 

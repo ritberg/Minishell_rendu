@@ -6,7 +6,7 @@
 /*   By: mmakarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:59:31 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/05/18 12:57:55 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/19 11:38:42 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -34,7 +34,7 @@ void	free_env(t_env **head)
    Copy env keys as var_name and values as var_value
 
    - malloc of t_env structure
-   - for var_name, we stop at '=', '=' including
+   - for var_name, we stop at '=', '=' excluding
    - for var_value, we stop at '\0'
 */
 t_env	*new_env(char *envp)
@@ -92,10 +92,6 @@ int	link_env(t_env **head, t_env *last)
    - save var_name and var_value in the fuction new_env
    - the first line of env becomes head
    - link each element of the linked list in the function link_env
-
-   P.S. Rita : 
-   If this function returns t_env * and not t_env ** and if we have
-   an empty envp, there is no segfault
 */
 t_env	*get_envp(char **envp)
 {

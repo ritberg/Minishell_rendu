@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 11:07:14 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/18 18:57:49 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/19 12:00:17 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -70,7 +70,7 @@ int	split_tokens(t_token **new, char *s, int start, int len)
 
 static int	var_len(char *s, int i)
 {
-	int		len;
+	int	len;
 
 	len = 0;
 	i++;
@@ -94,23 +94,23 @@ static int	var_len(char *s, int i)
 
 int	new_id(t_token **new)
 {
-	t_token *ptr;
+	t_token	*ptr;
 
 	ptr = *new;
 	while (ptr)
 	{
 		if (ptr->id == DELETE || ptr->id == EXPANDED)
-			break;
+			break ;
 		ptr = ptr->next;
 	}
 	if (ptr->next == NULL)
 		return (WORD);
-	return(set_id_expansion(ptr->next));
+	return (set_id_expansion(ptr->next));
 }
 
 /*
  * prepare_expand() function
- * GOAL: prepare the expansion of a variable and the next caracter 
+ * GOAL: prepare the expansion of a variable and the next character 
  * 		 to be checked in expansion()
 */
 int	prepare_expand(t_token *curr, int i)

@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:00:21 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/10 15:22:51 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/19 11:55:37 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -15,7 +15,7 @@
  * character_extraction function:
  * GOAL: Extract an operator character from char *line and return its size.
  *  - if the operator is >> or <<, return 2
- *  - else the operator is |, < or >, so return 1
+ *  - else the operator is |, < or >, return 1
  */
 
 int	character_extraction(char *line, int ind)
@@ -36,7 +36,7 @@ int	character_extraction(char *line, int ind)
  * 	- dollar sign $
  *
  * A word is delimited by:
- * 	- unquoted white space (space, tab and newline)
+ * 	- unquoted white spaces (space, tab and newline)
  * 	- unquoted operators |, <, >, >>, <<
  */
 
@@ -103,11 +103,11 @@ t_token	*create_token_head(char *line, int i, int len, int *flag)
  *	- if there is no head yet, the flag is 0.
  *	- create a head with the create_token_head function
  * 	  and set the flag to 1	
- *	- if there is a head, create a new token and linked it to the list
+ *	- if there is a head, create a new token and link it to the list
  *	  with the function token_linked_list
  *	- if token_linked_list fails, it prints the error message 
- *	  and return 0 to indicates an error.
- *	  the get_tokens function free the line and the linked list of token.
+ *	  and returns 0 to indicate an error.
+ *	  the get_tokens function frees the line and the linked list of token.
  *
  * NOTE:
  *	new_token and token_linked_list functions

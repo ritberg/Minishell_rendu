@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:11:25 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/18 19:09:25 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/19 12:01:06 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -27,7 +27,7 @@ void	free_token(t_token **head)
 		free(tmp);
 	}
 	*head = NULL;
-	head = 	NULL;
+	head = NULL;
 }
 
 /*
@@ -96,8 +96,8 @@ int	link_token(t_token **head, t_token *new)
  *	- create a t_token node with new_token function
  *		- len was found during parsing 
  *		  in get_tokens function from parsing_token_extraction.c file
- *	- if there was a malloc problen,return 0 (error)
- *	  	(new_token function print the error message 
+ *	- if there was a malloc problem,return 0 (error)
+ *	  	(new_token function prints the error message 
  *	  	 and set the exit status to 1;
  *	  	 get_tokens function will free the linked list and the line)
  *	- link t_token nodes with link_token function
@@ -108,7 +108,7 @@ int	link_token(t_token **head, t_token *new)
 //DE MARIYA:
 //ICI J'AI SUPPRIME LES FREE LORSQU'ON RETOURNE 0 POUR ERREUR
 //CAR J'AI REMARQUE QU'ON FREE UNE DEUXIEME FOIS DANS GET_TOKENS
-//JE ME SUIS DIT ALORS D'UTILISER CETTE FONCTION COMME IN INDICATEUR
+//JE ME SUIS DIT ALORS D'UTILISER CETTE FONCTION COMME UN INDICATEUR
 //DE FLAG POUR SAVOIR SI ON DOIT FREE OU PAS DANS GET_TOKENS
 int	token_linked_list(t_token **head, char *line, int start, int len)
 {

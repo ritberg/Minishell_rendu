@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 16:41:09 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/18 19:41:50 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/19 13:13:09 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	main(int ac, char **av, char **envp)
 		return (1);
 	line = NULL;
 //	line = ft_strdup("$SHELL'$SHELL' $a \"$juhtgfd | $USER $SHELL \"$\'coucouc\'wqd\" $\"fwfwef\"\" \"coucou $fd hello\"");
-	line = ft_strdup(" $$$US$");
+	line = ft_strdup("\"$USER\"");
 //	line = ft_strdup("\"\'$$$$US    \' $USER\"");
 	printf("LINE = %s\n", line);
 	token = parsing(line);

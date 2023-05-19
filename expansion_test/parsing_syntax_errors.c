@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:00:31 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/18 11:44:27 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/19 11:24:16 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -87,17 +87,17 @@ int	check_pipeline_errors(char *s, int i, char c, int num)
 /*
  * syntax_error_check function:
  * GOAL - before token splitting, check for syntax error;
- * 		  if errors -> print an error message and exit status the status to 258
+ * 		  if errors -> print an error message and set exit status to 258
  *
  * Inside the while loop:
- *	- if it find a quote -> call check_quotes_errors function
+ *	- if it finds a quote -> call check_quotes_errors function
  *	  
  *	  check_quotes_errors function:
  *	  	- verifies if quotes are closed or not.
- *	  	- all metacharcter loose their special meaning inside quotes.
- *	  	  If a metacharcter is found inside quotes, 
+ *	  	- all metacharcters loose their special meaning inside quotes.
+ *	  	  If a metacharacter is found inside quotes, 
  *	  	  it is considered as a regular character.
- *	  	- if quotes is unclosed, the function prints error message 
+ *	  	- if quotes are unclosed, the function prints error message 
  *	  	  and sets the exit status to 258
  *  
  *  - if it finds a chevron (<, >) -> call the count_metachar function
@@ -120,7 +120,7 @@ int	check_pipeline_errors(char *s, int i, char c, int num)
  * 	- if an error occurs while looping, 
  * 	the function frees the string and returns 0
  *
- * 	NOTE: char	*s is the string that was previously malloced 
+ * 	NOTE: char *s is the string that was previously malloced 
  * 		  in the main function by readline
 */
 
