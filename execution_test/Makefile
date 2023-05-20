@@ -6,7 +6,7 @@
 #    By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 12:23:37 by mdanchev          #+#    #+#              #
-#    Updated: 2023/05/20 15:58:41 by mmakarov         ###   ########.fr        #
+#    Updated: 2023/05/20 16:50:12 by mmakarov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,8 +36,9 @@ SRCS		= main.c \
 			  parsing_expansion_join_tokens.c \
 			  parsing_quote_removing.c \
 			  malloc_error_print_message.c\
-			  builtins.c\
 			  copy_env_tab.c\
+			  cmd_is_bin.c\
+			  execution.c\
 
 
 OBJS		= ${SRCS:.c=.o}

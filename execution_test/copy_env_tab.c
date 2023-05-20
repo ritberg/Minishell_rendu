@@ -6,7 +6,7 @@
 /*   By: mmakarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 17:39:06 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/05/20 16:16:42 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/05/20 17:38:26 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -67,7 +67,7 @@ char	**copy_env_tab(t_env *env)
 	while (env)
 	{
 		res[i] = name_plus_value(env->var_name, env->var_value);
-		printf("%s\n", res[i]);  //PRINTF FOR TESTING
+		//printf("%s\n", res[i]);  //PRINTF FOR TESTING
 		if (!res[i])
 			return (NULL);
 		i++;
