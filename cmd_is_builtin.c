@@ -1,22 +1,24 @@
 #include "minishell.h"
 
-int is_built_in(t_token *token)
+// *hhjcmd
+
+int cmd_is_builtin(t_token *token)
 {
-	if (token->id == WORD)
+	if (token && token->id == WORD)
 	{
-		if (ft_strncmp("echo", content, 4))
+		if (ft_strncmp(token->content, "echo", 5) == 0)
 	    	return (1);
-    	if (ft_strncmp("cd", content, 2))
-	   		return (1);
-    	if (ft_strncmp("pwd", content, 3))
+		else if (ft_strncmp(token->content, "cd", 3) == 0)
 	    	return (1);
-    	if (ft_strncmp("export", content, 5))
+    	else if (ft_strncmp(token->content, "pwd", 4) == 0)
 	    	return (1);
-    	if (ft_strncmp("unset", content, 5))
+    	else if (ft_strncmp(token->content, "export", 7) == 0)
 	    	return (1);
-    	if (ft_strncmp("env", content, 3))
+    	else if (ft_strncmp(token->content, "unset", 6) == 0)
 	    	return (1);
-    	if (ft_strncmp("exit", content, 4))
+    	else if (ft_strncmp(token->content, "env", 4) == 0)
+	    	return (1);
+    	else if (ft_strncmp(token->content, "exit", 5) == 0)
 	    	return (1);
 	}
 	return (0);

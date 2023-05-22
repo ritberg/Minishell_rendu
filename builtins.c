@@ -6,7 +6,7 @@
 /*   By: mmakarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 18:26:55 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/05/14 17:49:22 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/05/22 16:12:37 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,46 @@
 int	_pwd(t_cmd *cmd)
 {
 	char	*cwd;
-
+	(void)cmd;
 //	cmd = malloc(sizeof(t_cmd));
 //	if (!cmd)
 //		return (0);
 	cwd = getcwd(NULL, 0);
-	ft_putstr_fd(cwd, 1); // 1 - testing with stdout
-	ft_putstr_fd("\n", cmd->fdout);
+//	ft_putstr_fd(cwd, 1); // 1 - testing with stdout
+//	ft_putstr_fd("\n", cmd->fdout);
+	ft_printf("%s\n", cwd);
 	free(cwd);
 	return (1);
 }
-/*
-int	echo(t_cmd *cmd)
+
+void	print_echo(char **s, int i)
 {
-	if (!cmd->option)   // if cmd->option is a *char
-		ft_putstr_fd("\n", cmd->fdout);
-	ft_putstr_fd(cmd->cmd, cmd->fdout); // if cmd->cmd is a *char
+	int size;
+
+	size = i;
+	while (s[size])
+		size++;
+	while (s[i])
+	{
+		ft_printf("%s", s[i]);
+		if (i != size  - 1)
+			ft_printf(" ");
+		i++;
+	}
+}
+
+int	_echo(t_cmd *cmd)
+{
+	if (ft_strncmp(cmd->cmd[1], "-n", 3) != 0)   // if cmd->option is a *char
+	{
+		print_echo(cmd->cmd, 1);
+		printf("\n");
+	}
+	else 
+		print_echo(cmd->cmd, 2);
 	return (1);
 }
-*/
+
 int	_env(t_env *env)
 {
 	if (!env)

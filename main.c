@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 09:56:41 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/22 12:42:38 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/22 15:59:46 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	main(int ac, char **av, char **envp)
 //		if (g_shell->exit_status > 0)
 //			break ;
 		check_then_execute(token, cmd);
-		printf ("exit status = %d\n", g_shell->exit_status);
+//		printf ("exit status = %d\n", g_shell->exit_status);
 		//g_shell->exit_status = 0;
 		free_token(&token);
 		free_cmd(&cmd);

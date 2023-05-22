@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 11:54:50 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/22 12:41:27 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/22 15:59:24 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -76,14 +76,14 @@ t_cmd *init_cmd(t_token **head)
 	cmd->next = NULL;
 	if (!cmd->cmd || !cmd)
 		return NULL;
-	i = 0;
-	printf("\n---CMD---\n");
-	while (cmd->cmd[i])
-	{
-		printf("%s\n", cmd->cmd[i]);
-		i++;
-	}
-	printf("---END---\n");
+//	i = 0;
+//	printf("\n---CMD---\n");
+//	while (cmd->cmd[i])
+//	{
+//		printf("%s\n", cmd->cmd[i]);
+//		i++;
+//	}
+//	printf("---END---\n");
 	return (cmd);
 
 }

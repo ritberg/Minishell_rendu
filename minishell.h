@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:16:33 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/22 12:35:43 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/22 15:52:19 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,12 +107,18 @@ typedef	struct	s_bin
 
 extern t_shell	*g_shell;
 
+/* 		BUILTINS */
+int		_pwd(t_cmd *cmd);
+int		_env(t_env *env);
+int		_echo(t_cmd *cmd);
+
 /*		EXECUTION */
 void	check_then_execute(t_token *token, t_cmd *cmd);
 char	**copy_env_tab(t_env *env);
 
 /*		EXECUTION BIN */
 int		cmd_is_bin(t_token *token, t_bin *bin);
+int cmd_is_builtin(t_token *token);
 
 /*		INIT t_cmd */
 t_cmd *init_cmd(t_token **head);
@@ -212,9 +218,6 @@ void	handler_ctr_c(int code);
 //int	parsing_av(char *str);
 char	**ft_splitpath(char *s, char c);
 
-/* BUILTINS */
-int	_pwd(t_cmd *cmd);
-int	_env(t_env *env);
 
 /* GETENVP */
 t_env	*get_envp(char **envp);

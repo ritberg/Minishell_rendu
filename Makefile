@@ -6,7 +6,7 @@
 #    By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 12:23:37 by mdanchev          #+#    #+#              #
-#    Updated: 2023/05/22 12:11:33 by mdanchev         ###   lausanne.ch        #
+#    Updated: 2023/05/22 14:56:34 by mdanchev         ###   lausanne.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ SRCS		= main.c \
 			  execution.c \
 			  cmd_is_bin.c \
 			  builtins.c\
+			  cmd_is_builtin.c \
 			  copy_env_tab.c\
 
 
