@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:00:21 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/10 15:22:51 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/22 10:36:27 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -66,7 +66,7 @@ int	get_tokens_size(char *line, int *i)
 	int	len;
 
 	len = 0;
-	while (is_blank(line[*i]))
+	while (is_white_space(line[*i]))
 		(*i)++;
 	if (is_word(line[*i]))
 		len = word_extraction(line, *i);

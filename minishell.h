@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:16:33 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/22 09:52:21 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/22 12:35:43 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ typedef	struct	s_cmd
 	int		fdout;
 	int		fdin;
 	int		fd[2];
+	struct s_cmd	*next;
 }	t_cmd;
 
 typedef struct s_shell
@@ -95,61 +96,60 @@ typedef struct s_shell
 	char	**save_env; //
 }	t_shell;
 
+typedef	struct	s_bin
+{
+	char	*path;
+	char	**splitted_path;
+	char	*cmd;
+	int		ok;
+	pid_t	child;
+}	t_bin;
 
 extern t_shell	*g_shell;
-/*			EXPANSION (parsing_expansion.c)*/
-int			expansion(t_token **token, t_token *curr, int pos);
-int			check_dollar(t_token *curr, int i);
-int			trim_dollar(t_token *curr, int pos);
 
-/* 			EXPANSION (parsing_expansion_dollar_conditions.c)*/
-int			is_dollar_to_expand(t_token *curr, int i);
-int			not_within_squotes(t_token *curr, int pos);
+/*		EXECUTION */
+void	check_then_execute(t_token *token, t_cmd *cmd);
+char	**copy_env_tab(t_env *env);
 
-/* 			EXPANSION (parsing_expansion_trim_dollar.c)*/
-int			trim_dollar(t_token *curr, int pos);
+/*		EXECUTION BIN */
+int		cmd_is_bin(t_token *token, t_bin *bin);
 
-/* 			EXPANSION (parsing_expansion_looping.c)*/
-int			loop_dollars(char *s, int i);
-int			loop_through(char *s, int i);
-//int			loop_simple_quotes(char *s, int i);
-//int			loop_double_quotes(char *s, int i);
+/*		INIT t_cmd */
+t_cmd *init_cmd(t_token **head);
+void	free_cmd(t_cmd **head);
 
-/* 			EXPANSION (parsing_expansion_expand_var_helper.c)*/
-int			size_var(char *s);
-int			check_var_exist(t_token *tmp);
+/*		EXPANSION (parsing_expansion.c)*/
+int		expansion(t_token **token, t_token *curr, int pos);
+int		check_dollar(t_token *curr, int i);
+int		trim_dollar(t_token *curr, int pos);
 
-/* 			EXPANSION (parsing_expansion_join_tokens.c)*/
-int			join_tokens(t_token **new, t_token *curr);
+/* 		EXPANSION (parsing_expansion_dollar_conditions.c)*/
+int		is_dollar_to_expand(t_token *curr, int i);
+int		not_within_squotes(t_token *curr, int pos);
 
-/*			EXPANSION (parsing_expansion_helper.c)*/
-int			prepare_expand(t_token *tmp, int i);
-int			set_id_expansion(t_token *token);
+/* 		EXPANSION (parsing_expansion_trim_dollar.c)*/
+int		trim_dollar(t_token *curr, int pos);
 
-/*			QUOTE REMOVING (parsing_quote_removing.c)*/
-int			quote_removing(t_token **head, t_token *curr, int pos);
+/* 		EXPANSION (parsing_expansion_looping.c)*/
+int		loop_dollars(char *s, int i);
+int		loop_through(char *s, int i);
 
-t_token		*delete_token(t_token **head);
-int			token_list_size(t_token	**head);
+/* 		EXPANSION (parsing_expansion_expand_var_helper.c)*/
+int		size_var(char *s);
+int		check_var_exist(t_token *tmp);
 
-/* BUILTINS */
-int	_pwd(t_cmd *cmd);
-int	_env(t_env *env);
+/* 		EXPANSION (parsing_expansion_join_tokens.c)*/
+int		join_tokens(t_token **new, t_token *curr);
 
-/* ENV COPIED */
-char	**env_copied(char **envp);
-void	free_tab(char **table);
+/*		EXPANSION (parsing_expansion_helper.c)*/
+int		prepare_expand(t_token *tmp, int i);
+int		set_id_expansion(t_token *token);
 
-/* GETENVP */
-t_env	*get_envp(char **envp);
-void	free_env(t_env **head);
+/*		QUOTE REMOVING (parsing_quote_removing.c)*/
+int		quote_removing(t_token **head, t_token *curr, int pos);
 
-
-/*		INIT GLOBAL VARIABLE */
-
-int		init_shell(char **envp);
-int		shell_no_env();
-void	free_shell(void);
+t_token	*delete_token(t_token **head);
+int		token_list_size(t_token	**head);
 
 /* PARSING - SYNTAX ERROR CHECK */
 t_token	*parsing(char *line);
@@ -172,7 +172,7 @@ t_token	*create_token_head(char *line, int i, int len, int *flag);
 /* 		MALLOC ERROR PRINT MESSAGE */ 
 void	malloc_error_print_message(char *s);
 
-/* TOKEN EXTRACTION - TOKEN LINKED LIST (token_routine_.c) */
+/* 		TOKEN EXTRACTION - TOKEN LINKED LIST (token_routine_.c) */
 t_token	*new_token(char *line, int start, int len);
 void	set_id(t_token *token);
 int		token_linked_list(t_token **head, char *line, int start, int len);
@@ -198,6 +198,11 @@ int		is_quote(char c);
 int		is_question(char c);
 int		is_punct(char c);
 
+/*		INIT GLOBAL VARIABLE */
+int		init_shell(char **envp);
+int		shell_no_env();
+void	free_shell(void);
+
 	// NOT OK
 int		sig_handler(void);
 
@@ -207,7 +212,12 @@ void	handler_ctr_c(int code);
 //int	parsing_av(char *str);
 char	**ft_splitpath(char *s, char c);
 
-// tmp
-char	**copy_env_tab(t_env *env);
+/* BUILTINS */
+int	_pwd(t_cmd *cmd);
+int	_env(t_env *env);
+
+/* GETENVP */
+t_env	*get_envp(char **envp);
+void	free_env(t_env **head);
 
 #endif

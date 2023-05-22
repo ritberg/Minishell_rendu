@@ -1,91 +1,88 @@
 #include "minishell.h"
 
-int	path_line_index(t_env *env)
+
+void	free_tab(char **table)
 {
 	int	i;
 
 	i = 0;
-	while (env->var_name != NULL)
-	{
-		if (ft_strncmp("PATH=", env->var_name, 5) == 0)
-			break ;
-		i++;
-		env->var_name = env->next;
-	}
-	return (i);
+	while (table && table[i])
+		free(table[i++]);
+	free(table);
 }
 
-t_env	*path_value(t_env *env, int nb)
+int	path_index(t_bin *bin, char **table)
 {
 	int	i;
 
 	i = 0;
-	while (env->var_value && i != nb)
+	bin->path = NULL;
+	while (table[i] != 0)
 	{
-		env->var_value = env->next;
+		if (ft_strncmp("PATH=", table[i], 5) == 0)
+		{
+			bin->path = table[i] + 5;
+			break ;
+		}
 		i++;
 	}
-	return (env->var_value);
-}
-
-char	**split_var_value(char *value)
-{
-	char	**paths;
-	char	*temp_path;
-	int		j;
-
-	paths = ft_split(value, ':');
-	if (!paths)
-		return (0);
-	j = 0;
-	while (paths[j])
-	{
-		temp_path = ft_strjoin(paths[j], "/");
-		if (!temp_paths)
-			return (0);
-		free(paths[j]);
-		paths[j] = temp_path;
-		j++;
-	}
-	return (paths);
-}
-
-int	find_cmd_bin(char **paths, t_env *env, t_token *token)
-{
-	int	j;
-	int	ok;
-	char	*cmd;
-	
-	j = 0;
-	while (paths[j])
-	{
-		cmd = ft_strjoin(paths[j], token->content);
-		if (!cmd)
-			return (0);
-		ok = access(cmd, F_OK & X_OK);
-		if (ok == 0)
-			break ;
-		free(cmd);
-		j++;
-	}
-	if (ok == -1)
+	if (!bin->path)
 		return (0);
 	return (1);
 }
 
-int	bin_access(t_token *token)
-{
-	int	nb;
-	char	*value;
-	char	**bins;
 
-	if (token->id == WORD)
+int	split_path(t_bin *bin)
+{
+	char	*tmp;
+	int		j;
+
+	bin->splitted_path = ft_split(bin->path, ':');
+	if (!bin->splitted_path)
+		return (0);
+	j = 0;
+	while (bin->splitted_path[j])
 	{
-		nb = path_line_index(g_shell->env);
-		value = path_value(g_shell->env, nb);
-		bins = split_var_value(value);
-		if (!find_cmd_bin(bins, g_shell->env, g_shell->token)) //??
-			return (0); //??? is bin??
+		tmp = ft_strjoin(bin->splitted_path[j], "/");
+		if (!bin->splitted_path)
+			return (0);
+		free(bin->splitted_path[j]);
+		bin->splitted_path[j] = tmp;
+		j++;
 	}
+	return (1);
+}
+
+
+int	find_cmd_in_path(t_bin *bin, char *token)
+{
+	int	j;
+
+	j = 0;
+	while (bin->splitted_path[j])
+	{
+		bin->cmd = ft_strjoin(bin->splitted_path[j], token);
+		if (!bin->cmd)
+			return (0);
+		bin->ok = access(bin->cmd, F_OK & X_OK);
+		if (bin->ok == 0)
+			break ;
+		//free(bin->cmd);
+		j++;
+	}
+	free_tab(bin->splitted_path);
+	if (bin->ok == -1)
+		return (0);
+	return (1);
+}
+
+int	cmd_is_bin(t_token *token, t_bin *bin)
+{
+	if (!path_index(bin, g_shell->save_env))
+		return (-1);
+	if (!split_path(bin))
+		return (-1);
+	if (!find_cmd_in_path(bin, token->content))
+		return (-1);
 	return (1);
 }
