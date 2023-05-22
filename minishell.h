@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:16:33 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/19 22:30:10 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/05/22 09:52:21 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,12 @@ t_env	*get_envp(char **envp);
 void	free_env(t_env **head);
 
 
+/*		INIT GLOBAL VARIABLE */
+
+int		init_shell(char **envp);
+int		shell_no_env();
+void	free_shell(void);
+
 /* PARSING - SYNTAX ERROR CHECK */
 t_token	*parsing(char *line);
 int		syntax_error_check(char *s);
@@ -156,14 +162,14 @@ void	print_syntax_error_char(char c);
 void	print_syntax_error_dchar(char c);
 void	print_syntax_error_str(char *s);
 
-/* TOKEN EXTRACTION */
+/* 		TOKEN EXTRACTION */
 int		character_extraction(char *line, int ind);
 int		token_extraction(char *line, int ind);
 t_token	*get_tokens(char *line);
 int		get_tokens_size(char *line, int *i);
 t_token	*create_token_head(char *line, int i, int len, int *flag);
 
-/* MALLOC ERROR PRINT MESSAGE */ 
+/* 		MALLOC ERROR PRINT MESSAGE */ 
 void	malloc_error_print_message(char *s);
 
 /* TOKEN EXTRACTION - TOKEN LINKED LIST (token_routine_.c) */
@@ -173,7 +179,7 @@ int		token_linked_list(t_token **head, char *line, int start, int len);
 int		link_token(t_token **head, t_token *new);
 void	free_token(t_token **head);
 
-/* IS SOMETHING */ 
+/* 		IS SOMETHING (folder: is_smth) */ 
 int		is_dollar(char c);
 int		is_pipeline(char c);
 int		is_chevron(char c);

@@ -6,35 +6,36 @@
 #    By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 12:23:37 by mdanchev          #+#    #+#              #
-#    Updated: 2023/05/20 15:58:41 by mmakarov         ###   ########.fr        #
+#    Updated: 2023/05/22 09:57:16 by mdanchev         ###   lausanne.ch        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS		= main.c \
-			  envp_routine.c \
-			  is_token.c \
-			  is_operator.c \
-			  is_dollar.c \
-			  is_quote.c \
-			  is_white_space.c \
-			  is_question.c \
+			  global_variable/init_global.c \
+			  environnement/envp_routine.c \
+			  is_smth/is_token.c \
+			  is_smth/is_operator.c \
+			  is_smth/is_dollar.c \
+			  is_smth/is_quote.c \
+			  is_smth/is_white_space.c \
+			  is_smth/is_question.c \
 			  launch_setup.c \
 			  handler_ctr_c.c \
-			  token_routine.c \
-			  token_routine_set_id.c \
-			  token_routine_delete.c \
-			  parsing.c \
-			  parsing_syntax_errors.c\
-			  parsing_syntax_errors_print_message.c \
-			  parsing_token_extraction.c\
-			  parsing_expansion.c \
-			  parsing_expansion_helper.c \
-			  parsing_expansion_dollar_conditions.c \
-			  parsing_expansion_expand_var_helper.c \
-			  parsing_expansion_looping.c \
-			  parsing_expansion_trim_dollar.c \
-			  parsing_expansion_join_tokens.c \
-			  parsing_quote_removing.c \
+			  tokens/token_routine.c \
+			  tokens/token_routine_set_id.c \
+			  tokens/token_routine_delete.c \
+			  parsing/parsing.c \
+			  parsing/syntax_errors.c\
+			  parsing/syntax_errors_print_message.c \
+			  parsing/token_extraction.c\
+			  parsing/expansion.c \
+			  parsing/expansion_helper.c \
+			  parsing/expansion_dollar_conditions.c \
+			  parsing/expansion_expand_var_helper.c \
+			  parsing/expansion_looping.c \
+			  parsing/expansion_trim_dollar.c \
+			  parsing/expansion_join_tokens.c \
+			  parsing/quote_removing.c \
 			  malloc_error_print_message.c\
 			  builtins.c\
 			  copy_env_tab.c\
