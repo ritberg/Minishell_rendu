@@ -6,7 +6,7 @@
 /*   By: mmakarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 18:26:55 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/05/22 16:12:37 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/22 19:18:08 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	print_echo(char **s, int i)
 	size = i;
 	while (s[size])
 		size++;
+	if (size == i)
+		return ;
 	while (s[i])
 	{
 		ft_printf("%s", s[i]);

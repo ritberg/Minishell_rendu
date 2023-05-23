@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:16:33 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/22 15:52:19 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/23 10:22:56 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct s_token
 typedef	struct	s_cmd
 {
 //	bool	flag;
+//	pid_t	pid;
 	char	**cmd;
 	char	**redir;
 	char	**path;
@@ -113,7 +114,7 @@ int		_env(t_env *env);
 int		_echo(t_cmd *cmd);
 
 /*		EXECUTION */
-void	check_then_execute(t_token *token, t_cmd *cmd);
+void	check_then_execute(t_token *token, t_cmd **cmd);
 char	**copy_env_tab(t_env *env);
 
 /*		EXECUTION BIN */
@@ -122,6 +123,8 @@ int cmd_is_builtin(t_token *token);
 
 /*		INIT t_cmd */
 t_cmd *init_cmd(t_token **head);
+void	create_cmd(t_token **token, t_cmd *cmd);
+t_cmd	*cmd_linked_list(t_token **token);
 void	free_cmd(t_cmd **head);
 
 /*		EXPANSION (parsing_expansion.c)*/

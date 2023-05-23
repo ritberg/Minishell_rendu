@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 12:39:31 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/22 17:44:15 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/23 10:00:49 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -75,27 +75,29 @@ void	builtin(t_bin *bin, t_cmd *cmd)
 	g_shell->exit_status = WEXITSTATUS(status) % 256;
 }
 
-void	check_then_execute(t_token *token, t_cmd *cmd)
+void	check_then_execute(t_token *token, t_cmd **cmd)
 {
 	t_bin	*bin;
+	t_cmd *ptr;
 
+	ptr = *cmd;
 	bin = malloc(sizeof(t_bin));
 	g_shell->save_env = copy_env_tab(g_shell->env);
 	if (token && token->id == WORD)
 	{
-		if (ft_strncmp(cmd->cmd[0], "exit", 5) == 0/* && size =1*/ )
+		if (ft_strncmp(token->content, "exit", 5) == 0)
 		{
 			printf("exit\n");
 			exit (0);
 		}
 		else if (cmd_is_builtin(token) == 1)
 		{
-			builtin(bin, cmd);
+			builtin(bin, *cmd);
 			return ;
 		}
 		else if (cmd_is_bin(token, bin))
 		{
-			execution_bin(cmd, bin);
+			execution_bin(*cmd, bin);
 			return ;
 		}
 	//	if (cmd_is_fd(token))

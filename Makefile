@@ -6,7 +6,7 @@
 #    By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 12:23:37 by mdanchev          #+#    #+#              #
-#    Updated: 2023/05/22 14:56:34 by mdanchev         ###   lausanne.ch        #
+#    Updated: 2023/05/23 09:54:27 by mdanchev         ###   lausanne.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,8 @@ SRCS		= main.c \
 			  parsing/quote_removing.c \
 			  malloc_error_print_message.c\
 			  init_cmd.c \
+			  init_cmd_cmd.c \
+			  free_cmd.c \
 			  execution.c \
 			  cmd_is_bin.c \
 			  builtins.c\

@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 09:56:41 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/22 15:59:46 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/23 10:22:41 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,39 @@ char	*readline_routine(void)
 	return (line);
 }
 
+void	print_cmd(t_cmd **head)
+{
+	t_cmd	*ptr;
+	int	i = 0;
+	int	j = 0;
+
+	ptr = *head;
+	while (ptr)
+	{
+		if (ptr->cmd)
+		{
+			while(ptr->cmd[j])
+			{
+				ft_printf("cmd[%d] = %s\n", i, ptr->cmd[j]);
+				j++;
+			}
+		}
+		j = 0;
+		if (ptr->redir)
+		{
+			while (ptr->redir[j])
+			{
+				ft_printf("redir[%d] = %s\n", i, ptr->redir[j]);
+				j++;
+			}
+		}
+		j = 0;
+		i++;
+		ptr = ptr->next;
+	}
+}
+
+
 int	main(int ac, char **av, char **envp)
 {
 	(void)av;
@@ -50,14 +83,9 @@ int	main(int ac, char **av, char **envp)
 		if (!line)
 			break ;
 		token = parsing(line);
-///		if (g_shell->exit_status > 0)
-//			break ;
-		cmd = init_cmd(&token);
-//		if (g_shell->exit_status > 0)
-//			break ;
-		check_then_execute(token, cmd);
-//		printf ("exit status = %d\n", g_shell->exit_status);
-		//g_shell->exit_status = 0;
+		cmd = cmd_linked_list(&token);
+		print_cmd(&cmd);
+		check_then_execute(token, &cmd);
 		free_token(&token);
 		free_cmd(&cmd);
 	}
