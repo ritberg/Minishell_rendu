@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-
+/*
 void	free_tab(char **table)
 {
 	int	i;
@@ -76,13 +76,13 @@ int	find_cmd_in_path(t_bin *bin, char *token)
 	return (1);
 }
 
-int	cmd_is_bin(t_token *token, t_bin *bin)
+int	cmd_is_bin(t_cmd **cmd)
 {
-	if (!path_index(bin, g_shell->save_env))
+	if (!path_index(cmd, g_shell->save_env))
 		return (-1);
-	if (!split_path(bin))
+	if (!split_path(cmd))
 		return (-1);
-	if (!find_cmd_in_path(bin, token->content))
+	if (!find_cmd_in_path(cmd))
 		return (-1);
 	return (1);
-}
+}*/

@@ -6,25 +6,129 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 12:39:31 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/23 10:00:49 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/24 13:38:51 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
-void	execution_bin(t_cmd *cmd, t_bin *bin)
+/*void	execution(t_cmd **cmd)
+{
+	int		i;
+	
+	g_shell->save_env = copy_env_tab(g_shell->env);
+	i = check_for_pipes(cmd);
+	if (i == 0 && ft_strncmp(cmd->cmd[0], "exit", 5) == 0)
+	{
+		free_cmd(cmd);
+		free_shell();
+		printf("exit\n");
+		exit (0);
+	}
+	else if ((*cmd)->cmd_is_path_fg == false && cmd_is_builtin(cmd) == 1)
+	{
+		execution_builtin(*cmd);
+		return ;
+	}
+	else if (cmd_is_bin(cmd))
+	{
+		execution_bin(*cmd);
+		return ;
+	}
+//	if (cmd_is_fd(token))
+//		open_fd(token);
+}*/
+
+
+/*
+void	execute_pipes(t_cmd **head, int nb_pipes)
+{
+	cmd->pid = fork();
+	if (cmd->pid < 0)
+		return (perror("Fork: "));
+	if (cmd->pid == 0)
+	{
+		check_then_execute(cmd);
+		exit(0);
+	}
+	else
+	{
+		waitpid(cmd->pid, &cmd->status, 0);
+		g_shell->exit_status = WEXITSTATUS(cmd->status);
+		printf("end\n");
+	}
+
+}
+*/
+
+void	execute_simple_cmd(t_cmd *cmd)
+{
+	if (ft_strncmp(cmd->cmd[0], "exit", 6) == 0)
+		ft_exit(&cmd);
+	else if (ft_strncmp(cmd->cmd[0], "pwd", 4) == 0)
+		_pwd();
+	else if (ft_strncmp(cmd->cmd[0], "echo", 5) == 0)
+		_echo(cmd);
+	else if (ft_strncmp(cmd->cmd[0], "env", 4) == 0)
+		_env(cmd, g_shell->env);
+	else if (ft_strncmp(cmd->cmd[0], "cd", 3) == 0)
+		_cd(cmd);
+	return ;
+
+}
+
+int	check_for_pipes(t_cmd **head)
+{
+	t_cmd	*cmd;
+	int		i;
+
+	i = 0;
+	cmd = *head;
+	while (cmd)
+	{
+		i++;
+		cmd = cmd->next;
+	}
+	return (i);
+}	
+
+void	execution(t_cmd **head)
+{
+	t_cmd	*cmd;
+	int		nb_pipes;
+
+	cmd = *head;
+	if (!head || !*head)
+		return ;
+	nb_pipes = check_for_pipes(head);
+	if (nb_pipes == 1)
+		execute_simple_cmd(cmd);
+//	else
+//		execute_pipes(head, nb_pipes);
+}
+
+
+/*
+void	execution_bin(t_cmd **cmd)
 {
 	int	status;
 	int	res = 0;
 
 	status = 0;
-	bin->child = fork();
+	(*cmd)->pid = fork();
 	if (!cmd->cmd)
 		return ;
-	if (bin->child < 0)
+	if ((*cmd)->pid < 0)
 		return (perror("Fork: "));
-	if (bin->child == 0)
+	if ((*cmd)->pid == 0)
 	{
-  		 res = execve(bin->cmd, cmd->cmd, g_shell->save_env);
+		if (cmd->cmd_is_path_fg == true)
+		{
+			 res = execve(cmd->path, (*cmd)->cmd, g_shell->save_env);
+		}
+		else
+		{
+			 res = execve((*cmd)->path, (*cmd)->cmd, g_shell->save_env);
+		}
 		 if (res < 0)
 		 {
 			 ft_dprintf(2, "minishell: %s\n", strerror(errno));
@@ -35,13 +139,13 @@ void	execution_bin(t_cmd *cmd, t_bin *bin)
 	}
 
 	else
-		waitpid(bin->child, &status, 0);
+		waitpid((*cmd)->pid, &status, 0);
 	g_shell->exit_status = WEXITSTATUS(status);
 }
 
 
 
-void	builtin(t_bin *bin, t_cmd *cmd)
+void	execution_builtin(t_bin *bin, t_cmd *cmd)
 {
 	int	status;
 	int	res = 0;
@@ -54,7 +158,7 @@ void	builtin(t_bin *bin, t_cmd *cmd)
 		return (perror("Fork: "));
 	if (bin->child == 0)
 	{
-		if (ft_strncmp(cmd->cmd[0], "pwd", 4) == 0 /*&& taille 1*/ )
+		if (ft_strncmp(cmd->cmd[0], "pwd", 4) == 0 )
 			_pwd(cmd);
 		else if (ft_strncmp(cmd->cmd[0], "echo", 5) == 0)
 			_echo(cmd);
@@ -69,38 +173,36 @@ void	builtin(t_bin *bin, t_cmd *cmd)
 		 }
 		 exit (0);
 	}
-
 	else
 		waitpid(bin->child, &status, 0);
 	g_shell->exit_status = WEXITSTATUS(status) % 256;
 }
 
-void	check_then_execute(t_token *token, t_cmd **cmd)
-{
-	t_bin	*bin;
-	t_cmd *ptr;
 
-	ptr = *cmd;
-	bin = malloc(sizeof(t_bin));
-	g_shell->save_env = copy_env_tab(g_shell->env);
-	if (token && token->id == WORD)
+
+void	execution(t_cmd **cmd)
+{
+	int		i;
+	
+	i = check_for_pipes(cmd);
+	if (i == 0 && ft_strncmp(cmd->cmd[0], "exit", 5) == 0)
 	{
-		if (ft_strncmp(token->content, "exit", 5) == 0)
-		{
-			printf("exit\n");
-			exit (0);
-		}
-		else if (cmd_is_builtin(token) == 1)
-		{
-			builtin(bin, *cmd);
-			return ;
-		}
-		else if (cmd_is_bin(token, bin))
-		{
-			execution_bin(*cmd, bin);
-			return ;
-		}
-	//	if (cmd_is_fd(token))
-	//		open_fd(token);
+		free_cmd(cmd);
+		free_shell();
+		printf("exit\n");
+		exit (0);
 	}
-}
+	else if ((*cmd)->cmd_is_path_fg == false && cmd_is_builtin(cmd) == 1)
+	{
+		execution_builtin(*cmd);
+		return ;
+	}
+	else if (cmd_is_bin(cmd))
+	{
+		execution_bin(*cmd);
+		return ;
+	}
+//	if (cmd_is_fd(token))
+//		open_fd(token);
+}*/
+

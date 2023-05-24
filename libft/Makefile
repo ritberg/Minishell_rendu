@@ -6,7 +6,7 @@
 #    By: mdanchev <mdanchev@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/15 12:21:59 by mdanchev          #+#    #+#              #
-#    Updated: 2023/03/28 09:07:13 by mdanchev         ###   lausanne.ch        #
+#    Updated: 2023/05/23 17:15:13 by mdanchev         ###   lausanne.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,13 +101,14 @@ all:	${NAME}
 
 $(NAME): ${OBJS}
 	@	ar rcs ${NAME} ${OBJS}
+	@echo "${GREEN} Compilation ${NAME} done ${COLOR_END}"
 
 clean:
 	@	${RM} ${OBJS}
 
 fclean:	clean
 	@	${RM} ${NAME}
-	@echo "${GREEN} clean ${NAME} done ${COLOR_END}"
+	@echo "${GREEN} Clean ${NAME} done ${COLOR_END}"
 
 re:		fclean all
 

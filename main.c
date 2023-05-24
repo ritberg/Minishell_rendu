@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 09:56:41 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/23 10:22:41 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/24 13:40:14 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	print_cmd(t_cmd **head)
 	int	i = 0;
 	int	j = 0;
 
+	if (!head || !*head)
+		return ;
 	ptr = *head;
 	while (ptr)
 	{
@@ -45,7 +47,8 @@ void	print_cmd(t_cmd **head)
 		{
 			while(ptr->cmd[j])
 			{
-				ft_printf("cmd[%d] = %s\n", i, ptr->cmd[j]);
+				ft_printf("cmd[%d] = ", i);
+				ft_printf("%s\n", ptr->cmd[j]);
 				j++;
 			}
 		}
@@ -54,9 +57,15 @@ void	print_cmd(t_cmd **head)
 		{
 			while (ptr->redir[j])
 			{
-				ft_printf("redir[%d] = %s\n", i, ptr->redir[j]);
+				ft_printf("redir[%d] = ", i);
+				ft_printf("%s\n", ptr->redir[j]);
 				j++;
 			}
+		}
+		if (ptr->path)
+		{
+			ft_printf("path[%d] = ", i);
+			ft_printf("%s\n", ptr->path);
 		}
 		j = 0;
 		i++;
@@ -84,9 +93,13 @@ int	main(int ac, char **av, char **envp)
 			break ;
 		token = parsing(line);
 		cmd = cmd_linked_list(&token);
-		print_cmd(&cmd);
-		check_then_execute(token, &cmd);
-		free_token(&token);
+//		print_cmd(&cmd);
+		if (g_shell->error_exit == 1)
+		{
+			free_shell();
+			return (1);
+		}
+		execution(&cmd);
 		free_cmd(&cmd);
 	}
 	free_shell();

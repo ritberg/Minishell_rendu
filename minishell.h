@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:16:33 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/23 10:22:56 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/24 14:11:19 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,7 @@
 # define EXPAND		9
 # define DELETE		10
 # define EXPANDED	11
-# define CONTINUE  	-1
-# define ERROR_EXIT		-169
-# define ERROR_EXIT_	 0	
+# define ERROR_EXIT	-1
 
 //int	g_exit_status;
 
@@ -76,11 +74,12 @@ typedef struct s_token
 //NOT OK
 typedef	struct	s_cmd
 {
-//	bool	flag;
-//	pid_t	pid;
+	pid_t	pid;
 	char	**cmd;
 	char	**redir;
-	char	**path;
+	bool	cmd_is_path_fg;
+	char	*path;
+	int		status;
 //	int		ffd_in;
 //	int		ffd_out;
 //	int		pfd[2];
@@ -94,38 +93,41 @@ typedef struct s_shell
 {
 	t_env	*env;
 	int		exit_status;
+	int		error_exit;
 	char	**save_env; //
 }	t_shell;
 
-typedef	struct	s_bin
-{
-	char	*path;
-	char	**splitted_path;
-	char	*cmd;
-	int		ok;
-	pid_t	child;
-}	t_bin;
-
 extern t_shell	*g_shell;
 
-/* 		BUILTINS */
-int		_pwd(t_cmd *cmd);
-int		_env(t_env *env);
-int		_echo(t_cmd *cmd);
-
 /*		EXECUTION */
-void	check_then_execute(t_token *token, t_cmd **cmd);
+int		size_tab2d(char **s);
+void	execution(t_cmd **head);
 char	**copy_env_tab(t_env *env);
 
-/*		EXECUTION BIN */
-int		cmd_is_bin(t_token *token, t_bin *bin);
-int cmd_is_builtin(t_token *token);
+/* 		BUILTINS */
+void	_pwd(void);
+void	_env(t_cmd *cmd, t_env *env);
+void	print_getcwd_error(char *s);
+int		_echo(t_cmd *cmd);
+void	ft_exit(t_cmd **head);
+void	change_env(char *oldpwd, char *pwd, t_cmd *cmd);
+void	_cd(t_cmd *cmd);
 
-/*		INIT t_cmd */
-t_cmd *init_cmd(t_token **head);
-void	create_cmd(t_token **token, t_cmd *cmd);
+/*		EXECUTION BIN */
+int		cmd_is_bin(t_token *token);
+int		cmd_is_builtin(t_token *token);
+
+/*		INIT t_cmd *cmd*/
 t_cmd	*cmd_linked_list(t_token **token);
+void	free_tab2d(char **s);
 void	free_cmd(t_cmd **head);
+
+/*		INIT cmd->redir*/
+int		create_redir(t_token **token, t_cmd *cmd);
+
+/*		INIT cmd->cmd */
+int		create_cmd(t_token **token, t_cmd *cmd);
+int		get_cmd_size(t_token **token);
 
 /*		EXPANSION (parsing_expansion.c)*/
 int		expansion(t_token **token, t_token *curr, int pos);
@@ -206,6 +208,7 @@ int		is_simple_quote(char c);
 int		is_quote(char c);
 int		is_question(char c);
 int		is_punct(char c);
+int		is_numeric(char *s);
 
 /*		INIT GLOBAL VARIABLE */
 int		init_shell(char **envp);

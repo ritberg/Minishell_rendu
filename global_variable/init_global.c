@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 09:45:47 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/22 09:57:52 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/24 14:18:19 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -29,9 +29,12 @@ void	print_env()
 	g_shell->env = ptr;
 }
 
+/* EST_CE QUÓN GARDE SAVE_ENV */ 
 void	free_shell(void)
 {
 	free_env(&g_shell->env);
+	if (g_shell->save_env)
+		free_tab2d(g_shell->save_env);
 //	free_tab(g_shell->save_env);
 	if (g_shell)
 		free(g_shell);
@@ -73,9 +76,9 @@ int	init_shell(char **envp)
 		if (!g_shell->env)
 			return (free_shell(), 0);
 	}
-	g_shell->exit_status = 0;
-	printf("%s\n", g_shell->env->var_name);
+//	g_shell->exit_status = 0;
+//	g_shell->error_exit = 0;
 	g_shell->save_env = copy_env_tab(g_shell->env); //
-	print_env();
+//	print_env();
 	return (1);
 }

@@ -24,6 +24,7 @@ CC	parsing/expansion_test/libft/Makefile	/^CC		= gcc$/;"	m
 CFLAGS	execution_test/libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
 CFLAGS	libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
 CFLAGS	parsing/expansion_test/libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
+COLOR_END	Makefile	/^COLOR_END 	= \\033[0m$/;"	m
 COLOR_END	execution_test/libft/Makefile	/^COLOR_END = \\033[0m$/;"	m
 COLOR_END	libft/Makefile	/^COLOR_END = \\033[0m$/;"	m
 COLOR_END	parsing/expansion_test/libft/Makefile	/^COLOR_END = \\033[0m$/;"	m
@@ -55,6 +56,7 @@ FT_PRINTF_H	parsing/expansion_test/libft/includes/ft_printf.h	/^# define FT_PRIN
 GET_NEXT_LINE_H	execution_test/libft/includes/get_next_line.h	/^# define GET_NEXT_LINE_H$/;"	d
 GET_NEXT_LINE_H	libft/includes/get_next_line.h	/^# define GET_NEXT_LINE_H$/;"	d
 GET_NEXT_LINE_H	parsing/expansion_test/libft/includes/get_next_line.h	/^# define GET_NEXT_LINE_H$/;"	d
+GREEN	Makefile	/^GREEN 		= \\033[32;6m$/;"	m
 GREEN	execution_test/libft/Makefile	/^GREEN = \\033[32;6m$/;"	m
 GREEN	libft/Makefile	/^GREEN = \\033[32;6m$/;"	m
 GREEN	parsing/expansion_test/libft/Makefile	/^GREEN = \\033[32;6m$/;"	m
@@ -79,6 +81,8 @@ L_CHEVRON	parsing/expansion_test/minishell.h	/^# define L_CHEVRON	/;"	d
 MAG	execution_test/minishell.h	/^# define MAG /;"	d
 MAG	minishell.h	/^# define MAG /;"	d
 MAG	parsing/expansion_test/minishell.h	/^# define MAG /;"	d
+MAGNE	Makefile	/^MAGNE   	= \\033[35;1m$/;"	m
+MAGNETA	Makefile	/^MAGNETA		:= $(shell tput setaf 5)$/;"	m
 MINISHELL_H	execution_test/minishell.h	/^# define MINISHELL_H$/;"	d
 MINISHELL_H	minishell.h	/^# define MINISHELL_H$/;"	d
 MINISHELL_H	parsing/expansion_test/minishell.h	/^# define MINISHELL_H$/;"	d
@@ -100,11 +104,14 @@ QUESTION	minishell.h	/^# define QUESTION	/;"	d
 QUESTION	parsing/expansion_test/minishell.h	/^# define QUESTION	/;"	d
 READLINE	Makefile	/^READLINE	=  -L$(HOME)\/.brew\/opt\/readline\/lib -lreadline$/;"	m
 READLINE	Makefile	/^READLINE	= -L\/opt\/homebrew\/Cellar\/readline\/8.2.1\/lib -lreadline$/;"	m
+READLINE	Makefile	/^READLINE 	= -L\/opt\/homebrew\/opt\/readline\/lib -lreadline$/;"	m
 READLINE	execution_test/Makefile	/^READLINE	=  -L$(HOME)\/.brew\/opt\/readline\/lib -lreadline$/;"	m
 READLINE	execution_test/Makefile	/^READLINE	= -L\/opt\/homebrew\/Cellar\/readline\/8.2.1\/lib -lreadline$/;"	m
+RED	Makefile	/^RED 		:= $(shell tput setaf 1)$/;"	m
 RED	execution_test/minishell.h	/^# define RED /;"	d
 RED	minishell.h	/^# define RED /;"	d
 RED	parsing/expansion_test/minishell.h	/^# define RED /;"	d
+RESET	Makefile	/^RESET		:= $(shell tput sgr0)$/;"	m
 RESET	execution_test/minishell.h	/^# define RESET /;"	d
 RESET	minishell.h	/^# define RESET /;"	d
 RESET	parsing/expansion_test/minishell.h	/^# define RESET /;"	d
@@ -141,19 +148,26 @@ WORD	parsing/expansion_test/minishell.h	/^# define WORD	/;"	d
 YEL	execution_test/minishell.h	/^# define YEL /;"	d
 YEL	minishell.h	/^# define YEL /;"	d
 YEL	parsing/expansion_test/minishell.h	/^# define YEL /;"	d
-_echo	builtins.c	/^int	_echo(t_cmd *cmd)$/;"	f
-_env	builtins.c	/^int	_env(t_env *env)$/;"	f
-_pwd	builtins.c	/^int	_pwd(t_cmd *cmd)$/;"	f
-builtin	execution.c	/^void	builtin(t_bin *bin, t_cmd *cmd)$/;"	f
+YELLOW	Makefile	/^YELLOW		:= $(shell tput setaf 3)$/;"	m
+_cd	cd.c	/^int	_cd(t_cmd *cmd)$/;"	f
+_echo	echo.c	/^int	_echo(t_cmd *cmd)$/;"	f
+_env	env.c	/^void	_env(t_cmd *cmd, t_env *env)$/;"	f
+_pwd	pwd.c	/^void	_pwd(void)$/;"	f
+change_dir	cd.c	/^int	change_dir(char *oldpwd, char *path)$/;"	f
+change_env	cd.c	/^int	change_env(char *oldpwd, char *pwd)$/;"	f
 character_extraction	execution_test/parsing_token_extraction.c	/^int	character_extraction(char *line, int ind)$/;"	f
 character_extraction	parsing/expansion_test/parsing_token_extraction.c	/^int	character_extraction(char *line, int ind)$/;"	f
 character_extraction	parsing/token_extraction.c	/^int	character_extraction(char *line, int ind)$/;"	f
+check_cmd_is_path	command_struct/init_cmd_cmd.c	/^static int	check_cmd_is_path(char *s, t_cmd *cmd)$/;"	f	file:
 check_dollar	execution_test/parsing_expansion.c	/^int	check_dollar(t_token *curr, int i)$/;"	f
 check_dollar	parsing/expansion.c	/^int	check_dollar(t_token *curr, int i)$/;"	f
 check_dollar	parsing/expansion_test/parsing_expansion.c	/^int	check_dollar(t_token *curr, int i)$/;"	f
+check_env	env.c	/^static int	check_env(t_cmd *cmd)$/;"	f	file:
 check_errors	execution_test/libft/get_next_line/get_next_line.c	/^int	check_errors(int fd, char **line)$/;"	f
 check_errors	libft/get_next_line/get_next_line.c	/^int	check_errors(int fd, char **line)$/;"	f
 check_errors	parsing/expansion_test/libft/get_next_line/get_next_line.c	/^int	check_errors(int fd, char **line)$/;"	f
+check_exit_arguments	exit.c	/^static int	check_exit_arguments(t_cmd **head)$/;"	f	file:
+check_for_pipes	execution.c	/^int	check_for_pipes(t_cmd **head)$/;"	f
 check_multiple_operators_error	execution_test/parsing_syntax_errors.c	/^int	check_multiple_operators_error(int i, int num, char c)$/;"	f
 check_multiple_operators_error	parsing/expansion_test/parsing_syntax_errors.c	/^int	check_multiple_operators_error(int i, int num, char c)$/;"	f
 check_multiple_operators_error	parsing/syntax_errors.c	/^int	check_multiple_operators_error(int i, int num, char c)$/;"	f
@@ -163,23 +177,20 @@ check_pipeline_errors	parsing/syntax_errors.c	/^int	check_pipeline_errors(char *
 check_quotes_errors	execution_test/parsing_syntax_errors.c	/^int	check_quotes_errors(char *s, char c, int *i)$/;"	f
 check_quotes_errors	parsing/expansion_test/parsing_syntax_errors.c	/^int	check_quotes_errors(char *s, char c, int *i)$/;"	f
 check_quotes_errors	parsing/syntax_errors.c	/^int	check_quotes_errors(char *s, char c, int *i)$/;"	f
-check_then_execute	execution.c	/^void	check_then_execute(t_token *token, t_cmd **cmd)$/;"	f
 check_then_execute	execution_test/execution.c	/^void	check_then_execute(t_token *token)$/;"	f
 check_var_exist	execution_test/parsing_expansion_expand_var_helper.c	/^int	check_var_exist(t_token *tmp)$/;"	f
 check_var_exist	parsing/expansion_expand_var_helper.c	/^int	check_var_exist(t_token *tmp)$/;"	f
 check_var_exist	parsing/expansion_test/parsing_expansion_expand_var_helper.c	/^int	check_var_exist(t_token *tmp)$/;"	f
 child	execution_test/minishell.h	/^	pid_t	child;$/;"	m	struct:s_bin
-child	minishell.h	/^	pid_t	child;$/;"	m	struct:s_bin
 cmd	execution_test/minishell.h	/^	char	**cmd;$/;"	m	struct:s_cmd
 cmd	execution_test/minishell.h	/^	char	*cmd;$/;"	m	struct:s_bin
 cmd	minishell.h	/^	char	**cmd;$/;"	m	struct:s_cmd
-cmd	minishell.h	/^	char	*cmd;$/;"	m	struct:s_bin
 cmd	parsing/expansion_test/minishell.h	/^	char	**cmd;$/;"	m	struct:s_cmd
-cmd_backadd	init_cmd.c	/^void	cmd_backadd(t_cmd **head, t_cmd *new)$/;"	f
-cmd_is_bin	cmd_is_bin.c	/^int	cmd_is_bin(t_token *token, t_bin *bin)$/;"	f
+cmd_backadd	command_struct/init_cmd.c	/^static void	cmd_backadd(t_cmd **head, t_cmd *new)$/;"	f	file:
 cmd_is_bin	execution_test/cmd_is_bin.c	/^int	cmd_is_bin(t_token *token, t_bin *bin)$/;"	f
 cmd_is_builtin	cmd_is_builtin.c	/^int cmd_is_builtin(t_token *token)$/;"	f
-cmd_linked_list	init_cmd.c	/^t_cmd	*cmd_linked_list(t_token **token)$/;"	f
+cmd_is_path_fg	minishell.h	/^	bool	cmd_is_path_fg;$/;"	m	struct:s_cmd
+cmd_linked_list	command_struct/init_cmd.c	/^t_cmd	*cmd_linked_list(t_token **token)$/;"	f
 column_size	copy_env_tab.c	/^int	column_size(t_env **head)$/;"	f
 column_size	execution_test/copy_env_tab.c	/^int	column_size(t_env **head)$/;"	f
 column_size	parsing/expansion_test/copy_env_tab.c	/^int	column_size(t_env **head)$/;"	f
@@ -189,7 +200,8 @@ content	libft/includes/libft.h	/^	void			*content;$/;"	m	struct:s_list
 content	minishell.h	/^	char				*content;$/;"	m	struct:s_token
 content	parsing/expansion_test/libft/includes/libft.h	/^	void			*content;$/;"	m	struct:s_list
 content	parsing/expansion_test/minishell.h	/^	char				*content;$/;"	m	struct:s_token
-copy_cmd	init_cmd_cmd.c	/^static void	copy_cmd(t_token **token, t_cmd *cmd)$/;"	f	file:
+copy_cmd	command_struct/init_cmd_cmd.c	/^static int	copy_cmd(t_token **token, t_cmd *cmd)$/;"	f	file:
+copy_cmd_helper	command_struct/init_cmd_cmd.c	/^static int	copy_cmd_helper(t_token *ptr, t_cmd *cmd, int i)$/;"	f	file:
 copy_env_tab	copy_env_tab.c	/^char	**copy_env_tab(t_env *env)$/;"	f
 copy_env_tab	execution_test/copy_env_tab.c	/^char	**copy_env_tab(t_env *env)$/;"	f
 copy_env_tab	parsing/expansion_test/copy_env_tab.c	/^char	**copy_env_tab(t_env *env)$/;"	f
@@ -199,7 +211,8 @@ copy_helper	parsing/expansion_test/parsing_expansion_join_tokens.c	/^static void
 copy_join_tokens	execution_test/parsing_expansion_join_tokens.c	/^static int	copy_join_tokens(t_token **new, t_token *curr, int size)$/;"	f	file:
 copy_join_tokens	parsing/expansion_join_tokens.c	/^static int	copy_join_tokens(t_token **new, t_token *curr, int size)$/;"	f	file:
 copy_join_tokens	parsing/expansion_test/parsing_expansion_join_tokens.c	/^static int	copy_join_tokens(t_token **new, t_token *curr, int size)$/;"	f	file:
-copy_redir	init_cmd.c	/^void	copy_redir(t_token **token, t_cmd *cmd)$/;"	f
+copy_redir	command_struct/init_cmd_redir.c	/^static int	copy_redir(t_token **token, t_cmd *cmd)$/;"	f	file:
+copy_redir_helper	command_struct/init_cmd_redir.c	/^static int	copy_redir_helper(t_token *ptr, t_cmd *cmd, int i)$/;"	f	file:
 copy_string	execution_test/parsing_expansion_trim_dollar.c	/^static int	copy_string(t_token *curr, char **s, int pos)$/;"	f	file:
 copy_string	parsing/expansion_test/parsing_expansion_trim_dollar.c	/^static int	copy_string(t_token *curr, char **s, int pos)$/;"	f	file:
 copy_string	parsing/expansion_trim_dollar.c	/^static int	copy_string(t_token *curr, char **s, int pos)$/;"	f	file:
@@ -209,11 +222,12 @@ copy_string_unquoted	parsing/quote_removing.c	/^static int	copy_string_unquoted(
 count_metachar	execution_test/parsing_syntax_errors.c	/^int	count_metachar(char *s, char c, int num)$/;"	f
 count_metachar	parsing/expansion_test/parsing_syntax_errors.c	/^int	count_metachar(char *s, char c, int num)$/;"	f
 count_metachar	parsing/syntax_errors.c	/^int	count_metachar(char *s, char c, int num)$/;"	f
-create_cmd	init_cmd_cmd.c	/^void	create_cmd(t_token **token, t_cmd *cmd)$/;"	f
+create_cmd	command_struct/init_cmd_cmd.c	/^int	create_cmd(t_token **token, t_cmd *cmd)$/;"	f
+create_cmd_linked_list	command_struct/init_cmd.c	/^static void	create_cmd_linked_list(t_token **token, t_cmd *head)$/;"	f	file:
 create_nextline	execution_test/libft/get_next_line/get_next_line.c	/^char	*create_nextline(char *result, char *line)$/;"	f
 create_nextline	libft/get_next_line/get_next_line.c	/^char	*create_nextline(char *result, char *line)$/;"	f
 create_nextline	parsing/expansion_test/libft/get_next_line/get_next_line.c	/^char	*create_nextline(char *result, char *line)$/;"	f
-create_redir	init_cmd.c	/^int	create_redir(t_token **token, t_cmd *cmd)$/;"	f
+create_redir	command_struct/init_cmd_redir.c	/^int	create_redir(t_token **token, t_cmd *cmd)$/;"	f
 create_result	execution_test/libft/get_next_line/get_next_line.c	/^char	*create_result(char *line)$/;"	f
 create_result	libft/get_next_line/get_next_line.c	/^char	*create_result(char *line)$/;"	f
 create_result	parsing/expansion_test/libft/get_next_line/get_next_line.c	/^char	*create_result(char *line)$/;"	f
@@ -238,8 +252,10 @@ delete_token	tokens/token_routine_delete.c	/^t_token	*delete_token(t_token **hea
 env	execution_test/minishell.h	/^	t_env	*env;$/;"	m	struct:s_shell
 env	minishell.h	/^	t_env	*env;$/;"	m	struct:s_shell
 env	parsing/expansion_test/minishell.h	/^	t_env	*env;$/;"	m	struct:s_shell
+error_exit	minishell.h	/^	int		error_exit;$/;"	m	struct:s_shell
 exec_bin	execution_test/execution.c	/^void	exec_bin(t_token *token, t_bin *bin)$/;"	f
-execution_bin	execution.c	/^void	execution_bin(t_cmd *cmd, t_bin *bin)$/;"	f
+execute_simple_cmd	execution.c	/^void	execute_simple_cmd(t_cmd *cmd)$/;"	f
+execution	execution.c	/^void	execution(t_cmd **head)$/;"	f
 exit_status	execution_test/minishell.h	/^	int		exit_status;$/;"	m	struct:s_shell
 exit_status	minishell.h	/^	int		exit_status;$/;"	m	struct:s_shell
 exit_status	parsing/expansion_test/minishell.h	/^	int		exit_status;$/;"	m	struct:s_shell
@@ -253,6 +269,7 @@ expansion	parsing/expansion_test/parsing_expansion.c	/^int	expansion(t_token **h
 expansion_next_token	execution_test/parsing_expansion.c	/^static void	expansion_next_token(t_token **head, t_token *curr, int pos)$/;"	f	file:
 expansion_next_token	parsing/expansion.c	/^static void	expansion_next_token(t_token **head, t_token *curr, int pos)$/;"	f	file:
 expansion_next_token	parsing/expansion_test/parsing_expansion.c	/^static void	expansion_next_token(t_token **head, t_token *curr, int pos)$/;"	f	file:
+extract_cmd_path	command_struct/init_cmd_cmd.c	/^static int	extract_cmd_path(char *s, t_cmd *cmd, int i)$/;"	f	file:
 fd	execution_test/minishell.h	/^	int		fd[2];$/;"	m	struct:s_cmd
 fd	minishell.h	/^	int		fd[2];$/;"	m	struct:s_cmd
 fd	parsing/expansion_test/minishell.h	/^	int		fd[2];$/;"	m	struct:s_cmd
@@ -262,9 +279,10 @@ fdin	parsing/expansion_test/minishell.h	/^	int		fdin;$/;"	m	struct:s_cmd
 fdout	execution_test/minishell.h	/^	int		fdout;$/;"	m	struct:s_cmd
 fdout	minishell.h	/^	int		fdout;$/;"	m	struct:s_cmd
 fdout	parsing/expansion_test/minishell.h	/^	int		fdout;$/;"	m	struct:s_cmd
-find_cmd_in_path	cmd_is_bin.c	/^int	find_cmd_in_path(t_bin *bin, char *token)$/;"	f
 find_cmd_in_path	execution_test/cmd_is_bin.c	/^int	find_cmd_in_path(t_bin *bin, char *token)$/;"	f
-free_cmd	free_cmd.c	/^void	free_cmd(t_cmd **head)$/;"	f
+first_argument_is_numeric	exit.c	/^static void	first_argument_is_numeric(t_cmd **head, int size)$/;"	f	file:
+free_before_exit	exit.c	/^static void	free_before_exit(t_cmd **head)$/;"	f	file:
+free_cmd	command_struct/free_cmd.c	/^void	free_cmd(t_cmd **head)$/;"	f
 free_env	environnement/envp_routine.c	/^void	free_env(t_env **head)$/;"	f
 free_env	execution_test/envp_routine.c	/^void	free_env(t_env **head)$/;"	f
 free_env	parsing/expansion_test/envp_routine.c	/^void	free_env(t_env **head)$/;"	f
@@ -272,9 +290,8 @@ free_shell	execution_test/main.c	/^void	free_shell(void)$/;"	f
 free_shell	execution_test/sans_readline_main.c	/^void	free_shell(void)$/;"	f
 free_shell	global_variable/init_global.c	/^void	free_shell(void)$/;"	f
 free_shell	parsing/expansion_test/main.c	/^void	free_shell(void)$/;"	f
-free_tab	cmd_is_bin.c	/^void	free_tab(char **table)$/;"	f
 free_tab	execution_test/cmd_is_bin.c	/^void	free_tab(char **table)$/;"	f
-free_tab2d	free_cmd.c	/^static void	free_tab2d(char **s)$/;"	f	file:
+free_tab2d	command_struct/free_cmd.c	/^void	free_tab2d(char **s)$/;"	f
 free_token	execution_test/token_routine.c	/^void	free_token(t_token **head)$/;"	f
 free_token	parsing/expansion_test/token_routine.c	/^void	free_token(t_token **head)$/;"	f
 free_token	tokens/token_routine.c	/^void	free_token(t_token **head)$/;"	f
@@ -308,6 +325,7 @@ ft_count_unsigned_int	parsing/expansion_test/libft/ft_printf/ft_count_unsigned_i
 ft_dprintf	execution_test/libft/ft_printf/ft_dprintf.c	/^int	ft_dprintf(int fd, const char *last, ...)$/;"	f
 ft_dprintf	libft/ft_printf/ft_dprintf.c	/^int	ft_dprintf(int fd, const char *last, ...)$/;"	f
 ft_dprintf	parsing/expansion_test/libft/ft_printf/ft_dprintf.c	/^int	ft_dprintf(int fd, const char *last, ...)$/;"	f
+ft_exit	exit.c	/^void	ft_exit(t_cmd **head)$/;"	f
 ft_fill_big_table	complicated_split.c	/^static char	**ft_fill_big_table(char *src, char c, char **dst, int *lens)$/;"	f	file:
 ft_format_specifier	execution_test/libft/ft_printf/ft_printf.c	/^void	ft_format_specifier(char format, va_list ap, int *count)$/;"	f
 ft_format_specifier	libft/ft_printf/ft_printf.c	/^void	ft_format_specifier(char format, va_list ap, int *count)$/;"	f
@@ -509,8 +527,10 @@ g_exit_status	parsing/tests/main_parsing_syntax_errors.c	/^int g_exit_status = 0
 g_exit_status	parsing/tests/main_token_routine.c	/^int g_exit_status = 0;$/;"	v
 g_shell	execution_test/main.c	/^t_shell	*g_shell;$/;"	v
 g_shell	execution_test/sans_readline_main.c	/^t_shell	*g_shell;$/;"	v
+g_shell	main.c	/^t_shell	*g_shell;$/;"	v
 g_shell	parsing/expansion_test/main.c	/^t_shell	*g_shell;$/;"	v
-get_cmd_size	init_cmd_cmd.c	/^static int	get_cmd_size(t_token **token)$/;"	f	file:
+get_cmd_size	command_struct/init_cmd_cmd_helper.c	/^int	get_cmd_size(t_token **token)$/;"	f
+get_env	cd.c	/^char	*get_env(char *var_name)$/;"	f
 get_envp	environnement/envp_routine.c	/^t_env	*get_envp(char **envp)$/;"	f
 get_envp	execution_test/envp_routine.c	/^t_env	*get_envp(char **envp)$/;"	f
 get_envp	parsing/expansion_test/envp_routine.c	/^t_env	*get_envp(char **envp)$/;"	f
@@ -526,7 +546,7 @@ get_next_line	parsing/expansion_test/libft/get_next_line/get_next_line.c	/^char	
 get_next_line_maxopen	execution_test/libft/get_next_line/get_next_line_bonus.c	/^char	*get_next_line_maxopen(int fd)$/;"	f
 get_next_line_maxopen	libft/get_next_line/get_next_line_bonus.c	/^char	*get_next_line_maxopen(int fd)$/;"	f
 get_next_line_maxopen	parsing/expansion_test/libft/get_next_line/get_next_line_bonus.c	/^char	*get_next_line_maxopen(int fd)$/;"	f
-get_redir_size	init_cmd.c	/^int	get_redir_size(t_token *ptr)$/;"	f
+get_redir_size	command_struct/init_cmd_redir.c	/^static int	get_redir_size(t_token *ptr)$/;"	f	file:
 get_tokens	execution_test/parsing_token_extraction.c	/^t_token	*get_tokens(char *line)$/;"	f
 get_tokens	parsing/expansion_test/parsing_token_extraction.c	/^t_token	*get_tokens(char *line)$/;"	f
 get_tokens	parsing/token_extraction.c	/^t_token	*get_tokens(char *line)$/;"	f
@@ -538,7 +558,7 @@ handler_ctr_c	handler_ctr_c.c	/^void	handler_ctr_c(int code)$/;"	f
 id	execution_test/minishell.h	/^	int					id;$/;"	m	struct:s_token
 id	minishell.h	/^	int					id;$/;"	m	struct:s_token
 id	parsing/expansion_test/minishell.h	/^	int					id;$/;"	m	struct:s_token
-init_cmd	init_cmd.c	/^t_cmd *init_cmd(t_token **token)$/;"	f
+init_cmd	command_struct/init_cmd.c	/^static t_cmd	*init_cmd(t_token **token)$/;"	f	file:
 init_shell	execution_test/main.c	/^int	init_shell(char **envp)$/;"	f
 init_shell	execution_test/sans_readline_main.c	/^int	init_shell(char **envp)$/;"	f
 init_shell	global_variable/init_global.c	/^int	init_shell(char **envp)$/;"	f
@@ -570,6 +590,7 @@ is_metacharacter	parsing/expansion_test/is_token.c	/^int	is_metacharacter(char c
 is_newline	execution_test/is_white_space.c	/^int	is_newline(char c)$/;"	f
 is_newline	is_smth/is_white_space.c	/^int	is_newline(char c)$/;"	f
 is_newline	parsing/expansion_test/is_white_space.c	/^int	is_newline(char c)$/;"	f
+is_numeric	is_smth/is_numeric.c	/^int	is_numeric(char *s)$/;"	f
 is_operator	execution_test/is_operator.c	/^int	is_operator(char c)$/;"	f
 is_operator	is_smth/is_operator.c	/^int	is_operator(char c)$/;"	f
 is_operator	parsing/expansion_test/is_operator.c	/^int	is_operator(char c)$/;"	f
@@ -614,6 +635,7 @@ loop_through	parsing/expansion_looping.c	/^int	loop_through(char *s, int i)$/;"	
 loop_through	parsing/expansion_test/parsing_expansion_looping.c	/^int	loop_through(char *s, int i)$/;"	f
 main	execution_test/main.c	/^int	main(int ac, char **av, char **envp)$/;"	f
 main	execution_test/sans_readline_main.c	/^int	main(int ac, char **av, char **envp)$/;"	f
+main	main.c	/^int	main(int ac, char **av, char **envp)$/;"	f
 main	parsing/expansion_test/main.c	/^int	main(int ac, char **av, char **envp)$/;"	f
 main	parsing/tests/main_parsing_syntax_errors.c	/^int	main(int ac, char **av)$/;"	f
 main	parsing/tests/main_parsing_token_extraction.c	/^int	main(int ac, char **av)$/;"	f
@@ -649,17 +671,15 @@ not_within_squotes	execution_test/parsing_expansion_dollar_conditions.c	/^int	no
 not_within_squotes	parsing/expansion_dollar_conditions.c	/^int	not_within_squotes(t_token *curr, int pos)$/;"	f
 not_within_squotes	parsing/expansion_test/parsing_expansion_dollar_conditions.c	/^int	not_within_squotes(t_token *curr, int pos)$/;"	f
 ok	execution_test/minishell.h	/^	int		ok;$/;"	m	struct:s_bin
-ok	minishell.h	/^	int		ok;$/;"	m	struct:s_bin
 parsing	execution_test/parsing.c	/^t_token	*parsing(char *line)$/;"	f
 parsing	parsing/expansion_test/parsing.c	/^t_token	*parsing(char *line)$/;"	f
 parsing	parsing/parsing.c	/^t_token	*parsing(char *line)$/;"	f
 path	execution_test/minishell.h	/^	char	**path;$/;"	m	struct:s_cmd
 path	execution_test/minishell.h	/^	char	*path;$/;"	m	struct:s_bin
-path	minishell.h	/^	char	**path;$/;"	m	struct:s_cmd
-path	minishell.h	/^	char	*path;$/;"	m	struct:s_bin
+path	minishell.h	/^	char	*path;$/;"	m	struct:s_cmd
 path	parsing/expansion_test/minishell.h	/^	char	**path;$/;"	m	struct:s_cmd
-path_index	cmd_is_bin.c	/^int	path_index(t_bin *bin, char **table)$/;"	f
 path_index	execution_test/cmd_is_bin.c	/^int	path_index(t_bin *bin, char **table)$/;"	f
+pid	minishell.h	/^	pid_t	pid;$/;"	m	struct:s_cmd
 power	execution_test/libft/libft/power.c	/^int	power(int str_base, int power)$/;"	f
 power	libft/libft/power.c	/^int	power(int str_base, int power)$/;"	f
 power	parsing/expansion_test/libft/libft/power.c	/^int	power(int str_base, int power)$/;"	f
@@ -669,11 +689,14 @@ prepare_expand	parsing/expansion_test/parsing_expansion_helper.c	/^int	prepare_e
 prepare_forstash	execution_test/libft/get_next_line/get_next_line_utils.c	/^void	prepare_forstash(char **line, char **buffer)$/;"	f
 prepare_forstash	libft/get_next_line/get_next_line_utils.c	/^void	prepare_forstash(char **line, char **buffer)$/;"	f
 prepare_forstash	parsing/expansion_test/libft/get_next_line/get_next_line_utils.c	/^void	prepare_forstash(char **line, char **buffer)$/;"	f
-print_echo	builtins.c	/^void	print_echo(char **s, int i)$/;"	f
+print_chdir_error	cd.c	/^void	print_chdir_error(char *arg, char *err)$/;"	f
+print_cmd	main.c	/^void	print_cmd(t_cmd **head)$/;"	f
+print_echo	echo.c	/^static void	print_echo(char **s, int i)$/;"	f	file:
 print_env	execution_test/main.c	/^void	print_env()$/;"	f
 print_env	execution_test/sans_readline_main.c	/^void	print_env(t_env	**head)$/;"	f
 print_env	global_variable/init_global.c	/^void	print_env()$/;"	f
 print_env	parsing/expansion_test/main.c	/^void	print_env(t_env	**head)$/;"	f
+print_getcwd_error	pwd.c	/^void	print_getcwd_error(char *s)$/;"	f
 print_syntax_error_char	execution_test/parsing_syntax_errors_print_message.c	/^void	print_syntax_error_char(char c)$/;"	f
 print_syntax_error_char	parsing/expansion_test/parsing_syntax_errors_print_message.c	/^void	print_syntax_error_char(char c)$/;"	f
 print_syntax_error_char	parsing/syntax_errors_print_message.c	/^void	print_syntax_error_char(char c)$/;"	f
@@ -692,6 +715,7 @@ quote_removing	parsing/quote_removing.c	/^int	quote_removing(t_token **head, t_t
 read_fd	execution_test/libft/get_next_line/get_next_line.c	/^char	*read_fd(char *line, int fd, int *error)$/;"	f
 read_fd	libft/get_next_line/get_next_line.c	/^char	*read_fd(char *line, int fd, int *error)$/;"	f
 read_fd	parsing/expansion_test/libft/get_next_line/get_next_line.c	/^char	*read_fd(char *line, int fd, int *error)$/;"	f
+readline_routine	main.c	/^char	*readline_routine(void)$/;"	f
 redir	execution_test/minishell.h	/^	char	**redir;$/;"	m	struct:s_cmd
 redir	minishell.h	/^	char	**redir;$/;"	m	struct:s_cmd
 redir	parsing/expansion_test/minishell.h	/^	char	**redir;$/;"	m	struct:s_cmd
@@ -702,7 +726,6 @@ replace_content	execution_test/parsing_expansion_expand_var_helper.c	/^static in
 replace_content	parsing/expansion_expand_var_helper.c	/^static int	replace_content(t_token *tmp, char *s)$/;"	f	file:
 replace_content	parsing/expansion_test/parsing_expansion_expand_var_helper.c	/^static int	replace_content(t_token *tmp, char *s)$/;"	f	file:
 s_bin	execution_test/minishell.h	/^typedef	struct	s_bin$/;"	s
-s_bin	minishell.h	/^typedef	struct	s_bin$/;"	s
 s_cmd	execution_test/minishell.h	/^typedef	struct	s_cmd$/;"	s
 s_cmd	minishell.h	/^typedef	struct	s_cmd$/;"	s
 s_cmd	parsing/expansion_test/minishell.h	/^typedef	struct	s_cmd$/;"	s
@@ -731,16 +754,16 @@ shell_no_env	execution_test/main.c	/^int	shell_no_env()$/;"	f
 shell_no_env	global_variable/init_global.c	/^int	shell_no_env()$/;"	f
 sig_handler	execution_test/launch_setup.c	/^int	sig_handler(void)$/;"	f
 sig_handler	launch_setup.c	/^int	sig_handler(void)$/;"	f
+size_tab2d	execution_utils.c	/^int	size_tab2d(char **s)$/;"	f
 size_var	execution_test/parsing_expansion_expand_var_helper.c	/^int	size_var(char *s)$/;"	f
 size_var	parsing/expansion_expand_var_helper.c	/^int	size_var(char *s)$/;"	f
 size_var	parsing/expansion_test/parsing_expansion_expand_var_helper.c	/^int	size_var(char *s)$/;"	f
-split_path	cmd_is_bin.c	/^int	split_path(t_bin *bin)$/;"	f
 split_path	execution_test/cmd_is_bin.c	/^int	split_path(t_bin *bin)$/;"	f
 split_tokens	execution_test/parsing_expansion_helper.c	/^int	split_tokens(t_token **new, char *s, int start, int len)$/;"	f
 split_tokens	parsing/expansion_helper.c	/^int	split_tokens(t_token **new, char *s, int start, int len)$/;"	f
 split_tokens	parsing/expansion_test/parsing_expansion_helper.c	/^int	split_tokens(t_token **new, char *s, int start, int len)$/;"	f
 splitted_path	execution_test/minishell.h	/^	char	**splitted_path;$/;"	m	struct:s_bin
-splitted_path	minishell.h	/^	char	**splitted_path;$/;"	m	struct:s_bin
+status	minishell.h	/^	int		status;$/;"	m	struct:s_cmd
 str_lowercase	execution_test/libft/libft/str_lowercase.c	/^char	*str_lowercase(char *str)$/;"	f
 str_lowercase	libft/libft/str_lowercase.c	/^char	*str_lowercase(char *str)$/;"	f
 str_lowercase	parsing/expansion_test/libft/libft/str_lowercase.c	/^char	*str_lowercase(char *str)$/;"	f
@@ -751,7 +774,6 @@ syntax_error_check	execution_test/parsing_syntax_errors.c	/^int	syntax_error_che
 syntax_error_check	parsing/expansion_test/parsing_syntax_errors.c	/^int	syntax_error_check(char *s)$/;"	f
 syntax_error_check	parsing/syntax_errors.c	/^int	syntax_error_check(char *s)$/;"	f
 t_bin	execution_test/minishell.h	/^}	t_bin;$/;"	t	typeref:struct:s_bin
-t_bin	minishell.h	/^}	t_bin;$/;"	t	typeref:struct:s_bin
 t_cmd	execution_test/minishell.h	/^}	t_cmd;$/;"	t	typeref:struct:s_cmd
 t_cmd	minishell.h	/^}	t_cmd;$/;"	t	typeref:struct:s_cmd
 t_cmd	parsing/expansion_test/minishell.h	/^}	t_cmd;$/;"	t	typeref:struct:s_cmd
