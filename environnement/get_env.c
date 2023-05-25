@@ -1,46 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_cmd.c                                         :+:      :+:    :+:   */
+/*   get_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/23 09:34:50 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/24 15:44:07 by mdanchev         ###   lausanne.ch       */
+/*   Created: 2023/05/24 16:08:07 by mdanchev          #+#    #+#             */
+/*   Updated: 2023/05/24 21:14:46 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
-void	free_tab2d(char **s)
+char	*get_env_var_value(char *var_name)
 {
-	int	i;
+	t_env	*env;
 
-	if (!s || !*s)
-		return ;
-	i = 0;
-	while (s[i])
+	env = g_shell->env;
+	while (env != NULL)
 	{
-		free (s[i]);
-		i++;
+		if (ft_strncmp(env->var_name, var_name, ft_strlen(var_name)) == 0)
+			return (env->var_value);
+		env = env->next;
 	}
-	free (s);
-}
-
-void	free_cmd(t_cmd **head)
-{
-	t_cmd *ptr;
-	t_cmd	*tmp;
-
-	if (!head || !*head)
-		return ;
-	ptr = *head;
-	while (ptr)
-	{
-		tmp = ptr;
-		ptr = ptr->next;
-		free_tab2d(tmp->cmd);
-		free_tab2d(tmp->redir);
-		free(tmp);
-	}
-	*head = NULL;
+	return (NULL);
 }

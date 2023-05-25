@@ -6,7 +6,7 @@
 /*   By: mmakarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:59:31 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/05/19 11:38:42 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/05/25 09:52:47 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -23,8 +23,10 @@ void	free_env(t_env **head)
 	{
 		tmp = ptr;
 		ptr = tmp->next;
-		free(tmp->var_name);
-		free(tmp->var_value);
+		if (tmp->var_name)
+			free(tmp->var_name);
+		if (tmp->var_value)
+			free(tmp->var_value);
 		free(tmp);
 	}
 	*head = NULL;
@@ -37,6 +39,14 @@ void	free_env(t_env **head)
    - for var_name, we stop at '=', '=' excluding
    - for var_value, we stop at '\0'
 */
+
+int	new_env_helper(char *envp, int end)
+{
+	while (envp[end] != '=' && envp[end]) // NOUVEL AJOUT
+		end++;
+	return (end);
+}
+
 t_env	*new_env(char *envp)
 {
 	t_env	*env;
@@ -47,15 +57,15 @@ t_env	*new_env(char *envp)
 		return (NULL);
 	start = 0;
 	end = 0;
-	env = malloc(sizeof(t_env));
+	env = ft_calloc(1, sizeof(t_env));
 	if (!env)
-		return (malloc_error_print_message(strerror(errno)), NULL);
-	while (envp[end] != '=')
-		end++;
+		return (malloc_error_print_message("ft_calloc failed"), NULL);
+	end = new_env_helper(envp, end);
 	env->var_name = ft_substr(envp, 0, end);
 	if (!env->var_name)
 		return (NULL);
-	end++;
+	if (envp[end++] == '\0') // NOUVEL AJOUT
+		return (env);
 	start = end;
 	while (envp[end] != '\0')
 		end++;

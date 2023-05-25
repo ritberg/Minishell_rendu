@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 09:45:47 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/24 14:18:19 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/25 09:38:28 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -40,7 +40,7 @@ void	free_shell(void)
 		free(g_shell);
 }
 
-int	shell_no_env()
+static int	shell_no_env(void)
 {
 	t_env	*env_no;
 	env_no = malloc(sizeof(t_env));
@@ -55,6 +55,34 @@ int	shell_no_env()
 	g_shell->env = env_no;
 	return (1);
 
+}
+
+static int increment_shlvl(void)
+{
+	t_env	*env;
+	int	i;
+
+	env = g_shell->env;
+	while (env)
+	{
+		if (ft_strncmp(env->var_name, "SHLVL", 6) == 0)
+		{
+			if (!is_numeric(env->var_value))
+				return (1);
+			i = ft_atoi(env->var_value) + 1;
+			free(env->var_value);
+			env->var_value = NULL;
+			env->var_value = ft_itoa(i);
+			if (!env->var_value)
+			{
+				malloc_error_print_message("ft_itoa failed");
+				return (0);
+			}
+			break ;
+		}
+		env = env->next;
+	}
+	return (1);
 }
 
 int	init_shell(char **envp)
@@ -74,6 +102,8 @@ int	init_shell(char **envp)
 	{
 		g_shell->env = get_envp(envp);
 		if (!g_shell->env)
+			return (free_shell(), 0);
+		if (!increment_shlvl())
 			return (free_shell(), 0);
 	}
 //	g_shell->exit_status = 0;

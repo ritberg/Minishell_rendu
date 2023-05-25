@@ -6,13 +6,11 @@
 #    By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 12:23:37 by mdanchev          #+#    #+#              #
-#    Updated: 2023/05/24 14:11:44 by mdanchev         ###   lausanne.ch        #
+#    Updated: 2023/05/25 10:07:14 by mdanchev         ###   lausanne.ch        #
 #                                                                              #
 # **************************************************************************** #
 GREEN 		= \033[32;6m
-MAGNE   	= \033[35;1m
 COLOR_END 	= \033[0m
-RED 		:= $(shell tput setaf 1)
 MAGNETA		:= $(shell tput setaf 5)
 YELLOW		:= $(shell tput setaf 3)
 RESET		:= $(shell tput sgr0)
@@ -21,6 +19,7 @@ SRCS		= main.c \
 			  malloc_error_print_message.c\
 			  global_variable/init_global.c \
 			  environnement/envp_routine.c \
+			  environnement/get_env.c \
 			  is_smth/is_token.c \
 			  is_smth/is_operator.c \
 			  is_smth/is_dollar.c \
@@ -52,12 +51,15 @@ SRCS		= main.c \
 			  command_struct/free_cmd.c \
 			  execution_utils.c \
 			  execution.c \
-			  exit.c \
-			  env.c \
-			  echo.c \
-			  pwd.c \
-			  cd.c \
-			  cd_helper.c \
+			  builtins/exit.c \
+			  builtins/env.c \
+			  builtins/echo.c \
+			  builtins/pwd.c \
+			  builtins/cd.c \
+			  builtins/export.c \
+			  builtins/unset.c \
+			  builtins/export_unset_helper.c \
+			  builtins/free_and_exit_prog.c \
 			  cmd_is_bin.c \
 			  cmd_is_builtin.c \
 			  copy_env_tab.c\
@@ -75,15 +77,13 @@ HEADERS		= minishell.h
 
 LIBFT_FOLD	= libft
 
-# DEPS		= ${INC_LIBFT}/includes/libft.h
-
 CFLAGS		+= -Wall -Wextra -Werror
 
 SANITIZE	?= 0
 
 ifeq ($(SANITIZE), 1)
-@ CFLAGS += -g3 -fsanitize=address
-@ CFLAGS += -fno-omit-frame-pointer
+CFLAGS += -g3 -fsanitize=address
+CFLAGS += -fno-omit-frame-pointer
 $(info $(YELLOW) fsanitize active$(RESET))
 else
 $(info $(MAGNETA) NO SANITIZER$(RESET))

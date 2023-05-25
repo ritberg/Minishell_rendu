@@ -1,0 +1,35 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+_cd	cd.c	/^void	_cd(t_cmd *cmd, t_cmd **head)$/;"	f
+_echo	echo.c	/^int	_echo(t_cmd *cmd)$/;"	f
+_env	env.c	/^void	_env(t_cmd *cmd, t_env *env)$/;"	f
+_export	export.c	/^void	_export(t_cmd *cmd, t_cmd **head)$/;"	f
+_pwd	pwd.c	/^void	_pwd(void)$/;"	f
+_unset	unset.c	/^void	_unset(t_cmd *cmd)$/;"	f
+change_dir	cd.c	/^static int	change_dir(char *oldpwd, char *path)$/;"	f	file:
+change_env	cd.c	/^static void	change_env(char *oldpwd, char *pwd, t_cmd **head)$/;"	f	file:
+change_env_error	cd.c	/^static void	change_env_error(char *oldpwd, char *pwd, t_cmd **head)$/;"	f	file:
+change_env_var	export.c	/^static int	change_env_var(char *s, char *var_name, int i)$/;"	f	file:
+check_env	env.c	/^static int	check_env(t_cmd *cmd)$/;"	f	file:
+check_exit_arguments	exit.c	/^static int	check_exit_arguments(t_cmd **head)$/;"	f	file:
+check_if_valid_identifier	export_unset_helper.c	/^int	check_if_valid_identifier(char *s, char *command)$/;"	f
+check_if_var_exists	export_unset_helper.c	/^int	check_if_var_exists(char *s)$/;"	f
+delete_env_helper	unset.c	/^static void delete_env_helper(t_env **head, t_env *curr, \\$/;"	f	file:
+delete_env_var	unset.c	/^static void delete_env_var(t_env **head, char *s)$/;"	f	file:
+env_list_size	unset.c	/^static int	env_list_size(t_env **head)$/;"	f	file:
+export_no_args	export.c	/^static void	export_no_args(void)$/;"	f	file:
+export_with_args	export.c	/^static int	export_with_args(char *s)$/;"	f	file:
+export_with_args_helper	export.c	/^static int	export_with_args_helper(char *var_name, char *s, int i)$/;"	f	file:
+first_argument_is_numeric	exit.c	/^static void	first_argument_is_numeric(t_cmd **head, int size)$/;"	f	file:
+free_and_exit_prog	free_and_exit_prog.c	/^void	free_and_exit_prog(t_cmd **head, int exit_code)$/;"	f
+free_before_exit	exit.c	/^static void	free_before_exit(t_cmd **head)$/;"	f	file:
+free_env_var	unset.c	/^static void	free_env_var(t_env *curr)$/;"	f	file:
+ft_exit	exit.c	/^void	ft_exit(t_cmd **head)$/;"	f
+print_chdir_error	cd.c	/^static void	print_chdir_error(char *arg, char *err)$/;"	f	file:
+print_echo	echo.c	/^static void	print_echo(char **s, int i)$/;"	f	file:
+print_export_unset_error	export_unset_helper.c	/^void	print_export_unset_error(char *identifier, char *command)$/;"	f
+print_getcwd_error	pwd.c	/^void	print_getcwd_error(char *s)$/;"	f

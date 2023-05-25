@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 09:56:41 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/24 13:40:14 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/24 16:25:11 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,6 @@ int	main(int ac, char **av, char **envp)
 		free_cmd(&cmd);
 	}
 	free_shell();
+	printf("exit\n");
 	return (0);
 }

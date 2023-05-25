@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 12:35:31 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/24 12:35:40 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/25 10:08:49 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -23,7 +23,7 @@ static void	print_echo(char **s, int i)
 	while (s[i])
 	{
 		ft_printf("%s", s[i]);
-		if (i != size  - 1)
+		if (i != size - 1)
 			ft_printf(" ");
 		i++;
 	}

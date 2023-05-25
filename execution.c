@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 12:39:31 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/24 13:38:51 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/25 10:19:32 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -60,7 +60,7 @@ void	execute_pipes(t_cmd **head, int nb_pipes)
 }
 */
 
-void	execute_simple_cmd(t_cmd *cmd)
+void	execute_builtin(t_cmd *cmd, t_cmd **head)
 {
 	if (ft_strncmp(cmd->cmd[0], "exit", 6) == 0)
 		ft_exit(&cmd);
@@ -71,9 +71,20 @@ void	execute_simple_cmd(t_cmd *cmd)
 	else if (ft_strncmp(cmd->cmd[0], "env", 4) == 0)
 		_env(cmd, g_shell->env);
 	else if (ft_strncmp(cmd->cmd[0], "cd", 3) == 0)
-		_cd(cmd);
+		_cd(cmd, head);
+	else if (ft_strncmp(cmd->cmd[0], "export", 7) == 0)
+		_export(cmd, head);
+	else if (ft_strncmp(cmd->cmd[0], "unset", 6) == 0)
+		_unset(cmd);
 	return ;
+}
 
+void	one_cmd(t_cmd *cmd, t_cmd **head)
+{
+	if (cmd_is_builtin(cmd->cmd[0]))
+		execute_builtin(cmd, head);
+//	else if (cmd_is_bin(cmd->cmd[0]))
+//		execute_bin(cmd);
 }
 
 int	check_for_pipes(t_cmd **head)
@@ -101,9 +112,9 @@ void	execution(t_cmd **head)
 		return ;
 	nb_pipes = check_for_pipes(head);
 	if (nb_pipes == 1)
-		execute_simple_cmd(cmd);
+		one_cmd(cmd, head);
 //	else
-//		execute_pipes(head, nb_pipes);
+//		multiple_cmds(head, nb_pipes);
 }
 
 

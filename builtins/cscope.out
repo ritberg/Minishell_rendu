@@ -1,0 +1,1938 @@
+cscope 15 $HOME/Documents/GitHub/minishell/rita/builtins -c -q 0000000084 0000010279
+	@cd.c
+
+12 #include 
+	~"minishell.h
+"
+
+14 static void 
+	$change_env_error
+(char *
+oldpwd
+, char *
+pwd
+, 
+t_cmd
+ **
+head
+)
+
+16 
+	`malloc_error_print_message
+("ft_strdup failed");
+
+17 if (
+oldpwd
+)
+
+18 
+	`free
+ (
+oldpwd
+);
+
+19 if (
+pwd
+)
+
+20 
+	`free
+ (
+pwd
+);
+
+21 
+	`free_and_exit_prog
+(
+head
+, 1);
+
+22 
+	}
+}
+
+24 static void 
+	$change_env
+(char *
+oldpwd
+, char *
+pwd
+, 
+t_cmd
+ **
+head
+)
+
+26 
+t_env
+ *
+env
+;
+
+28 
+env
+ = 
+g_shell
+->env;
+
+29 while (
+env
+ != 
+NULL
+)
+
+31 if (
+	`ft_strncmp
+(
+env
+->
+var_name
+, "OLDPWD", 7) == 0)
+
+33 
+	`free
+(
+env
+->
+var_value
+);
+
+34 
+env
+->
+var_value
+ = 
+NULL
+;
+
+35 
+env
+->
+var_value
+ = 
+	`ft_strdup
+(
+oldpwd
+);
+
+36 if (!
+env
+->
+var_value
+)
+
+37 
+	`change_env_error
+(
+oldpwd
+, 
+pwd
+, 
+head
+);
+
+39 if (
+	`ft_strncmp
+(
+env
+->
+var_name
+, "PWD", 4) == 0)
+
+41 
+	`free
+(
+env
+->
+var_value
+);
+
+42 
+env
+->
+var_value
+ = 
+NULL
+;
+
+43 
+env
+->
+var_value
+ = 
+	`ft_strdup
+(
+pwd
+);
+
+44 if (!
+env
+->
+var_value
+)
+
+45 
+	`change_env_error
+(
+oldpwd
+, 
+pwd
+, 
+head
+);
+
+47 
+env
+ = env->
+next
+;
+
+49 
+g_shell
+->
+exit_status
+ = 0;
+
+50 return (
+	`free
+(
+oldpwd
+), free(
+pwd
+));
+
+51 
+	}
+}
+
+53 static void 
+	$print_chdir_error
+(char *
+arg
+, char *
+err
+)
+
+55 
+	`ft_dprintf
+(2, "minishell: cd: %s: ", 
+arg
+);
+
+56 
+	`ft_dprintf
+(2, "%s\n", 
+err
+);
+
+57 
+g_shell
+->
+exit_status
+ = 1;
+
+58 
+	}
+}
+
+60 static int 
+	$change_dir
+(char *
+oldpwd
+, char *
+path
+)
+
+62 int 
+res
+;
+
+64 
+res
+ = 
+	`chdir
+(
+path
+);
+
+65 if (
+res
+ == -1)
+
+67 
+	`free
+(
+oldpwd
+);
+
+68 
+	`print_chdir_error
+(
+path
+, 
+	`strerror
+(
+errno
+));
+
+71 
+g_shell
+->
+exit_status
+ = 0;
+
+73 
+	}
+}
+
+76 void 
+	$_cd
+(
+t_cmd
+ *
+cmd
+, t_cmd **
+head
+)
+
+78 int 
+res
+;
+
+79 char *
+oldpwd
+;
+
+80 char *
+pwd
+;
+
+82 
+oldpwd
+ = 
+	`getcwd
+(
+NULL
+, 0);
+
+83 if (!
+oldpwd
+)
+
+85 
+	`print_getcwd_error
+(
+	`strerror
+(
+errno
+));
+
+88 if (
+	`size_tab2d
+(
+cmd
+->cmd) == 1)
+
+89 
+res
+ = 
+	`change_dir
+(
+oldpwd
+, 
+	`get_env_var_value
+("HOME"));
+
+91 
+res
+ = 
+	`change_dir
+(
+oldpwd
+, 
+cmd
+->cmd[1]);
+
+92 if (!
+res
+)
+
+94 
+pwd
+ = 
+	`getcwd
+(
+NULL
+, 0);
+
+95 if (!
+pwd
+)
+
+97 
+	`free
+(
+oldpwd
+);
+
+98 
+	`print_getcwd_error
+(
+	`strerror
+(
+errno
+));
+
+101 
+	`change_env
+(
+oldpwd
+, 
+pwd
+, 
+head
+);
+
+102 
+	}
+}
+
+	@echo.c
+
+12 #include 
+	~"minishell.h
+"
+
+14 static void 
+	$print_echo
+(char **
+s
+, int 
+i
+)
+
+16 int 
+size
+;
+
+18 
+size
+ = 
+i
+;
+
+19 while (
+s
+[
+size
+])
+
+20 
+size
+++;
+
+21 if (
+size
+ == 
+i
+)
+
+23 while (
+s
+[
+i
+])
+
+25 
+	`ft_printf
+("%s", 
+s
+[
+i
+]);
+
+26 if (
+i
+ != 
+size
+ - 1)
+
+27 
+	`ft_printf
+(" ");
+
+28 
+i
+++;
+
+30 
+	}
+}
+
+32 int 
+	$_echo
+(
+t_cmd
+ *
+cmd
+)
+
+34 if (
+	`ft_strncmp
+(
+cmd
+->cmd[1], "-n", 3) != 0)
+
+36 
+	`print_echo
+(
+cmd
+->cmd, 1);
+
+37 
+	`ft_printf
+("\n");
+
+40 
+	`print_echo
+(
+cmd
+->cmd, 2);
+
+41 
+g_shell
+->
+exit_status
+ = 0;
+
+43 
+	}
+}
+
+	@env.c
+
+12 #include 
+	~"minishell.h
+"
+
+14 static int 
+	$check_env
+(
+t_cmd
+ *
+cmd
+)
+
+16 int 
+size
+;
+
+18 
+size
+ = 
+	`size_tab2d
+(
+cmd
+->cmd);
+
+19 if (
+size
+ == 1)
+
+21 
+	`ft_dprintf
+(2, "env: %s: ", 
+cmd
+->cmd[1]);
+
+22 
+	`ft_dprintf
+(2, "No such file or directory\n");
+
+23 
+g_shell
+->
+exit_status
+ = 127;
+
+25 
+	}
+}
+
+27 void 
+	$_env
+(
+t_cmd
+ *
+cmd
+, 
+t_env
+ *
+env
+)
+
+29 int 
+res
+;
+
+31 
+res
+ = 
+	`check_env
+(
+cmd
+);
+
+32 if (!
+res
+)
+
+34 if (!
+env
+)
+
+36 
+g_shell
+->
+exit_status
+ = 0;
+
+39 while (
+env
+ != 
+NULL
+)
+
+41 if (
+env
+->
+var_value
+)
+
+43 
+	`ft_printf
+("%s=", 
+env
+->
+var_name
+);
+
+44 
+	`ft_printf
+("%s\n", 
+env
+->
+var_value
+);
+
+46 
+env
+ = env->
+next
+;
+
+48 
+g_shell
+->
+exit_status
+ = 0;
+
+50 
+	}
+}
+
+	@exit.c
+
+12 #include 
+	~"minishell.h
+"
+
+14 static void 
+	$free_before_exit
+(
+t_cmd
+ **
+head
+)
+
+16 
+	`free_shell
+();
+
+17 
+	`free_cmd
+(
+head
+);
+
+18 
+	}
+}
+
+20 static void 
+	$first_argument_is_numeric
+(
+t_cmd
+ **
+head
+, int 
+size
+)
+
+22 int 
+exit_status
+;
+
+24 
+exit_status
+ = 0;
+
+25 if (
+size
+ == 2)
+
+27 
+	`printf
+("exit\n");
+
+28 
+exit_status
+ = 
+	`ft_atoi
+((*
+head
+)->
+cmd
+[1]);
+
+29 
+	`free_before_exit
+(
+head
+);
+
+30 
+	`exit
+ (
+exit_status
+ % 256);
+
+32 else if (
+size
+ > 2)
+
+34 
+	`ft_dprintf
+(2, "exit\n");
+
+35 
+	`ft_dprintf
+(2, "minishell: exit: too many arguments\n");
+
+36 
+g_shell
+->
+exit_status
+ = 1;
+
+38 
+	}
+}
+
+40 static int 
+	$check_exit_arguments
+(
+t_cmd
+ **
+head
+)
+
+42 int 
+size
+;
+
+44 
+size
+ = 
+	`size_tab2d
+((*
+head
+)->
+cmd
+);
+
+45 if (
+size
+ == 1)
+
+47 if (
+	`is_numeric
+((*
+head
+)->
+cmd
+[1]))
+
+48 
+	`first_argument_is_numeric
+(
+head
+, 
+size
+);
+
+51 
+	`ft_dprintf
+(2, "exit\n");
+
+52 
+	`ft_dprintf
+(2, "minishell: exit: %s: ", (*
+head
+)->
+cmd
+[1]);
+
+53 
+	`ft_dprintf
+(2, "numeric argument required\n");
+
+54 
+	`free_before_exit
+(
+head
+);
+
+55 
+	`exit
+ (255);
+
+58 
+	}
+}
+
+60 void 
+	$ft_exit
+(
+t_cmd
+ **
+head
+)
+
+62 int 
+res
+;
+
+64 
+res
+ = 
+	`check_exit_arguments
+(
+head
+);
+
+65 if (!
+res
+)
+
+67 
+	`free_before_exit
+(
+head
+);
+
+68 
+	`printf
+("exit\n");
+
+69 
+	`exit
+ (0);
+
+71 
+	}
+}
+
+	@export.c
+
+12 #include 
+	~"minishell.h
+"
+
+14 static int 
+	$change_env_var
+(char *
+s
+, char *
+var_name
+, int 
+i
+)
+
+16 
+t_env
+ *
+env
+;
+
+18 
+env
+ = 
+g_shell
+->env;
+
+19 while (
+env
+)
+
+21 if (
+	`ft_strncmp
+(
+var_name
+, 
+env
+->var_name, 
+	`ft_strlen
+(var_name)) == 0)
+
+23 
+env
+ = env->
+next
+;
+
+25 
+	`free
+(
+env
+->
+var_value
+);
+
+26 
+env
+->
+var_value
+ = 
+NULL
+;
+
+27 
+env
+->
+var_value
+ = 
+	`ft_substr
+(
+s
+, 
+i
+ + 1, 
+	`ft_strlen
+(s) - (i + 1)) ;
+
+28 if (!
+env
+->
+var_value
+)
+
+30 
+	`malloc_error_print_message
+("ft_strdup failed");
+
+34 
+	}
+}
+
+36 static int 
+	$export_with_args_helper
+(char *
+var_name
+, char *
+s
+, int 
+i
+)
+
+38 int 
+res
+;
+
+39 
+t_env
+ *
+new
+;
+
+41 
+res
+ = 
+	`check_if_var_exists
+(
+var_name
+);
+
+42 if (!
+res
+)
+
+44 
+new
+ = 
+	`new_env
+(
+s
+);
+
+45 if (!
+new
+)
+
+47 if (!
+g_shell
+->
+env
+)
+
+48 
+g_shell
+->
+env
+ = 
+new
+;
+
+50 
+	`link_env
+(&
+g_shell
+->
+env
+, 
+new
+);
+
+52 else if (
+res
+ && 
+s
+[
+i
+] == '=')
+
+54 if (!
+	`change_env_var
+(
+s
+, 
+var_name
+, 
+i
+))
+
+58 
+	}
+}
+
+60 static int 
+	$export_with_args
+(char *
+s
+)
+
+62 int 
+res
+;
+
+63 int 
+i
+;
+
+64 char *
+var_name
+;
+
+66 
+i
+ = 0;
+
+67 
+res
+ = 
+	`check_if_valid_identifier
+(
+s
+, "export");
+
+68 if (!
+res
+)
+
+70 while (
+s
+[
+i
+] && s[i] != '=')
+
+71 
+i
+++;
+
+72 if (
+s
+[
+i
+] == '=' && (
+	`is_blank
+(s[i - 1]) || is_blank(s[i + 1])))
+
+74 
+	`print_export_unset_error
+(
+s
+, "export");
+
+77 
+var_name
+ = 
+	`ft_substr
+(
+s
+, 0, 
+i
+);
+
+78 if (!
+var_name
+)
+
+80 
+	`malloc_error_print_message
+("ft_substr failed");
+
+83 
+res
+ = 
+	`export_with_args_helper
+(
+var_name
+, 
+s
+, 
+i
+);
+
+84 
+	`free
+(
+var_name
+);
+
+85 return (
+res
+);
+
+86 
+	}
+}
+
+88 static void 
+	$export_no_args
+(void)
+
+90 
+t_env
+ *
+env
+;
+
+92 
+env
+ = 
+g_shell
+->env;
+
+93 while (
+env
+)
+
+95 if (
+env
+->
+var_value
+)
+
+97 
+	`ft_printf
+("declare -x %s=", 
+env
+->
+var_name
+);
+
+98 
+	`ft_printf
+("\"%s\"\n", 
+env
+->
+var_value
+);
+
+101 
+	`ft_printf
+("declare -x %s\n", 
+env
+->
+var_name
+);
+
+102 
+env
+ = env->
+next
+;
+
+104 
+	}
+}
+
+111 void 
+	$_export
+(
+t_cmd
+ *
+cmd
+, t_cmd **
+head
+)
+
+113 int 
+i
+;
+
+114 int 
+res
+;
+
+115 int 
+save
+;
+
+117 
+save
+ = 1;
+
+118 
+i
+ = 
+	`size_tab2d
+(
+cmd
+->cmd);
+
+119 if (
+i
+ == 1)
+
+121 
+	`export_no_args
+();
+
+124 
+i
+ = 1;
+
+125 while (
+cmd
+->cmd[
+i
+])
+
+127 
+res
+ = 
+	`export_with_args
+(
+cmd
+->cmd[
+i
+]);
+
+128 if (
+res
+ == 
+ERROR_EXIT
+)
+
+129 
+	`free_and_exit_prog
+(
+head
+, 1);
+
+130 else if (!
+res
+)
+
+131 
+save
+ = 
+res
+;
+
+132 
+i
+++;
+
+134 if (!
+save
+)
+
+135 
+g_shell
+->
+exit_status
+ = 1;
+
+136 
+g_shell
+->
+exit_status
+ = 0;
+
+137 
+	}
+}
+
+	@export_unset_helper.c
+
+12 #include 
+	~"minishell.h
+"
+
+14 void 
+	$print_export_unset_error
+(char *
+identifier
+, char *
+command
+)
+
+16 
+	`ft_printf
+("minishell: %s: ", 
+command
+);
+
+17 
+	`ft_printf
+("`%s': not a valid identifier\n", 
+identifier
+);
+
+18 
+g_shell
+->
+exit_status
+ = 1;
+
+19 
+	}
+}
+
+26 int 
+	$check_if_valid_identifier
+(char *
+s
+, char *
+command
+)
+
+28 if (
+	`is_punct
+(
+s
+[0]) || 
+	`ft_isdigit
+(s[0]) || s[0] == '_')
+
+30 
+	`print_export_unset_error
+(
+s
+, 
+command
+);
+
+34 
+	}
+}
+
+36 int 
+	$check_if_var_exists
+(char *
+s
+)
+
+38 
+t_env
+ *
+env
+;
+
+40 
+env
+ = 
+g_shell
+->env;
+
+41 while (
+env
+)
+
+43 if (
+	`ft_strncmp
+(
+s
+, 
+env
+->
+var_name
+, 
+	`ft_strlen
+(s)) == 0)
+
+45 
+env
+ = env->
+next
+;
+
+48 
+	}
+}
+
+	@free_and_exit_prog.c
+
+12 #include 
+	~"minishell.h
+"
+
+14 void 
+	$free_and_exit_prog
+(
+t_cmd
+ **
+head
+, int 
+exit_code
+)
+
+16 
+	`free_cmd
+(
+head
+);
+
+17 
+	`free_shell
+();
+
+18 
+	`exit
+ (
+exit_code
+);
+
+19 
+	}
+}
+
+	@pwd.c
+
+12 #include 
+	~"minishell.h
+"
+
+14 void 
+	$print_getcwd_error
+(char *
+s
+)
+
+16 
+	`ft_dprintf
+(2, "minishell: cd: getcwd: %s\n", 
+s
+);
+
+17 
+g_shell
+->
+exit_status
+ = 1;
+
+18 
+	}
+}
+
+20 void 
+	$_pwd
+(void)
+
+22 char *
+cwd
+;
+
+23 
+cwd
+ = 
+	`getcwd
+(
+NULL
+, 0);
+
+24 if (!
+cwd
+)
+
+26 
+	`print_getcwd_error
+(
+	`strerror
+(
+errno
+));
+
+29 
+	`ft_printf
+("%s\n", 
+cwd
+);
+
+30 
+	`free
+(
+cwd
+);
+
+31 
+g_shell
+->
+exit_status
+ = 0;
+
+33 
+	}
+}
+
+	@unset.c
+
+12 #include 
+	~"minishell.h
+"
+
+14 static int 
+	$env_list_size
+(
+t_env
+ **
+head
+)
+
+16 
+t_env
+ *
+env
+;
+
+17 int 
+i
+;
+
+19 
+env
+ = *
+head
+;
+
+20 
+i
+ = 0;
+
+21 while (
+env
+)
+
+23 
+env
+ = env->
+next
+;
+
+24 
+i
+++;
+
+26 return (
+i
+);
+
+27 
+	}
+}
+
+29 static void 
+	$free_env_var
+(
+t_env
+ *
+curr
+)
+
+31 
+	`free
+(
+curr
+->
+var_name
+);
+
+32 if (
+curr
+->
+var_value
+)
+
+33 
+	`free
+(
+curr
+->
+var_value
+);
+
+34 
+	`free
+(
+curr
+);
+
+35 
+	}
+}
+
+37 static void 
+delete_env_helper
+(
+t_env
+ **
+head
+, t_env *
+curr
+, \
+
+38 
+t_env
+ *
+prev
+, int 
+i
+)
+
+40 int 
+	gsize
+;
+
+42 
+	gsize
+ = 
+env_list_size
+(
+head
+);
+
+43 if (
+	gi
+ == 0 && 
+size
+ == 1)
+
+45 
+free_env_var
+(
+curr
+);
+
+46 *
+	ghead
+ = 
+NULL
+;
+
+49 else if (
+	gi
+ == 0 && 
+size
+ > 1)
+
+51 *
+head
+ = 
+curr
+->
+next
+;
+
+52 
+	gprev
+ = *
+head
+;
+
+54 else if (
+	gi
+ == 
+size
+ - 1)
+
+55 
+prev
+->
+next
+ = 
+NULL
+;
+
+57 
+	gprev
+->
+	gnext
+ = 
+curr
+->
+next
+;
+
+58 
+free_env_var
+(
+curr
+);
+
+62 static void 
+	$delete_env_var
+(
+t_env
+ **
+head
+, char *
+s
+)
+
+64 int 
+i
+;
+
+65 
+t_env
+ *
+curr
+;
+
+66 
+t_env
+ *
+prev
+;
+
+68 
+i
+ = 0;
+
+69 
+curr
+ = *
+head
+;
+
+70 
+prev
+ = 
+NULL
+;
+
+71 while (
+curr
+ && 
+	`ft_strncmp
+(
+s
+, curr->
+var_name
+, 
+	`ft_strlen
+(s) != 0))
+
+73 
+prev
+ = 
+curr
+;
+
+74 
+curr
+ = curr->
+next
+;
+
+75 
+i
+++;
+
+77 if (!
+curr
+)
+
+79 if (
+	`ft_strncmp
+(
+s
+, 
+curr
+->
+var_name
+, 
+	`ft_strlen
+(s)) == 0)
+
+80 
+	`delete_env_helper
+(
+head
+, 
+curr
+, 
+prev
+, 
+i
+);
+
+81 
+g_shell
+->
+exit_status
+ = 0;
+
+82 
+	}
+}
+
+84 void 
+	$_unset
+(
+t_cmd
+ *
+cmd
+)
+
+86 int 
+i
+;
+
+87 int 
+res
+;
+
+88 int 
+save
+;
+
+90 
+i
+ = 1;
+
+91 
+res
+ = 0;
+
+92 
+save
+ = 1;
+
+93 while (
+cmd
+->cmd[
+i
+])
+
+95 
+res
+ = 
+	`check_if_valid_identifier
+(
+cmd
+->cmd[
+i
+], "unset");
+
+96 if (
+res
+)
+
+97 
+	`delete_env_var
+(&
+g_shell
+->
+env
+, 
+cmd
+->cmd[
+i
+]);
+
+98 else if (!
+res
+)
+
+99 
+save
+ = 
+res
+;
+
+100 
+i
+++;
+
+102 if (!
+save
+)
+
+103 
+g_shell
+->
+exit_status
+ = 1;
+
+104 
+	}
+}
+
+	@
+1
+.
+0
+9
+91
+cd.c
+echo.c
+env.c
+exit.c
+export.c
+export_unset_helper.c
+free_and_exit_prog.c
+pwd.c
+unset.c

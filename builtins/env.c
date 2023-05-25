@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 12:34:45 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/24 12:37:10 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/24 16:04:47 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -38,8 +38,11 @@ void	_env(t_cmd *cmd, t_env *env)
 	}
 	while (env != NULL)
 	{
-		ft_printf("%s=", env->var_name);
-		ft_printf("%s\n", env->var_value);
+		if (env->var_value)
+		{
+			ft_printf("%s=", env->var_name);
+			ft_printf("%s\n", env->var_value);
+		}
 		env = env->next;
 	}
 	g_shell->exit_status = 0;

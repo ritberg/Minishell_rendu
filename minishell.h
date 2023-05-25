@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:16:33 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/24 14:11:19 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/25 10:21:25 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,12 +110,17 @@ void	_env(t_cmd *cmd, t_env *env);
 void	print_getcwd_error(char *s);
 int		_echo(t_cmd *cmd);
 void	ft_exit(t_cmd **head);
-void	change_env(char *oldpwd, char *pwd, t_cmd *cmd);
-void	_cd(t_cmd *cmd);
+void	_cd(t_cmd *cmd, t_cmd **head);
+void	_export(t_cmd *cmd, t_cmd **head);
+int		check_if_var_exists(char *s);
+int		check_if_valid_identifier(char *s, char *command);
+void	print_export_unset_error(char *identifier, char *command);
+void	_unset(t_cmd *cmd);
+void	free_and_exit_prog(t_cmd **head, int exit_code);
 
 /*		EXECUTION BIN */
-int		cmd_is_bin(t_token *token);
-int		cmd_is_builtin(t_token *token);
+//int		cmd_is_bin(char *s);
+int		cmd_is_builtin(char *s);
 
 /*		INIT t_cmd *cmd*/
 t_cmd	*cmd_linked_list(t_token **token);
@@ -162,7 +167,7 @@ int		quote_removing(t_token **head, t_token *curr, int pos);
 t_token	*delete_token(t_token **head);
 int		token_list_size(t_token	**head);
 
-/* PARSING - SYNTAX ERROR CHECK */
+/*		PARSING - SYNTAX ERROR CHECK */
 t_token	*parsing(char *line);
 int		syntax_error_check(char *s);
 int		check_pipeline_errors(char *s, int i, char c, int num);
@@ -210,9 +215,13 @@ int		is_question(char c);
 int		is_punct(char c);
 int		is_numeric(char *s);
 
+/*		ENVIRONNEMENT */
+t_env	*new_env(char *envp);
+int		link_env(t_env **head, t_env *last);
+char	*get_env_var_value(char *var_name);
+
 /*		INIT GLOBAL VARIABLE */
 int		init_shell(char **envp);
-int		shell_no_env();
 void	free_shell(void);
 
 	// NOT OK

@@ -1,46 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_cmd.c                                         :+:      :+:    :+:   */
+/*   free_and_exit_prog.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/23 09:34:50 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/24 15:44:07 by mdanchev         ###   lausanne.ch       */
+/*   Created: 2023/05/25 10:06:49 by mdanchev          #+#    #+#             */
+/*   Updated: 2023/05/25 10:14:21 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
-void	free_tab2d(char **s)
+void	free_and_exit_prog(t_cmd **head, int exit_code)
 {
-	int	i;
-
-	if (!s || !*s)
-		return ;
-	i = 0;
-	while (s[i])
-	{
-		free (s[i]);
-		i++;
-	}
-	free (s);
-}
-
-void	free_cmd(t_cmd **head)
-{
-	t_cmd *ptr;
-	t_cmd	*tmp;
-
-	if (!head || !*head)
-		return ;
-	ptr = *head;
-	while (ptr)
-	{
-		tmp = ptr;
-		ptr = ptr->next;
-		free_tab2d(tmp->cmd);
-		free_tab2d(tmp->redir);
-		free(tmp);
-	}
-	*head = NULL;
+	free_cmd(head);
+	free_shell();
+	exit (exit_code);
 }
