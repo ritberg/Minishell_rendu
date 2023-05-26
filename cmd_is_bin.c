@@ -20,6 +20,16 @@ int find_path_in_env(char *all_paths, char **env_table)
 	return (1);
 }
 
+void free_helper(char *s1, char *s2, char *s3, char **s4)
+{
+    if (s1)
+        free(s1);
+    if (s2)
+        free (s2);
+    if (s3)
+        free (s3);
+    free_tab2d(s4);
+}
 
 int	split_paths(char *all_paths, char *cmd)
 {
@@ -29,17 +39,22 @@ int	split_paths(char *all_paths, char *cmd)
 	int		j;
     
     
+    tmp1 = NULL;
+    tmp2 = NULL;
+    splitted_path = NULL;
     if (!all_paths)
         return (1);
     tmp2 = ft_strjoin("/", cmd->cmd0);
     if (!tmp2)
     {
+        free_helper(tmp1, tmp2, all_paths, splitted_path);
         malloc_error_print_message("ft_strjoin failed");
         return (0);
     }
     splitted_path = ft_split(all_paths, ':');
 	if (!splitted_path)
     {
+        free_helper(tmp1, tmp2, all_paths, splitted_path);
         malloc_error_print_message("ft_split failed");
 		return (0);
     }
@@ -49,17 +64,14 @@ int	split_paths(char *all_paths, char *cmd)
 		tmp1 = ft_strjoin(splitted_path[j], tmp2);
 		if(!tmp1)
         {
+            free_helper(tmp1, tmp2, all_paths, splitted_path);
             malloc_error_print_message("ft_strjoin failed");
-            free(tmp2);
-			free_tab2d(splitted_path);
             return (0);
         }
         if (access(bin->cmd, F_OK & X_OK) == 0)
         {
             cmd->path = ft_strdup(tmp1);
-            free_tab2d(splitted_path);
-            free(tmp1);
-            free(tmp2);
+            free_helper(tmp1, tmp2, all_paths, splitted_path);
             if (!cmd->path)
             {
                 malloc_error_print_message("ft_strdup failed");
@@ -71,9 +83,7 @@ int	split_paths(char *all_paths, char *cmd)
         tmp = NULL;
 		j++;
 	}
-    free_tab2d(splitted_path);
-    free(tmp1);
-    free(tmp2);
+    free_helper(tmp1, tmp2, all_paths, splitted_path);
     cmd->path = ft_strjoin("/bin/", cmd->cmd[0]);
     if (!cmd->path)
     {
