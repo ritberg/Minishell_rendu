@@ -60,6 +60,93 @@ void	execute_pipes(t_cmd **head, int nb_pipes)
 }
 */
 
+int check_acces(int start, int len, char *s, t_cmd *cmd)
+{
+  cmd->path = ft_substr(s, start, len);
+  	if (!cmd->path)
+   {
+   	malloc_error_print_message("ft_substr failed");
+    	return (ERROR_EXIT);
+   }
+   if (access(cmd->path, F_OK & X_OK) == 0)
+   	return (1);
+    free(cmd->path);
+    cmd->path = NULL;
+    return (0);
+}
+
+int	search_path(char *s, t_cmd *cmd)
+{
+	int i;
+  int start;
+  
+  i = 0;
+  start = 0;
+  while (s[i])
+  {
+  		if (s[i] == ':')
+      {
+      	res = check_access(start, i-1, s)
+       if (!res)
+        start = i + 1;
+							 else
+									return (res);
+      } 
+      i++;
+  }
+  res = check_access(start, i - 1 - start, s, cmd);
+  if (res == 1 ||res == ERROR_EXIT)
+					return (res);
+  cmd->path = ft_strjoin("/bin/", cmd->cmd[0]);
+  if (!cmd->path)
+  {
+  		malloc_error_print_message("ft_strjoin failed");
+      return (0);
+  }
+  return (1);
+}
+
+int	extract_path(t_cmd *cmd, char **env)
+{
+	int i;
+  	int res;
+  	char *path;
+  
+  	i = 0;
+	while(ft_strncmp("PATH=", env[i]), 5) != 0)
+  		i++;
+   if (!env[i])
+   	return (0);
+   res = search_path(&(env[i] + 5));
+   return (res);
+}
+
+void	execute_bin(t_cmd *cmd)
+{
+	int	res = 0;
+	
+if (!cmd || !cmd->cmd)
+		return ;
+	if (cmd->cmd_is_path_fg == false)
+	{
+			res = extract_path(cmd);
+			if (!res)
+				return ;
+	}
+	status = 0;
+	res = execve(cmd->path, cmd->cmd, g_shell->save_env);
+	if (res < 0)
+	{
+			ft_dprintf(2, "minishell: %s\n", strerror(errno));
+			printf("res = %d\n", res);
+			g_shell->exit_status = 127;
+			cmd->status = 127;
+	}
+			g_shell->exit_status = 0;
+			cmd->status = 0;
+	}
+
+
 void	execute_builtin(t_cmd *cmd, t_cmd **head)
 {
 	if (ft_strncmp(cmd->cmd[0], "exit", 6) == 0)
@@ -83,8 +170,8 @@ void	one_cmd(t_cmd *cmd, t_cmd **head)
 {
 	if (cmd_is_builtin(cmd->cmd[0]) && cmd->cmd_is_path_fg == false)
 		execute_builtin(cmd, head);
-//	else
-//		execute_bin(cmd);
+	else
+		execute_bin(cmd);
 }
 
 int	check_for_pipes(t_cmd **head)
@@ -119,31 +206,6 @@ void	execution(t_cmd **head)
 
 
 /*
-void	execution_bin(t_cmd *cmd)
-{
-	int	status;
-	int	res = 0;
-	
-if (!cmd || !cmd->cmd)
-		return ;
-	if (cmd->cmd_is_path_fg == false)
-	{
-					res = extract_path(cmd);
-					if (!res)
-							return ;
-	}
-	status = 0;
-	res = execve(cmd->path, cmd->cmd, g_shell->save_env);
-	if (res < 0)
-	{
-			ft_dprintf(2, "minishell: %s\n", strerror(errno));
-			printf("res = %d\n", res);
-			g_shell->exit_status = 127;
-			cmd->status = 127;
-	}
-			g_shell->exit_status = 0;
-			cmd->status = 0;
-	}
 
 }
 */
