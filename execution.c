@@ -126,31 +126,25 @@ void	execution_bin(t_cmd *cmd)
 	
 if (!cmd || !cmd->cmd)
 		return ;
-	status = 0;
 	if (cmd->cmd_is_path_fg == false)
-			find_cmd_path(cmd);
-	if (!cmd->path)
 	{
-		// error message exit code 126
-		}
-	cmd->pid = fork();
-	if (cmd->pid < 0)
-		return (perror("Fork: "));
-	if (cmd->pid == 0)
+					res = extract_path(cmd);
+					if (!res)
+							return ;
+	}
+	status = 0;
+	res = execve(cmd->path, cmd->cmd, g_shell->save_env);
+	if (res < 0)
 	{
-			 res = execve(cmd->path, cmd->cmd, g_shell->save_env);
-		 if (res < 0)
-		 {
-			 ft_dprintf(2, "minishell: %s\n", strerror(errno));
-			 printf("res = %d\n", res);
-			 exit(127);
-		 }
-		 exit (0);
+			ft_dprintf(2, "minishell: %s\n", strerror(errno));
+			printf("res = %d\n", res);
+			g_shell->exit_status = 127;
+			cmd->status = 127;
+	}
+			g_shell->exit_status = 0;
+			cmd->status = 0;
 	}
 
-	else
-		waitpid(cmd->pid, &status, 0);
-	g_shell->exit_status = WEXITSTATUS(status);
 }
 */
 
