@@ -11,78 +11,104 @@ void	free_tab(char **table)
 	free(table);
 }
 
-int	path_index(t_bin *bin, char **table)
+int find_path_in_env(char *all_paths, char **env_table)
 {
 	int	i;
 
 	i = 0;
-	bin->path = NULL;
-	while (table[i] != 0)
-	{
-		if (ft_strncmp("PATH=", table[i], 5) == 0)
-		{
-			bin->path = table[i] + 5;
-			break ;
-		}
+	while (env_table[i] && ft_strncmp("PATH=", env_table[i], 5) == 0)
 		i++;
-	}
-	if (!bin->path)
+    if (!env_table[i])
+        return (1);
+    all_paths = ft_strdup((env_table[i] + 5));
+	if (!all_paths)
+    {
+        malloc_error_print_message("ft_strdup failed");
 		return (0);
+    }
 	return (1);
 }
 
 
-int	split_path(t_bin *bin)
+int	split_paths(char *all_paths, char *cmd)
 {
-	char	*tmp;
+	char	*tmp1;
+    char   **splitted_path;
 	int		j;
-
-	bin->splitted_path = ft_split(bin->path, ':');
-	if (!bin->splitted_path)
+    
+    if (!all_paths)
+        return (1);
+    splitted_path = ft_split(all_paths, ':');
+	if (!splitted_path)
+    {
+        malloc_error_print_message("ft_split failed");
 		return (0);
+    }
 	j = 0;
-	while (bin->splitted_path[j])
+	while (splitted_path[j])
 	{
-		tmp = ft_strjoin(bin->splitted_path[j], "/");
-		if (!bin->splitted_path)
-			return (0);
-		free(bin->splitted_path[j]);
-		bin->splitted_path[j] = tmp;
+		tmp = ft_strjoin(splitted_path[j], "/");
+		if(!tmp)
+        {
+            malloc_error_print_message("ft_strjoin failed");
+			free_tab2d(splitted_path);
+            return (0);
+        }
+		free(splitted_path[j]);
+        splitted_path[j] = ft_strjoin(tmp, cmd);
+        if (!splitted_path[j])
+        {
+            //free comme il faut
+            malloc_error_print_message("ft_strjoin failed");
+            return(0);
+        }
+        free(tmp);
+        tmp = NULL;
 		j++;
 	}
 	return (1);
 }
 
 
-int	find_cmd_in_path(t_bin *bin, char *token)
+int	find_cmd_in_path(t_cmd *cmd, char **splitted_path)
 {
 	int	j;
+    int res;
 
 	j = 0;
-	while (bin->splitted_path[j])
-	{
-		bin->cmd = ft_strjoin(bin->splitted_path[j], token);
-		if (!bin->cmd)
-			return (0);
-		bin->ok = access(bin->cmd, F_OK & X_OK);
-		if (bin->ok == 0)
-			break ;
-		//free(bin->cmd);
+    res = 0;
+	while (splitted_path[j] && access(bin->cmd, F_OK & X_OK) != 0)
 		j++;
-	}
-	free_tab(bin->splitted_path);
-	if (bin->ok == -1)
-		return (0);
+    if (!splitted_path[j])
+        return (1);
+    if (res == 0)
+    {
+        cmd->path = ft_strdup(splitted_path[j]);
+        if (!cmd->path)
+        {
+            malloc_error_print_message("ft_strdup failed");
+            free_tab2d(splitted_path);
+            return (0);
+        }
+    }
 	return (1);
 }
 
-int	cmd_is_bin(t_cmd **cmd)
+int	find_cmd_path(t_cmd *cmd)
 {
-	if (!path_index(cmd, g_shell->save_env))
-		return (-1);
-	if (!split_path(cmd))
-		return (-1);
-	if (!find_cmd_in_path(cmd))
-		return (-1);
+    char **splitted_path;
+    char *all_paths;
+    
+    splitted_path = NULL;
+    all_paths = NULL;
+    if (!find_path_in_env(all_paths, g_shell->save_env))
+        return (0);
+    splitted_path = split_paths(all_paths, cmd->cmd[0]))
+    free(all_paths);
+    if (!splitted_path)
+		return (0);
+	if (!find_cmd_in_path(splitted_paths, cmd))
+		return (0);
+    free_tab2d(splitted_path);
 	return (1);
 }*/
