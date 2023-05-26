@@ -40,14 +40,14 @@
 
 
 /*
-void	execute_pipes(t_cmd **head, int nb_pipes)
+void	multiple_cmds(t_cmd **head, int nb_pipes)
 {
 	cmd->pid = fork();
 	if (cmd->pid < 0)
 		return (perror("Fork: "));
 	if (cmd->pid == 0)
 	{
-		check_then_execute(cmd);
+		one_cmd(cmd, head);
 		exit(0);
 	}
 	else
@@ -191,17 +191,15 @@ int	check_for_pipes(t_cmd **head)
 
 void	execution(t_cmd **head)
 {
-	t_cmd	*cmd;
 	int		nb_pipes;
 
-	cmd = *head;
 	if (!head || !*head)
 		return ;
 	nb_pipes = check_for_pipes(head);
 	if (nb_pipes == 1)
-		one_cmd(cmd, head);
-//	else
-//		multiple_cmds(head, nb_pipes);
+		one_cmd(*head, head);
+  else
+    multiple_cmds(head, nb_pipes);
 }
 
 
