@@ -31,7 +31,7 @@ void free_helper(char *s1, char *s2, char *s3, char **s4)
     free_tab2d(s4);
 }
 
-int	split_paths(char *all_paths, char *cmd)
+int	split_paths(char *all_paths,t_cmd *cmd)
 {
 	char	*tmp1;
     char *tmp2;
@@ -68,7 +68,7 @@ int	split_paths(char *all_paths, char *cmd)
             malloc_error_print_message("ft_strjoin failed");
             return (0);
         }
-        if (access(bin->cmd, F_OK & X_OK) == 0)
+        if (access(tmp1, F_OK & X_OK) == 0)
         {
             cmd->path = ft_strdup(tmp1);
             free_helper(tmp1, tmp2, all_paths, splitted_path);
@@ -100,7 +100,7 @@ int	find_cmd_path(t_cmd *cmd)
     all_paths = NULL;
     if (!find_path_in_env(all_paths, g_shell->save_env))
         return (0);
-    if (!split_paths(all_paths, cmd->cmd[0]))
+    if (!split_paths(all_paths, cmd)
 		return (0);
 	return (1);
 }*/
