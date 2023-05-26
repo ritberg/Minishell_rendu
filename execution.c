@@ -119,27 +119,26 @@ void	execution(t_cmd **head)
 
 
 /*
-void	execution_bin(t_cmd **cmd)
+void	execution_bin(t_cmd *cmd)
 {
 	int	status;
 	int	res = 0;
-
-	status = 0;
-	(*cmd)->pid = fork();
-	if (!cmd->cmd)
+	
+if (!cmd || !cmd->cmd)
 		return ;
-	if ((*cmd)->pid < 0)
-		return (perror("Fork: "));
-	if ((*cmd)->pid == 0)
+	status = 0;
+	if (cmd->cmd_is_path_fg == false)
+			find_cmd_path(cmd);
+	if (!cmd->path)
 	{
-		if (cmd->cmd_is_path_fg == true)
-		{
-			 res = execve(cmd->path, (*cmd)->cmd, g_shell->save_env);
+		// error message exit code 126
 		}
-		else
-		{
-			 res = execve((*cmd)->path, (*cmd)->cmd, g_shell->save_env);
-		}
+	cmd->pid = fork();
+	if (cmd->pid < 0)
+		return (perror("Fork: "));
+	if (cmd->pid == 0)
+	{
+			 res = execve(cmd->path, cmd->cmd, g_shell->save_env);
 		 if (res < 0)
 		 {
 			 ft_dprintf(2, "minishell: %s\n", strerror(errno));
@@ -150,70 +149,8 @@ void	execution_bin(t_cmd **cmd)
 	}
 
 	else
-		waitpid((*cmd)->pid, &status, 0);
+		waitpid(cmd->pid, &status, 0);
 	g_shell->exit_status = WEXITSTATUS(status);
 }
-
-
-
-void	execution_builtin(t_bin *bin, t_cmd *cmd)
-{
-	int	status;
-	int	res = 0;
-
-	status = 0;
-	bin->child = fork();
-	if (!cmd->cmd)
-		return ;
-	if (bin->child < 0)
-		return (perror("Fork: "));
-	if (bin->child == 0)
-	{
-		if (ft_strncmp(cmd->cmd[0], "pwd", 4) == 0 )
-			_pwd(cmd);
-		else if (ft_strncmp(cmd->cmd[0], "echo", 5) == 0)
-			_echo(cmd);
-		else if (ft_strncmp(cmd->cmd[0], "env", 4) == 0)
-			_env(g_shell->env);
-		else if (ft_strncmp(cmd->cmd[0], "exit", 5) == 0)
-			exit (0);
-		 if (res < 0)
-		 {
-			 ft_dprintf(2, "minishell: %s\n", strerror(errno));
-			 exit(127);
-		 }
-		 exit (0);
-	}
-	else
-		waitpid(bin->child, &status, 0);
-	g_shell->exit_status = WEXITSTATUS(status) % 256;
-}
-
-
-
-void	execution(t_cmd **cmd)
-{
-	int		i;
-	
-	i = check_for_pipes(cmd);
-	if (i == 0 && ft_strncmp(cmd->cmd[0], "exit", 5) == 0)
-	{
-		free_cmd(cmd);
-		free_shell();
-		printf("exit\n");
-		exit (0);
-	}
-	else if ((*cmd)->cmd_is_path_fg == false && cmd_is_builtin(cmd) == 1)
-	{
-		execution_builtin(*cmd);
-		return ;
-	}
-	else if (cmd_is_bin(cmd))
-	{
-		execution_bin(*cmd);
-		return ;
-	}
-//	if (cmd_is_fd(token))
-//		open_fd(token);
-}*/
+*/
 
