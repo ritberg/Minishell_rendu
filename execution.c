@@ -81,7 +81,7 @@ void	execute_builtin(t_cmd *cmd, t_cmd **head)
 
 void	one_cmd(t_cmd *cmd, t_cmd **head)
 {
-	if (cmd_is_builtin(cmd->cmd[0]))
+	if (cmd_is_builtin(cmd->cmd[0]) && cmd->cmd_is_path_fg == false)
 		execute_builtin(cmd, head);
 //	else if (cmd_is_bin(cmd->cmd[0]))
 //		execute_bin(cmd);
