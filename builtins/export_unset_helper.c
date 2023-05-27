@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 22:04:51 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/25 10:01:30 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/27 15:13:21 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -32,6 +32,12 @@ int	check_if_valid_identifier(char *s, char *command)
 	}
 	return (1);
 }
+
+/* 
+ * NOTE: check_if_var_exists() is used in export.c and unset.c.
+ * It checks if the variable exists in the environment.
+ * If it does, it returns 1, else it returns 0.
+ */
 
 int	check_if_var_exists(char *s)
 {

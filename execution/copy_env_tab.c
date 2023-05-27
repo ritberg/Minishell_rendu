@@ -6,7 +6,7 @@
 /*   By: mmakarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 17:39:06 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/05/22 10:25:13 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/27 15:29:12 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -37,10 +37,16 @@ char	*name_plus_value(char *name, char *value)
 	i = 0;
 	j = 0;
 	len_name = ft_strlen(name);
-	len_value = ft_strlen(value);
+	if (value)
+		len_value = ft_strlen(value);
+	else
+		len_value = 0;
 	joined = malloc(sizeof(char) * (len_name + len_value + 2));
 	if (!joined)
+	{
+		malloc_error_print_message(strerror(errno));
 		return (NULL);
+	}
 	while (i < len_name)
 		joined[i++] = name[j++];
 	joined[i] = '=';
@@ -52,26 +58,31 @@ char	*name_plus_value(char *name, char *value)
 	return (joined);
 }
 
-char	**copy_env_tab(t_env *env)
+int	copy_env_tab(void)
 {
-	char	**res;
 	int		column;
 	int		i;
+	t_env	*env;
 
+	env = g_shell->env;
 	i = 0;
 	column = column_size(&env);
-	res = malloc(sizeof(char *) * (column + 1));
-	if (!res)
-		return (NULL);
+	if (column == 0)
+		return (1);
+	g_shell->save_env = malloc(sizeof(char *) * (column + 1));
+	if (!g_shell->save_env)
+	{
+		malloc_error_print_message(strerror(errno));
+		return (0);
+	}
 	while (env)
 	{
-		res[i] = name_plus_value(env->var_name, env->var_value);
-		if (!res[i])  // IL FAUT FREE ET EXIT EN CAS D'ERREUR DE MALLOC
-			return (NULL);
+		g_shell->save_env[i] = name_plus_value(env->var_name, env->var_value);
+		if (!g_shell->save_env[i])
+			return (0);
 		i++;
 		env = env->next;
 	}
-	res[i] = NULL;
-
-	return (res);
+	g_shell->save_env[i] = NULL;
+	return (1);
 }

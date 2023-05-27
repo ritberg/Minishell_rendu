@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 08:04:29 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/25 09:59:49 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/27 15:37:27 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -68,7 +68,7 @@ static void delete_env_var(t_env **head, char *s)
 	i = 0;
 	curr = *head;
 	prev = NULL;
-	while (curr && ft_strncmp(s, curr->var_name, ft_strlen(s) != 0))
+	while (curr && ft_strncmp(s, curr->var_name, ft_strlen(s)) != 0)
 	{
 		prev = curr;
 		curr = curr->next;

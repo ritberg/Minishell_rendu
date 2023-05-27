@@ -6,7 +6,7 @@
 #    By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 12:23:37 by mdanchev          #+#    #+#              #
-#    Updated: 2023/05/25 10:07:14 by mdanchev         ###   lausanne.ch        #
+#    Updated: 2023/05/27 15:49:58 by mdanchev         ###   lausanne.ch        #
 #                                                                              #
 # **************************************************************************** #
 GREEN 		= \033[32;6m
@@ -16,7 +16,7 @@ YELLOW		:= $(shell tput setaf 3)
 RESET		:= $(shell tput sgr0)
 
 SRCS		= main.c \
-			  malloc_error_print_message.c\
+			  malloc_error/malloc_error_print_message.c\
 			  global_variable/init_global.c \
 			  environnement/envp_routine.c \
 			  environnement/get_env.c \
@@ -27,8 +27,8 @@ SRCS		= main.c \
 			  is_smth/is_white_space.c \
 			  is_smth/is_question.c \
 			  is_smth/is_numeric.c \
-			  launch_setup.c \
-			  handler_ctr_c.c \
+			  signal_handler/launch_setup.c \
+			  signal_handler/handler_ctr_c.c \
 			  tokens/token_routine.c \
 			  tokens/token_routine_set_id.c \
 			  tokens/token_routine_delete.c \
@@ -49,8 +49,13 @@ SRCS		= main.c \
 			  command_struct/init_cmd_cmd_helper.c \
 			  command_struct/init_cmd_redir.c \
 			  command_struct/free_cmd.c \
-			  execution_utils.c \
 			  execution.c \
+			  execution/copy_env_tab.c\
+			  execution/execution_utils.c \
+			  execution/exec_one_cmd.c \
+			  execution/exec_builtins.c \
+			  execution/exec_bin.c \
+			  execution/extract_path.c \
 			  builtins/exit.c \
 			  builtins/env.c \
 			  builtins/echo.c \
@@ -60,9 +65,6 @@ SRCS		= main.c \
 			  builtins/unset.c \
 			  builtins/export_unset_helper.c \
 			  builtins/free_and_exit_prog.c \
-			  cmd_is_bin.c \
-			  cmd_is_builtin.c \
-			  copy_env_tab.c\
 
 
 OBJS		= ${SRCS:.c=.o}
@@ -103,7 +105,7 @@ CFLAGS		+= -I$(HOME)/.brew/opt/readline/include
 READLINE	=  -L$(HOME)/.brew/opt/readline/lib -lreadline
 endif
 
-
+.SUFFIXES: .c .o .h
 
 .c.o:
 	@ ${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
@@ -116,14 +118,13 @@ ${NAME}:	${OBJS} ${HEADERS}
 all:		${NAME}
 
 clean:
-	@		${RM} ${OBJS}
 	@		${MAKE} -C ${LIBFT_FOLD} clean
+	@		${RM} ${OBJS}
 	@echo	"${GREEN} Clean object files done ${COLOR_END}"
 
 fclean:		clean
 	@		${MAKE} -C ${LIBFT_FOLD} fclean
 	@		${RM} ${NAME}
-	
 	@echo "${GREEN} Clean ${NAME} done ${COLOR_END}"
 
 re:			fclean all

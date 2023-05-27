@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 09:56:41 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/24 16:25:11 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/27 15:39:58 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,34 @@ void	print_cmd(t_cmd **head)
 	}
 }
 
+// FOR TESTING PRINTING ENV
+/*
+static void	print_env()
+{
+	t_env	*ptr;
+
+	ptr = g_shell->env;
+	if (!g_shell || !g_shell->env)
+		return ;
+	while (g_shell->env)
+	{
+		ft_printf("print_env function: %s\n", g_shell->env->var_name);
+		if (g_shell->env->var_value)
+			ft_printf("print_env function: %s\n", g_shell->env->var_value);
+		g_shell->env = g_shell->env->next;
+	}
+	g_shell->env = ptr;
+}*/
+
+void	check_for_malloc_error(t_cmd **head)
+{
+	if (g_shell->error_exit == 1)
+	{
+		free_cmd(head);
+		free_shell();
+		exit(1);
+	}
+}
 
 int	main(int ac, char **av, char **envp)
 {
@@ -93,13 +121,10 @@ int	main(int ac, char **av, char **envp)
 			break ;
 		token = parsing(line);
 		cmd = cmd_linked_list(&token);
-//		print_cmd(&cmd);
-		if (g_shell->error_exit == 1)
-		{
-			free_shell();
-			return (1);
-		}
+	//	print_cmd(&cmd); // FOR TESTING
 		execution(&cmd);
+//		print_env(); // FOR TESTING
+		check_for_malloc_error(&cmd);
 		free_cmd(&cmd);
 	}
 	free_shell();

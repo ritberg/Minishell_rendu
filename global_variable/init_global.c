@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 09:45:47 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/25 09:38:28 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/27 10:48:48 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -108,7 +108,6 @@ int	init_shell(char **envp)
 	}
 //	g_shell->exit_status = 0;
 //	g_shell->error_exit = 0;
-	g_shell->save_env = copy_env_tab(g_shell->env); //
 //	print_env();
 	return (1);
 }

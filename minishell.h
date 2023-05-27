@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:16:33 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/25 10:21:25 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/27 15:20:33 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,12 @@ extern t_shell	*g_shell;
 /*		EXECUTION */
 int		size_tab2d(char **s);
 void	execution(t_cmd **head);
-char	**copy_env_tab(t_env *env);
+int		copy_env_tab(void);
+void	one_cmd(t_cmd *cmd, t_cmd **head);
 
-/* 		BUILTINS */
+/* 		EXECUTION BUILTINS */
+int		cmd_is_builtin(char *s);
+void	execute_builtin(t_cmd *cmd, t_cmd **head);
 void	_pwd(void);
 void	_env(t_cmd *cmd, t_env *env);
 void	print_getcwd_error(char *s);
@@ -119,8 +122,8 @@ void	_unset(t_cmd *cmd);
 void	free_and_exit_prog(t_cmd **head, int exit_code);
 
 /*		EXECUTION BIN */
-//int		cmd_is_bin(char *s);
-int		cmd_is_builtin(char *s);
+void	execute_bin(t_cmd *cmd);
+int		extract_path(t_cmd *cmd, char **env);
 
 /*		INIT t_cmd *cmd*/
 t_cmd	*cmd_linked_list(t_token **token);
