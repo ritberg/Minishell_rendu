@@ -6,28 +6,11 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 09:45:47 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/27 10:48:48 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/27 16:00:02 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
-// FOR TESTING PRINTING ENV
-
-void	print_env()
-{
-	t_env	*ptr;
-
-	ptr = g_shell->env;
-	if (!g_shell || !g_shell->env)
-		return ;
-	while (g_shell->env)
-	{
-		ft_printf("print_env function: %s\n", g_shell->env->var_name);
-		ft_printf("print_env function: %s\n", g_shell->env->var_value);
-		g_shell->env = g_shell->env->next;
-	}
-	g_shell->env = ptr;
-}
 
 /* EST_CE QUÓN GARDE SAVE_ENV */ 
 void	free_shell(void)

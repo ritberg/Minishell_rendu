@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 12:00:14 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/27 12:14:29 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/27 20:38:11 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -87,6 +87,8 @@ int	extract_path(t_cmd *cmd, char **env)
   	int res;
   
   	i = 0;
+	if (cmd->cmd[0][0] == 0)
+		return (1);
 	while (env[i] && ft_strncmp("PATH=", env[i], 5) != 0)
   		i++;
    if (!env[i])

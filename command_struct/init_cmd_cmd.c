@@ -6,10 +6,26 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 09:36:56 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/24 08:59:34 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/27 20:40:14 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
+
+static int	is_dir(char *s, t_cmd *cmd, int i)
+{
+	struct stat buf;
+
+	if (stat(s, &buf) == 0)
+	{
+		if(S_ISDIR(buf.st_mode))
+		{
+			cmd->path = ft_strdup(s);
+			cmd->cmd[i] = NULL;
+			return (1);
+		}
+	}
+	return (0);
+}
 
 static int	extract_cmd_path(char *s, t_cmd *cmd, int i)
 {
@@ -18,6 +34,8 @@ static int	extract_cmd_path(char *s, t_cmd *cmd, int i)
 
 	start = 0;
 	end = 0;
+	if (is_dir(s, cmd, i))
+		return (1);
 	while (s[end])
 		end++;
 	start = end--;
@@ -32,8 +50,7 @@ static int	extract_cmd_path(char *s, t_cmd *cmd, int i)
 	cmd->path = ft_strdup(s);
 	if (!cmd->path)
 	{
-		free_tab2d(cmd->cmd);
-		malloc_error_print_message("ft_substr failed");
+		malloc_error_print_message("ft_strdup failed");
 		return (0);
 	}
 	return (1);
