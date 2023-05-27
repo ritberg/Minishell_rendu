@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:09:31 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/27 20:39:58 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/27 20:43:07 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -48,6 +48,7 @@ static void	check_execve(t_cmd *cmd)
 	res = execve(cmd->path, cmd->cmd, g_shell->save_env);
 	if (res < 0)
 	{
+		ft_dprintf(2, "minishell: %s\n", strerror(errno));
 		g_shell->exit_status = 127;
 		cmd->status = 127;
 		return ;
