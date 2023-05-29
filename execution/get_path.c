@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 10:03:32 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/29 12:06:53 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/29 14:29:41 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -19,7 +19,8 @@ static int	is_dir(char *path, t_cmd *cmd)
 	{
 		if(S_ISDIR(buf.st_mode))
 		{
-			cmd->cmd[0] = NULL;
+			free_tab2d(cmd->cmd);
+			cmd->cmd = NULL;
 			return (1);
 		}
 	}

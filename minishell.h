@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:16:33 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/29 10:45:43 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/29 14:44:57 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,12 @@ typedef struct s_shell
 
 extern t_shell	*g_shell;
 
-/*		EXECUTION */
+/*		UTILS */
+void	free_before_exit(t_cmd **head);
+void	free_and_exit_prog(t_cmd **head, int exit_code);
 int		size_tab2d(char **s);
+
+/*		EXECUTION */
 void	execution(t_cmd **head);
 int		copy_env_tab(void);
 void	one_cmd(t_cmd *cmd, t_cmd **head);
@@ -118,7 +122,6 @@ int		check_if_var_exists(char *s);
 int		check_if_valid_identifier(char *s, char *command);
 void	print_export_unset_error(char *identifier, char *command);
 void	_unset(t_cmd *cmd);
-void	free_and_exit_prog(t_cmd **head, int exit_code);
 
 /*		EXECUTION BIN */
 void	execute_bin(t_cmd *cmd);

@@ -6,7 +6,7 @@
 #    By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 12:23:37 by mdanchev          #+#    #+#              #
-#    Updated: 2023/05/29 10:58:18 by mdanchev         ###   lausanne.ch        #
+#    Updated: 2023/05/29 14:44:39 by mdanchev         ###   lausanne.ch        #
 #                                                                              #
 # **************************************************************************** #
 GREEN 		= \033[32;6m
@@ -16,6 +16,7 @@ YELLOW		:= $(shell tput setaf 3)
 RESET		:= $(shell tput sgr0)
 
 SRCS		= main.c \
+			  utils.c \
 			  malloc_error/malloc_error_print_message.c\
 			  global_variable/init_global.c \
 			  environnement/envp_routine.c \
@@ -48,11 +49,10 @@ SRCS		= main.c \
 			  command_struct/init_cmd_cmd.c \
 			  command_struct/init_cmd_redir.c \
 			  command_struct/free_cmd.c \
-			  execution.c \
+			  execution/execution.c \
 			  execution/get_path.c \
 			  execution/search_path_in_env_table.c \
 			  execution/copy_env_tab.c\
-			  execution/execution_utils.c \
 			  execution/exec_one_cmd.c \
 			  execution/exec_builtins.c \
 			  execution/exec_bin.c \
@@ -64,7 +64,6 @@ SRCS		= main.c \
 			  builtins/export.c \
 			  builtins/unset.c \
 			  builtins/export_unset_helper.c \
-			  builtins/free_and_exit_prog.c \
 
 
 OBJS		= ${SRCS:.c=.o}
