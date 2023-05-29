@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:08:47 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/27 14:11:22 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/29 10:46:20 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -30,7 +30,7 @@ static void	execute_one_bin(t_cmd *cmd)
 
 void	one_cmd(t_cmd *cmd, t_cmd **head)
 {
-	if (cmd_is_builtin(cmd->cmd[0]) && cmd->cmd_is_path_fg == false)
+	if (cmd_is_builtin(cmd->cmd[0]))
 		execute_builtin(cmd, head);
 	else
 		execute_one_bin(cmd);

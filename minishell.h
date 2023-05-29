@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:16:33 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/27 15:20:33 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/29 10:45:43 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ typedef	struct	s_cmd
 	pid_t	pid;
 	char	**cmd;
 	char	**redir;
-	bool	cmd_is_path_fg;
 	char	*path;
 	int		status;
 //	int		ffd_in;
@@ -123,7 +122,8 @@ void	free_and_exit_prog(t_cmd **head, int exit_code);
 
 /*		EXECUTION BIN */
 void	execute_bin(t_cmd *cmd);
-int		extract_path(t_cmd *cmd, char **env);
+int		search_path(t_cmd *cmd, char **env);
+int		get_path(t_cmd *cmd);
 
 /*		INIT t_cmd *cmd*/
 t_cmd	*cmd_linked_list(t_token **token);
@@ -135,7 +135,6 @@ int		create_redir(t_token **token, t_cmd *cmd);
 
 /*		INIT cmd->cmd */
 int		create_cmd(t_token **token, t_cmd *cmd);
-int		get_cmd_size(t_token **token);
 
 /*		EXPANSION (parsing_expansion.c)*/
 int		expansion(t_token **token, t_token *curr, int pos);

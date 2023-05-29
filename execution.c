@@ -6,12 +6,12 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 12:39:31 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/27 15:21:32 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/29 10:00:07 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
-static int	check_for_pipes(t_cmd **head)
+static int	count_nb_cmds(t_cmd **head)
 {
 	t_cmd	*cmd;
 	int		i;
@@ -44,7 +44,7 @@ void	execution(t_cmd **head)
 
 	if (!head || !*head)
 		return ;
-	nb_cmds = check_for_pipes(head);
+	nb_cmds = count_nb_cmds(head);
 	if (!reset_env_tab())
 		return ;
 	if (nb_cmds == 1)

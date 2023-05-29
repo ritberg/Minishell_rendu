@@ -6,7 +6,7 @@
 #    By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 12:23:37 by mdanchev          #+#    #+#              #
-#    Updated: 2023/05/27 15:49:58 by mdanchev         ###   lausanne.ch        #
+#    Updated: 2023/05/29 10:58:18 by mdanchev         ###   lausanne.ch        #
 #                                                                              #
 # **************************************************************************** #
 GREEN 		= \033[32;6m
@@ -46,16 +46,16 @@ SRCS		= main.c \
 			  parsing/quote_removing.c \
 			  command_struct/init_cmd.c \
 			  command_struct/init_cmd_cmd.c \
-			  command_struct/init_cmd_cmd_helper.c \
 			  command_struct/init_cmd_redir.c \
 			  command_struct/free_cmd.c \
 			  execution.c \
+			  execution/get_path.c \
+			  execution/search_path_in_env_table.c \
 			  execution/copy_env_tab.c\
 			  execution/execution_utils.c \
 			  execution/exec_one_cmd.c \
 			  execution/exec_builtins.c \
 			  execution/exec_bin.c \
-			  execution/extract_path.c \
 			  builtins/exit.c \
 			  builtins/env.c \
 			  builtins/echo.c \

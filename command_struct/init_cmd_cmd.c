@@ -6,89 +6,18 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 09:36:56 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/27 20:40:14 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/29 10:43:57 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
-static int	is_dir(char *s, t_cmd *cmd, int i)
+static int	copy_cmd_helper(t_token *ptr, t_cmd *cmd, int i)
 {
-	struct stat buf;
-
-	if (stat(s, &buf) == 0)
-	{
-		if(S_ISDIR(buf.st_mode))
-		{
-			cmd->path = ft_strdup(s);
-			cmd->cmd[i] = NULL;
-			return (1);
-		}
-	}
-	return (0);
-}
-
-static int	extract_cmd_path(char *s, t_cmd *cmd, int i)
-{
-	int	start;
-	int	end;
-
-	start = 0;
-	end = 0;
-	if (is_dir(s, cmd, i))
-		return (1);
-	while (s[end])
-		end++;
-	start = end--;
-	while (s[start] != '/')
-		start--;
-	cmd->cmd[i] = ft_substr(s, start + 1, end - start);
+	cmd->cmd[i] = ft_strdup(ptr->content);
 	if (!cmd->cmd[i])
-	{
-		malloc_error_print_message("ft_substr failed");
-		return (0);
-	}
-	cmd->path = ft_strdup(s);
-	if (!cmd->path)
 	{
 		malloc_error_print_message("ft_strdup failed");
 		return (0);
-	}
-	return (1);
-}
-
-static int	check_cmd_is_path(char *s, t_cmd *cmd)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == '/')
-		{
-			cmd->cmd_is_path_fg = true;
-			return (1);
-		}
-		i++;
-	}
-	cmd->cmd_is_path_fg = false;
-	return (0);
-}
-
-static int	copy_cmd_helper(t_token *ptr, t_cmd *cmd, int i)
-{
-	if (i == 0 && check_cmd_is_path(ptr->content, cmd))
-	{
-		if (!extract_cmd_path(ptr->content, cmd, i))
-			return (0);
-	}
-	else
-	{
-		cmd->cmd[i] = ft_strdup(ptr->content);
-		if (!cmd->cmd[i])
-		{
-			malloc_error_print_message("ft_strdup failed");
-			return (0);
-		}
 	}
 	return (1);
 }
@@ -111,11 +40,7 @@ static int	copy_cmd_helper(t_token *ptr, t_cmd *cmd, int i)
  * 	  (ptr = ptr->next->next)
  * 	- copy_cmd_helper() is called. This function does:
  * 		 - If the current token is the first encountered token marked as WORD,
- *  	   the function checks if the command is a path (check_cmd_is_path()).
- * 		   If true, extract_cmd_path() duplicates the path in cmd->path 
- * 	  	   (ex. /bin/ls),and the command name in cmd->cmd (ex. ls).
- * 	       Then it set the flag cmd_is_path_fg to true.
- * 		- Else, a simple strdup is made.
+ * 		   a simple strdup is made.
  */
 
 static int	copy_cmd(t_token **token, t_cmd *cmd)
@@ -141,6 +66,32 @@ static int	copy_cmd(t_token **token, t_cmd *cmd)
 	cmd->cmd[i] = NULL;
 	return (1);
 }
+
+static int	get_cmd_size(t_token **token)
+{
+	t_token	*ptr;
+	int		i;
+
+	i = 0;
+	ptr = *token;
+	if (!token || !*token)
+		return (0);
+	while (ptr && ptr->id != PIPELINE)
+	{
+		if (ptr->id == L_CHEVRON || ptr->id == R_CHEVRON || \
+				ptr->id == APPEND || ptr->id == HERE_DOC)
+		{
+			ptr = ptr->next->next;
+		}
+		else
+		{
+			i++;
+			ptr = ptr->next;
+		}
+	}
+	return (i);
+}
+
 /*
  * create_cmd() function
  * GOAL: create char **cmd of the t_cmd cmd structure.
