@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 09:56:41 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/29 12:07:07 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/29 12:23:04 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ int	main(int ac, char **av, char **envp)
 	char	*line;
 	t_token	*token;
 	t_cmd	*cmd;
+	int		exit_status;
 
 	if (!init_shell(envp))
 		return (1);
@@ -128,7 +129,8 @@ int	main(int ac, char **av, char **envp)
 		check_for_malloc_error(&cmd);
 		free_cmd(&cmd);
 	}
+	exit_status = g_shell->exit_status;
 	free_shell();
 	printf("exit\n");
-	return (0);
+	return (exit_status);
 }
