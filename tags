@@ -1,0 +1,1778 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+APPEND	SAUVEGARDE/execution_test/minishell.h	/^# define APPEND	/;"	d
+APPEND	SAUVEGARDE/minishell.h	/^# define APPEND	/;"	d
+APPEND	SAUVEGARDE/parsing/expansion_test/minishell.h	/^# define APPEND	/;"	d
+APPEND	TESTS/execution_test/minishell.h	/^# define APPEND	/;"	d
+APPEND	TESTS/expansion_test/minishell 2.h	/^# define APPEND	/;"	d
+APPEND	TESTS/expansion_test/minishell.h	/^# define APPEND	/;"	d
+APPEND	minishell.h	/^# define APPEND	/;"	d
+BLU	SAUVEGARDE/execution_test/minishell.h	/^# define BLU /;"	d
+BLU	SAUVEGARDE/minishell.h	/^# define BLU /;"	d
+BLU	SAUVEGARDE/parsing/expansion_test/minishell.h	/^# define BLU /;"	d
+BLU	TESTS/execution_test/minishell.h	/^# define BLU /;"	d
+BLU	TESTS/expansion_test/minishell 2.h	/^# define BLU /;"	d
+BLU	TESTS/expansion_test/minishell.h	/^# define BLU /;"	d
+BLU	minishell.h	/^# define BLU /;"	d
+BLU_2	SAUVEGARDE/execution_test/minishell.h	/^# define BLU_2 /;"	d
+BLU_2	SAUVEGARDE/minishell.h	/^# define BLU_2 /;"	d
+BLU_2	SAUVEGARDE/parsing/expansion_test/minishell.h	/^# define BLU_2 /;"	d
+BLU_2	TESTS/execution_test/minishell.h	/^# define BLU_2 /;"	d
+BLU_2	TESTS/expansion_test/minishell 2.h	/^# define BLU_2 /;"	d
+BLU_2	TESTS/expansion_test/minishell.h	/^# define BLU_2 /;"	d
+BLU_2	minishell.h	/^# define BLU_2 /;"	d
+BUFFER_SIZE	SAUVEGARDE/execution_test/libft/includes/get_next_line.h	/^#  define BUFFER_SIZE /;"	d
+BUFFER_SIZE	SAUVEGARDE/libft/includes/get_next_line.h	/^#  define BUFFER_SIZE /;"	d
+BUFFER_SIZE	SAUVEGARDE/parsing/expansion_test/libft/includes/get_next_line.h	/^#  define BUFFER_SIZE /;"	d
+BUFFER_SIZE	TESTS/execution_test/libft/includes/get_next_line.h	/^#  define BUFFER_SIZE /;"	d
+BUFFER_SIZE	TESTS/expansion_test/libft/includes/get_next_line.h	/^#  define BUFFER_SIZE /;"	d
+BUFFER_SIZE	libft/includes/get_next_line.h	/^#  define BUFFER_SIZE /;"	d
+CC	Makefile	/^CC			= gcc$/;"	m
+CC	SAUVEGARDE/Makefile	/^CC			= gcc$/;"	m
+CC	SAUVEGARDE/execution_test/Makefile	/^CC			= gcc$/;"	m
+CC	SAUVEGARDE/execution_test/libft/Makefile	/^CC		= gcc$/;"	m
+CC	SAUVEGARDE/libft/Makefile	/^CC		= gcc$/;"	m
+CC	SAUVEGARDE/parsing/expansion_test/libft/Makefile	/^CC		= gcc$/;"	m
+CC	TESTS/execution_test/Makefile	/^CC			= gcc$/;"	m
+CC	TESTS/execution_test/libft/Makefile	/^CC		= gcc$/;"	m
+CC	TESTS/expansion_test/libft/Makefile	/^CC		= gcc$/;"	m
+CC	libft/Makefile	/^CC		= gcc$/;"	m
+CFLAGS	SAUVEGARDE/execution_test/libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
+CFLAGS	SAUVEGARDE/libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
+CFLAGS	SAUVEGARDE/parsing/expansion_test/libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
+CFLAGS	TESTS/execution_test/libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
+CFLAGS	TESTS/expansion_test/libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
+CFLAGS	libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
+COLOR_END	Makefile	/^COLOR_END 	= \\033[0m$/;"	m
+COLOR_END	SAUVEGARDE/execution_test/libft/Makefile	/^COLOR_END = \\033[0m$/;"	m
+COLOR_END	SAUVEGARDE/libft/Makefile	/^COLOR_END = \\033[0m$/;"	m
+COLOR_END	SAUVEGARDE/parsing/expansion_test/libft/Makefile	/^COLOR_END = \\033[0m$/;"	m
+COLOR_END	TESTS/execution_test/libft/Makefile	/^COLOR_END = \\033[0m$/;"	m
+COLOR_END	TESTS/expansion_test/libft/Makefile	/^COLOR_END = \\033[0m$/;"	m
+COLOR_END	libft/Makefile	/^COLOR_END = \\033[0m$/;"	m
+CONTINUE	SAUVEGARDE/execution_test/minishell.h	/^# define CONTINUE /;"	d
+CONTINUE	SAUVEGARDE/minishell.h	/^# define CONTINUE /;"	d
+CONTINUE	SAUVEGARDE/parsing/expansion_test/minishell.h	/^# define CONTINUE /;"	d
+CONTINUE	TESTS/execution_test/minishell.h	/^# define CONTINUE /;"	d
+CONTINUE	TESTS/expansion_test/minishell 2.h	/^# define CONTINUE /;"	d
+CONTINUE	TESTS/expansion_test/minishell.h	/^# define CONTINUE /;"	d
+CYN	SAUVEGARDE/execution_test/minishell.h	/^# define CYN /;"	d
+CYN	SAUVEGARDE/minishell.h	/^# define CYN /;"	d
+CYN	SAUVEGARDE/parsing/expansion_test/minishell.h	/^# define CYN /;"	d
+CYN	TESTS/execution_test/minishell.h	/^# define CYN /;"	d
+CYN	TESTS/expansion_test/minishell 2.h	/^# define CYN /;"	d
+CYN	TESTS/expansion_test/minishell.h	/^# define CYN /;"	d
+CYN	minishell.h	/^# define CYN /;"	d
+DELETE	SAUVEGARDE/execution_test/minishell.h	/^# define DELETE	/;"	d
+DELETE	SAUVEGARDE/minishell.h	/^# define DELETE	/;"	d
+DELETE	SAUVEGARDE/parsing/expansion_test/minishell.h	/^# define DELETE	/;"	d
+DELETE	TESTS/execution_test/minishell.h	/^# define DELETE	/;"	d
+DELETE	TESTS/expansion_test/minishell 2.h	/^# define DELETE	/;"	d
+DELETE	TESTS/expansion_test/minishell.h	/^# define DELETE	/;"	d
+DELETE	minishell.h	/^# define DELETE	/;"	d
+DOLLAR	SAUVEGARDE/execution_test/minishell.h	/^# define DOLLAR	/;"	d
+DOLLAR	SAUVEGARDE/minishell.h	/^# define DOLLAR	/;"	d
+DOLLAR	SAUVEGARDE/parsing/expansion_test/minishell.h	/^# define DOLLAR	/;"	d
+DOLLAR	TESTS/execution_test/minishell.h	/^# define DOLLAR	/;"	d
+DOLLAR	TESTS/expansion_test/minishell 2.h	/^# define DOLLAR	/;"	d
+DOLLAR	TESTS/expansion_test/minishell.h	/^# define DOLLAR	/;"	d
+DOLLAR	minishell.h	/^# define DOLLAR	/;"	d
+ERROR_EXIT	SAUVEGARDE/execution_test/minishell.h	/^# define ERROR_EXIT	/;"	d
+ERROR_EXIT	SAUVEGARDE/minishell.h	/^# define ERROR_EXIT	/;"	d
+ERROR_EXIT	SAUVEGARDE/parsing/expansion_test/minishell.h	/^# define ERROR_EXIT	/;"	d
+ERROR_EXIT	TESTS/execution_test/minishell.h	/^# define ERROR_EXIT	/;"	d
+ERROR_EXIT	TESTS/expansion_test/minishell 2.h	/^# define ERROR_EXIT	/;"	d
+ERROR_EXIT	TESTS/expansion_test/minishell.h	/^# define ERROR_EXIT	/;"	d
+ERROR_EXIT	minishell.h	/^# define ERROR_EXIT	/;"	d
+ERROR_EXIT_	SAUVEGARDE/execution_test/minishell.h	/^# define ERROR_EXIT_	/;"	d
+ERROR_EXIT_	SAUVEGARDE/minishell.h	/^# define ERROR_EXIT_	/;"	d
+ERROR_EXIT_	SAUVEGARDE/parsing/expansion_test/minishell.h	/^# define ERROR_EXIT_	/;"	d
+ERROR_EXIT_	TESTS/execution_test/minishell.h	/^# define ERROR_EXIT_	/;"	d
+ERROR_EXIT_	TESTS/expansion_test/minishell 2.h	/^# define ERROR_EXIT_	/;"	d
+ERROR_EXIT_	TESTS/expansion_test/minishell.h	/^# define ERROR_EXIT_	/;"	d
+EXPAND	SAUVEGARDE/execution_test/minishell.h	/^# define EXPAND	/;"	d
+EXPAND	SAUVEGARDE/minishell.h	/^# define EXPAND	/;"	d
+EXPAND	SAUVEGARDE/parsing/expansion_test/minishell.h	/^# define EXPAND	/;"	d
+EXPAND	TESTS/execution_test/minishell.h	/^# define EXPAND	/;"	d
+EXPAND	TESTS/expansion_test/minishell 2.h	/^# define EXPAND	/;"	d
+EXPAND	TESTS/expansion_test/minishell.h	/^# define EXPAND	/;"	d
+EXPAND	minishell.h	/^# define EXPAND	/;"	d
+EXPANDED	SAUVEGARDE/execution_test/minishell.h	/^# define EXPANDED	/;"	d
+EXPANDED	SAUVEGARDE/minishell.h	/^# define EXPANDED	/;"	d
+EXPANDED	SAUVEGARDE/parsing/expansion_test/minishell.h	/^# define EXPANDED	/;"	d
+EXPANDED	TESTS/execution_test/minishell.h	/^# define EXPANDED	/;"	d
+EXPANDED	TESTS/expansion_test/minishell 2.h	/^# define EXPANDED	/;"	d
+EXPANDED	TESTS/expansion_test/minishell.h	/^# define EXPANDED	/;"	d
+EXPANDED	minishell.h	/^# define EXPANDED	/;"	d
+FT_PRINTF_H	SAUVEGARDE/execution_test/libft/includes/ft_printf.h	/^# define FT_PRINTF_H$/;"	d
+FT_PRINTF_H	SAUVEGARDE/libft/includes/ft_printf.h	/^# define FT_PRINTF_H$/;"	d
+FT_PRINTF_H	SAUVEGARDE/parsing/expansion_test/libft/includes/ft_printf.h	/^# define FT_PRINTF_H$/;"	d
+FT_PRINTF_H	TESTS/execution_test/libft/includes/ft_printf.h	/^# define FT_PRINTF_H$/;"	d
+FT_PRINTF_H	TESTS/expansion_test/libft/includes/ft_printf.h	/^# define FT_PRINTF_H$/;"	d
+FT_PRINTF_H	libft/includes/ft_printf.h	/^# define FT_PRINTF_H$/;"	d
+GET_NEXT_LINE_H	SAUVEGARDE/execution_test/libft/includes/get_next_line.h	/^# define GET_NEXT_LINE_H$/;"	d
+GET_NEXT_LINE_H	SAUVEGARDE/libft/includes/get_next_line.h	/^# define GET_NEXT_LINE_H$/;"	d
+GET_NEXT_LINE_H	SAUVEGARDE/parsing/expansion_test/libft/includes/get_next_line.h	/^# define GET_NEXT_LINE_H$/;"	d
+GET_NEXT_LINE_H	TESTS/execution_test/libft/includes/get_next_line.h	/^# define GET_NEXT_LINE_H$/;"	d
+GET_NEXT_LINE_H	TESTS/expansion_test/libft/includes/get_next_line.h	/^# define GET_NEXT_LINE_H$/;"	d
+GET_NEXT_LINE_H	libft/includes/get_next_line.h	/^# define GET_NEXT_LINE_H$/;"	d
+GREEN	Makefile	/^GREEN 		= \\033[32;6m$/;"	m
+GREEN	SAUVEGARDE/execution_test/libft/Makefile	/^GREEN = \\033[32;6m$/;"	m
+GREEN	SAUVEGARDE/libft/Makefile	/^GREEN = \\033[32;6m$/;"	m
+GREEN	SAUVEGARDE/parsing/expansion_test/libft/Makefile	/^GREEN = \\033[32;6m$/;"	m
+GREEN	TESTS/execution_test/libft/Makefile	/^GREEN = \\033[32;6m$/;"	m
+GREEN	TESTS/expansion_test/libft/Makefile	/^GREEN = \\033[32;6m$/;"	m
+GREEN	libft/Makefile	/^GREEN = \\033[32;6m$/;"	m
+GRN	SAUVEGARDE/execution_test/minishell.h	/^# define GRN /;"	d
+GRN	SAUVEGARDE/minishell.h	/^# define GRN /;"	d
+GRN	SAUVEGARDE/parsing/expansion_test/minishell.h	/^# define GRN /;"	d
+GRN	TESTS/execution_test/minishell.h	/^# define GRN /;"	d
+GRN	TESTS/expansion_test/minishell 2.h	/^# define GRN /;"	d
+GRN	TESTS/expansion_test/minishell.h	/^# define GRN /;"	d
+GRN	minishell.h	/^# define GRN /;"	d
+HEADERS	Makefile	/^HEADERS		= minishell.h$/;"	m
+HEADERS	SAUVEGARDE/Makefile	/^HEADERS		= minishell.h$/;"	m
+HEADERS	SAUVEGARDE/execution_test/Makefile	/^HEADERS		= minishell.h$/;"	m
+HEADERS	TESTS/execution_test/Makefile	/^HEADERS		= minishell.h$/;"	m
+HERE_DOC	SAUVEGARDE/execution_test/minishell.h	/^# define HERE_DOC	/;"	d
+HERE_DOC	SAUVEGARDE/minishell.h	/^# define HERE_DOC	/;"	d
+HERE_DOC	SAUVEGARDE/parsing/expansion_test/minishell.h	/^# define HERE_DOC	/;"	d
+HERE_DOC	TESTS/execution_test/minishell.h	/^# define HERE_DOC	/;"	d
+HERE_DOC	TESTS/expansion_test/minishell 2.h	/^# define HERE_DOC	/;"	d
+HERE_DOC	TESTS/expansion_test/minishell.h	/^# define HERE_DOC	/;"	d
+HERE_DOC	minishell.h	/^# define HERE_DOC	/;"	d
+LIBFT	Makefile	/^LIBFT		= -L.\/libft -lft$/;"	m
+LIBFT	SAUVEGARDE/Makefile	/^LIBFT		= -L.\/libft -lft$/;"	m
+LIBFT	SAUVEGARDE/execution_test/Makefile	/^LIBFT		= -L.\/libft -lft$/;"	m
+LIBFT	TESTS/execution_test/Makefile	/^LIBFT		= -L.\/libft -lft$/;"	m
+LIBFT_FOLD	Makefile	/^LIBFT_FOLD	= libft$/;"	m
+LIBFT_FOLD	SAUVEGARDE/Makefile	/^LIBFT_FOLD	= libft$/;"	m
+LIBFT_FOLD	SAUVEGARDE/execution_test/Makefile	/^LIBFT_FOLD	= libft$/;"	m
+LIBFT_FOLD	TESTS/execution_test/Makefile	/^LIBFT_FOLD	= libft$/;"	m
+LIBFT_H	SAUVEGARDE/execution_test/libft/includes/libft.h	/^# define LIBFT_H$/;"	d
+LIBFT_H	SAUVEGARDE/libft/includes/libft.h	/^# define LIBFT_H$/;"	d
+LIBFT_H	SAUVEGARDE/parsing/expansion_test/libft/includes/libft.h	/^# define LIBFT_H$/;"	d
+LIBFT_H	TESTS/execution_test/libft/includes/libft.h	/^# define LIBFT_H$/;"	d
+LIBFT_H	TESTS/expansion_test/libft/includes/libft.h	/^# define LIBFT_H$/;"	d
+LIBFT_H	libft/includes/libft.h	/^# define LIBFT_H$/;"	d
+L_CHEVRON	SAUVEGARDE/execution_test/minishell.h	/^# define L_CHEVRON	/;"	d
+L_CHEVRON	SAUVEGARDE/minishell.h	/^# define L_CHEVRON	/;"	d
+L_CHEVRON	SAUVEGARDE/parsing/expansion_test/minishell.h	/^# define L_CHEVRON	/;"	d
+L_CHEVRON	TESTS/execution_test/minishell.h	/^# define L_CHEVRON	/;"	d
+L_CHEVRON	TESTS/expansion_test/minishell 2.h	/^# define L_CHEVRON	/;"	d
+L_CHEVRON	TESTS/expansion_test/minishell.h	/^# define L_CHEVRON	/;"	d
+L_CHEVRON	minishell.h	/^# define L_CHEVRON	/;"	d
+MAG	SAUVEGARDE/execution_test/minishell.h	/^# define MAG /;"	d
+MAG	SAUVEGARDE/minishell.h	/^# define MAG /;"	d
+MAG	SAUVEGARDE/parsing/expansion_test/minishell.h	/^# define MAG /;"	d
+MAG	TESTS/execution_test/minishell.h	/^# define MAG /;"	d
+MAG	TESTS/expansion_test/minishell 2.h	/^# define MAG /;"	d
+MAG	TESTS/expansion_test/minishell.h	/^# define MAG /;"	d
+MAG	minishell.h	/^# define MAG /;"	d
+MAGNETA	Makefile	/^MAGNETA		:= $(shell tput setaf 5)$/;"	m
+MINISHELL_H	SAUVEGARDE/execution_test/minishell.h	/^# define MINISHELL_H$/;"	d
+MINISHELL_H	SAUVEGARDE/minishell.h	/^# define MINISHELL_H$/;"	d
+MINISHELL_H	SAUVEGARDE/parsing/expansion_test/minishell.h	/^# define MINISHELL_H$/;"	d
+MINISHELL_H	TESTS/execution_test/minishell.h	/^# define MINISHELL_H$/;"	d
+MINISHELL_H	TESTS/expansion_test/minishell 2.h	/^# define MINISHELL_H$/;"	d
+MINISHELL_H	TESTS/expansion_test/minishell.h	/^# define MINISHELL_H$/;"	d
+MINISHELL_H	minishell.h	/^# define MINISHELL_H$/;"	d
+NAME	Makefile	/^NAME		= minishell$/;"	m
+NAME	SAUVEGARDE/Makefile	/^NAME		= minishell$/;"	m
+NAME	SAUVEGARDE/execution_test/Makefile	/^NAME		= minishell$/;"	m
+NAME	SAUVEGARDE/execution_test/libft/Makefile	/^NAME = libft.a$/;"	m
+NAME	SAUVEGARDE/libft/Makefile	/^NAME = libft.a$/;"	m
+NAME	SAUVEGARDE/parsing/expansion_test/libft/Makefile	/^NAME = libft.a$/;"	m
+NAME	TESTS/execution_test/Makefile	/^NAME		= minishell$/;"	m
+NAME	TESTS/execution_test/libft/Makefile	/^NAME = libft.a$/;"	m
+NAME	TESTS/expansion_test/libft/Makefile	/^NAME = libft.a$/;"	m
+NAME	libft/Makefile	/^NAME = libft.a$/;"	m
+OBJS	Makefile	/^OBJS		= ${SRCS:.c=.o}$/;"	m
+OBJS	SAUVEGARDE/Makefile	/^OBJS		= ${SRCS:.c=.o}$/;"	m
+OBJS	SAUVEGARDE/execution_test/Makefile	/^OBJS		= ${SRCS:.c=.o}$/;"	m
+OBJS	SAUVEGARDE/execution_test/libft/Makefile	/^OBJS =  ${SRCS_LIBFT:.c=.o} ${SRCS_LSTCHAINE:.c=.o} ${SRCS_PRINTF:.c=.o} ${SRCS_GNL:.c=.o} \\$/;"	m
+OBJS	SAUVEGARDE/libft/Makefile	/^OBJS =  ${SRCS_LIBFT:.c=.o} ${SRCS_LSTCHAINE:.c=.o} ${SRCS_PRINTF:.c=.o} ${SRCS_GNL:.c=.o} \\$/;"	m
+OBJS	SAUVEGARDE/parsing/expansion_test/libft/Makefile	/^OBJS =  ${SRCS_LIBFT:.c=.o} ${SRCS_LSTCHAINE:.c=.o} ${SRCS_PRINTF:.c=.o} ${SRCS_GNL:.c=.o} \\$/;"	m
+OBJS	TESTS/execution_test/Makefile	/^OBJS		= ${SRCS:.c=.o}$/;"	m
+OBJS	TESTS/execution_test/libft/Makefile	/^OBJS =  ${SRCS_LIBFT:.c=.o} ${SRCS_LSTCHAINE:.c=.o} ${SRCS_PRINTF:.c=.o} ${SRCS_GNL:.c=.o} \\$/;"	m
+OBJS	TESTS/expansion_test/libft/Makefile	/^OBJS =  ${SRCS_LIBFT:.c=.o} ${SRCS_LSTCHAINE:.c=.o} ${SRCS_PRINTF:.c=.o} ${SRCS_GNL:.c=.o} \\$/;"	m
+OBJS	libft/Makefile	/^OBJS =  ${SRCS_LIBFT:.c=.o} ${SRCS_LSTCHAINE:.c=.o} ${SRCS_PRINTF:.c=.o} ${SRCS_GNL:.c=.o} \\$/;"	m
+PIPELINE	SAUVEGARDE/execution_test/minishell.h	/^# define PIPELINE	/;"	d
+PIPELINE	SAUVEGARDE/minishell.h	/^# define PIPELINE	/;"	d
+PIPELINE	SAUVEGARDE/parsing/expansion_test/minishell.h	/^# define PIPELINE	/;"	d
+PIPELINE	TESTS/execution_test/minishell.h	/^# define PIPELINE	/;"	d
+PIPELINE	TESTS/expansion_test/minishell 2.h	/^# define PIPELINE	/;"	d
+PIPELINE	TESTS/expansion_test/minishell.h	/^# define PIPELINE	/;"	d
+PIPELINE	minishell.h	/^# define PIPELINE	/;"	d
+QUESTION	SAUVEGARDE/execution_test/minishell.h	/^# define QUESTION	/;"	d
+QUESTION	SAUVEGARDE/minishell.h	/^# define QUESTION	/;"	d
+QUESTION	SAUVEGARDE/parsing/expansion_test/minishell.h	/^# define QUESTION	/;"	d
+QUESTION	TESTS/execution_test/minishell.h	/^# define QUESTION	/;"	d
+QUESTION	TESTS/expansion_test/minishell 2.h	/^# define QUESTION	/;"	d
+QUESTION	TESTS/expansion_test/minishell.h	/^# define QUESTION	/;"	d
+QUESTION	minishell.h	/^# define QUESTION	/;"	d
+READLINE	Makefile	/^READLINE	=  -L$(HOME)\/.brew\/opt\/readline\/lib -lreadline$/;"	m
+READLINE	Makefile	/^READLINE	= -L\/opt\/homebrew\/Cellar\/readline\/8.2.1\/lib -lreadline$/;"	m
+READLINE	Makefile	/^READLINE 	= -L\/opt\/homebrew\/opt\/readline\/lib -lreadline$/;"	m
+READLINE	SAUVEGARDE/Makefile	/^READLINE	=  -L$(HOME)\/.brew\/opt\/readline\/lib -lreadline$/;"	m
+READLINE	SAUVEGARDE/Makefile	/^READLINE	= -L\/opt\/homebrew\/Cellar\/readline\/8.2.1\/lib -lreadline$/;"	m
+READLINE	SAUVEGARDE/execution_test/Makefile	/^READLINE	=  -L$(HOME)\/.brew\/opt\/readline\/lib -lreadline$/;"	m
+READLINE	SAUVEGARDE/execution_test/Makefile	/^READLINE	= -L\/opt\/homebrew\/Cellar\/readline\/8.2.1\/lib -lreadline$/;"	m
+READLINE	TESTS/execution_test/Makefile	/^READLINE	=  -L$(HOME)\/.brew\/opt\/readline\/lib -lreadline$/;"	m
+READLINE	TESTS/execution_test/Makefile	/^READLINE	= -L\/opt\/homebrew\/Cellar\/readline\/8.2.1\/lib -lreadline$/;"	m
+RED	SAUVEGARDE/execution_test/minishell.h	/^# define RED /;"	d
+RED	SAUVEGARDE/minishell.h	/^# define RED /;"	d
+RED	SAUVEGARDE/parsing/expansion_test/minishell.h	/^# define RED /;"	d
+RED	TESTS/execution_test/minishell.h	/^# define RED /;"	d
+RED	TESTS/expansion_test/minishell 2.h	/^# define RED /;"	d
+RED	TESTS/expansion_test/minishell.h	/^# define RED /;"	d
+RED	minishell.h	/^# define RED /;"	d
+RESET	Makefile	/^RESET		:= $(shell tput sgr0)$/;"	m
+RESET	SAUVEGARDE/execution_test/minishell.h	/^# define RESET /;"	d
+RESET	SAUVEGARDE/minishell.h	/^# define RESET /;"	d
+RESET	SAUVEGARDE/parsing/expansion_test/minishell.h	/^# define RESET /;"	d
+RESET	TESTS/execution_test/minishell.h	/^# define RESET /;"	d
+RESET	TESTS/expansion_test/minishell 2.h	/^# define RESET /;"	d
+RESET	TESTS/expansion_test/minishell.h	/^# define RESET /;"	d
+RESET	minishell.h	/^# define RESET /;"	d
+RM	Makefile	/^RM			= rm -f$/;"	m
+RM	SAUVEGARDE/Makefile	/^RM			= rm -f$/;"	m
+RM	SAUVEGARDE/execution_test/Makefile	/^RM			= rm -f$/;"	m
+RM	SAUVEGARDE/execution_test/libft/Makefile	/^RM		= rm -f$/;"	m
+RM	SAUVEGARDE/libft/Makefile	/^RM		= rm -f$/;"	m
+RM	SAUVEGARDE/parsing/expansion_test/libft/Makefile	/^RM		= rm -f$/;"	m
+RM	TESTS/execution_test/Makefile	/^RM			= rm -f$/;"	m
+RM	TESTS/execution_test/libft/Makefile	/^RM		= rm -f$/;"	m
+RM	TESTS/expansion_test/libft/Makefile	/^RM		= rm -f$/;"	m
+RM	libft/Makefile	/^RM		= rm -f$/;"	m
+R_CHEVRON	SAUVEGARDE/execution_test/minishell.h	/^# define R_CHEVRON	/;"	d
+R_CHEVRON	SAUVEGARDE/minishell.h	/^# define R_CHEVRON	/;"	d
+R_CHEVRON	SAUVEGARDE/parsing/expansion_test/minishell.h	/^# define R_CHEVRON	/;"	d
+R_CHEVRON	TESTS/execution_test/minishell.h	/^# define R_CHEVRON	/;"	d
+R_CHEVRON	TESTS/expansion_test/minishell 2.h	/^# define R_CHEVRON	/;"	d
+R_CHEVRON	TESTS/expansion_test/minishell.h	/^# define R_CHEVRON	/;"	d
+R_CHEVRON	minishell.h	/^# define R_CHEVRON	/;"	d
+SANITIZE	Makefile	/^SANITIZE	?= 0$/;"	m
+SANITIZE	SAUVEGARDE/Makefile	/^SANITIZE	?= 0$/;"	m
+SANITIZE	SAUVEGARDE/execution_test/Makefile	/^SANITIZE	?= 0$/;"	m
+SANITIZE	TESTS/execution_test/Makefile	/^SANITIZE	?= 0$/;"	m
+SRCS	Makefile	/^SRCS		= main.c \\$/;"	m
+SRCS	SAUVEGARDE/Makefile	/^SRCS		= main.c \\$/;"	m
+SRCS	SAUVEGARDE/execution_test/Makefile	/^SRCS		= main.c \\$/;"	m
+SRCS	TESTS/execution_test/Makefile	/^SRCS		= main.c \\$/;"	m
+SRCS_GNL	SAUVEGARDE/execution_test/libft/Makefile	/^SRCS_GNL = 			get_next_line\/get_next_line.c \\$/;"	m
+SRCS_GNL	SAUVEGARDE/libft/Makefile	/^SRCS_GNL = 			get_next_line\/get_next_line.c \\$/;"	m
+SRCS_GNL	SAUVEGARDE/parsing/expansion_test/libft/Makefile	/^SRCS_GNL = 			get_next_line\/get_next_line.c \\$/;"	m
+SRCS_GNL	TESTS/execution_test/libft/Makefile	/^SRCS_GNL = 			get_next_line\/get_next_line.c \\$/;"	m
+SRCS_GNL	TESTS/expansion_test/libft/Makefile	/^SRCS_GNL = 			get_next_line\/get_next_line.c \\$/;"	m
+SRCS_GNL	libft/Makefile	/^SRCS_GNL = 			get_next_line\/get_next_line.c \\$/;"	m
+SRCS_LIBFT	SAUVEGARDE/execution_test/libft/Makefile	/^SRCS_LIBFT = 		libft\/ft_memset.c \\$/;"	m
+SRCS_LIBFT	SAUVEGARDE/libft/Makefile	/^SRCS_LIBFT = 		libft\/ft_memset.c \\$/;"	m
+SRCS_LIBFT	SAUVEGARDE/parsing/expansion_test/libft/Makefile	/^SRCS_LIBFT = 		libft\/ft_memset.c \\$/;"	m
+SRCS_LIBFT	TESTS/execution_test/libft/Makefile	/^SRCS_LIBFT = 		libft\/ft_memset.c \\$/;"	m
+SRCS_LIBFT	TESTS/expansion_test/libft/Makefile	/^SRCS_LIBFT = 		libft\/ft_memset.c \\$/;"	m
+SRCS_LIBFT	libft/Makefile	/^SRCS_LIBFT = 		libft\/ft_memset.c \\$/;"	m
+SRCS_LSTCHAINE	SAUVEGARDE/execution_test/libft/Makefile	/^SRCS_LSTCHAINE = 	libft\/ft_lstnew.c \\$/;"	m
+SRCS_LSTCHAINE	SAUVEGARDE/libft/Makefile	/^SRCS_LSTCHAINE = 	libft\/ft_lstnew.c \\$/;"	m
+SRCS_LSTCHAINE	SAUVEGARDE/parsing/expansion_test/libft/Makefile	/^SRCS_LSTCHAINE = 	libft\/ft_lstnew.c \\$/;"	m
+SRCS_LSTCHAINE	TESTS/execution_test/libft/Makefile	/^SRCS_LSTCHAINE = 	libft\/ft_lstnew.c \\$/;"	m
+SRCS_LSTCHAINE	TESTS/expansion_test/libft/Makefile	/^SRCS_LSTCHAINE = 	libft\/ft_lstnew.c \\$/;"	m
+SRCS_LSTCHAINE	libft/Makefile	/^SRCS_LSTCHAINE = 	libft\/ft_lstnew.c \\$/;"	m
+SRCS_PRINTF	SAUVEGARDE/execution_test/libft/Makefile	/^SRCS_PRINTF = 		ft_printf\/ft_printf.c \\$/;"	m
+SRCS_PRINTF	SAUVEGARDE/libft/Makefile	/^SRCS_PRINTF = 		ft_printf\/ft_printf.c \\$/;"	m
+SRCS_PRINTF	SAUVEGARDE/parsing/expansion_test/libft/Makefile	/^SRCS_PRINTF = 		ft_printf\/ft_printf.c \\$/;"	m
+SRCS_PRINTF	TESTS/execution_test/libft/Makefile	/^SRCS_PRINTF = 		ft_printf\/ft_printf.c \\$/;"	m
+SRCS_PRINTF	TESTS/expansion_test/libft/Makefile	/^SRCS_PRINTF = 		ft_printf\/ft_printf.c \\$/;"	m
+SRCS_PRINTF	libft/Makefile	/^SRCS_PRINTF = 		ft_printf\/ft_printf.c \\$/;"	m
+WHT	SAUVEGARDE/execution_test/minishell.h	/^# define WHT /;"	d
+WHT	SAUVEGARDE/minishell.h	/^# define WHT /;"	d
+WHT	SAUVEGARDE/parsing/expansion_test/minishell.h	/^# define WHT /;"	d
+WHT	TESTS/execution_test/minishell.h	/^# define WHT /;"	d
+WHT	TESTS/expansion_test/minishell 2.h	/^# define WHT /;"	d
+WHT	TESTS/expansion_test/minishell.h	/^# define WHT /;"	d
+WHT	minishell.h	/^# define WHT /;"	d
+WORD	SAUVEGARDE/execution_test/minishell.h	/^# define WORD	/;"	d
+WORD	SAUVEGARDE/minishell.h	/^# define WORD	/;"	d
+WORD	SAUVEGARDE/parsing/expansion_test/minishell.h	/^# define WORD	/;"	d
+WORD	TESTS/execution_test/minishell.h	/^# define WORD	/;"	d
+WORD	TESTS/expansion_test/minishell 2.h	/^# define WORD	/;"	d
+WORD	TESTS/expansion_test/minishell.h	/^# define WORD	/;"	d
+WORD	minishell.h	/^# define WORD	/;"	d
+YEL	SAUVEGARDE/execution_test/minishell.h	/^# define YEL /;"	d
+YEL	SAUVEGARDE/minishell.h	/^# define YEL /;"	d
+YEL	SAUVEGARDE/parsing/expansion_test/minishell.h	/^# define YEL /;"	d
+YEL	TESTS/execution_test/minishell.h	/^# define YEL /;"	d
+YEL	TESTS/expansion_test/minishell 2.h	/^# define YEL /;"	d
+YEL	TESTS/expansion_test/minishell.h	/^# define YEL /;"	d
+YEL	minishell.h	/^# define YEL /;"	d
+YELLOW	Makefile	/^YELLOW		:= $(shell tput setaf 3)$/;"	m
+_cd	builtins/cd.c	/^void	_cd(t_cmd *cmd, t_cmd **head)$/;"	f
+_echo	SAUVEGARDE/builtins.c	/^int	_echo(t_cmd *cmd)$/;"	f
+_echo	builtins/echo.c	/^int	_echo(t_cmd *cmd)$/;"	f
+_env	SAUVEGARDE/builtins.c	/^int	_env(t_env *env)$/;"	f
+_env	builtins/env.c	/^void	_env(t_cmd *cmd, t_env *env)$/;"	f
+_export	builtins/export.c	/^void	_export(t_cmd *cmd, t_cmd **head)$/;"	f
+_pwd	SAUVEGARDE/builtins.c	/^int	_pwd(t_cmd *cmd)$/;"	f
+_pwd	builtins/pwd.c	/^void	_pwd(void)$/;"	f
+_unset	builtins/unset.c	/^void	_unset(t_cmd *cmd)$/;"	f
+builtin	SAUVEGARDE/execution.c	/^void	builtin(t_bin *bin, t_cmd *cmd)$/;"	f
+change_dir	builtins/cd.c	/^static int	change_dir(char *oldpwd, char *path)$/;"	f	file:
+change_env	builtins/cd.c	/^static void	change_env(char *oldpwd, char *pwd, t_cmd **head)$/;"	f	file:
+change_env_error	builtins/cd.c	/^static void	change_env_error(char *oldpwd, char *pwd, t_cmd **head)$/;"	f	file:
+change_env_var	builtins/export.c	/^static int	change_env_var(char *s, char *var_name, int i)$/;"	f	file:
+character_extraction	SAUVEGARDE/execution_test/parsing_token_extraction.c	/^int	character_extraction(char *line, int ind)$/;"	f
+character_extraction	SAUVEGARDE/parsing/expansion_test/parsing_token_extraction.c	/^int	character_extraction(char *line, int ind)$/;"	f
+character_extraction	SAUVEGARDE/parsing/token_extraction.c	/^int	character_extraction(char *line, int ind)$/;"	f
+character_extraction	TESTS/execution_test/parsing_token_extraction.c	/^int	character_extraction(char *line, int ind)$/;"	f
+character_extraction	TESTS/expansion_test/parsing_token_extraction 2.c	/^int	character_extraction(char *line, int ind)$/;"	f
+character_extraction	TESTS/expansion_test/parsing_token_extraction.c	/^int	character_extraction(char *line, int ind)$/;"	f
+character_extraction	parsing/token_extraction.c	/^int	character_extraction(char *line, int ind)$/;"	f
+check_access	execution/exec_bin.c	/^static int	check_access(t_cmd *cmd)$/;"	f	file:
+check_access	execution/search_path_in_env_table.c	/^static int check_access(int start, int end, char *s, t_cmd *cmd)$/;"	f	file:
+check_dollar	SAUVEGARDE/execution_test/parsing_expansion.c	/^int	check_dollar(t_token *curr, int i)$/;"	f
+check_dollar	SAUVEGARDE/parsing/expansion.c	/^int	check_dollar(t_token *curr, int i)$/;"	f
+check_dollar	SAUVEGARDE/parsing/expansion_test/parsing_expansion.c	/^int	check_dollar(t_token *curr, int i)$/;"	f
+check_dollar	TESTS/execution_test/parsing_expansion.c	/^int	check_dollar(t_token *curr, int i)$/;"	f
+check_dollar	TESTS/expansion_test/parsing_expansion 2.c	/^int	check_dollar(t_token *curr, int i)$/;"	f
+check_dollar	TESTS/expansion_test/parsing_expansion.c	/^int	check_dollar(t_token *curr, int i)$/;"	f
+check_dollar	parsing/expansion.c	/^int	check_dollar(t_token *curr, int i)$/;"	f
+check_each_path	execution/search_path_in_env_table.c	/^static int	check_each_path(char *s, t_cmd *cmd)$/;"	f	file:
+check_env	builtins/env.c	/^static int	check_env(t_cmd *cmd)$/;"	f	file:
+check_errors	SAUVEGARDE/execution_test/libft/get_next_line/get_next_line.c	/^int	check_errors(int fd, char **line)$/;"	f
+check_errors	SAUVEGARDE/libft/get_next_line/get_next_line.c	/^int	check_errors(int fd, char **line)$/;"	f
+check_errors	SAUVEGARDE/parsing/expansion_test/libft/get_next_line/get_next_line.c	/^int	check_errors(int fd, char **line)$/;"	f
+check_errors	TESTS/execution_test/libft/get_next_line/get_next_line.c	/^int	check_errors(int fd, char **line)$/;"	f
+check_errors	TESTS/expansion_test/libft/get_next_line/get_next_line.c	/^int	check_errors(int fd, char **line)$/;"	f
+check_errors	libft/get_next_line/get_next_line.c	/^int	check_errors(int fd, char **line)$/;"	f
+check_execve	execution/exec_bin.c	/^static void	check_execve(t_cmd *cmd)$/;"	f	file:
+check_exit_arguments	builtins/exit.c	/^static int	check_exit_arguments(t_cmd **head)$/;"	f	file:
+check_for_malloc_error	main.c	/^void	check_for_malloc_error(t_cmd **head)$/;"	f
+check_if_valid_identifier	builtins/export_unset_helper.c	/^int	check_if_valid_identifier(char *s, char *command)$/;"	f
+check_if_var_exists	builtins/export_unset_helper.c	/^int	check_if_var_exists(char *s)$/;"	f
+check_multiple_operators_error	SAUVEGARDE/execution_test/parsing_syntax_errors.c	/^int	check_multiple_operators_error(int i, int num, char c)$/;"	f
+check_multiple_operators_error	SAUVEGARDE/parsing/expansion_test/parsing_syntax_errors.c	/^int	check_multiple_operators_error(int i, int num, char c)$/;"	f
+check_multiple_operators_error	SAUVEGARDE/parsing/syntax_errors.c	/^int	check_multiple_operators_error(int i, int num, char c)$/;"	f
+check_multiple_operators_error	TESTS/execution_test/parsing_syntax_errors.c	/^int	check_multiple_operators_error(int i, int num, char c)$/;"	f
+check_multiple_operators_error	TESTS/expansion_test/parsing_syntax_errors 2.c	/^int	check_multiple_operators_error(int i, int num, char c)$/;"	f
+check_multiple_operators_error	TESTS/expansion_test/parsing_syntax_errors.c	/^int	check_multiple_operators_error(int i, int num, char c)$/;"	f
+check_multiple_operators_error	parsing/syntax_errors.c	/^int	check_multiple_operators_error(int i, int num, char c)$/;"	f
+check_pipeline_errors	SAUVEGARDE/execution_test/parsing_syntax_errors.c	/^int	check_pipeline_errors(char *s, int i, char c, int num)$/;"	f
+check_pipeline_errors	SAUVEGARDE/parsing/expansion_test/parsing_syntax_errors.c	/^int	check_pipeline_errors(char *s, int i, char c, int num)$/;"	f
+check_pipeline_errors	SAUVEGARDE/parsing/syntax_errors.c	/^int	check_pipeline_errors(char *s, int i, char c, int num)$/;"	f
+check_pipeline_errors	TESTS/execution_test/parsing_syntax_errors.c	/^int	check_pipeline_errors(char *s, int i, char c, int num)$/;"	f
+check_pipeline_errors	TESTS/expansion_test/parsing_syntax_errors 2.c	/^int	check_pipeline_errors(char *s, int i, char c, int num)$/;"	f
+check_pipeline_errors	TESTS/expansion_test/parsing_syntax_errors.c	/^int	check_pipeline_errors(char *s, int i, char c, int num)$/;"	f
+check_pipeline_errors	parsing/syntax_errors.c	/^int	check_pipeline_errors(char *s, int i, char c, int num)$/;"	f
+check_quotes_errors	SAUVEGARDE/execution_test/parsing_syntax_errors.c	/^int	check_quotes_errors(char *s, char c, int *i)$/;"	f
+check_quotes_errors	SAUVEGARDE/parsing/expansion_test/parsing_syntax_errors.c	/^int	check_quotes_errors(char *s, char c, int *i)$/;"	f
+check_quotes_errors	SAUVEGARDE/parsing/syntax_errors.c	/^int	check_quotes_errors(char *s, char c, int *i)$/;"	f
+check_quotes_errors	TESTS/execution_test/parsing_syntax_errors.c	/^int	check_quotes_errors(char *s, char c, int *i)$/;"	f
+check_quotes_errors	TESTS/expansion_test/parsing_syntax_errors 2.c	/^int	check_quotes_errors(char *s, char c, int *i)$/;"	f
+check_quotes_errors	TESTS/expansion_test/parsing_syntax_errors.c	/^int	check_quotes_errors(char *s, char c, int *i)$/;"	f
+check_quotes_errors	parsing/syntax_errors.c	/^int	check_quotes_errors(char *s, char c, int *i)$/;"	f
+check_then_execute	SAUVEGARDE/execution.c	/^void	check_then_execute(t_token *token, t_cmd **cmd)$/;"	f
+check_then_execute	SAUVEGARDE/execution_test/execution.c	/^void	check_then_execute(t_token *token)$/;"	f
+check_then_execute	TESTS/execution_test/execution 2.c	/^void	check_then_execute(t_token *token)$/;"	f
+check_then_execute	TESTS/execution_test/execution.c	/^void	check_then_execute(t_token *token)$/;"	f
+check_var_exist	SAUVEGARDE/execution_test/parsing_expansion_expand_var_helper.c	/^int	check_var_exist(t_token *tmp)$/;"	f
+check_var_exist	SAUVEGARDE/parsing/expansion_expand_var_helper.c	/^int	check_var_exist(t_token *tmp)$/;"	f
+check_var_exist	SAUVEGARDE/parsing/expansion_test/parsing_expansion_expand_var_helper.c	/^int	check_var_exist(t_token *tmp)$/;"	f
+check_var_exist	TESTS/execution_test/parsing_expansion_expand_var_helper.c	/^int	check_var_exist(t_token *tmp)$/;"	f
+check_var_exist	TESTS/expansion_test/parsing_expansion_expand_var_helper 2.c	/^int	check_var_exist(t_token *tmp)$/;"	f
+check_var_exist	TESTS/expansion_test/parsing_expansion_expand_var_helper.c	/^int	check_var_exist(t_token *tmp)$/;"	f
+check_var_exist	parsing/expansion_expand_var_helper.c	/^int	check_var_exist(t_token *tmp)$/;"	f
+child	SAUVEGARDE/execution_test/minishell.h	/^	pid_t	child;$/;"	m	struct:s_bin
+child	SAUVEGARDE/minishell.h	/^	pid_t	child;$/;"	m	struct:s_bin
+child	TESTS/execution_test/minishell.h	/^	pid_t	child;$/;"	m	struct:s_bin
+cmd	SAUVEGARDE/execution_test/minishell.h	/^	char	**cmd;$/;"	m	struct:s_cmd
+cmd	SAUVEGARDE/execution_test/minishell.h	/^	char	*cmd;$/;"	m	struct:s_bin
+cmd	SAUVEGARDE/minishell.h	/^	char	**cmd;$/;"	m	struct:s_cmd
+cmd	SAUVEGARDE/minishell.h	/^	char	*cmd;$/;"	m	struct:s_bin
+cmd	SAUVEGARDE/parsing/expansion_test/minishell.h	/^	char	**cmd;$/;"	m	struct:s_cmd
+cmd	TESTS/execution_test/minishell.h	/^	char	**cmd;$/;"	m	struct:s_cmd
+cmd	TESTS/execution_test/minishell.h	/^	char	*cmd;$/;"	m	struct:s_bin
+cmd	TESTS/expansion_test/minishell 2.h	/^	char	**cmd;$/;"	m	struct:s_cmd
+cmd	TESTS/expansion_test/minishell.h	/^	char	**cmd;$/;"	m	struct:s_cmd
+cmd	minishell.h	/^	char	**cmd;$/;"	m	struct:s_cmd
+cmd_backadd	SAUVEGARDE/init_cmd.c	/^void	cmd_backadd(t_cmd **head, t_cmd *new)$/;"	f
+cmd_backadd	command_struct/init_cmd.c	/^static void	cmd_backadd(t_cmd **head, t_cmd *new)$/;"	f	file:
+cmd_is_bin	SAUVEGARDE/cmd_is_bin.c	/^int	cmd_is_bin(t_token *token, t_bin *bin)$/;"	f
+cmd_is_bin	SAUVEGARDE/execution_test/cmd_is_bin.c	/^int	cmd_is_bin(t_token *token, t_bin *bin)$/;"	f
+cmd_is_bin	TESTS/execution_test/cmd_is_bin.c	/^int	cmd_is_bin(t_token *token, t_bin *bin)$/;"	f
+cmd_is_builtin	SAUVEGARDE/cmd_is_builtin.c	/^int cmd_is_builtin(t_token *token)$/;"	f
+cmd_is_builtin	execution/exec_builtins.c	/^int cmd_is_builtin(char *s)$/;"	f
+cmd_linked_list	SAUVEGARDE/init_cmd.c	/^t_cmd	*cmd_linked_list(t_token **token)$/;"	f
+cmd_linked_list	command_struct/init_cmd.c	/^t_cmd	*cmd_linked_list(t_token **token)$/;"	f
+column_size	SAUVEGARDE/copy_env_tab.c	/^int	column_size(t_env **head)$/;"	f
+column_size	SAUVEGARDE/execution_test/copy_env_tab.c	/^int	column_size(t_env **head)$/;"	f
+column_size	SAUVEGARDE/parsing/expansion_test/copy_env_tab.c	/^int	column_size(t_env **head)$/;"	f
+column_size	TESTS/execution_test/copy_env_tab.c	/^int	column_size(t_env **head)$/;"	f
+column_size	TESTS/expansion_test/copy_env_tab 2.c	/^int	column_size(t_env **head)$/;"	f
+column_size	TESTS/expansion_test/copy_env_tab.c	/^int	column_size(t_env **head)$/;"	f
+column_size	execution/copy_env_tab.c	/^int	column_size(t_env **head)$/;"	f
+content	SAUVEGARDE/execution_test/libft/includes/libft.h	/^	void			*content;$/;"	m	struct:s_list
+content	SAUVEGARDE/execution_test/minishell.h	/^	char				*content;$/;"	m	struct:s_token
+content	SAUVEGARDE/libft/includes/libft.h	/^	void			*content;$/;"	m	struct:s_list
+content	SAUVEGARDE/minishell.h	/^	char				*content;$/;"	m	struct:s_token
+content	SAUVEGARDE/parsing/expansion_test/libft/includes/libft.h	/^	void			*content;$/;"	m	struct:s_list
+content	SAUVEGARDE/parsing/expansion_test/minishell.h	/^	char				*content;$/;"	m	struct:s_token
+content	TESTS/execution_test/libft/includes/libft.h	/^	void			*content;$/;"	m	struct:s_list
+content	TESTS/execution_test/minishell.h	/^	char				*content;$/;"	m	struct:s_token
+content	TESTS/expansion_test/libft/includes/libft.h	/^	void			*content;$/;"	m	struct:s_list
+content	TESTS/expansion_test/minishell 2.h	/^	char				*content;$/;"	m	struct:s_token
+content	TESTS/expansion_test/minishell.h	/^	char				*content;$/;"	m	struct:s_token
+content	libft/includes/libft.h	/^	void			*content;$/;"	m	struct:s_list
+content	minishell.h	/^	char				*content;$/;"	m	struct:s_token
+copy_cmd	SAUVEGARDE/init_cmd_cmd.c	/^static void	copy_cmd(t_token **token, t_cmd *cmd)$/;"	f	file:
+copy_cmd	command_struct/init_cmd_cmd.c	/^static int	copy_cmd(t_token **token, t_cmd *cmd)$/;"	f	file:
+copy_cmd_helper	command_struct/init_cmd_cmd.c	/^static int	copy_cmd_helper(t_token *ptr, t_cmd *cmd, int i)$/;"	f	file:
+copy_env_tab	SAUVEGARDE/copy_env_tab.c	/^char	**copy_env_tab(t_env *env)$/;"	f
+copy_env_tab	SAUVEGARDE/execution_test/copy_env_tab.c	/^char	**copy_env_tab(t_env *env)$/;"	f
+copy_env_tab	SAUVEGARDE/parsing/expansion_test/copy_env_tab.c	/^char	**copy_env_tab(t_env *env)$/;"	f
+copy_env_tab	TESTS/execution_test/copy_env_tab.c	/^char	**copy_env_tab(t_env *env)$/;"	f
+copy_env_tab	TESTS/expansion_test/copy_env_tab 2.c	/^char	**copy_env_tab(t_env *env)$/;"	f
+copy_env_tab	TESTS/expansion_test/copy_env_tab.c	/^char	**copy_env_tab(t_env *env)$/;"	f
+copy_env_tab	execution/copy_env_tab.c	/^int	copy_env_tab(void)$/;"	f
+copy_helper	SAUVEGARDE/execution_test/parsing_expansion_join_tokens.c	/^static void	copy_helper(t_token **new, t_token *curr)$/;"	f	file:
+copy_helper	SAUVEGARDE/parsing/expansion_join_tokens.c	/^static void	copy_helper(t_token **new, t_token *curr)$/;"	f	file:
+copy_helper	SAUVEGARDE/parsing/expansion_test/parsing_expansion_join_tokens.c	/^static void	copy_helper(t_token **new, t_token *curr)$/;"	f	file:
+copy_helper	TESTS/execution_test/parsing_expansion_join_tokens.c	/^static void	copy_helper(t_token **new, t_token *curr)$/;"	f	file:
+copy_helper	TESTS/expansion_test/parsing_expansion_join_tokens 2.c	/^static void	copy_helper(t_token **new, t_token *curr)$/;"	f	file:
+copy_helper	TESTS/expansion_test/parsing_expansion_join_tokens.c	/^static void	copy_helper(t_token **new, t_token *curr)$/;"	f	file:
+copy_helper	parsing/expansion_join_tokens.c	/^static void	copy_helper(t_token **new, t_token *curr)$/;"	f	file:
+copy_join_tokens	SAUVEGARDE/execution_test/parsing_expansion_join_tokens.c	/^static int	copy_join_tokens(t_token **new, t_token *curr, int size)$/;"	f	file:
+copy_join_tokens	SAUVEGARDE/parsing/expansion_join_tokens.c	/^static int	copy_join_tokens(t_token **new, t_token *curr, int size)$/;"	f	file:
+copy_join_tokens	SAUVEGARDE/parsing/expansion_test/parsing_expansion_join_tokens.c	/^static int	copy_join_tokens(t_token **new, t_token *curr, int size)$/;"	f	file:
+copy_join_tokens	TESTS/execution_test/parsing_expansion_join_tokens.c	/^static int	copy_join_tokens(t_token **new, t_token *curr, int size)$/;"	f	file:
+copy_join_tokens	TESTS/expansion_test/parsing_expansion_join_tokens 2.c	/^static int	copy_join_tokens(t_token **new, t_token *curr, int size)$/;"	f	file:
+copy_join_tokens	TESTS/expansion_test/parsing_expansion_join_tokens.c	/^static int	copy_join_tokens(t_token **new, t_token *curr, int size)$/;"	f	file:
+copy_join_tokens	parsing/expansion_join_tokens.c	/^static int	copy_join_tokens(t_token **new, t_token *curr, int size)$/;"	f	file:
+copy_path	execution/search_path_in_env_table.c	/^static void	copy_path(int start, int end, char *s, t_cmd *cmd)$/;"	f	file:
+copy_redir	SAUVEGARDE/init_cmd.c	/^void	copy_redir(t_token **token, t_cmd *cmd)$/;"	f
+copy_redir	command_struct/init_cmd_redir.c	/^static int	copy_redir(t_token **token, t_cmd *cmd)$/;"	f	file:
+copy_redir_helper	command_struct/init_cmd_redir.c	/^static int	copy_redir_helper(t_token *ptr, t_cmd *cmd, int i)$/;"	f	file:
+copy_string	SAUVEGARDE/execution_test/parsing_expansion_trim_dollar.c	/^static int	copy_string(t_token *curr, char **s, int pos)$/;"	f	file:
+copy_string	SAUVEGARDE/parsing/expansion_test/parsing_expansion_trim_dollar.c	/^static int	copy_string(t_token *curr, char **s, int pos)$/;"	f	file:
+copy_string	SAUVEGARDE/parsing/expansion_trim_dollar.c	/^static int	copy_string(t_token *curr, char **s, int pos)$/;"	f	file:
+copy_string	TESTS/execution_test/parsing_expansion_trim_dollar 2.c	/^static int	copy_string(t_token *curr, char **s, int pos)$/;"	f	file:
+copy_string	TESTS/execution_test/parsing_expansion_trim_dollar.c	/^static int	copy_string(t_token *curr, char **s, int pos)$/;"	f	file:
+copy_string	TESTS/expansion_test/parsing_expansion_trim_dollar 2.c	/^static int	copy_string(t_token *curr, char **s, int pos)$/;"	f	file:
+copy_string	TESTS/expansion_test/parsing_expansion_trim_dollar.c	/^static int	copy_string(t_token *curr, char **s, int pos)$/;"	f	file:
+copy_string	parsing/expansion_trim_dollar.c	/^static int	copy_string(t_token *curr, char **s, int pos)$/;"	f	file:
+copy_string_unquoted	SAUVEGARDE/execution_test/parsing_quote_removing.c	/^static int	copy_string_unquoted(t_token *curr, char *new_str, \\$/;"	f	file:
+copy_string_unquoted	SAUVEGARDE/parsing/expansion_test/parsing_quote_removing.c	/^static int	copy_string_unquoted(t_token *curr, char *new_str, \\$/;"	f	file:
+copy_string_unquoted	SAUVEGARDE/parsing/quote_removing.c	/^static int	copy_string_unquoted(t_token *curr, char *new_str, \\$/;"	f	file:
+copy_string_unquoted	TESTS/execution_test/parsing_quote_removing.c	/^static int	copy_string_unquoted(t_token *curr, char *new_str, \\$/;"	f	file:
+copy_string_unquoted	TESTS/expansion_test/parsing_quote_removing 2.c	/^static int	copy_string_unquoted(t_token *curr, char *new_str, \\$/;"	f	file:
+copy_string_unquoted	TESTS/expansion_test/parsing_quote_removing.c	/^static int	copy_string_unquoted(t_token *curr, char *new_str, \\$/;"	f	file:
+copy_string_unquoted	parsing/quote_removing.c	/^static int	copy_string_unquoted(t_token *curr, char *new_str, \\$/;"	f	file:
+count_metachar	SAUVEGARDE/execution_test/parsing_syntax_errors.c	/^int	count_metachar(char *s, char c, int num)$/;"	f
+count_metachar	SAUVEGARDE/parsing/expansion_test/parsing_syntax_errors.c	/^int	count_metachar(char *s, char c, int num)$/;"	f
+count_metachar	SAUVEGARDE/parsing/syntax_errors.c	/^int	count_metachar(char *s, char c, int num)$/;"	f
+count_metachar	TESTS/execution_test/parsing_syntax_errors.c	/^int	count_metachar(char *s, char c, int num)$/;"	f
+count_metachar	TESTS/expansion_test/parsing_syntax_errors 2.c	/^int	count_metachar(char *s, char c, int num)$/;"	f
+count_metachar	TESTS/expansion_test/parsing_syntax_errors.c	/^int	count_metachar(char *s, char c, int num)$/;"	f
+count_metachar	parsing/syntax_errors.c	/^int	count_metachar(char *s, char c, int num)$/;"	f
+count_nb_cmds	execution.c	/^static int	count_nb_cmds(t_cmd **head)$/;"	f	file:
+create_cmd	SAUVEGARDE/init_cmd_cmd.c	/^void	create_cmd(t_token **token, t_cmd *cmd)$/;"	f
+create_cmd	command_struct/init_cmd_cmd.c	/^int	create_cmd(t_token **token, t_cmd *cmd)$/;"	f
+create_cmd_linked_list	command_struct/init_cmd.c	/^static void	create_cmd_linked_list(t_token **token, t_cmd *head)$/;"	f	file:
+create_nextline	SAUVEGARDE/execution_test/libft/get_next_line/get_next_line.c	/^char	*create_nextline(char *result, char *line)$/;"	f
+create_nextline	SAUVEGARDE/libft/get_next_line/get_next_line.c	/^char	*create_nextline(char *result, char *line)$/;"	f
+create_nextline	SAUVEGARDE/parsing/expansion_test/libft/get_next_line/get_next_line.c	/^char	*create_nextline(char *result, char *line)$/;"	f
+create_nextline	TESTS/execution_test/libft/get_next_line/get_next_line.c	/^char	*create_nextline(char *result, char *line)$/;"	f
+create_nextline	TESTS/expansion_test/libft/get_next_line/get_next_line.c	/^char	*create_nextline(char *result, char *line)$/;"	f
+create_nextline	libft/get_next_line/get_next_line.c	/^char	*create_nextline(char *result, char *line)$/;"	f
+create_redir	SAUVEGARDE/init_cmd.c	/^int	create_redir(t_token **token, t_cmd *cmd)$/;"	f
+create_redir	command_struct/init_cmd_redir.c	/^int	create_redir(t_token **token, t_cmd *cmd)$/;"	f
+create_result	SAUVEGARDE/execution_test/libft/get_next_line/get_next_line.c	/^char	*create_result(char *line)$/;"	f
+create_result	SAUVEGARDE/libft/get_next_line/get_next_line.c	/^char	*create_result(char *line)$/;"	f
+create_result	SAUVEGARDE/parsing/expansion_test/libft/get_next_line/get_next_line.c	/^char	*create_result(char *line)$/;"	f
+create_result	TESTS/execution_test/libft/get_next_line/get_next_line.c	/^char	*create_result(char *line)$/;"	f
+create_result	TESTS/expansion_test/libft/get_next_line/get_next_line.c	/^char	*create_result(char *line)$/;"	f
+create_result	libft/get_next_line/get_next_line.c	/^char	*create_result(char *line)$/;"	f
+create_token_head	SAUVEGARDE/execution_test/parsing_token_extraction.c	/^t_token	*create_token_head(char *line, int i, int len, int *flag)$/;"	f
+create_token_head	SAUVEGARDE/parsing/expansion_test/parsing_token_extraction.c	/^t_token	*create_token_head(char *line, int i, int len, int *flag)$/;"	f
+create_token_head	SAUVEGARDE/parsing/token_extraction.c	/^t_token	*create_token_head(char *line, int i, int len, int *flag)$/;"	f
+create_token_head	TESTS/execution_test/parsing_token_extraction.c	/^t_token	*create_token_head(char *line, int i, int len, int *flag)$/;"	f
+create_token_head	TESTS/expansion_test/parsing_token_extraction 2.c	/^t_token	*create_token_head(char *line, int i, int len, int *flag)$/;"	f
+create_token_head	TESTS/expansion_test/parsing_token_extraction.c	/^t_token	*create_token_head(char *line, int i, int len, int *flag)$/;"	f
+create_token_head	parsing/token_extraction.c	/^t_token	*create_token_head(char *line, int i, int len, int *flag)$/;"	f
+del	SAUVEGARDE/execution_test/libft/libft/del.c	/^void	del(void *content)$/;"	f
+del	SAUVEGARDE/libft/libft/del.c	/^void	del(void *content)$/;"	f
+del	SAUVEGARDE/parsing/expansion_test/libft/libft/del.c	/^void	del(void *content)$/;"	f
+del	TESTS/execution_test/libft/libft/del.c	/^void	del(void *content)$/;"	f
+del	TESTS/expansion_test/libft/libft/del.c	/^void	del(void *content)$/;"	f
+del	libft/libft/del.c	/^void	del(void *content)$/;"	f
+delete_env_helper	builtins/unset.c	/^static void delete_env_helper(t_env **head, t_env *curr, \\$/;"	f	file:
+delete_env_var	builtins/unset.c	/^static void delete_env_var(t_env **head, char *s)$/;"	f	file:
+delete_first_el	SAUVEGARDE/execution_test/libft/libft/ft_lstdel_first_el.c	/^void	delete_first_el(t_list **a)$/;"	f
+delete_first_el	SAUVEGARDE/libft/libft/ft_lstdel_first_el.c	/^void	delete_first_el(t_list **a)$/;"	f
+delete_first_el	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_lstdel_first_el.c	/^void	delete_first_el(t_list **a)$/;"	f
+delete_first_el	TESTS/execution_test/libft/libft/ft_lstdel_first_el.c	/^void	delete_first_el(t_list **a)$/;"	f
+delete_first_el	TESTS/expansion_test/libft/libft/ft_lstdel_first_el.c	/^void	delete_first_el(t_list **a)$/;"	f
+delete_first_el	libft/libft/ft_lstdel_first_el.c	/^void	delete_first_el(t_list **a)$/;"	f
+delete_helper	SAUVEGARDE/execution_test/token_routine_delete.c	/^static t_token	*delete_helper(t_token **head, t_token *curr, \\$/;"	f	file:
+delete_helper	SAUVEGARDE/parsing/expansion_test/token_routine_delete.c	/^static t_token	*delete_helper(t_token **head, t_token *curr, \\$/;"	f	file:
+delete_helper	SAUVEGARDE/tokens/token_routine_delete.c	/^static t_token	*delete_helper(t_token **head, t_token *curr, \\$/;"	f	file:
+delete_helper	TESTS/execution_test/token_routine_delete.c	/^static t_token	*delete_helper(t_token **head, t_token *curr, \\$/;"	f	file:
+delete_helper	TESTS/expansion_test/token_routine_delete 2.c	/^static t_token	*delete_helper(t_token **head, t_token *curr, \\$/;"	f	file:
+delete_helper	TESTS/expansion_test/token_routine_delete.c	/^static t_token	*delete_helper(t_token **head, t_token *curr, \\$/;"	f	file:
+delete_helper	tokens/token_routine_delete.c	/^static t_token	*delete_helper(t_token **head, t_token *curr, \\$/;"	f	file:
+delete_last_el	SAUVEGARDE/execution_test/libft/libft/ft_lstdel_last_el.c	/^void	delete_last_el(t_list **a)$/;"	f
+delete_last_el	SAUVEGARDE/libft/libft/ft_lstdel_last_el.c	/^void	delete_last_el(t_list **a)$/;"	f
+delete_last_el	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_lstdel_last_el.c	/^void	delete_last_el(t_list **a)$/;"	f
+delete_last_el	TESTS/execution_test/libft/libft/ft_lstdel_last_el.c	/^void	delete_last_el(t_list **a)$/;"	f
+delete_last_el	TESTS/expansion_test/libft/libft/ft_lstdel_last_el.c	/^void	delete_last_el(t_list **a)$/;"	f
+delete_last_el	libft/libft/ft_lstdel_last_el.c	/^void	delete_last_el(t_list **a)$/;"	f
+delete_token	SAUVEGARDE/execution_test/token_routine_delete.c	/^t_token	*delete_token(t_token **head)$/;"	f
+delete_token	SAUVEGARDE/parsing/expansion_test/token_routine_delete.c	/^t_token	*delete_token(t_token **head)$/;"	f
+delete_token	SAUVEGARDE/tokens/token_routine_delete.c	/^t_token	*delete_token(t_token **head)$/;"	f
+delete_token	TESTS/execution_test/token_routine_delete.c	/^t_token	*delete_token(t_token **head)$/;"	f
+delete_token	TESTS/expansion_test/token_routine_delete 2.c	/^t_token	*delete_token(t_token **head)$/;"	f
+delete_token	TESTS/expansion_test/token_routine_delete.c	/^t_token	*delete_token(t_token **head)$/;"	f
+delete_token	tokens/token_routine_delete.c	/^t_token	*delete_token(t_token **head)$/;"	f
+env	SAUVEGARDE/execution_test/minishell.h	/^	t_env	*env;$/;"	m	struct:s_shell
+env	SAUVEGARDE/minishell.h	/^	t_env	*env;$/;"	m	struct:s_shell
+env	SAUVEGARDE/parsing/expansion_test/minishell.h	/^	t_env	*env;$/;"	m	struct:s_shell
+env	TESTS/execution_test/minishell.h	/^	t_env	*env;$/;"	m	struct:s_shell
+env	TESTS/expansion_test/minishell 2.h	/^	t_env	*env;$/;"	m	struct:s_shell
+env	TESTS/expansion_test/minishell.h	/^	t_env	*env;$/;"	m	struct:s_shell
+env	minishell.h	/^	t_env	*env;$/;"	m	struct:s_shell
+env_list_size	builtins/unset.c	/^static int	env_list_size(t_env **head)$/;"	f	file:
+error_exit	minishell.h	/^	int		error_exit;$/;"	m	struct:s_shell
+exec_bin	SAUVEGARDE/execution_test/execution.c	/^void	exec_bin(t_token *token, t_bin *bin)$/;"	f
+exec_bin	TESTS/execution_test/execution 2.c	/^void	exec_bin(t_token *token, t_bin *bin)$/;"	f
+exec_bin	TESTS/execution_test/execution.c	/^void	exec_bin(t_token *token, t_bin *bin)$/;"	f
+execute_bin	execution/exec_bin.c	/^void	execute_bin(t_cmd *cmd)$/;"	f
+execute_builtin	execution/exec_builtins.c	/^void	execute_builtin(t_cmd *cmd, t_cmd **head)$/;"	f
+execute_one_bin	execution/exec_one_cmd.c	/^static void	execute_one_bin(t_cmd *cmd)$/;"	f	file:
+execution	execution.c	/^void	execution(t_cmd **head)$/;"	f
+execution_bin	SAUVEGARDE/execution.c	/^void	execution_bin(t_cmd *cmd, t_bin *bin)$/;"	f
+exit_status	SAUVEGARDE/execution_test/minishell.h	/^	int		exit_status;$/;"	m	struct:s_shell
+exit_status	SAUVEGARDE/minishell.h	/^	int		exit_status;$/;"	m	struct:s_shell
+exit_status	SAUVEGARDE/parsing/expansion_test/minishell.h	/^	int		exit_status;$/;"	m	struct:s_shell
+exit_status	SAUVEGARDE/parsing/tests/main_parsing_token_extraction.c	/^int	exit_status = 0;$/;"	v
+exit_status	TESTS/execution_test/minishell.h	/^	int		exit_status;$/;"	m	struct:s_shell
+exit_status	TESTS/expansion_test/minishell 2.h	/^	int		exit_status;$/;"	m	struct:s_shell
+exit_status	TESTS/expansion_test/minishell.h	/^	int		exit_status;$/;"	m	struct:s_shell
+exit_status	TESTS/parsing tests/main_parsing_token_extraction.c	/^int	exit_status = 0;$/;"	v
+exit_status	minishell.h	/^	int		exit_status;$/;"	m	struct:s_shell
+expand_var	SAUVEGARDE/execution_test/parsing_expansion_helper.c	/^int	expand_var(t_token **new)$/;"	f
+expand_var	SAUVEGARDE/parsing/expansion_helper.c	/^int	expand_var(t_token **new)$/;"	f
+expand_var	SAUVEGARDE/parsing/expansion_test/parsing_expansion_helper.c	/^int	expand_var(t_token **new)$/;"	f
+expand_var	TESTS/execution_test/parsing_expansion_helper.c	/^int	expand_var(t_token **new)$/;"	f
+expand_var	TESTS/expansion_test/parsing_expansion_helper 2.c	/^int	expand_var(t_token **new)$/;"	f
+expand_var	TESTS/expansion_test/parsing_expansion_helper.c	/^int	expand_var(t_token **new)$/;"	f
+expand_var	parsing/expansion_helper.c	/^int	expand_var(t_token **new)$/;"	f
+expansion	SAUVEGARDE/execution_test/parsing_expansion.c	/^int	expansion(t_token **head, t_token *curr, int pos)$/;"	f
+expansion	SAUVEGARDE/parsing/expansion.c	/^int	expansion(t_token **head, t_token *curr, int pos)$/;"	f
+expansion	SAUVEGARDE/parsing/expansion_test/parsing_expansion.c	/^int	expansion(t_token **head, t_token *curr, int pos)$/;"	f
+expansion	TESTS/execution_test/parsing_expansion.c	/^int	expansion(t_token **head, t_token *curr, int pos)$/;"	f
+expansion	TESTS/expansion_test/parsing_expansion 2.c	/^int	expansion(t_token **head, t_token *curr, int pos)$/;"	f
+expansion	TESTS/expansion_test/parsing_expansion.c	/^int	expansion(t_token **head, t_token *curr, int pos)$/;"	f
+expansion	parsing/expansion.c	/^int	expansion(t_token **head, t_token *curr, int pos)$/;"	f
+expansion_next_token	SAUVEGARDE/execution_test/parsing_expansion.c	/^static void	expansion_next_token(t_token **head, t_token *curr, int pos)$/;"	f	file:
+expansion_next_token	SAUVEGARDE/parsing/expansion.c	/^static void	expansion_next_token(t_token **head, t_token *curr, int pos)$/;"	f	file:
+expansion_next_token	SAUVEGARDE/parsing/expansion_test/parsing_expansion.c	/^static void	expansion_next_token(t_token **head, t_token *curr, int pos)$/;"	f	file:
+expansion_next_token	TESTS/execution_test/parsing_expansion.c	/^static void	expansion_next_token(t_token **head, t_token *curr, int pos)$/;"	f	file:
+expansion_next_token	TESTS/expansion_test/parsing_expansion 2.c	/^static void	expansion_next_token(t_token **head, t_token *curr, int pos)$/;"	f	file:
+expansion_next_token	TESTS/expansion_test/parsing_expansion.c	/^static void	expansion_next_token(t_token **head, t_token *curr, int pos)$/;"	f	file:
+expansion_next_token	parsing/expansion.c	/^static void	expansion_next_token(t_token **head, t_token *curr, int pos)$/;"	f	file:
+export_no_args	builtins/export.c	/^static void	export_no_args(void)$/;"	f	file:
+export_with_args	builtins/export.c	/^static int	export_with_args(char *s)$/;"	f	file:
+export_with_args_helper	builtins/export.c	/^static int	export_with_args_helper(char *var_name, char *s, int i)$/;"	f	file:
+extract_cmd_path	execution/get_path.c	/^static int	extract_cmd_path(char *path, t_cmd *cmd)$/;"	f	file:
+fd	SAUVEGARDE/execution_test/minishell.h	/^	int		fd[2];$/;"	m	struct:s_cmd
+fd	SAUVEGARDE/minishell.h	/^	int		fd[2];$/;"	m	struct:s_cmd
+fd	SAUVEGARDE/parsing/expansion_test/minishell.h	/^	int		fd[2];$/;"	m	struct:s_cmd
+fd	TESTS/execution_test/minishell.h	/^	int		fd[2];$/;"	m	struct:s_cmd
+fd	TESTS/expansion_test/minishell 2.h	/^	int		fd[2];$/;"	m	struct:s_cmd
+fd	TESTS/expansion_test/minishell.h	/^	int		fd[2];$/;"	m	struct:s_cmd
+fd	minishell.h	/^	int		fd[2];$/;"	m	struct:s_cmd
+fdin	SAUVEGARDE/execution_test/minishell.h	/^	int		fdin;$/;"	m	struct:s_cmd
+fdin	SAUVEGARDE/minishell.h	/^	int		fdin;$/;"	m	struct:s_cmd
+fdin	SAUVEGARDE/parsing/expansion_test/minishell.h	/^	int		fdin;$/;"	m	struct:s_cmd
+fdin	TESTS/execution_test/minishell.h	/^	int		fdin;$/;"	m	struct:s_cmd
+fdin	TESTS/expansion_test/minishell 2.h	/^	int		fdin;$/;"	m	struct:s_cmd
+fdin	TESTS/expansion_test/minishell.h	/^	int		fdin;$/;"	m	struct:s_cmd
+fdin	minishell.h	/^	int		fdin;$/;"	m	struct:s_cmd
+fdout	SAUVEGARDE/execution_test/minishell.h	/^	int		fdout;$/;"	m	struct:s_cmd
+fdout	SAUVEGARDE/minishell.h	/^	int		fdout;$/;"	m	struct:s_cmd
+fdout	SAUVEGARDE/parsing/expansion_test/minishell.h	/^	int		fdout;$/;"	m	struct:s_cmd
+fdout	TESTS/execution_test/minishell.h	/^	int		fdout;$/;"	m	struct:s_cmd
+fdout	TESTS/expansion_test/minishell 2.h	/^	int		fdout;$/;"	m	struct:s_cmd
+fdout	TESTS/expansion_test/minishell.h	/^	int		fdout;$/;"	m	struct:s_cmd
+fdout	minishell.h	/^	int		fdout;$/;"	m	struct:s_cmd
+find_cmd_in_path	SAUVEGARDE/cmd_is_bin.c	/^int	find_cmd_in_path(t_bin *bin, char *token)$/;"	f
+find_cmd_in_path	SAUVEGARDE/execution_test/cmd_is_bin.c	/^int	find_cmd_in_path(t_bin *bin, char *token)$/;"	f
+find_cmd_in_path	TESTS/execution_test/cmd_is_bin.c	/^int	find_cmd_in_path(t_bin *bin, char *token)$/;"	f
+first_argument_is_numeric	builtins/exit.c	/^static void	first_argument_is_numeric(t_cmd **head, int size)$/;"	f	file:
+free_and_exit_prog	builtins/free_and_exit_prog.c	/^void	free_and_exit_prog(t_cmd **head, int exit_code)$/;"	f
+free_before_exit	builtins/exit.c	/^static void	free_before_exit(t_cmd **head)$/;"	f	file:
+free_cmd	SAUVEGARDE/free_cmd.c	/^void	free_cmd(t_cmd **head)$/;"	f
+free_cmd	command_struct/free_cmd.c	/^void	free_cmd(t_cmd **head)$/;"	f
+free_env	SAUVEGARDE/environnement/envp_routine.c	/^void	free_env(t_env **head)$/;"	f
+free_env	SAUVEGARDE/execution_test/envp_routine.c	/^void	free_env(t_env **head)$/;"	f
+free_env	SAUVEGARDE/parsing/expansion_test/envp_routine.c	/^void	free_env(t_env **head)$/;"	f
+free_env	TESTS/execution_test/envp_routine.c	/^void	free_env(t_env **head)$/;"	f
+free_env	TESTS/expansion_test/envp_routine 2.c	/^void	free_env(t_env **head)$/;"	f
+free_env	TESTS/expansion_test/envp_routine.c	/^void	free_env(t_env **head)$/;"	f
+free_env	environnement/envp_routine.c	/^void	free_env(t_env **head)$/;"	f
+free_env_var	builtins/unset.c	/^static void	free_env_var(t_env *curr)$/;"	f	file:
+free_shell	SAUVEGARDE/execution_test/main.c	/^void	free_shell(void)$/;"	f
+free_shell	SAUVEGARDE/execution_test/sans_readline_main.c	/^void	free_shell(void)$/;"	f
+free_shell	SAUVEGARDE/global_variable/init_global.c	/^void	free_shell(void)$/;"	f
+free_shell	SAUVEGARDE/parsing/expansion_test/main.c	/^void	free_shell(void)$/;"	f
+free_shell	TESTS/execution_test/main.c	/^void	free_shell(void)$/;"	f
+free_shell	TESTS/execution_test/sans_readline_main.c	/^void	free_shell(void)$/;"	f
+free_shell	TESTS/expansion_test/main 2.c	/^void	free_shell(void)$/;"	f
+free_shell	TESTS/expansion_test/main.c	/^void	free_shell(void)$/;"	f
+free_shell	global_variable/init_global.c	/^void	free_shell(void)$/;"	f
+free_tab	SAUVEGARDE/cmd_is_bin.c	/^void	free_tab(char **table)$/;"	f
+free_tab	SAUVEGARDE/execution_test/cmd_is_bin.c	/^void	free_tab(char **table)$/;"	f
+free_tab	TESTS/execution_test/cmd_is_bin.c	/^void	free_tab(char **table)$/;"	f
+free_tab2d	SAUVEGARDE/free_cmd.c	/^static void	free_tab2d(char **s)$/;"	f	file:
+free_tab2d	command_struct/free_cmd.c	/^void	free_tab2d(char **s)$/;"	f
+free_token	SAUVEGARDE/execution_test/token_routine.c	/^void	free_token(t_token **head)$/;"	f
+free_token	SAUVEGARDE/parsing/expansion_test/token_routine.c	/^void	free_token(t_token **head)$/;"	f
+free_token	SAUVEGARDE/tokens/token_routine.c	/^void	free_token(t_token **head)$/;"	f
+free_token	TESTS/execution_test/token_routine.c	/^void	free_token(t_token **head)$/;"	f
+free_token	TESTS/expansion_test/token_routine 2.c	/^void	free_token(t_token **head)$/;"	f
+free_token	TESTS/expansion_test/token_routine.c	/^void	free_token(t_token **head)$/;"	f
+free_token	tokens/token_routine.c	/^void	free_token(t_token **head)$/;"	f
+ft_atoi	SAUVEGARDE/execution_test/libft/libft/ft_atoi.c	/^int	ft_atoi(const char *str)$/;"	f
+ft_atoi	SAUVEGARDE/libft/libft/ft_atoi.c	/^int	ft_atoi(const char *str)$/;"	f
+ft_atoi	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_atoi.c	/^int	ft_atoi(const char *str)$/;"	f
+ft_atoi	TESTS/execution_test/libft/libft/ft_atoi.c	/^int	ft_atoi(const char *str)$/;"	f
+ft_atoi	TESTS/expansion_test/libft/libft/ft_atoi.c	/^int	ft_atoi(const char *str)$/;"	f
+ft_atoi	libft/libft/ft_atoi.c	/^int	ft_atoi(const char *str)$/;"	f
+ft_atoi_base	SAUVEGARDE/execution_test/libft/libft/ft_atoi_base.c	/^int	ft_atoi_base(const char *str, int str_base)$/;"	f
+ft_atoi_base	SAUVEGARDE/libft/libft/ft_atoi_base.c	/^int	ft_atoi_base(const char *str, int str_base)$/;"	f
+ft_atoi_base	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_atoi_base.c	/^int	ft_atoi_base(const char *str, int str_base)$/;"	f
+ft_atoi_base	TESTS/execution_test/libft/libft/ft_atoi_base.c	/^int	ft_atoi_base(const char *str, int str_base)$/;"	f
+ft_atoi_base	TESTS/expansion_test/libft/libft/ft_atoi_base.c	/^int	ft_atoi_base(const char *str, int str_base)$/;"	f
+ft_atoi_base	libft/libft/ft_atoi_base.c	/^int	ft_atoi_base(const char *str, int str_base)$/;"	f
+ft_bzero	SAUVEGARDE/execution_test/libft/libft/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
+ft_bzero	SAUVEGARDE/libft/libft/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
+ft_bzero	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
+ft_bzero	TESTS/execution_test/libft/libft/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
+ft_bzero	TESTS/expansion_test/libft/libft/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
+ft_bzero	libft/libft/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
+ft_calloc	SAUVEGARDE/execution_test/libft/libft/ft_calloc.c	/^void	*ft_calloc(size_t count, size_t size)$/;"	f
+ft_calloc	SAUVEGARDE/libft/libft/ft_calloc.c	/^void	*ft_calloc(size_t count, size_t size)$/;"	f
+ft_calloc	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_calloc.c	/^void	*ft_calloc(size_t count, size_t size)$/;"	f
+ft_calloc	TESTS/execution_test/libft/libft/ft_calloc.c	/^void	*ft_calloc(size_t count, size_t size)$/;"	f
+ft_calloc	TESTS/expansion_test/libft/libft/ft_calloc.c	/^void	*ft_calloc(size_t count, size_t size)$/;"	f
+ft_calloc	libft/libft/ft_calloc.c	/^void	*ft_calloc(size_t count, size_t size)$/;"	f
+ft_calloc_count	SAUVEGARDE/execution_test/libft/get_next_line/get_next_line_utils.c	/^char	*ft_calloc_count(int count)$/;"	f
+ft_calloc_count	SAUVEGARDE/libft/get_next_line/get_next_line_utils.c	/^char	*ft_calloc_count(int count)$/;"	f
+ft_calloc_count	SAUVEGARDE/parsing/expansion_test/libft/get_next_line/get_next_line_utils.c	/^char	*ft_calloc_count(int count)$/;"	f
+ft_calloc_count	TESTS/execution_test/libft/get_next_line/get_next_line_utils.c	/^char	*ft_calloc_count(int count)$/;"	f
+ft_calloc_count	TESTS/expansion_test/libft/get_next_line/get_next_line_utils.c	/^char	*ft_calloc_count(int count)$/;"	f
+ft_calloc_count	libft/get_next_line/get_next_line_utils.c	/^char	*ft_calloc_count(int count)$/;"	f
+ft_count_int	SAUVEGARDE/execution_test/libft/ft_printf/ft_count_int.c	/^int	ft_count_int(int n)$/;"	f
+ft_count_int	SAUVEGARDE/libft/ft_printf/ft_count_int.c	/^int	ft_count_int(int n)$/;"	f
+ft_count_int	SAUVEGARDE/parsing/expansion_test/libft/ft_printf/ft_count_int.c	/^int	ft_count_int(int n)$/;"	f
+ft_count_int	TESTS/execution_test/libft/ft_printf/ft_count_int.c	/^int	ft_count_int(int n)$/;"	f
+ft_count_int	TESTS/expansion_test/libft/ft_printf/ft_count_int.c	/^int	ft_count_int(int n)$/;"	f
+ft_count_int	libft/ft_printf/ft_count_int.c	/^int	ft_count_int(int n)$/;"	f
+ft_count_nbchar	SAUVEGARDE/execution_test/libft/libft/ft_itoa.c	/^size_t	ft_count_nbchar(int n)$/;"	f
+ft_count_nbchar	SAUVEGARDE/libft/libft/ft_itoa.c	/^size_t	ft_count_nbchar(int n)$/;"	f
+ft_count_nbchar	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_itoa.c	/^size_t	ft_count_nbchar(int n)$/;"	f
+ft_count_nbchar	TESTS/execution_test/libft/libft/ft_itoa.c	/^size_t	ft_count_nbchar(int n)$/;"	f
+ft_count_nbchar	TESTS/expansion_test/libft/libft/ft_itoa.c	/^size_t	ft_count_nbchar(int n)$/;"	f
+ft_count_nbchar	libft/libft/ft_itoa.c	/^size_t	ft_count_nbchar(int n)$/;"	f
+ft_count_nbsubstr	SAUVEGARDE/execution_test/libft/libft/ft_split.c	/^size_t	ft_count_nbsubstr(const char *s, char c)$/;"	f
+ft_count_nbsubstr	SAUVEGARDE/libft/libft/ft_split.c	/^size_t	ft_count_nbsubstr(const char *s, char c)$/;"	f
+ft_count_nbsubstr	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_split.c	/^size_t	ft_count_nbsubstr(const char *s, char c)$/;"	f
+ft_count_nbsubstr	TESTS/execution_test/libft/libft/ft_split.c	/^size_t	ft_count_nbsubstr(const char *s, char c)$/;"	f
+ft_count_nbsubstr	TESTS/expansion_test/libft/libft/ft_split.c	/^size_t	ft_count_nbsubstr(const char *s, char c)$/;"	f
+ft_count_nbsubstr	libft/libft/ft_split.c	/^size_t	ft_count_nbsubstr(const char *s, char c)$/;"	f
+ft_count_unsigned_int	SAUVEGARDE/execution_test/libft/ft_printf/ft_count_unsigned_int.c	/^int	ft_count_unsigned_int(unsigned int n)$/;"	f
+ft_count_unsigned_int	SAUVEGARDE/libft/ft_printf/ft_count_unsigned_int.c	/^int	ft_count_unsigned_int(unsigned int n)$/;"	f
+ft_count_unsigned_int	SAUVEGARDE/parsing/expansion_test/libft/ft_printf/ft_count_unsigned_int.c	/^int	ft_count_unsigned_int(unsigned int n)$/;"	f
+ft_count_unsigned_int	TESTS/execution_test/libft/ft_printf/ft_count_unsigned_int.c	/^int	ft_count_unsigned_int(unsigned int n)$/;"	f
+ft_count_unsigned_int	TESTS/expansion_test/libft/ft_printf/ft_count_unsigned_int.c	/^int	ft_count_unsigned_int(unsigned int n)$/;"	f
+ft_count_unsigned_int	libft/ft_printf/ft_count_unsigned_int.c	/^int	ft_count_unsigned_int(unsigned int n)$/;"	f
+ft_dprintf	SAUVEGARDE/execution_test/libft/ft_printf/ft_dprintf.c	/^int	ft_dprintf(int fd, const char *last, ...)$/;"	f
+ft_dprintf	SAUVEGARDE/libft/ft_printf/ft_dprintf.c	/^int	ft_dprintf(int fd, const char *last, ...)$/;"	f
+ft_dprintf	SAUVEGARDE/parsing/expansion_test/libft/ft_printf/ft_dprintf.c	/^int	ft_dprintf(int fd, const char *last, ...)$/;"	f
+ft_dprintf	TESTS/execution_test/libft/ft_printf/ft_dprintf.c	/^int	ft_dprintf(int fd, const char *last, ...)$/;"	f
+ft_dprintf	TESTS/expansion_test/libft/ft_printf/ft_dprintf.c	/^int	ft_dprintf(int fd, const char *last, ...)$/;"	f
+ft_dprintf	libft/ft_printf/ft_dprintf.c	/^int	ft_dprintf(int fd, const char *last, ...)$/;"	f
+ft_exit	builtins/exit.c	/^void	ft_exit(t_cmd **head)$/;"	f
+ft_fill_big_table	SAUVEGARDE/complicated_split.c	/^static char	**ft_fill_big_table(char *src, char c, char **dst, int *lens)$/;"	f	file:
+ft_format_specifier	SAUVEGARDE/execution_test/libft/ft_printf/ft_printf.c	/^void	ft_format_specifier(char format, va_list ap, int *count)$/;"	f
+ft_format_specifier	SAUVEGARDE/libft/ft_printf/ft_printf.c	/^void	ft_format_specifier(char format, va_list ap, int *count)$/;"	f
+ft_format_specifier	SAUVEGARDE/parsing/expansion_test/libft/ft_printf/ft_printf.c	/^void	ft_format_specifier(char format, va_list ap, int *count)$/;"	f
+ft_format_specifier	TESTS/execution_test/libft/ft_printf/ft_printf.c	/^void	ft_format_specifier(char format, va_list ap, int *count)$/;"	f
+ft_format_specifier	TESTS/expansion_test/libft/ft_printf/ft_printf.c	/^void	ft_format_specifier(char format, va_list ap, int *count)$/;"	f
+ft_format_specifier	libft/ft_printf/ft_printf.c	/^void	ft_format_specifier(char format, va_list ap, int *count)$/;"	f
+ft_format_specifier_fd	SAUVEGARDE/execution_test/libft/ft_printf/ft_dprintf.c	/^void	ft_format_specifier_fd(char format, va_list ap, int *count, int fd)$/;"	f
+ft_format_specifier_fd	SAUVEGARDE/libft/ft_printf/ft_dprintf.c	/^void	ft_format_specifier_fd(char format, va_list ap, int *count, int fd)$/;"	f
+ft_format_specifier_fd	SAUVEGARDE/parsing/expansion_test/libft/ft_printf/ft_dprintf.c	/^void	ft_format_specifier_fd(char format, va_list ap, int *count, int fd)$/;"	f
+ft_format_specifier_fd	TESTS/execution_test/libft/ft_printf/ft_dprintf.c	/^void	ft_format_specifier_fd(char format, va_list ap, int *count, int fd)$/;"	f
+ft_format_specifier_fd	TESTS/expansion_test/libft/ft_printf/ft_dprintf.c	/^void	ft_format_specifier_fd(char format, va_list ap, int *count, int fd)$/;"	f
+ft_format_specifier_fd	libft/ft_printf/ft_dprintf.c	/^void	ft_format_specifier_fd(char format, va_list ap, int *count, int fd)$/;"	f
+ft_free_split	SAUVEGARDE/complicated_split.c	/^static char	**ft_free_split(char **dst, size_t i)$/;"	f	file:
+ft_isalnum	SAUVEGARDE/execution_test/libft/libft/ft_isalnum.c	/^int	ft_isalnum(int c)$/;"	f
+ft_isalnum	SAUVEGARDE/libft/libft/ft_isalnum.c	/^int	ft_isalnum(int c)$/;"	f
+ft_isalnum	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_isalnum.c	/^int	ft_isalnum(int c)$/;"	f
+ft_isalnum	TESTS/execution_test/libft/libft/ft_isalnum.c	/^int	ft_isalnum(int c)$/;"	f
+ft_isalnum	TESTS/expansion_test/libft/libft/ft_isalnum.c	/^int	ft_isalnum(int c)$/;"	f
+ft_isalnum	libft/libft/ft_isalnum.c	/^int	ft_isalnum(int c)$/;"	f
+ft_isalpha	SAUVEGARDE/execution_test/libft/libft/ft_isalpha.c	/^int	ft_isalpha(int c)$/;"	f
+ft_isalpha	SAUVEGARDE/libft/libft/ft_isalpha.c	/^int	ft_isalpha(int c)$/;"	f
+ft_isalpha	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_isalpha.c	/^int	ft_isalpha(int c)$/;"	f
+ft_isalpha	TESTS/execution_test/libft/libft/ft_isalpha.c	/^int	ft_isalpha(int c)$/;"	f
+ft_isalpha	TESTS/expansion_test/libft/libft/ft_isalpha.c	/^int	ft_isalpha(int c)$/;"	f
+ft_isalpha	libft/libft/ft_isalpha.c	/^int	ft_isalpha(int c)$/;"	f
+ft_isascii	SAUVEGARDE/execution_test/libft/libft/ft_isascii.c	/^int	ft_isascii(int c)$/;"	f
+ft_isascii	SAUVEGARDE/libft/libft/ft_isascii.c	/^int	ft_isascii(int c)$/;"	f
+ft_isascii	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_isascii.c	/^int	ft_isascii(int c)$/;"	f
+ft_isascii	TESTS/execution_test/libft/libft/ft_isascii.c	/^int	ft_isascii(int c)$/;"	f
+ft_isascii	TESTS/expansion_test/libft/libft/ft_isascii.c	/^int	ft_isascii(int c)$/;"	f
+ft_isascii	libft/libft/ft_isascii.c	/^int	ft_isascii(int c)$/;"	f
+ft_isdigit	SAUVEGARDE/execution_test/libft/libft/ft_isdigit.c	/^int	ft_isdigit(int c)$/;"	f
+ft_isdigit	SAUVEGARDE/libft/libft/ft_isdigit.c	/^int	ft_isdigit(int c)$/;"	f
+ft_isdigit	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_isdigit.c	/^int	ft_isdigit(int c)$/;"	f
+ft_isdigit	TESTS/execution_test/libft/libft/ft_isdigit.c	/^int	ft_isdigit(int c)$/;"	f
+ft_isdigit	TESTS/expansion_test/libft/libft/ft_isdigit.c	/^int	ft_isdigit(int c)$/;"	f
+ft_isdigit	libft/libft/ft_isdigit.c	/^int	ft_isdigit(int c)$/;"	f
+ft_isprint	SAUVEGARDE/execution_test/libft/libft/ft_isprint.c	/^int	ft_isprint(int c)$/;"	f
+ft_isprint	SAUVEGARDE/libft/libft/ft_isprint.c	/^int	ft_isprint(int c)$/;"	f
+ft_isprint	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_isprint.c	/^int	ft_isprint(int c)$/;"	f
+ft_isprint	TESTS/execution_test/libft/libft/ft_isprint.c	/^int	ft_isprint(int c)$/;"	f
+ft_isprint	TESTS/expansion_test/libft/libft/ft_isprint.c	/^int	ft_isprint(int c)$/;"	f
+ft_isprint	libft/libft/ft_isprint.c	/^int	ft_isprint(int c)$/;"	f
+ft_itoa	SAUVEGARDE/execution_test/libft/libft/ft_itoa.c	/^char	*ft_itoa(int n)$/;"	f
+ft_itoa	SAUVEGARDE/libft/libft/ft_itoa.c	/^char	*ft_itoa(int n)$/;"	f
+ft_itoa	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_itoa.c	/^char	*ft_itoa(int n)$/;"	f
+ft_itoa	TESTS/execution_test/libft/libft/ft_itoa.c	/^char	*ft_itoa(int n)$/;"	f
+ft_itoa	TESTS/expansion_test/libft/libft/ft_itoa.c	/^char	*ft_itoa(int n)$/;"	f
+ft_itoa	libft/libft/ft_itoa.c	/^char	*ft_itoa(int n)$/;"	f
+ft_join	SAUVEGARDE/execution_test/libft/get_next_line/get_next_line_utils.c	/^char	*ft_join(char *line, char *buffer)$/;"	f
+ft_join	SAUVEGARDE/libft/get_next_line/get_next_line_utils.c	/^char	*ft_join(char *line, char *buffer)$/;"	f
+ft_join	SAUVEGARDE/parsing/expansion_test/libft/get_next_line/get_next_line_utils.c	/^char	*ft_join(char *line, char *buffer)$/;"	f
+ft_join	TESTS/execution_test/libft/get_next_line/get_next_line_utils.c	/^char	*ft_join(char *line, char *buffer)$/;"	f
+ft_join	TESTS/expansion_test/libft/get_next_line/get_next_line_utils.c	/^char	*ft_join(char *line, char *buffer)$/;"	f
+ft_join	libft/get_next_line/get_next_line_utils.c	/^char	*ft_join(char *line, char *buffer)$/;"	f
+ft_len_strs	SAUVEGARDE/complicated_split.c	/^static int	*ft_len_strs(char *str, char c, int count, int index)$/;"	f	file:
+ft_lstadd_back	SAUVEGARDE/execution_test/libft/libft/ft_lstadd_back.c	/^void	ft_lstadd_back(t_list **lst, t_list *new)$/;"	f
+ft_lstadd_back	SAUVEGARDE/libft/libft/ft_lstadd_back.c	/^void	ft_lstadd_back(t_list **lst, t_list *new)$/;"	f
+ft_lstadd_back	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_lstadd_back.c	/^void	ft_lstadd_back(t_list **lst, t_list *new)$/;"	f
+ft_lstadd_back	TESTS/execution_test/libft/libft/ft_lstadd_back.c	/^void	ft_lstadd_back(t_list **lst, t_list *new)$/;"	f
+ft_lstadd_back	TESTS/expansion_test/libft/libft/ft_lstadd_back.c	/^void	ft_lstadd_back(t_list **lst, t_list *new)$/;"	f
+ft_lstadd_back	libft/libft/ft_lstadd_back.c	/^void	ft_lstadd_back(t_list **lst, t_list *new)$/;"	f
+ft_lstadd_front	SAUVEGARDE/execution_test/libft/libft/ft_lstadd_front.c	/^void	ft_lstadd_front(t_list **lst, t_list *new)$/;"	f
+ft_lstadd_front	SAUVEGARDE/libft/libft/ft_lstadd_front.c	/^void	ft_lstadd_front(t_list **lst, t_list *new)$/;"	f
+ft_lstadd_front	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_lstadd_front.c	/^void	ft_lstadd_front(t_list **lst, t_list *new)$/;"	f
+ft_lstadd_front	TESTS/execution_test/libft/libft/ft_lstadd_front.c	/^void	ft_lstadd_front(t_list **lst, t_list *new)$/;"	f
+ft_lstadd_front	TESTS/expansion_test/libft/libft/ft_lstadd_front.c	/^void	ft_lstadd_front(t_list **lst, t_list *new)$/;"	f
+ft_lstadd_front	libft/libft/ft_lstadd_front.c	/^void	ft_lstadd_front(t_list **lst, t_list *new)$/;"	f
+ft_lstclear	SAUVEGARDE/execution_test/libft/libft/ft_lstclear.c	/^void	ft_lstclear(t_list **lst, void (*del)(void*))$/;"	f
+ft_lstclear	SAUVEGARDE/libft/libft/ft_lstclear.c	/^void	ft_lstclear(t_list **lst, void (*del)(void*))$/;"	f
+ft_lstclear	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_lstclear.c	/^void	ft_lstclear(t_list **lst, void (*del)(void*))$/;"	f
+ft_lstclear	TESTS/execution_test/libft/libft/ft_lstclear.c	/^void	ft_lstclear(t_list **lst, void (*del)(void*))$/;"	f
+ft_lstclear	TESTS/expansion_test/libft/libft/ft_lstclear.c	/^void	ft_lstclear(t_list **lst, void (*del)(void*))$/;"	f
+ft_lstclear	libft/libft/ft_lstclear.c	/^void	ft_lstclear(t_list **lst, void (*del)(void*))$/;"	f
+ft_lstdelone	SAUVEGARDE/execution_test/libft/libft/ft_lstdelone.c	/^void	ft_lstdelone(t_list *lst, void (*del)(void*))$/;"	f
+ft_lstdelone	SAUVEGARDE/libft/libft/ft_lstdelone.c	/^void	ft_lstdelone(t_list *lst, void (*del)(void*))$/;"	f
+ft_lstdelone	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_lstdelone.c	/^void	ft_lstdelone(t_list *lst, void (*del)(void*))$/;"	f
+ft_lstdelone	TESTS/execution_test/libft/libft/ft_lstdelone.c	/^void	ft_lstdelone(t_list *lst, void (*del)(void*))$/;"	f
+ft_lstdelone	TESTS/expansion_test/libft/libft/ft_lstdelone.c	/^void	ft_lstdelone(t_list *lst, void (*del)(void*))$/;"	f
+ft_lstdelone	libft/libft/ft_lstdelone.c	/^void	ft_lstdelone(t_list *lst, void (*del)(void*))$/;"	f
+ft_lstiter	SAUVEGARDE/execution_test/libft/libft/ft_lstiter.c	/^void	ft_lstiter(t_list *lst, void (*f)(void *))$/;"	f
+ft_lstiter	SAUVEGARDE/libft/libft/ft_lstiter.c	/^void	ft_lstiter(t_list *lst, void (*f)(void *))$/;"	f
+ft_lstiter	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_lstiter.c	/^void	ft_lstiter(t_list *lst, void (*f)(void *))$/;"	f
+ft_lstiter	TESTS/execution_test/libft/libft/ft_lstiter.c	/^void	ft_lstiter(t_list *lst, void (*f)(void *))$/;"	f
+ft_lstiter	TESTS/expansion_test/libft/libft/ft_lstiter.c	/^void	ft_lstiter(t_list *lst, void (*f)(void *))$/;"	f
+ft_lstiter	libft/libft/ft_lstiter.c	/^void	ft_lstiter(t_list *lst, void (*f)(void *))$/;"	f
+ft_lstlast	SAUVEGARDE/execution_test/libft/libft/ft_lstlast.c	/^t_list	*ft_lstlast(t_list *lst)$/;"	f
+ft_lstlast	SAUVEGARDE/libft/libft/ft_lstlast.c	/^t_list	*ft_lstlast(t_list *lst)$/;"	f
+ft_lstlast	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_lstlast.c	/^t_list	*ft_lstlast(t_list *lst)$/;"	f
+ft_lstlast	TESTS/execution_test/libft/libft/ft_lstlast.c	/^t_list	*ft_lstlast(t_list *lst)$/;"	f
+ft_lstlast	TESTS/expansion_test/libft/libft/ft_lstlast.c	/^t_list	*ft_lstlast(t_list *lst)$/;"	f
+ft_lstlast	libft/libft/ft_lstlast.c	/^t_list	*ft_lstlast(t_list *lst)$/;"	f
+ft_lstmap	SAUVEGARDE/execution_test/libft/libft/ft_lstmap.c	/^t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))$/;"	f
+ft_lstmap	SAUVEGARDE/libft/libft/ft_lstmap.c	/^t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))$/;"	f
+ft_lstmap	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_lstmap.c	/^t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))$/;"	f
+ft_lstmap	TESTS/execution_test/libft/libft/ft_lstmap.c	/^t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))$/;"	f
+ft_lstmap	TESTS/expansion_test/libft/libft/ft_lstmap.c	/^t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))$/;"	f
+ft_lstmap	libft/libft/ft_lstmap.c	/^t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))$/;"	f
+ft_lstnew	SAUVEGARDE/execution_test/libft/libft/ft_lstnew.c	/^t_list	*ft_lstnew(void *content)$/;"	f
+ft_lstnew	SAUVEGARDE/libft/libft/ft_lstnew.c	/^t_list	*ft_lstnew(void *content)$/;"	f
+ft_lstnew	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_lstnew.c	/^t_list	*ft_lstnew(void *content)$/;"	f
+ft_lstnew	TESTS/execution_test/libft/libft/ft_lstnew.c	/^t_list	*ft_lstnew(void *content)$/;"	f
+ft_lstnew	TESTS/expansion_test/libft/libft/ft_lstnew.c	/^t_list	*ft_lstnew(void *content)$/;"	f
+ft_lstnew	libft/libft/ft_lstnew.c	/^t_list	*ft_lstnew(void *content)$/;"	f
+ft_lstsize	SAUVEGARDE/execution_test/libft/libft/ft_lstsize.c	/^int	ft_lstsize(t_list *lst)$/;"	f
+ft_lstsize	SAUVEGARDE/libft/libft/ft_lstsize.c	/^int	ft_lstsize(t_list *lst)$/;"	f
+ft_lstsize	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_lstsize.c	/^int	ft_lstsize(t_list *lst)$/;"	f
+ft_lstsize	TESTS/execution_test/libft/libft/ft_lstsize.c	/^int	ft_lstsize(t_list *lst)$/;"	f
+ft_lstsize	TESTS/expansion_test/libft/libft/ft_lstsize.c	/^int	ft_lstsize(t_list *lst)$/;"	f
+ft_lstsize	libft/libft/ft_lstsize.c	/^int	ft_lstsize(t_list *lst)$/;"	f
+ft_memchr	SAUVEGARDE/execution_test/libft/libft/ft_memchr.c	/^void	*ft_memchr(const void *s, int c, size_t n)$/;"	f
+ft_memchr	SAUVEGARDE/libft/libft/ft_memchr.c	/^void	*ft_memchr(const void *s, int c, size_t n)$/;"	f
+ft_memchr	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_memchr.c	/^void	*ft_memchr(const void *s, int c, size_t n)$/;"	f
+ft_memchr	TESTS/execution_test/libft/libft/ft_memchr.c	/^void	*ft_memchr(const void *s, int c, size_t n)$/;"	f
+ft_memchr	TESTS/expansion_test/libft/libft/ft_memchr.c	/^void	*ft_memchr(const void *s, int c, size_t n)$/;"	f
+ft_memchr	libft/libft/ft_memchr.c	/^void	*ft_memchr(const void *s, int c, size_t n)$/;"	f
+ft_memcmp	SAUVEGARDE/execution_test/libft/libft/ft_memcmp.c	/^int	ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f
+ft_memcmp	SAUVEGARDE/libft/libft/ft_memcmp.c	/^int	ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f
+ft_memcmp	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_memcmp.c	/^int	ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f
+ft_memcmp	TESTS/execution_test/libft/libft/ft_memcmp.c	/^int	ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f
+ft_memcmp	TESTS/expansion_test/libft/libft/ft_memcmp.c	/^int	ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f
+ft_memcmp	libft/libft/ft_memcmp.c	/^int	ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f
+ft_memcpy	SAUVEGARDE/execution_test/libft/libft/ft_memcpy.c	/^void	*ft_memcpy(void *dst, const void *src, size_t n)$/;"	f
+ft_memcpy	SAUVEGARDE/libft/libft/ft_memcpy.c	/^void	*ft_memcpy(void *dst, const void *src, size_t n)$/;"	f
+ft_memcpy	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_memcpy.c	/^void	*ft_memcpy(void *dst, const void *src, size_t n)$/;"	f
+ft_memcpy	TESTS/execution_test/libft/libft/ft_memcpy.c	/^void	*ft_memcpy(void *dst, const void *src, size_t n)$/;"	f
+ft_memcpy	TESTS/expansion_test/libft/libft/ft_memcpy.c	/^void	*ft_memcpy(void *dst, const void *src, size_t n)$/;"	f
+ft_memcpy	libft/libft/ft_memcpy.c	/^void	*ft_memcpy(void *dst, const void *src, size_t n)$/;"	f
+ft_memmove	SAUVEGARDE/execution_test/libft/libft/ft_memmove.c	/^void	*ft_memmove(void *dst, const void *src, size_t len)$/;"	f
+ft_memmove	SAUVEGARDE/libft/libft/ft_memmove.c	/^void	*ft_memmove(void *dst, const void *src, size_t len)$/;"	f
+ft_memmove	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_memmove.c	/^void	*ft_memmove(void *dst, const void *src, size_t len)$/;"	f
+ft_memmove	TESTS/execution_test/libft/libft/ft_memmove.c	/^void	*ft_memmove(void *dst, const void *src, size_t len)$/;"	f
+ft_memmove	TESTS/expansion_test/libft/libft/ft_memmove.c	/^void	*ft_memmove(void *dst, const void *src, size_t len)$/;"	f
+ft_memmove	libft/libft/ft_memmove.c	/^void	*ft_memmove(void *dst, const void *src, size_t len)$/;"	f
+ft_memset	SAUVEGARDE/execution_test/libft/libft/ft_memset.c	/^void	*ft_memset(void *b, int c, size_t len)$/;"	f
+ft_memset	SAUVEGARDE/libft/libft/ft_memset.c	/^void	*ft_memset(void *b, int c, size_t len)$/;"	f
+ft_memset	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_memset.c	/^void	*ft_memset(void *b, int c, size_t len)$/;"	f
+ft_memset	TESTS/execution_test/libft/libft/ft_memset.c	/^void	*ft_memset(void *b, int c, size_t len)$/;"	f
+ft_memset	TESTS/expansion_test/libft/libft/ft_memset.c	/^void	*ft_memset(void *b, int c, size_t len)$/;"	f
+ft_memset	libft/libft/ft_memset.c	/^void	*ft_memset(void *b, int c, size_t len)$/;"	f
+ft_n_words	SAUVEGARDE/complicated_split.c	/^static int	ft_n_words(char *str, char c, int count)$/;"	f	file:
+ft_nb_char_substr	SAUVEGARDE/execution_test/libft/libft/ft_split.c	/^unsigned int	ft_nb_char_substr(char const *s, char c, unsigned int start)$/;"	f
+ft_nb_char_substr	SAUVEGARDE/libft/libft/ft_split.c	/^unsigned int	ft_nb_char_substr(char const *s, char c, unsigned int start)$/;"	f
+ft_nb_char_substr	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_split.c	/^unsigned int	ft_nb_char_substr(char const *s, char c, unsigned int start)$/;"	f
+ft_nb_char_substr	TESTS/execution_test/libft/libft/ft_split.c	/^unsigned int	ft_nb_char_substr(char const *s, char c, unsigned int start)$/;"	f
+ft_nb_char_substr	TESTS/expansion_test/libft/libft/ft_split.c	/^unsigned int	ft_nb_char_substr(char const *s, char c, unsigned int start)$/;"	f
+ft_nb_char_substr	libft/libft/ft_split.c	/^unsigned int	ft_nb_char_substr(char const *s, char c, unsigned int start)$/;"	f
+ft_nb_is_negative	SAUVEGARDE/execution_test/libft/libft/ft_itoa.c	/^char	*ft_nb_is_negative(int n, char *itoa_str, size_t nb_char)$/;"	f
+ft_nb_is_negative	SAUVEGARDE/libft/libft/ft_itoa.c	/^char	*ft_nb_is_negative(int n, char *itoa_str, size_t nb_char)$/;"	f
+ft_nb_is_negative	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_itoa.c	/^char	*ft_nb_is_negative(int n, char *itoa_str, size_t nb_char)$/;"	f
+ft_nb_is_negative	TESTS/execution_test/libft/libft/ft_itoa.c	/^char	*ft_nb_is_negative(int n, char *itoa_str, size_t nb_char)$/;"	f
+ft_nb_is_negative	TESTS/expansion_test/libft/libft/ft_itoa.c	/^char	*ft_nb_is_negative(int n, char *itoa_str, size_t nb_char)$/;"	f
+ft_nb_is_negative	libft/libft/ft_itoa.c	/^char	*ft_nb_is_negative(int n, char *itoa_str, size_t nb_char)$/;"	f
+ft_nb_is_positive	SAUVEGARDE/execution_test/libft/libft/ft_itoa.c	/^char	*ft_nb_is_positive(int n, char *itoa_str, size_t nb_char)$/;"	f
+ft_nb_is_positive	SAUVEGARDE/libft/libft/ft_itoa.c	/^char	*ft_nb_is_positive(int n, char *itoa_str, size_t nb_char)$/;"	f
+ft_nb_is_positive	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_itoa.c	/^char	*ft_nb_is_positive(int n, char *itoa_str, size_t nb_char)$/;"	f
+ft_nb_is_positive	TESTS/execution_test/libft/libft/ft_itoa.c	/^char	*ft_nb_is_positive(int n, char *itoa_str, size_t nb_char)$/;"	f
+ft_nb_is_positive	TESTS/expansion_test/libft/libft/ft_itoa.c	/^char	*ft_nb_is_positive(int n, char *itoa_str, size_t nb_char)$/;"	f
+ft_nb_is_positive	libft/libft/ft_itoa.c	/^char	*ft_nb_is_positive(int n, char *itoa_str, size_t nb_char)$/;"	f
+ft_printf	SAUVEGARDE/execution_test/libft/ft_printf/ft_printf.c	/^int	ft_printf(const char *last, ...)$/;"	f
+ft_printf	SAUVEGARDE/libft/ft_printf/ft_printf.c	/^int	ft_printf(const char *last, ...)$/;"	f
+ft_printf	SAUVEGARDE/parsing/expansion_test/libft/ft_printf/ft_printf.c	/^int	ft_printf(const char *last, ...)$/;"	f
+ft_printf	TESTS/execution_test/libft/ft_printf/ft_printf.c	/^int	ft_printf(const char *last, ...)$/;"	f
+ft_printf	TESTS/expansion_test/libft/ft_printf/ft_printf.c	/^int	ft_printf(const char *last, ...)$/;"	f
+ft_printf	libft/ft_printf/ft_printf.c	/^int	ft_printf(const char *last, ...)$/;"	f
+ft_printf_address	SAUVEGARDE/execution_test/libft/ft_printf/ft_printf_address.c	/^void	ft_printf_address(uintptr_t n, int fd, int *count)$/;"	f
+ft_printf_address	SAUVEGARDE/libft/ft_printf/ft_printf_address.c	/^void	ft_printf_address(uintptr_t n, int fd, int *count)$/;"	f
+ft_printf_address	SAUVEGARDE/parsing/expansion_test/libft/ft_printf/ft_printf_address.c	/^void	ft_printf_address(uintptr_t n, int fd, int *count)$/;"	f
+ft_printf_address	TESTS/execution_test/libft/ft_printf/ft_printf_address.c	/^void	ft_printf_address(uintptr_t n, int fd, int *count)$/;"	f
+ft_printf_address	TESTS/expansion_test/libft/ft_printf/ft_printf_address.c	/^void	ft_printf_address(uintptr_t n, int fd, int *count)$/;"	f
+ft_printf_address	libft/ft_printf/ft_printf_address.c	/^void	ft_printf_address(uintptr_t n, int fd, int *count)$/;"	f
+ft_printf_char	SAUVEGARDE/execution_test/libft/ft_printf/ft_printf_char.c	/^void	ft_printf_char(char c, int fd, int *count)$/;"	f
+ft_printf_char	SAUVEGARDE/libft/ft_printf/ft_printf_char.c	/^void	ft_printf_char(char c, int fd, int *count)$/;"	f
+ft_printf_char	SAUVEGARDE/parsing/expansion_test/libft/ft_printf/ft_printf_char.c	/^void	ft_printf_char(char c, int fd, int *count)$/;"	f
+ft_printf_char	TESTS/execution_test/libft/ft_printf/ft_printf_char.c	/^void	ft_printf_char(char c, int fd, int *count)$/;"	f
+ft_printf_char	TESTS/expansion_test/libft/ft_printf/ft_printf_char.c	/^void	ft_printf_char(char c, int fd, int *count)$/;"	f
+ft_printf_char	libft/ft_printf/ft_printf_char.c	/^void	ft_printf_char(char c, int fd, int *count)$/;"	f
+ft_printf_hexa	SAUVEGARDE/execution_test/libft/ft_printf/ft_printf_hexa.c	/^void	ft_printf_hexa(unsigned int n, int fd, int *count, char c)$/;"	f
+ft_printf_hexa	SAUVEGARDE/libft/ft_printf/ft_printf_hexa.c	/^void	ft_printf_hexa(unsigned int n, int fd, int *count, char c)$/;"	f
+ft_printf_hexa	SAUVEGARDE/parsing/expansion_test/libft/ft_printf/ft_printf_hexa.c	/^void	ft_printf_hexa(unsigned int n, int fd, int *count, char c)$/;"	f
+ft_printf_hexa	TESTS/execution_test/libft/ft_printf/ft_printf_hexa.c	/^void	ft_printf_hexa(unsigned int n, int fd, int *count, char c)$/;"	f
+ft_printf_hexa	TESTS/expansion_test/libft/ft_printf/ft_printf_hexa.c	/^void	ft_printf_hexa(unsigned int n, int fd, int *count, char c)$/;"	f
+ft_printf_hexa	libft/ft_printf/ft_printf_hexa.c	/^void	ft_printf_hexa(unsigned int n, int fd, int *count, char c)$/;"	f
+ft_printf_int	SAUVEGARDE/execution_test/libft/ft_printf/ft_printf_int.c	/^void	ft_printf_int(int n, int fd, int *count)$/;"	f
+ft_printf_int	SAUVEGARDE/libft/ft_printf/ft_printf_int.c	/^void	ft_printf_int(int n, int fd, int *count)$/;"	f
+ft_printf_int	SAUVEGARDE/parsing/expansion_test/libft/ft_printf/ft_printf_int.c	/^void	ft_printf_int(int n, int fd, int *count)$/;"	f
+ft_printf_int	TESTS/execution_test/libft/ft_printf/ft_printf_int.c	/^void	ft_printf_int(int n, int fd, int *count)$/;"	f
+ft_printf_int	TESTS/expansion_test/libft/ft_printf/ft_printf_int.c	/^void	ft_printf_int(int n, int fd, int *count)$/;"	f
+ft_printf_int	libft/ft_printf/ft_printf_int.c	/^void	ft_printf_int(int n, int fd, int *count)$/;"	f
+ft_printf_str	SAUVEGARDE/execution_test/libft/ft_printf/ft_printf_str.c	/^void	ft_printf_str(char *s, int fd, int *count)$/;"	f
+ft_printf_str	SAUVEGARDE/libft/ft_printf/ft_printf_str.c	/^void	ft_printf_str(char *s, int fd, int *count)$/;"	f
+ft_printf_str	SAUVEGARDE/parsing/expansion_test/libft/ft_printf/ft_printf_str.c	/^void	ft_printf_str(char *s, int fd, int *count)$/;"	f
+ft_printf_str	TESTS/execution_test/libft/ft_printf/ft_printf_str.c	/^void	ft_printf_str(char *s, int fd, int *count)$/;"	f
+ft_printf_str	TESTS/expansion_test/libft/ft_printf/ft_printf_str.c	/^void	ft_printf_str(char *s, int fd, int *count)$/;"	f
+ft_printf_str	libft/ft_printf/ft_printf_str.c	/^void	ft_printf_str(char *s, int fd, int *count)$/;"	f
+ft_printf_unsint	SAUVEGARDE/execution_test/libft/ft_printf/ft_printf_unsint.c	/^void	ft_printf_unsint(unsigned int n, int fd, int *count)$/;"	f
+ft_printf_unsint	SAUVEGARDE/libft/ft_printf/ft_printf_unsint.c	/^void	ft_printf_unsint(unsigned int n, int fd, int *count)$/;"	f
+ft_printf_unsint	SAUVEGARDE/parsing/expansion_test/libft/ft_printf/ft_printf_unsint.c	/^void	ft_printf_unsint(unsigned int n, int fd, int *count)$/;"	f
+ft_printf_unsint	TESTS/execution_test/libft/ft_printf/ft_printf_unsint.c	/^void	ft_printf_unsint(unsigned int n, int fd, int *count)$/;"	f
+ft_printf_unsint	TESTS/expansion_test/libft/ft_printf/ft_printf_unsint.c	/^void	ft_printf_unsint(unsigned int n, int fd, int *count)$/;"	f
+ft_printf_unsint	libft/ft_printf/ft_printf_unsint.c	/^void	ft_printf_unsint(unsigned int n, int fd, int *count)$/;"	f
+ft_put_hexanbr_fd	SAUVEGARDE/execution_test/libft/ft_printf/ft_put_hexanbr_fd.c	/^void	ft_put_hexanbr_fd(unsigned int n, int fd, int *count)$/;"	f
+ft_put_hexanbr_fd	SAUVEGARDE/libft/ft_printf/ft_put_hexanbr_fd.c	/^void	ft_put_hexanbr_fd(unsigned int n, int fd, int *count)$/;"	f
+ft_put_hexanbr_fd	SAUVEGARDE/parsing/expansion_test/libft/ft_printf/ft_put_hexanbr_fd.c	/^void	ft_put_hexanbr_fd(unsigned int n, int fd, int *count)$/;"	f
+ft_put_hexanbr_fd	TESTS/execution_test/libft/ft_printf/ft_put_hexanbr_fd.c	/^void	ft_put_hexanbr_fd(unsigned int n, int fd, int *count)$/;"	f
+ft_put_hexanbr_fd	TESTS/expansion_test/libft/ft_printf/ft_put_hexanbr_fd.c	/^void	ft_put_hexanbr_fd(unsigned int n, int fd, int *count)$/;"	f
+ft_put_hexanbr_fd	libft/ft_printf/ft_put_hexanbr_fd.c	/^void	ft_put_hexanbr_fd(unsigned int n, int fd, int *count)$/;"	f
+ft_put_int	SAUVEGARDE/execution_test/libft/ft_printf/ft_put_int.c	/^int	ft_put_int(int n, int fd, int *count)$/;"	f
+ft_put_int	SAUVEGARDE/libft/ft_printf/ft_put_int.c	/^int	ft_put_int(int n, int fd, int *count)$/;"	f
+ft_put_int	SAUVEGARDE/parsing/expansion_test/libft/ft_printf/ft_put_int.c	/^int	ft_put_int(int n, int fd, int *count)$/;"	f
+ft_put_int	TESTS/execution_test/libft/ft_printf/ft_put_int.c	/^int	ft_put_int(int n, int fd, int *count)$/;"	f
+ft_put_int	TESTS/expansion_test/libft/ft_printf/ft_put_int.c	/^int	ft_put_int(int n, int fd, int *count)$/;"	f
+ft_put_int	libft/ft_printf/ft_put_int.c	/^int	ft_put_int(int n, int fd, int *count)$/;"	f
+ft_put_uintptr_fd	SAUVEGARDE/execution_test/libft/ft_printf/ft_printf_address.c	/^void	ft_put_uintptr_fd(uintptr_t n, int fd, int *count)$/;"	f
+ft_put_uintptr_fd	SAUVEGARDE/libft/ft_printf/ft_printf_address.c	/^void	ft_put_uintptr_fd(uintptr_t n, int fd, int *count)$/;"	f
+ft_put_uintptr_fd	SAUVEGARDE/parsing/expansion_test/libft/ft_printf/ft_printf_address.c	/^void	ft_put_uintptr_fd(uintptr_t n, int fd, int *count)$/;"	f
+ft_put_uintptr_fd	TESTS/execution_test/libft/ft_printf/ft_printf_address.c	/^void	ft_put_uintptr_fd(uintptr_t n, int fd, int *count)$/;"	f
+ft_put_uintptr_fd	TESTS/expansion_test/libft/ft_printf/ft_printf_address.c	/^void	ft_put_uintptr_fd(uintptr_t n, int fd, int *count)$/;"	f
+ft_put_uintptr_fd	libft/ft_printf/ft_printf_address.c	/^void	ft_put_uintptr_fd(uintptr_t n, int fd, int *count)$/;"	f
+ft_put_unsnbr_fd	SAUVEGARDE/execution_test/libft/ft_printf/ft_put_unsnbr_fd.c	/^void	ft_put_unsnbr_fd(unsigned int n, int fd)$/;"	f
+ft_put_unsnbr_fd	SAUVEGARDE/libft/ft_printf/ft_put_unsnbr_fd.c	/^void	ft_put_unsnbr_fd(unsigned int n, int fd)$/;"	f
+ft_put_unsnbr_fd	SAUVEGARDE/parsing/expansion_test/libft/ft_printf/ft_put_unsnbr_fd.c	/^void	ft_put_unsnbr_fd(unsigned int n, int fd)$/;"	f
+ft_put_unsnbr_fd	TESTS/execution_test/libft/ft_printf/ft_put_unsnbr_fd.c	/^void	ft_put_unsnbr_fd(unsigned int n, int fd)$/;"	f
+ft_put_unsnbr_fd	TESTS/expansion_test/libft/ft_printf/ft_put_unsnbr_fd.c	/^void	ft_put_unsnbr_fd(unsigned int n, int fd)$/;"	f
+ft_put_unsnbr_fd	libft/ft_printf/ft_put_unsnbr_fd.c	/^void	ft_put_unsnbr_fd(unsigned int n, int fd)$/;"	f
+ft_putchar_fd	SAUVEGARDE/execution_test/libft/libft/ft_putchar_fd.c	/^void	ft_putchar_fd(char c, int fd)$/;"	f
+ft_putchar_fd	SAUVEGARDE/libft/libft/ft_putchar_fd.c	/^void	ft_putchar_fd(char c, int fd)$/;"	f
+ft_putchar_fd	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_putchar_fd.c	/^void	ft_putchar_fd(char c, int fd)$/;"	f
+ft_putchar_fd	TESTS/execution_test/libft/libft/ft_putchar_fd.c	/^void	ft_putchar_fd(char c, int fd)$/;"	f
+ft_putchar_fd	TESTS/expansion_test/libft/libft/ft_putchar_fd.c	/^void	ft_putchar_fd(char c, int fd)$/;"	f
+ft_putchar_fd	libft/libft/ft_putchar_fd.c	/^void	ft_putchar_fd(char c, int fd)$/;"	f
+ft_putendl_fd	SAUVEGARDE/execution_test/libft/libft/ft_putendl_fd.c	/^void	ft_putendl_fd(char *s, int fd)$/;"	f
+ft_putendl_fd	SAUVEGARDE/libft/libft/ft_putendl_fd.c	/^void	ft_putendl_fd(char *s, int fd)$/;"	f
+ft_putendl_fd	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_putendl_fd.c	/^void	ft_putendl_fd(char *s, int fd)$/;"	f
+ft_putendl_fd	TESTS/execution_test/libft/libft/ft_putendl_fd.c	/^void	ft_putendl_fd(char *s, int fd)$/;"	f
+ft_putendl_fd	TESTS/expansion_test/libft/libft/ft_putendl_fd.c	/^void	ft_putendl_fd(char *s, int fd)$/;"	f
+ft_putendl_fd	libft/libft/ft_putendl_fd.c	/^void	ft_putendl_fd(char *s, int fd)$/;"	f
+ft_putnbr_fd	SAUVEGARDE/execution_test/libft/libft/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f
+ft_putnbr_fd	SAUVEGARDE/libft/libft/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f
+ft_putnbr_fd	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f
+ft_putnbr_fd	TESTS/execution_test/libft/libft/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f
+ft_putnbr_fd	TESTS/expansion_test/libft/libft/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f
+ft_putnbr_fd	libft/libft/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f
+ft_putstr_fd	SAUVEGARDE/execution_test/libft/libft/ft_putstr_fd.c	/^void	ft_putstr_fd(char *s, int fd)$/;"	f
+ft_putstr_fd	SAUVEGARDE/libft/libft/ft_putstr_fd.c	/^void	ft_putstr_fd(char *s, int fd)$/;"	f
+ft_putstr_fd	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_putstr_fd.c	/^void	ft_putstr_fd(char *s, int fd)$/;"	f
+ft_putstr_fd	TESTS/execution_test/libft/libft/ft_putstr_fd.c	/^void	ft_putstr_fd(char *s, int fd)$/;"	f
+ft_putstr_fd	TESTS/expansion_test/libft/libft/ft_putstr_fd.c	/^void	ft_putstr_fd(char *s, int fd)$/;"	f
+ft_putstr_fd	libft/libft/ft_putstr_fd.c	/^void	ft_putstr_fd(char *s, int fd)$/;"	f
+ft_split	SAUVEGARDE/execution_test/libft/libft/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f
+ft_split	SAUVEGARDE/libft/libft/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f
+ft_split	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f
+ft_split	TESTS/execution_test/libft/libft/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f
+ft_split	TESTS/expansion_test/libft/libft/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f
+ft_split	libft/libft/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f
+ft_splitpath	SAUVEGARDE/complicated_split.c	/^char	**ft_splitpath(char *s, char c)$/;"	f
+ft_start_index_substr	SAUVEGARDE/execution_test/libft/libft/ft_split.c	/^unsigned int	ft_start_index_substr(char const *s, char c, unsigned int start)$/;"	f
+ft_start_index_substr	SAUVEGARDE/libft/libft/ft_split.c	/^unsigned int	ft_start_index_substr(char const *s, char c, unsigned int start)$/;"	f
+ft_start_index_substr	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_split.c	/^unsigned int	ft_start_index_substr(char const *s, char c, unsigned int start)$/;"	f
+ft_start_index_substr	TESTS/execution_test/libft/libft/ft_split.c	/^unsigned int	ft_start_index_substr(char const *s, char c, unsigned int start)$/;"	f
+ft_start_index_substr	TESTS/expansion_test/libft/libft/ft_split.c	/^unsigned int	ft_start_index_substr(char const *s, char c, unsigned int start)$/;"	f
+ft_start_index_substr	libft/libft/ft_split.c	/^unsigned int	ft_start_index_substr(char const *s, char c, unsigned int start)$/;"	f
+ft_strchr	SAUVEGARDE/execution_test/libft/libft/ft_strchr.c	/^char	*ft_strchr(const char *s, int c)$/;"	f
+ft_strchr	SAUVEGARDE/libft/libft/ft_strchr.c	/^char	*ft_strchr(const char *s, int c)$/;"	f
+ft_strchr	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_strchr.c	/^char	*ft_strchr(const char *s, int c)$/;"	f
+ft_strchr	TESTS/execution_test/libft/libft/ft_strchr.c	/^char	*ft_strchr(const char *s, int c)$/;"	f
+ft_strchr	TESTS/expansion_test/libft/libft/ft_strchr.c	/^char	*ft_strchr(const char *s, int c)$/;"	f
+ft_strchr	libft/libft/ft_strchr.c	/^char	*ft_strchr(const char *s, int c)$/;"	f
+ft_strcpy	SAUVEGARDE/execution_test/libft/libft/ft_strcpy.c	/^char	*ft_strcpy(char *dst, const char *src)$/;"	f
+ft_strcpy	SAUVEGARDE/libft/libft/ft_strcpy.c	/^char	*ft_strcpy(char *dst, const char *src)$/;"	f
+ft_strcpy	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_strcpy.c	/^char	*ft_strcpy(char *dst, const char *src)$/;"	f
+ft_strcpy	TESTS/execution_test/libft/libft/ft_strcpy.c	/^char	*ft_strcpy(char *dst, const char *src)$/;"	f
+ft_strcpy	TESTS/expansion_test/libft/libft/ft_strcpy.c	/^char	*ft_strcpy(char *dst, const char *src)$/;"	f
+ft_strcpy	libft/libft/ft_strcpy.c	/^char	*ft_strcpy(char *dst, const char *src)$/;"	f
+ft_strcspn	SAUVEGARDE/execution_test/libft/libft/ft_strcspn.c	/^size_t	ft_strcspn(const char *s, const char *reject)$/;"	f
+ft_strcspn	SAUVEGARDE/libft/libft/ft_strcspn.c	/^size_t	ft_strcspn(const char *s, const char *reject)$/;"	f
+ft_strcspn	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_strcspn.c	/^size_t	ft_strcspn(const char *s, const char *reject)$/;"	f
+ft_strcspn	TESTS/execution_test/libft/libft/ft_strcspn.c	/^size_t	ft_strcspn(const char *s, const char *reject)$/;"	f
+ft_strcspn	TESTS/expansion_test/libft/libft/ft_strcspn.c	/^size_t	ft_strcspn(const char *s, const char *reject)$/;"	f
+ft_strcspn	libft/libft/ft_strcspn.c	/^size_t	ft_strcspn(const char *s, const char *reject)$/;"	f
+ft_strdup	SAUVEGARDE/execution_test/libft/libft/ft_strdup.c	/^char	*ft_strdup(const char *s1)$/;"	f
+ft_strdup	SAUVEGARDE/libft/libft/ft_strdup.c	/^char	*ft_strdup(const char *s1)$/;"	f
+ft_strdup	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_strdup.c	/^char	*ft_strdup(const char *s1)$/;"	f
+ft_strdup	TESTS/execution_test/libft/libft/ft_strdup.c	/^char	*ft_strdup(const char *s1)$/;"	f
+ft_strdup	TESTS/expansion_test/libft/libft/ft_strdup.c	/^char	*ft_strdup(const char *s1)$/;"	f
+ft_strdup	libft/libft/ft_strdup.c	/^char	*ft_strdup(const char *s1)$/;"	f
+ft_striteri	SAUVEGARDE/execution_test/libft/libft/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, char*))$/;"	f
+ft_striteri	SAUVEGARDE/libft/libft/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, char*))$/;"	f
+ft_striteri	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, char*))$/;"	f
+ft_striteri	TESTS/execution_test/libft/libft/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, char*))$/;"	f
+ft_striteri	TESTS/expansion_test/libft/libft/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, char*))$/;"	f
+ft_striteri	libft/libft/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, char*))$/;"	f
+ft_strjoin	SAUVEGARDE/execution_test/libft/libft/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f
+ft_strjoin	SAUVEGARDE/libft/libft/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f
+ft_strjoin	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f
+ft_strjoin	TESTS/execution_test/libft/libft/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f
+ft_strjoin	TESTS/expansion_test/libft/libft/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f
+ft_strjoin	libft/libft/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f
+ft_strlcat	SAUVEGARDE/execution_test/libft/libft/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)$/;"	f
+ft_strlcat	SAUVEGARDE/libft/libft/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)$/;"	f
+ft_strlcat	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)$/;"	f
+ft_strlcat	TESTS/execution_test/libft/libft/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)$/;"	f
+ft_strlcat	TESTS/expansion_test/libft/libft/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)$/;"	f
+ft_strlcat	libft/libft/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)$/;"	f
+ft_strlcpy	SAUVEGARDE/execution_test/libft/libft/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)$/;"	f
+ft_strlcpy	SAUVEGARDE/libft/libft/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)$/;"	f
+ft_strlcpy	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)$/;"	f
+ft_strlcpy	TESTS/execution_test/libft/libft/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)$/;"	f
+ft_strlcpy	TESTS/expansion_test/libft/libft/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)$/;"	f
+ft_strlcpy	libft/libft/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)$/;"	f
+ft_strlen	SAUVEGARDE/execution_test/libft/libft/ft_strlen.c	/^size_t	ft_strlen(const char *s)$/;"	f
+ft_strlen	SAUVEGARDE/libft/libft/ft_strlen.c	/^size_t	ft_strlen(const char *s)$/;"	f
+ft_strlen	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_strlen.c	/^size_t	ft_strlen(const char *s)$/;"	f
+ft_strlen	TESTS/execution_test/libft/libft/ft_strlen.c	/^size_t	ft_strlen(const char *s)$/;"	f
+ft_strlen	TESTS/expansion_test/libft/libft/ft_strlen.c	/^size_t	ft_strlen(const char *s)$/;"	f
+ft_strlen	libft/libft/ft_strlen.c	/^size_t	ft_strlen(const char *s)$/;"	f
+ft_strlen_int	SAUVEGARDE/execution_test/libft/get_next_line/get_next_line_utils.c	/^int	ft_strlen_int(const char *string)$/;"	f
+ft_strlen_int	SAUVEGARDE/libft/get_next_line/get_next_line_utils.c	/^int	ft_strlen_int(const char *string)$/;"	f
+ft_strlen_int	SAUVEGARDE/parsing/expansion_test/libft/get_next_line/get_next_line_utils.c	/^int	ft_strlen_int(const char *string)$/;"	f
+ft_strlen_int	TESTS/execution_test/libft/get_next_line/get_next_line_utils.c	/^int	ft_strlen_int(const char *string)$/;"	f
+ft_strlen_int	TESTS/expansion_test/libft/get_next_line/get_next_line_utils.c	/^int	ft_strlen_int(const char *string)$/;"	f
+ft_strlen_int	libft/get_next_line/get_next_line_utils.c	/^int	ft_strlen_int(const char *string)$/;"	f
+ft_strmapi	SAUVEGARDE/execution_test/libft/libft/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f
+ft_strmapi	SAUVEGARDE/libft/libft/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f
+ft_strmapi	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f
+ft_strmapi	TESTS/execution_test/libft/libft/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f
+ft_strmapi	TESTS/expansion_test/libft/libft/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f
+ft_strmapi	libft/libft/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f
+ft_strncmp	SAUVEGARDE/execution_test/libft/libft/ft_strncmp.c	/^int	ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f
+ft_strncmp	SAUVEGARDE/libft/libft/ft_strncmp.c	/^int	ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f
+ft_strncmp	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_strncmp.c	/^int	ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f
+ft_strncmp	TESTS/execution_test/libft/libft/ft_strncmp.c	/^int	ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f
+ft_strncmp	TESTS/expansion_test/libft/libft/ft_strncmp.c	/^int	ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f
+ft_strncmp	libft/libft/ft_strncmp.c	/^int	ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f
+ft_strncpy	SAUVEGARDE/execution_test/libft/libft/ft_strncpy.c	/^char	*ft_strncpy(char *dst, const char *src, size_t len)$/;"	f
+ft_strncpy	SAUVEGARDE/libft/libft/ft_strncpy.c	/^char	*ft_strncpy(char *dst, const char *src, size_t len)$/;"	f
+ft_strncpy	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_strncpy.c	/^char	*ft_strncpy(char *dst, const char *src, size_t len)$/;"	f
+ft_strncpy	TESTS/execution_test/libft/libft/ft_strncpy.c	/^char	*ft_strncpy(char *dst, const char *src, size_t len)$/;"	f
+ft_strncpy	TESTS/expansion_test/libft/libft/ft_strncpy.c	/^char	*ft_strncpy(char *dst, const char *src, size_t len)$/;"	f
+ft_strncpy	libft/libft/ft_strncpy.c	/^char	*ft_strncpy(char *dst, const char *src, size_t len)$/;"	f
+ft_strnstr	SAUVEGARDE/execution_test/libft/libft/ft_strnstr.c	/^char	*ft_strnstr(const char *haystack, const char *needle, size_t len)$/;"	f
+ft_strnstr	SAUVEGARDE/libft/libft/ft_strnstr.c	/^char	*ft_strnstr(const char *haystack, const char *needle, size_t len)$/;"	f
+ft_strnstr	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_strnstr.c	/^char	*ft_strnstr(const char *haystack, const char *needle, size_t len)$/;"	f
+ft_strnstr	TESTS/execution_test/libft/libft/ft_strnstr.c	/^char	*ft_strnstr(const char *haystack, const char *needle, size_t len)$/;"	f
+ft_strnstr	TESTS/expansion_test/libft/libft/ft_strnstr.c	/^char	*ft_strnstr(const char *haystack, const char *needle, size_t len)$/;"	f
+ft_strnstr	libft/libft/ft_strnstr.c	/^char	*ft_strnstr(const char *haystack, const char *needle, size_t len)$/;"	f
+ft_strpbrk	SAUVEGARDE/execution_test/libft/libft/ft_strpbrk.c	/^char	*ft_strpbrk(const char *s1, const char *s2)$/;"	f
+ft_strpbrk	SAUVEGARDE/libft/libft/ft_strpbrk.c	/^char	*ft_strpbrk(const char *s1, const char *s2)$/;"	f
+ft_strpbrk	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_strpbrk.c	/^char	*ft_strpbrk(const char *s1, const char *s2)$/;"	f
+ft_strpbrk	TESTS/execution_test/libft/libft/ft_strpbrk.c	/^char	*ft_strpbrk(const char *s1, const char *s2)$/;"	f
+ft_strpbrk	TESTS/expansion_test/libft/libft/ft_strpbrk.c	/^char	*ft_strpbrk(const char *s1, const char *s2)$/;"	f
+ft_strpbrk	libft/libft/ft_strpbrk.c	/^char	*ft_strpbrk(const char *s1, const char *s2)$/;"	f
+ft_strrchr	SAUVEGARDE/execution_test/libft/libft/ft_strrchr.c	/^char	*ft_strrchr(const char *s, int c)$/;"	f
+ft_strrchr	SAUVEGARDE/libft/libft/ft_strrchr.c	/^char	*ft_strrchr(const char *s, int c)$/;"	f
+ft_strrchr	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_strrchr.c	/^char	*ft_strrchr(const char *s, int c)$/;"	f
+ft_strrchr	TESTS/execution_test/libft/libft/ft_strrchr.c	/^char	*ft_strrchr(const char *s, int c)$/;"	f
+ft_strrchr	TESTS/expansion_test/libft/libft/ft_strrchr.c	/^char	*ft_strrchr(const char *s, int c)$/;"	f
+ft_strrchr	libft/libft/ft_strrchr.c	/^char	*ft_strrchr(const char *s, int c)$/;"	f
+ft_strspn	SAUVEGARDE/execution_test/libft/libft/ft_strspn.c	/^size_t	ft_strspn(const char *s, const char *accept)$/;"	f
+ft_strspn	SAUVEGARDE/libft/libft/ft_strspn.c	/^size_t	ft_strspn(const char *s, const char *accept)$/;"	f
+ft_strspn	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_strspn.c	/^size_t	ft_strspn(const char *s, const char *accept)$/;"	f
+ft_strspn	TESTS/execution_test/libft/libft/ft_strspn.c	/^size_t	ft_strspn(const char *s, const char *accept)$/;"	f
+ft_strspn	TESTS/expansion_test/libft/libft/ft_strspn.c	/^size_t	ft_strspn(const char *s, const char *accept)$/;"	f
+ft_strspn	libft/libft/ft_strspn.c	/^size_t	ft_strspn(const char *s, const char *accept)$/;"	f
+ft_strtrim	SAUVEGARDE/execution_test/libft/libft/ft_strtrim.c	/^char	*ft_strtrim(char const *s1, char const *set)$/;"	f
+ft_strtrim	SAUVEGARDE/libft/libft/ft_strtrim.c	/^char	*ft_strtrim(char const *s1, char const *set)$/;"	f
+ft_strtrim	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_strtrim.c	/^char	*ft_strtrim(char const *s1, char const *set)$/;"	f
+ft_strtrim	TESTS/execution_test/libft/libft/ft_strtrim.c	/^char	*ft_strtrim(char const *s1, char const *set)$/;"	f
+ft_strtrim	TESTS/expansion_test/libft/libft/ft_strtrim.c	/^char	*ft_strtrim(char const *s1, char const *set)$/;"	f
+ft_strtrim	libft/libft/ft_strtrim.c	/^char	*ft_strtrim(char const *s1, char const *set)$/;"	f
+ft_substr	SAUVEGARDE/execution_test/libft/libft/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f
+ft_substr	SAUVEGARDE/libft/libft/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f
+ft_substr	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f
+ft_substr	TESTS/execution_test/libft/libft/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f
+ft_substr	TESTS/expansion_test/libft/libft/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f
+ft_substr	libft/libft/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f
+ft_tolower	SAUVEGARDE/execution_test/libft/libft/ft_tolower.c	/^int	ft_tolower(int c)$/;"	f
+ft_tolower	SAUVEGARDE/libft/libft/ft_tolower.c	/^int	ft_tolower(int c)$/;"	f
+ft_tolower	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_tolower.c	/^int	ft_tolower(int c)$/;"	f
+ft_tolower	TESTS/execution_test/libft/libft/ft_tolower.c	/^int	ft_tolower(int c)$/;"	f
+ft_tolower	TESTS/expansion_test/libft/libft/ft_tolower.c	/^int	ft_tolower(int c)$/;"	f
+ft_tolower	libft/libft/ft_tolower.c	/^int	ft_tolower(int c)$/;"	f
+ft_toupper	SAUVEGARDE/execution_test/libft/libft/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f
+ft_toupper	SAUVEGARDE/libft/libft/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f
+ft_toupper	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f
+ft_toupper	TESTS/execution_test/libft/libft/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f
+ft_toupper	TESTS/expansion_test/libft/libft/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f
+ft_toupper	libft/libft/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f
+g_exit_status	SAUVEGARDE/parsing/tests/main_parsing_syntax_errors.c	/^int g_exit_status = 0;$/;"	v
+g_exit_status	SAUVEGARDE/parsing/tests/main_token_routine.c	/^int g_exit_status = 0;$/;"	v
+g_exit_status	TESTS/parsing tests/main_parsing_syntax_errors.c	/^int g_exit_status = 0;$/;"	v
+g_exit_status	TESTS/parsing tests/main_token_routine.c	/^int g_exit_status = 0;$/;"	v
+g_shell	SAUVEGARDE/execution_test/main.c	/^t_shell	*g_shell;$/;"	v
+g_shell	SAUVEGARDE/execution_test/sans_readline_main.c	/^t_shell	*g_shell;$/;"	v
+g_shell	SAUVEGARDE/main.c	/^t_shell	*g_shell;$/;"	v
+g_shell	SAUVEGARDE/parsing/expansion_test/main.c	/^t_shell	*g_shell;$/;"	v
+g_shell	TESTS/execution_test/main.c	/^t_shell	*g_shell;$/;"	v
+g_shell	TESTS/execution_test/sans_readline_main.c	/^t_shell	*g_shell;$/;"	v
+g_shell	TESTS/expansion_test/main 2.c	/^t_shell	*g_shell;$/;"	v
+g_shell	TESTS/expansion_test/main.c	/^t_shell	*g_shell;$/;"	v
+g_shell	main.c	/^t_shell	*g_shell;$/;"	v
+get_cmd_size	SAUVEGARDE/init_cmd_cmd.c	/^static int	get_cmd_size(t_token **token)$/;"	f	file:
+get_cmd_size	command_struct/init_cmd_cmd.c	/^static int	get_cmd_size(t_token **token)$/;"	f	file:
+get_env_var_value	environnement/get_env.c	/^char	*get_env_var_value(char *var_name)$/;"	f
+get_envp	SAUVEGARDE/environnement/envp_routine.c	/^t_env	*get_envp(char **envp)$/;"	f
+get_envp	SAUVEGARDE/execution_test/envp_routine.c	/^t_env	*get_envp(char **envp)$/;"	f
+get_envp	SAUVEGARDE/parsing/expansion_test/envp_routine.c	/^t_env	*get_envp(char **envp)$/;"	f
+get_envp	TESTS/execution_test/envp_routine.c	/^t_env	*get_envp(char **envp)$/;"	f
+get_envp	TESTS/expansion_test/envp_routine 2.c	/^t_env	*get_envp(char **envp)$/;"	f
+get_envp	TESTS/expansion_test/envp_routine.c	/^t_env	*get_envp(char **envp)$/;"	f
+get_envp	environnement/envp_routine.c	/^t_env	*get_envp(char **envp)$/;"	f
+get_expanded_size	SAUVEGARDE/execution_test/parsing_expansion_join_tokens.c	/^static int	get_expanded_size(char *s, int i)$/;"	f	file:
+get_expanded_size	SAUVEGARDE/parsing/expansion_join_tokens.c	/^static int	get_expanded_size(char *s, int i)$/;"	f	file:
+get_expanded_size	SAUVEGARDE/parsing/expansion_test/parsing_expansion_join_tokens.c	/^static int	get_expanded_size(char *s, int i)$/;"	f	file:
+get_expanded_size	TESTS/execution_test/parsing_expansion_join_tokens.c	/^static int	get_expanded_size(char *s, int i)$/;"	f	file:
+get_expanded_size	TESTS/expansion_test/parsing_expansion_join_tokens 2.c	/^static int	get_expanded_size(char *s, int i)$/;"	f	file:
+get_expanded_size	TESTS/expansion_test/parsing_expansion_join_tokens.c	/^static int	get_expanded_size(char *s, int i)$/;"	f	file:
+get_expanded_size	parsing/expansion_join_tokens.c	/^static int	get_expanded_size(char *s, int i)$/;"	f	file:
+get_new_size	SAUVEGARDE/execution_test/parsing_expansion_join_tokens.c	/^static int	get_new_size(t_token **new)$/;"	f	file:
+get_new_size	SAUVEGARDE/parsing/expansion_join_tokens.c	/^static int	get_new_size(t_token **new)$/;"	f	file:
+get_new_size	SAUVEGARDE/parsing/expansion_test/parsing_expansion_join_tokens.c	/^static int	get_new_size(t_token **new)$/;"	f	file:
+get_new_size	TESTS/execution_test/parsing_expansion_join_tokens.c	/^static int	get_new_size(t_token **new)$/;"	f	file:
+get_new_size	TESTS/expansion_test/parsing_expansion_join_tokens 2.c	/^static int	get_new_size(t_token **new)$/;"	f	file:
+get_new_size	TESTS/expansion_test/parsing_expansion_join_tokens.c	/^static int	get_new_size(t_token **new)$/;"	f	file:
+get_new_size	parsing/expansion_join_tokens.c	/^static int	get_new_size(t_token **new)$/;"	f	file:
+get_next_line	SAUVEGARDE/execution_test/libft/get_next_line/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f
+get_next_line	SAUVEGARDE/libft/get_next_line/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f
+get_next_line	SAUVEGARDE/parsing/expansion_test/libft/get_next_line/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f
+get_next_line	TESTS/execution_test/libft/get_next_line/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f
+get_next_line	TESTS/expansion_test/libft/get_next_line/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f
+get_next_line	libft/get_next_line/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f
+get_next_line_maxopen	SAUVEGARDE/execution_test/libft/get_next_line/get_next_line_bonus.c	/^char	*get_next_line_maxopen(int fd)$/;"	f
+get_next_line_maxopen	SAUVEGARDE/libft/get_next_line/get_next_line_bonus.c	/^char	*get_next_line_maxopen(int fd)$/;"	f
+get_next_line_maxopen	SAUVEGARDE/parsing/expansion_test/libft/get_next_line/get_next_line_bonus.c	/^char	*get_next_line_maxopen(int fd)$/;"	f
+get_next_line_maxopen	TESTS/execution_test/libft/get_next_line/get_next_line_bonus.c	/^char	*get_next_line_maxopen(int fd)$/;"	f
+get_next_line_maxopen	TESTS/expansion_test/libft/get_next_line/get_next_line_bonus.c	/^char	*get_next_line_maxopen(int fd)$/;"	f
+get_next_line_maxopen	libft/get_next_line/get_next_line_bonus.c	/^char	*get_next_line_maxopen(int fd)$/;"	f
+get_path	execution/get_path.c	/^int	get_path(t_cmd *cmd)$/;"	f
+get_redir_size	SAUVEGARDE/init_cmd.c	/^int	get_redir_size(t_token *ptr)$/;"	f
+get_redir_size	command_struct/init_cmd_redir.c	/^static int	get_redir_size(t_token *ptr)$/;"	f	file:
+get_tokens	SAUVEGARDE/execution_test/parsing_token_extraction.c	/^t_token	*get_tokens(char *line)$/;"	f
+get_tokens	SAUVEGARDE/parsing/expansion_test/parsing_token_extraction.c	/^t_token	*get_tokens(char *line)$/;"	f
+get_tokens	SAUVEGARDE/parsing/token_extraction.c	/^t_token	*get_tokens(char *line)$/;"	f
+get_tokens	TESTS/execution_test/parsing_token_extraction.c	/^t_token	*get_tokens(char *line)$/;"	f
+get_tokens	TESTS/expansion_test/parsing_token_extraction 2.c	/^t_token	*get_tokens(char *line)$/;"	f
+get_tokens	TESTS/expansion_test/parsing_token_extraction.c	/^t_token	*get_tokens(char *line)$/;"	f
+get_tokens	parsing/token_extraction.c	/^t_token	*get_tokens(char *line)$/;"	f
+get_tokens_size	SAUVEGARDE/execution_test/parsing_token_extraction.c	/^int	get_tokens_size(char *line, int *i)$/;"	f
+get_tokens_size	SAUVEGARDE/parsing/expansion_test/parsing_token_extraction.c	/^int	get_tokens_size(char *line, int *i)$/;"	f
+get_tokens_size	SAUVEGARDE/parsing/token_extraction.c	/^int	get_tokens_size(char *line, int *i)$/;"	f
+get_tokens_size	TESTS/execution_test/parsing_token_extraction.c	/^int	get_tokens_size(char *line, int *i)$/;"	f
+get_tokens_size	TESTS/expansion_test/parsing_token_extraction 2.c	/^int	get_tokens_size(char *line, int *i)$/;"	f
+get_tokens_size	TESTS/expansion_test/parsing_token_extraction.c	/^int	get_tokens_size(char *line, int *i)$/;"	f
+get_tokens_size	parsing/token_extraction.c	/^int	get_tokens_size(char *line, int *i)$/;"	f
+handler_ctr_c	SAUVEGARDE/execution_test/handler_ctr_c.c	/^void	handler_ctr_c(int code)$/;"	f
+handler_ctr_c	SAUVEGARDE/handler_ctr_c.c	/^void	handler_ctr_c(int code)$/;"	f
+handler_ctr_c	TESTS/execution_test/handler_ctr_c.c	/^void	handler_ctr_c(int code)$/;"	f
+handler_ctr_c	signal_handler/handler_ctr_c.c	/^void	handler_ctr_c(int code)$/;"	f
+id	SAUVEGARDE/execution_test/minishell.h	/^	int					id;$/;"	m	struct:s_token
+id	SAUVEGARDE/minishell.h	/^	int					id;$/;"	m	struct:s_token
+id	SAUVEGARDE/parsing/expansion_test/minishell.h	/^	int					id;$/;"	m	struct:s_token
+id	TESTS/execution_test/minishell.h	/^	int					id;$/;"	m	struct:s_token
+id	TESTS/expansion_test/minishell 2.h	/^	int					id;$/;"	m	struct:s_token
+id	TESTS/expansion_test/minishell.h	/^	int					id;$/;"	m	struct:s_token
+id	minishell.h	/^	int					id;$/;"	m	struct:s_token
+increment_shlvl	global_variable/init_global.c	/^static int increment_shlvl(void)$/;"	f	file:
+init_cmd	SAUVEGARDE/init_cmd.c	/^t_cmd *init_cmd(t_token **token)$/;"	f
+init_cmd	command_struct/init_cmd.c	/^static t_cmd	*init_cmd(t_token **token)$/;"	f	file:
+init_shell	SAUVEGARDE/execution_test/main.c	/^int	init_shell(char **envp)$/;"	f
+init_shell	SAUVEGARDE/execution_test/sans_readline_main.c	/^int	init_shell(char **envp)$/;"	f
+init_shell	SAUVEGARDE/global_variable/init_global.c	/^int	init_shell(char **envp)$/;"	f
+init_shell	SAUVEGARDE/parsing/expansion_test/main.c	/^int	init_shell(char **envp)$/;"	f
+init_shell	TESTS/execution_test/main.c	/^int	init_shell(char **envp)$/;"	f
+init_shell	TESTS/execution_test/sans_readline_main.c	/^int	init_shell(char **envp)$/;"	f
+init_shell	TESTS/expansion_test/main 2.c	/^int	init_shell(char **envp)$/;"	f
+init_shell	TESTS/expansion_test/main.c	/^int	init_shell(char **envp)$/;"	f
+init_shell	global_variable/init_global.c	/^int	init_shell(char **envp)$/;"	f
+is_blank	SAUVEGARDE/execution_test/is_white_space.c	/^int	is_blank(char c)$/;"	f
+is_blank	SAUVEGARDE/is_smth/is_white_space.c	/^int	is_blank(char c)$/;"	f
+is_blank	SAUVEGARDE/parsing/expansion_test/is_white_space.c	/^int	is_blank(char c)$/;"	f
+is_blank	TESTS/execution_test/is_white_space.c	/^int	is_blank(char c)$/;"	f
+is_blank	TESTS/expansion_test/is_white_space 2.c	/^int	is_blank(char c)$/;"	f
+is_blank	TESTS/expansion_test/is_white_space.c	/^int	is_blank(char c)$/;"	f
+is_blank	is_smth/is_white_space.c	/^int	is_blank(char c)$/;"	f
+is_chevron	SAUVEGARDE/execution_test/is_operator.c	/^int	is_chevron(char c)$/;"	f
+is_chevron	SAUVEGARDE/is_smth/is_operator.c	/^int	is_chevron(char c)$/;"	f
+is_chevron	SAUVEGARDE/parsing/expansion_test/is_operator.c	/^int	is_chevron(char c)$/;"	f
+is_chevron	TESTS/execution_test/is_operator 2.c	/^int	is_chevron(char c)$/;"	f
+is_chevron	TESTS/execution_test/is_operator.c	/^int	is_chevron(char c)$/;"	f
+is_chevron	TESTS/expansion_test/is_operator 2.c	/^int	is_chevron(char c)$/;"	f
+is_chevron	TESTS/expansion_test/is_operator.c	/^int	is_chevron(char c)$/;"	f
+is_chevron	is_smth/is_operator.c	/^int	is_chevron(char c)$/;"	f
+is_delimiter	SAUVEGARDE/execution_test/is_token.c	/^int	is_delimiter(char c)$/;"	f
+is_delimiter	SAUVEGARDE/is_smth/is_token.c	/^int	is_delimiter(char c)$/;"	f
+is_delimiter	SAUVEGARDE/parsing/expansion_test/is_token.c	/^int	is_delimiter(char c)$/;"	f
+is_delimiter	TESTS/execution_test/is_token 2.c	/^int	is_delimiter(char c)$/;"	f
+is_delimiter	TESTS/execution_test/is_token.c	/^int	is_delimiter(char c)$/;"	f
+is_delimiter	TESTS/expansion_test/is_token 2.c	/^int	is_delimiter(char c)$/;"	f
+is_delimiter	TESTS/expansion_test/is_token.c	/^int	is_delimiter(char c)$/;"	f
+is_delimiter	is_smth/is_token.c	/^int	is_delimiter(char c)$/;"	f
+is_dir	execution/get_path.c	/^static int	is_dir(char *path, t_cmd *cmd)$/;"	f	file:
+is_dollar	SAUVEGARDE/execution_test/is_dollar.c	/^int	is_dollar(char c)$/;"	f
+is_dollar	SAUVEGARDE/is_smth/is_dollar.c	/^int	is_dollar(char c)$/;"	f
+is_dollar	SAUVEGARDE/parsing/expansion_test/is_dollar.c	/^int	is_dollar(char c)$/;"	f
+is_dollar	TESTS/execution_test/is_dollar.c	/^int	is_dollar(char c)$/;"	f
+is_dollar	TESTS/expansion_test/is_dollar 2.c	/^int	is_dollar(char c)$/;"	f
+is_dollar	TESTS/expansion_test/is_dollar.c	/^int	is_dollar(char c)$/;"	f
+is_dollar	is_smth/is_dollar.c	/^int	is_dollar(char c)$/;"	f
+is_dollar_to_expand	SAUVEGARDE/execution_test/parsing_expansion_dollar_conditions.c	/^int	is_dollar_to_expand(t_token *curr, int i)$/;"	f
+is_dollar_to_expand	SAUVEGARDE/parsing/expansion_dollar_conditions.c	/^int	is_dollar_to_expand(t_token *curr, int i)$/;"	f
+is_dollar_to_expand	SAUVEGARDE/parsing/expansion_test/parsing_expansion_dollar_conditions.c	/^int	is_dollar_to_expand(t_token *curr, int i)$/;"	f
+is_dollar_to_expand	TESTS/execution_test/parsing_expansion_dollar_conditions.c	/^int	is_dollar_to_expand(t_token *curr, int i)$/;"	f
+is_dollar_to_expand	TESTS/expansion_test/parsing_expansion_dollar_conditions 2.c	/^int	is_dollar_to_expand(t_token *curr, int i)$/;"	f
+is_dollar_to_expand	TESTS/expansion_test/parsing_expansion_dollar_conditions.c	/^int	is_dollar_to_expand(t_token *curr, int i)$/;"	f
+is_dollar_to_expand	parsing/expansion_dollar_conditions.c	/^int	is_dollar_to_expand(t_token *curr, int i)$/;"	f
+is_double_quote	SAUVEGARDE/execution_test/is_quote.c	/^int	is_double_quote(char c)$/;"	f
+is_double_quote	SAUVEGARDE/is_smth/is_quote.c	/^int	is_double_quote(char c)$/;"	f
+is_double_quote	SAUVEGARDE/parsing/expansion_test/is_quote.c	/^int	is_double_quote(char c)$/;"	f
+is_double_quote	TESTS/execution_test/is_quote.c	/^int	is_double_quote(char c)$/;"	f
+is_double_quote	TESTS/expansion_test/is_quote 2.c	/^int	is_double_quote(char c)$/;"	f
+is_double_quote	TESTS/expansion_test/is_quote.c	/^int	is_double_quote(char c)$/;"	f
+is_double_quote	is_smth/is_quote.c	/^int	is_double_quote(char c)$/;"	f
+is_lchevron	SAUVEGARDE/execution_test/is_operator.c	/^int	is_lchevron(char c)$/;"	f
+is_lchevron	SAUVEGARDE/is_smth/is_operator.c	/^int	is_lchevron(char c)$/;"	f
+is_lchevron	SAUVEGARDE/parsing/expansion_test/is_operator.c	/^int	is_lchevron(char c)$/;"	f
+is_lchevron	TESTS/execution_test/is_operator 2.c	/^int	is_lchevron(char c)$/;"	f
+is_lchevron	TESTS/execution_test/is_operator.c	/^int	is_lchevron(char c)$/;"	f
+is_lchevron	TESTS/expansion_test/is_operator 2.c	/^int	is_lchevron(char c)$/;"	f
+is_lchevron	TESTS/expansion_test/is_operator.c	/^int	is_lchevron(char c)$/;"	f
+is_lchevron	is_smth/is_operator.c	/^int	is_lchevron(char c)$/;"	f
+is_metacharacter	SAUVEGARDE/execution_test/is_token.c	/^int	is_metacharacter(char c)$/;"	f
+is_metacharacter	SAUVEGARDE/is_smth/is_token.c	/^int	is_metacharacter(char c)$/;"	f
+is_metacharacter	SAUVEGARDE/parsing/expansion_test/is_token.c	/^int	is_metacharacter(char c)$/;"	f
+is_metacharacter	TESTS/execution_test/is_token 2.c	/^int	is_metacharacter(char c)$/;"	f
+is_metacharacter	TESTS/execution_test/is_token.c	/^int	is_metacharacter(char c)$/;"	f
+is_metacharacter	TESTS/expansion_test/is_token 2.c	/^int	is_metacharacter(char c)$/;"	f
+is_metacharacter	TESTS/expansion_test/is_token.c	/^int	is_metacharacter(char c)$/;"	f
+is_metacharacter	is_smth/is_token.c	/^int	is_metacharacter(char c)$/;"	f
+is_newline	SAUVEGARDE/execution_test/is_white_space.c	/^int	is_newline(char c)$/;"	f
+is_newline	SAUVEGARDE/is_smth/is_white_space.c	/^int	is_newline(char c)$/;"	f
+is_newline	SAUVEGARDE/parsing/expansion_test/is_white_space.c	/^int	is_newline(char c)$/;"	f
+is_newline	TESTS/execution_test/is_white_space.c	/^int	is_newline(char c)$/;"	f
+is_newline	TESTS/expansion_test/is_white_space 2.c	/^int	is_newline(char c)$/;"	f
+is_newline	TESTS/expansion_test/is_white_space.c	/^int	is_newline(char c)$/;"	f
+is_newline	is_smth/is_white_space.c	/^int	is_newline(char c)$/;"	f
+is_numeric	is_smth/is_numeric.c	/^int	is_numeric(char *s)$/;"	f
+is_operator	SAUVEGARDE/execution_test/is_operator.c	/^int	is_operator(char c)$/;"	f
+is_operator	SAUVEGARDE/is_smth/is_operator.c	/^int	is_operator(char c)$/;"	f
+is_operator	SAUVEGARDE/parsing/expansion_test/is_operator.c	/^int	is_operator(char c)$/;"	f
+is_operator	TESTS/execution_test/is_operator 2.c	/^int	is_operator(char c)$/;"	f
+is_operator	TESTS/execution_test/is_operator.c	/^int	is_operator(char c)$/;"	f
+is_operator	TESTS/expansion_test/is_operator 2.c	/^int	is_operator(char c)$/;"	f
+is_operator	TESTS/expansion_test/is_operator.c	/^int	is_operator(char c)$/;"	f
+is_operator	is_smth/is_operator.c	/^int	is_operator(char c)$/;"	f
+is_pipeline	SAUVEGARDE/execution_test/is_operator.c	/^int	is_pipeline(char c)$/;"	f
+is_pipeline	SAUVEGARDE/is_smth/is_operator.c	/^int	is_pipeline(char c)$/;"	f
+is_pipeline	SAUVEGARDE/parsing/expansion_test/is_operator.c	/^int	is_pipeline(char c)$/;"	f
+is_pipeline	TESTS/execution_test/is_operator 2.c	/^int	is_pipeline(char c)$/;"	f
+is_pipeline	TESTS/execution_test/is_operator.c	/^int	is_pipeline(char c)$/;"	f
+is_pipeline	TESTS/expansion_test/is_operator 2.c	/^int	is_pipeline(char c)$/;"	f
+is_pipeline	TESTS/expansion_test/is_operator.c	/^int	is_pipeline(char c)$/;"	f
+is_pipeline	is_smth/is_operator.c	/^int	is_pipeline(char c)$/;"	f
+is_punct	SAUVEGARDE/execution_test/is_question.c	/^int	is_punct(char c)$/;"	f
+is_punct	SAUVEGARDE/is_smth/is_question.c	/^int	is_punct(char c)$/;"	f
+is_punct	SAUVEGARDE/parsing/expansion_test/is_question.c	/^int	is_punct(char c)$/;"	f
+is_punct	TESTS/execution_test/is_question.c	/^int	is_punct(char c)$/;"	f
+is_punct	TESTS/expansion_test/is_question 2.c	/^int	is_punct(char c)$/;"	f
+is_punct	TESTS/expansion_test/is_question.c	/^int	is_punct(char c)$/;"	f
+is_punct	is_smth/is_question.c	/^int	is_punct(char c)$/;"	f
+is_question	SAUVEGARDE/execution_test/is_question.c	/^int	is_question(char c)$/;"	f
+is_question	SAUVEGARDE/is_smth/is_question.c	/^int	is_question(char c)$/;"	f
+is_question	SAUVEGARDE/parsing/expansion_test/is_question.c	/^int	is_question(char c)$/;"	f
+is_question	TESTS/execution_test/is_question.c	/^int	is_question(char c)$/;"	f
+is_question	TESTS/expansion_test/is_question 2.c	/^int	is_question(char c)$/;"	f
+is_question	TESTS/expansion_test/is_question.c	/^int	is_question(char c)$/;"	f
+is_question	is_smth/is_question.c	/^int	is_question(char c)$/;"	f
+is_quote	SAUVEGARDE/execution_test/is_quote.c	/^int	is_quote(char c)$/;"	f
+is_quote	SAUVEGARDE/is_smth/is_quote.c	/^int	is_quote(char c)$/;"	f
+is_quote	SAUVEGARDE/parsing/expansion_test/is_quote.c	/^int	is_quote(char c)$/;"	f
+is_quote	TESTS/execution_test/is_quote.c	/^int	is_quote(char c)$/;"	f
+is_quote	TESTS/expansion_test/is_quote 2.c	/^int	is_quote(char c)$/;"	f
+is_quote	TESTS/expansion_test/is_quote.c	/^int	is_quote(char c)$/;"	f
+is_quote	is_smth/is_quote.c	/^int	is_quote(char c)$/;"	f
+is_rchevron	SAUVEGARDE/execution_test/is_operator.c	/^int	is_rchevron(char c)$/;"	f
+is_rchevron	SAUVEGARDE/is_smth/is_operator.c	/^int	is_rchevron(char c)$/;"	f
+is_rchevron	SAUVEGARDE/parsing/expansion_test/is_operator.c	/^int	is_rchevron(char c)$/;"	f
+is_rchevron	TESTS/execution_test/is_operator 2.c	/^int	is_rchevron(char c)$/;"	f
+is_rchevron	TESTS/execution_test/is_operator.c	/^int	is_rchevron(char c)$/;"	f
+is_rchevron	TESTS/expansion_test/is_operator 2.c	/^int	is_rchevron(char c)$/;"	f
+is_rchevron	TESTS/expansion_test/is_operator.c	/^int	is_rchevron(char c)$/;"	f
+is_rchevron	is_smth/is_operator.c	/^int	is_rchevron(char c)$/;"	f
+is_simple_quote	SAUVEGARDE/execution_test/is_quote.c	/^int	is_simple_quote(char c)$/;"	f
+is_simple_quote	SAUVEGARDE/is_smth/is_quote.c	/^int	is_simple_quote(char c)$/;"	f
+is_simple_quote	SAUVEGARDE/parsing/expansion_test/is_quote.c	/^int	is_simple_quote(char c)$/;"	f
+is_simple_quote	TESTS/execution_test/is_quote.c	/^int	is_simple_quote(char c)$/;"	f
+is_simple_quote	TESTS/expansion_test/is_quote 2.c	/^int	is_simple_quote(char c)$/;"	f
+is_simple_quote	TESTS/expansion_test/is_quote.c	/^int	is_simple_quote(char c)$/;"	f
+is_simple_quote	is_smth/is_quote.c	/^int	is_simple_quote(char c)$/;"	f
+is_white_space	SAUVEGARDE/execution_test/is_white_space.c	/^int	is_white_space(char c)$/;"	f
+is_white_space	SAUVEGARDE/is_smth/is_white_space.c	/^int	is_white_space(char c)$/;"	f
+is_white_space	SAUVEGARDE/parsing/expansion_test/is_white_space.c	/^int	is_white_space(char c)$/;"	f
+is_white_space	TESTS/execution_test/is_white_space.c	/^int	is_white_space(char c)$/;"	f
+is_white_space	TESTS/expansion_test/is_white_space 2.c	/^int	is_white_space(char c)$/;"	f
+is_white_space	TESTS/expansion_test/is_white_space.c	/^int	is_white_space(char c)$/;"	f
+is_white_space	is_smth/is_white_space.c	/^int	is_white_space(char c)$/;"	f
+is_word	SAUVEGARDE/execution_test/is_token.c	/^int	is_word(char c)$/;"	f
+is_word	SAUVEGARDE/is_smth/is_token.c	/^int	is_word(char c)$/;"	f
+is_word	SAUVEGARDE/parsing/expansion_test/is_token.c	/^int	is_word(char c)$/;"	f
+is_word	TESTS/execution_test/is_token 2.c	/^int	is_word(char c)$/;"	f
+is_word	TESTS/execution_test/is_token.c	/^int	is_word(char c)$/;"	f
+is_word	TESTS/expansion_test/is_token 2.c	/^int	is_word(char c)$/;"	f
+is_word	TESTS/expansion_test/is_token.c	/^int	is_word(char c)$/;"	f
+is_word	is_smth/is_token.c	/^int	is_word(char c)$/;"	f
+join_tokens	SAUVEGARDE/execution_test/parsing_expansion_join_tokens.c	/^int	join_tokens(t_token **new, t_token *curr)$/;"	f
+join_tokens	SAUVEGARDE/parsing/expansion_join_tokens.c	/^int	join_tokens(t_token **new, t_token *curr)$/;"	f
+join_tokens	SAUVEGARDE/parsing/expansion_test/parsing_expansion_join_tokens.c	/^int	join_tokens(t_token **new, t_token *curr)$/;"	f
+join_tokens	TESTS/execution_test/parsing_expansion_join_tokens.c	/^int	join_tokens(t_token **new, t_token *curr)$/;"	f
+join_tokens	TESTS/expansion_test/parsing_expansion_join_tokens 2.c	/^int	join_tokens(t_token **new, t_token *curr)$/;"	f
+join_tokens	TESTS/expansion_test/parsing_expansion_join_tokens.c	/^int	join_tokens(t_token **new, t_token *curr)$/;"	f
+join_tokens	parsing/expansion_join_tokens.c	/^int	join_tokens(t_token **new, t_token *curr)$/;"	f
+link_env	SAUVEGARDE/environnement/envp_routine.c	/^int	link_env(t_env **head, t_env *last)$/;"	f
+link_env	SAUVEGARDE/execution_test/envp_routine.c	/^int	link_env(t_env **head, t_env *last)$/;"	f
+link_env	SAUVEGARDE/parsing/expansion_test/envp_routine.c	/^int	link_env(t_env **head, t_env *last)$/;"	f
+link_env	TESTS/execution_test/envp_routine.c	/^int	link_env(t_env **head, t_env *last)$/;"	f
+link_env	TESTS/expansion_test/envp_routine 2.c	/^int	link_env(t_env **head, t_env *last)$/;"	f
+link_env	TESTS/expansion_test/envp_routine.c	/^int	link_env(t_env **head, t_env *last)$/;"	f
+link_env	environnement/envp_routine.c	/^int	link_env(t_env **head, t_env *last)$/;"	f
+link_token	SAUVEGARDE/execution_test/token_routine.c	/^int	link_token(t_token **head, t_token *new)$/;"	f
+link_token	SAUVEGARDE/parsing/expansion_test/token_routine.c	/^int	link_token(t_token **head, t_token *new)$/;"	f
+link_token	SAUVEGARDE/tokens/token_routine.c	/^int	link_token(t_token **head, t_token *new)$/;"	f
+link_token	TESTS/execution_test/token_routine.c	/^int	link_token(t_token **head, t_token *new)$/;"	f
+link_token	TESTS/expansion_test/token_routine 2.c	/^int	link_token(t_token **head, t_token *new)$/;"	f
+link_token	TESTS/expansion_test/token_routine.c	/^int	link_token(t_token **head, t_token *new)$/;"	f
+link_token	tokens/token_routine.c	/^int	link_token(t_token **head, t_token *new)$/;"	f
+loop_dollars	SAUVEGARDE/execution_test/parsing_expansion_looping.c	/^int	loop_dollars(char *s, int i)$/;"	f
+loop_dollars	SAUVEGARDE/parsing/expansion_looping.c	/^int	loop_dollars(char *s, int i)$/;"	f
+loop_dollars	SAUVEGARDE/parsing/expansion_test/parsing_expansion_looping.c	/^int	loop_dollars(char *s, int i)$/;"	f
+loop_dollars	TESTS/execution_test/parsing_expansion_looping.c	/^int	loop_dollars(char *s, int i)$/;"	f
+loop_dollars	TESTS/expansion_test/parsing_expansion_looping 2.c	/^int	loop_dollars(char *s, int i)$/;"	f
+loop_dollars	TESTS/expansion_test/parsing_expansion_looping.c	/^int	loop_dollars(char *s, int i)$/;"	f
+loop_dollars	parsing/expansion_looping.c	/^int	loop_dollars(char *s, int i)$/;"	f
+loop_through	SAUVEGARDE/execution_test/parsing_expansion_looping.c	/^int	loop_through(char *s, int i)$/;"	f
+loop_through	SAUVEGARDE/parsing/expansion_looping.c	/^int	loop_through(char *s, int i)$/;"	f
+loop_through	SAUVEGARDE/parsing/expansion_test/parsing_expansion_looping.c	/^int	loop_through(char *s, int i)$/;"	f
+loop_through	TESTS/execution_test/parsing_expansion_looping.c	/^int	loop_through(char *s, int i)$/;"	f
+loop_through	TESTS/expansion_test/parsing_expansion_looping 2.c	/^int	loop_through(char *s, int i)$/;"	f
+loop_through	TESTS/expansion_test/parsing_expansion_looping.c	/^int	loop_through(char *s, int i)$/;"	f
+loop_through	parsing/expansion_looping.c	/^int	loop_through(char *s, int i)$/;"	f
+main	SAUVEGARDE/execution_test/main.c	/^int	main(int ac, char **av, char **envp)$/;"	f
+main	SAUVEGARDE/execution_test/sans_readline_main.c	/^int	main(int ac, char **av, char **envp)$/;"	f
+main	SAUVEGARDE/main.c	/^int	main(int ac, char **av, char **envp)$/;"	f
+main	SAUVEGARDE/parsing/expansion_test/main.c	/^int	main(int ac, char **av, char **envp)$/;"	f
+main	SAUVEGARDE/parsing/tests/main_parsing_syntax_errors.c	/^int	main(int ac, char **av)$/;"	f
+main	SAUVEGARDE/parsing/tests/main_parsing_token_extraction.c	/^int	main(int ac, char **av)$/;"	f
+main	SAUVEGARDE/parsing/tests/main_token_routine.c	/^int	main(int ac, char **av)$/;"	f
+main	SAUVEGARDE/test_getenv.c	/^int	main(int ac, char **av, char **envp)$/;"	f
+main	SAUVEGARDE/test_tgetent.c	/^int main() {$/;"	f
+main	TESTS/execution_test/main.c	/^int	main(int ac, char **av, char **envp)$/;"	f
+main	TESTS/execution_test/sans_readline_main.c	/^int	main(int ac, char **av, char **envp)$/;"	f
+main	TESTS/expansion_test/main 2.c	/^int	main(int ac, char **av, char **envp)$/;"	f
+main	TESTS/expansion_test/main.c	/^int	main(int ac, char **av, char **envp)$/;"	f
+main	TESTS/parsing tests/main_parsing_syntax_errors.c	/^int	main(int ac, char **av)$/;"	f
+main	TESTS/parsing tests/main_parsing_token_extraction.c	/^int	main(int ac, char **av)$/;"	f
+main	TESTS/parsing tests/main_token_routine.c	/^int	main(int ac, char **av)$/;"	f
+main	TESTS/test_getenv.c	/^int	main(int ac, char **av, char **envp)$/;"	f
+main	TESTS/test_tgetent 2.c	/^int main() {$/;"	f
+main	TESTS/test_tgetent.c	/^int main() {$/;"	f
+main	main.c	/^int	main(int ac, char **av, char **envp)$/;"	f
+malloc_error_print_message	SAUVEGARDE/execution_test/malloc_error_print_message.c	/^void	malloc_error_print_message(char *s)$/;"	f
+malloc_error_print_message	SAUVEGARDE/malloc_error_print_message.c	/^void	malloc_error_print_message(char *s)$/;"	f
+malloc_error_print_message	SAUVEGARDE/parsing/expansion_test/malloc_error_print_message.c	/^void	malloc_error_print_message(char *s)$/;"	f
+malloc_error_print_message	TESTS/execution_test/malloc_error_print_message 2.c	/^void	malloc_error_print_message(char *s)$/;"	f
+malloc_error_print_message	TESTS/execution_test/malloc_error_print_message.c	/^void	malloc_error_print_message(char *s)$/;"	f
+malloc_error_print_message	TESTS/expansion_test/malloc_error_print_message 2.c	/^void	malloc_error_print_message(char *s)$/;"	f
+malloc_error_print_message	TESTS/expansion_test/malloc_error_print_message.c	/^void	malloc_error_print_message(char *s)$/;"	f
+malloc_error_print_message	malloc_error/malloc_error_print_message.c	/^void	malloc_error_print_message(char *s)$/;"	f
+name_plus_value	SAUVEGARDE/copy_env_tab.c	/^char	*name_plus_value(char *name, char *value)$/;"	f
+name_plus_value	SAUVEGARDE/execution_test/copy_env_tab.c	/^char	*name_plus_value(char *name, char *value)$/;"	f
+name_plus_value	SAUVEGARDE/parsing/expansion_test/copy_env_tab.c	/^char	*name_plus_value(char *name, char *value)$/;"	f
+name_plus_value	TESTS/execution_test/copy_env_tab.c	/^char	*name_plus_value(char *name, char *value)$/;"	f
+name_plus_value	TESTS/expansion_test/copy_env_tab 2.c	/^char	*name_plus_value(char *name, char *value)$/;"	f
+name_plus_value	TESTS/expansion_test/copy_env_tab.c	/^char	*name_plus_value(char *name, char *value)$/;"	f
+name_plus_value	execution/copy_env_tab.c	/^char	*name_plus_value(char *name, char *value)$/;"	f
+new_env	SAUVEGARDE/environnement/envp_routine.c	/^t_env	*new_env(char *envp)$/;"	f
+new_env	SAUVEGARDE/execution_test/envp_routine.c	/^t_env	*new_env(char *envp)$/;"	f
+new_env	SAUVEGARDE/parsing/expansion_test/envp_routine.c	/^t_env	*new_env(char *envp)$/;"	f
+new_env	TESTS/execution_test/envp_routine.c	/^t_env	*new_env(char *envp)$/;"	f
+new_env	TESTS/expansion_test/envp_routine 2.c	/^t_env	*new_env(char *envp)$/;"	f
+new_env	TESTS/expansion_test/envp_routine.c	/^t_env	*new_env(char *envp)$/;"	f
+new_env	environnement/envp_routine.c	/^t_env	*new_env(char *envp)$/;"	f
+new_env_helper	environnement/envp_routine.c	/^int	new_env_helper(char *envp, int end)$/;"	f
+new_id	SAUVEGARDE/execution_test/parsing_expansion_helper.c	/^int	new_id(t_token **new)$/;"	f
+new_id	SAUVEGARDE/parsing/expansion_helper.c	/^int	new_id(t_token **new)$/;"	f
+new_id	SAUVEGARDE/parsing/expansion_test/parsing_expansion_helper.c	/^int	new_id(t_token **new)$/;"	f
+new_id	TESTS/execution_test/parsing_expansion_helper.c	/^int	new_id(t_token **new)$/;"	f
+new_id	TESTS/expansion_test/parsing_expansion_helper 2.c	/^int	new_id(t_token **new)$/;"	f
+new_id	TESTS/expansion_test/parsing_expansion_helper.c	/^int	new_id(t_token **new)$/;"	f
+new_id	parsing/expansion_helper.c	/^int	new_id(t_token **new)$/;"	f
+new_token	SAUVEGARDE/execution_test/token_routine.c	/^t_token	*new_token(char *line, int start, int len)$/;"	f
+new_token	SAUVEGARDE/parsing/expansion_test/token_routine.c	/^t_token	*new_token(char *line, int start, int len)$/;"	f
+new_token	SAUVEGARDE/tokens/token_routine.c	/^t_token	*new_token(char *line, int start, int len)$/;"	f
+new_token	TESTS/execution_test/token_routine.c	/^t_token	*new_token(char *line, int start, int len)$/;"	f
+new_token	TESTS/expansion_test/token_routine 2.c	/^t_token	*new_token(char *line, int start, int len)$/;"	f
+new_token	TESTS/expansion_test/token_routine.c	/^t_token	*new_token(char *line, int start, int len)$/;"	f
+new_token	tokens/token_routine.c	/^t_token	*new_token(char *line, int start, int len)$/;"	f
+next	SAUVEGARDE/execution_test/libft/includes/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list::s_list
+next	SAUVEGARDE/execution_test/minishell.h	/^	struct s_env	*next;$/;"	m	struct:s_env	typeref:struct:s_env::s_env
+next	SAUVEGARDE/execution_test/minishell.h	/^	struct s_token		*next;$/;"	m	struct:s_token	typeref:struct:s_token::s_token
+next	SAUVEGARDE/libft/includes/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list::s_list
+next	SAUVEGARDE/minishell.h	/^	struct s_cmd	*next;$/;"	m	struct:s_cmd	typeref:struct:s_cmd::s_cmd
+next	SAUVEGARDE/minishell.h	/^	struct s_env	*next;$/;"	m	struct:s_env	typeref:struct:s_env::s_env
+next	SAUVEGARDE/minishell.h	/^	struct s_token		*next;$/;"	m	struct:s_token	typeref:struct:s_token::s_token
+next	SAUVEGARDE/parsing/expansion_test/libft/includes/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list::s_list
+next	SAUVEGARDE/parsing/expansion_test/minishell.h	/^	struct s_env	*next;$/;"	m	struct:s_env	typeref:struct:s_env::s_env
+next	SAUVEGARDE/parsing/expansion_test/minishell.h	/^	struct s_token		*next;$/;"	m	struct:s_token	typeref:struct:s_token::s_token
+next	TESTS/execution_test/libft/includes/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list::s_list
+next	TESTS/execution_test/minishell.h	/^	struct s_env	*next;$/;"	m	struct:s_env	typeref:struct:s_env::s_env
+next	TESTS/execution_test/minishell.h	/^	struct s_token		*next;$/;"	m	struct:s_token	typeref:struct:s_token::s_token
+next	TESTS/expansion_test/libft/includes/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list::s_list
+next	TESTS/expansion_test/minishell 2.h	/^	struct s_env	*next;$/;"	m	struct:s_env	typeref:struct:s_env::s_env
+next	TESTS/expansion_test/minishell 2.h	/^	struct s_token		*next;$/;"	m	struct:s_token	typeref:struct:s_token::s_token
+next	TESTS/expansion_test/minishell.h	/^	struct s_env	*next;$/;"	m	struct:s_env	typeref:struct:s_env::s_env
+next	TESTS/expansion_test/minishell.h	/^	struct s_token		*next;$/;"	m	struct:s_token	typeref:struct:s_token::s_token
+next	libft/includes/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list::s_list
+next	minishell.h	/^	struct s_cmd	*next;$/;"	m	struct:s_cmd	typeref:struct:s_cmd::s_cmd
+next	minishell.h	/^	struct s_env	*next;$/;"	m	struct:s_env	typeref:struct:s_env::s_env
+next	minishell.h	/^	struct s_token		*next;$/;"	m	struct:s_token	typeref:struct:s_token::s_token
+not_within_squotes	SAUVEGARDE/execution_test/parsing_expansion_dollar_conditions.c	/^int	not_within_squotes(t_token *curr, int pos)$/;"	f
+not_within_squotes	SAUVEGARDE/parsing/expansion_dollar_conditions.c	/^int	not_within_squotes(t_token *curr, int pos)$/;"	f
+not_within_squotes	SAUVEGARDE/parsing/expansion_test/parsing_expansion_dollar_conditions.c	/^int	not_within_squotes(t_token *curr, int pos)$/;"	f
+not_within_squotes	TESTS/execution_test/parsing_expansion_dollar_conditions.c	/^int	not_within_squotes(t_token *curr, int pos)$/;"	f
+not_within_squotes	TESTS/expansion_test/parsing_expansion_dollar_conditions 2.c	/^int	not_within_squotes(t_token *curr, int pos)$/;"	f
+not_within_squotes	TESTS/expansion_test/parsing_expansion_dollar_conditions.c	/^int	not_within_squotes(t_token *curr, int pos)$/;"	f
+not_within_squotes	parsing/expansion_dollar_conditions.c	/^int	not_within_squotes(t_token *curr, int pos)$/;"	f
+ok	SAUVEGARDE/execution_test/minishell.h	/^	int		ok;$/;"	m	struct:s_bin
+ok	SAUVEGARDE/minishell.h	/^	int		ok;$/;"	m	struct:s_bin
+ok	TESTS/execution_test/minishell.h	/^	int		ok;$/;"	m	struct:s_bin
+one_cmd	execution/exec_one_cmd.c	/^void	one_cmd(t_cmd *cmd, t_cmd **head)$/;"	f
+parsing	SAUVEGARDE/execution_test/parsing.c	/^t_token	*parsing(char *line)$/;"	f
+parsing	SAUVEGARDE/parsing/expansion_test/parsing.c	/^t_token	*parsing(char *line)$/;"	f
+parsing	SAUVEGARDE/parsing/parsing.c	/^t_token	*parsing(char *line)$/;"	f
+parsing	TESTS/execution_test/parsing 2.c	/^t_token	*parsing(char *line)$/;"	f
+parsing	TESTS/execution_test/parsing.c	/^t_token	*parsing(char *line)$/;"	f
+parsing	TESTS/expansion_test/parsing 2.c	/^t_token	*parsing(char *line)$/;"	f
+parsing	TESTS/expansion_test/parsing.c	/^t_token	*parsing(char *line)$/;"	f
+parsing	parsing/parsing.c	/^t_token	*parsing(char *line)$/;"	f
+path	SAUVEGARDE/execution_test/minishell.h	/^	char	**path;$/;"	m	struct:s_cmd
+path	SAUVEGARDE/execution_test/minishell.h	/^	char	*path;$/;"	m	struct:s_bin
+path	SAUVEGARDE/minishell.h	/^	char	**path;$/;"	m	struct:s_cmd
+path	SAUVEGARDE/minishell.h	/^	char	*path;$/;"	m	struct:s_bin
+path	SAUVEGARDE/parsing/expansion_test/minishell.h	/^	char	**path;$/;"	m	struct:s_cmd
+path	TESTS/execution_test/minishell.h	/^	char	**path;$/;"	m	struct:s_cmd
+path	TESTS/execution_test/minishell.h	/^	char	*path;$/;"	m	struct:s_bin
+path	TESTS/expansion_test/minishell 2.h	/^	char	**path;$/;"	m	struct:s_cmd
+path	TESTS/expansion_test/minishell.h	/^	char	**path;$/;"	m	struct:s_cmd
+path	minishell.h	/^	char	*path;$/;"	m	struct:s_cmd
+path_index	SAUVEGARDE/cmd_is_bin.c	/^int	path_index(t_bin *bin, char **table)$/;"	f
+path_index	SAUVEGARDE/execution_test/cmd_is_bin.c	/^int	path_index(t_bin *bin, char **table)$/;"	f
+path_index	TESTS/execution_test/cmd_is_bin.c	/^int	path_index(t_bin *bin, char **table)$/;"	f
+pid	minishell.h	/^	pid_t	pid;$/;"	m	struct:s_cmd
+power	SAUVEGARDE/execution_test/libft/libft/power.c	/^int	power(int str_base, int power)$/;"	f
+power	SAUVEGARDE/libft/libft/power.c	/^int	power(int str_base, int power)$/;"	f
+power	SAUVEGARDE/parsing/expansion_test/libft/libft/power.c	/^int	power(int str_base, int power)$/;"	f
+power	TESTS/execution_test/libft/libft/power.c	/^int	power(int str_base, int power)$/;"	f
+power	TESTS/expansion_test/libft/libft/power.c	/^int	power(int str_base, int power)$/;"	f
+power	libft/libft/power.c	/^int	power(int str_base, int power)$/;"	f
+prepare_expand	SAUVEGARDE/execution_test/parsing_expansion_helper.c	/^int	prepare_expand(t_token *curr, int i)$/;"	f
+prepare_expand	SAUVEGARDE/parsing/expansion_helper.c	/^int	prepare_expand(t_token *curr, int i)$/;"	f
+prepare_expand	SAUVEGARDE/parsing/expansion_test/parsing_expansion_helper.c	/^int	prepare_expand(t_token *curr, int i)$/;"	f
+prepare_expand	TESTS/execution_test/parsing_expansion_helper.c	/^int	prepare_expand(t_token *curr, int i)$/;"	f
+prepare_expand	TESTS/expansion_test/parsing_expansion_helper 2.c	/^int	prepare_expand(t_token *curr, int i)$/;"	f
+prepare_expand	TESTS/expansion_test/parsing_expansion_helper.c	/^int	prepare_expand(t_token *curr, int i)$/;"	f
+prepare_expand	parsing/expansion_helper.c	/^int	prepare_expand(t_token *curr, int i)$/;"	f
+prepare_forstash	SAUVEGARDE/execution_test/libft/get_next_line/get_next_line_utils.c	/^void	prepare_forstash(char **line, char **buffer)$/;"	f
+prepare_forstash	SAUVEGARDE/libft/get_next_line/get_next_line_utils.c	/^void	prepare_forstash(char **line, char **buffer)$/;"	f
+prepare_forstash	SAUVEGARDE/parsing/expansion_test/libft/get_next_line/get_next_line_utils.c	/^void	prepare_forstash(char **line, char **buffer)$/;"	f
+prepare_forstash	TESTS/execution_test/libft/get_next_line/get_next_line_utils.c	/^void	prepare_forstash(char **line, char **buffer)$/;"	f
+prepare_forstash	TESTS/expansion_test/libft/get_next_line/get_next_line_utils.c	/^void	prepare_forstash(char **line, char **buffer)$/;"	f
+prepare_forstash	libft/get_next_line/get_next_line_utils.c	/^void	prepare_forstash(char **line, char **buffer)$/;"	f
+print_chdir_error	builtins/cd.c	/^static void	print_chdir_error(char *arg, char *err)$/;"	f	file:
+print_cmd	SAUVEGARDE/main.c	/^void	print_cmd(t_cmd **head)$/;"	f
+print_cmd	main.c	/^void	print_cmd(t_cmd **head)$/;"	f
+print_echo	SAUVEGARDE/builtins.c	/^void	print_echo(char **s, int i)$/;"	f
+print_echo	builtins/echo.c	/^static void	print_echo(char **s, int i)$/;"	f	file:
+print_env	SAUVEGARDE/execution_test/main.c	/^void	print_env()$/;"	f
+print_env	SAUVEGARDE/execution_test/sans_readline_main.c	/^void	print_env(t_env	**head)$/;"	f
+print_env	SAUVEGARDE/global_variable/init_global.c	/^void	print_env()$/;"	f
+print_env	SAUVEGARDE/parsing/expansion_test/main.c	/^void	print_env(t_env	**head)$/;"	f
+print_env	TESTS/execution_test/main.c	/^void	print_env()$/;"	f
+print_env	TESTS/execution_test/sans_readline_main.c	/^void	print_env(t_env	**head)$/;"	f
+print_env	TESTS/expansion_test/main 2.c	/^void	print_env(t_env	**head)$/;"	f
+print_env	TESTS/expansion_test/main.c	/^void	print_env(t_env	**head)$/;"	f
+print_export_unset_error	builtins/export_unset_helper.c	/^void	print_export_unset_error(char *identifier, char *command)$/;"	f
+print_getcwd_error	builtins/pwd.c	/^void	print_getcwd_error(char *s)$/;"	f
+print_syntax_error_char	SAUVEGARDE/execution_test/parsing_syntax_errors_print_message.c	/^void	print_syntax_error_char(char c)$/;"	f
+print_syntax_error_char	SAUVEGARDE/parsing/expansion_test/parsing_syntax_errors_print_message.c	/^void	print_syntax_error_char(char c)$/;"	f
+print_syntax_error_char	SAUVEGARDE/parsing/syntax_errors_print_message.c	/^void	print_syntax_error_char(char c)$/;"	f
+print_syntax_error_char	TESTS/execution_test/parsing_syntax_errors_print_message.c	/^void	print_syntax_error_char(char c)$/;"	f
+print_syntax_error_char	TESTS/expansion_test/parsing_syntax_errors_print_message 2.c	/^void	print_syntax_error_char(char c)$/;"	f
+print_syntax_error_char	TESTS/expansion_test/parsing_syntax_errors_print_message.c	/^void	print_syntax_error_char(char c)$/;"	f
+print_syntax_error_char	parsing/syntax_errors_print_message.c	/^void	print_syntax_error_char(char c)$/;"	f
+print_syntax_error_dchar	SAUVEGARDE/execution_test/parsing_syntax_errors_print_message.c	/^void	print_syntax_error_dchar(char c)$/;"	f
+print_syntax_error_dchar	SAUVEGARDE/parsing/expansion_test/parsing_syntax_errors_print_message.c	/^void	print_syntax_error_dchar(char c)$/;"	f
+print_syntax_error_dchar	SAUVEGARDE/parsing/syntax_errors_print_message.c	/^void	print_syntax_error_dchar(char c)$/;"	f
+print_syntax_error_dchar	TESTS/execution_test/parsing_syntax_errors_print_message.c	/^void	print_syntax_error_dchar(char c)$/;"	f
+print_syntax_error_dchar	TESTS/expansion_test/parsing_syntax_errors_print_message 2.c	/^void	print_syntax_error_dchar(char c)$/;"	f
+print_syntax_error_dchar	TESTS/expansion_test/parsing_syntax_errors_print_message.c	/^void	print_syntax_error_dchar(char c)$/;"	f
+print_syntax_error_dchar	parsing/syntax_errors_print_message.c	/^void	print_syntax_error_dchar(char c)$/;"	f
+print_syntax_error_str	SAUVEGARDE/execution_test/parsing_syntax_errors_print_message.c	/^void	print_syntax_error_str(char *s)$/;"	f
+print_syntax_error_str	SAUVEGARDE/parsing/expansion_test/parsing_syntax_errors_print_message.c	/^void	print_syntax_error_str(char *s)$/;"	f
+print_syntax_error_str	SAUVEGARDE/parsing/syntax_errors_print_message.c	/^void	print_syntax_error_str(char *s)$/;"	f
+print_syntax_error_str	TESTS/execution_test/parsing_syntax_errors_print_message.c	/^void	print_syntax_error_str(char *s)$/;"	f
+print_syntax_error_str	TESTS/expansion_test/parsing_syntax_errors_print_message 2.c	/^void	print_syntax_error_str(char *s)$/;"	f
+print_syntax_error_str	TESTS/expansion_test/parsing_syntax_errors_print_message.c	/^void	print_syntax_error_str(char *s)$/;"	f
+print_syntax_error_str	parsing/syntax_errors_print_message.c	/^void	print_syntax_error_str(char *s)$/;"	f
+print_token	SAUVEGARDE/execution_test/parsing.c	/^void	print_token(t_token **head)$/;"	f
+print_token	SAUVEGARDE/parsing/expansion_test/parsing.c	/^void	print_token(t_token **head)$/;"	f
+print_token	SAUVEGARDE/parsing/parsing.c	/^void	print_token(t_token **head)$/;"	f
+print_token	TESTS/execution_test/parsing 2.c	/^void	print_token(t_token **head)$/;"	f
+print_token	TESTS/execution_test/parsing.c	/^void	print_token(t_token **head)$/;"	f
+print_token	TESTS/expansion_test/parsing 2.c	/^void	print_token(t_token **head)$/;"	f
+print_token	TESTS/expansion_test/parsing.c	/^void	print_token(t_token **head)$/;"	f
+print_token	parsing/parsing.c	/^void	print_token(t_token **head)$/;"	f
+quote_removing	SAUVEGARDE/execution_test/parsing_quote_removing.c	/^int	quote_removing(t_token **head, t_token *curr, int pos)$/;"	f
+quote_removing	SAUVEGARDE/parsing/expansion_test/parsing_quote_removing.c	/^int	quote_removing(t_token **head, t_token *curr, int pos)$/;"	f
+quote_removing	SAUVEGARDE/parsing/quote_removing.c	/^int	quote_removing(t_token **head, t_token *curr, int pos)$/;"	f
+quote_removing	TESTS/execution_test/parsing_quote_removing.c	/^int	quote_removing(t_token **head, t_token *curr, int pos)$/;"	f
+quote_removing	TESTS/expansion_test/parsing_quote_removing 2.c	/^int	quote_removing(t_token **head, t_token *curr, int pos)$/;"	f
+quote_removing	TESTS/expansion_test/parsing_quote_removing.c	/^int	quote_removing(t_token **head, t_token *curr, int pos)$/;"	f
+quote_removing	parsing/quote_removing.c	/^int	quote_removing(t_token **head, t_token *curr, int pos)$/;"	f
+read_fd	SAUVEGARDE/execution_test/libft/get_next_line/get_next_line.c	/^char	*read_fd(char *line, int fd, int *error)$/;"	f
+read_fd	SAUVEGARDE/libft/get_next_line/get_next_line.c	/^char	*read_fd(char *line, int fd, int *error)$/;"	f
+read_fd	SAUVEGARDE/parsing/expansion_test/libft/get_next_line/get_next_line.c	/^char	*read_fd(char *line, int fd, int *error)$/;"	f
+read_fd	TESTS/execution_test/libft/get_next_line/get_next_line.c	/^char	*read_fd(char *line, int fd, int *error)$/;"	f
+read_fd	TESTS/expansion_test/libft/get_next_line/get_next_line.c	/^char	*read_fd(char *line, int fd, int *error)$/;"	f
+read_fd	libft/get_next_line/get_next_line.c	/^char	*read_fd(char *line, int fd, int *error)$/;"	f
+readline_routine	SAUVEGARDE/main.c	/^char	*readline_routine(void)$/;"	f
+readline_routine	main.c	/^char	*readline_routine(void)$/;"	f
+redir	SAUVEGARDE/execution_test/minishell.h	/^	char	**redir;$/;"	m	struct:s_cmd
+redir	SAUVEGARDE/minishell.h	/^	char	**redir;$/;"	m	struct:s_cmd
+redir	SAUVEGARDE/parsing/expansion_test/minishell.h	/^	char	**redir;$/;"	m	struct:s_cmd
+redir	TESTS/execution_test/minishell.h	/^	char	**redir;$/;"	m	struct:s_cmd
+redir	TESTS/expansion_test/minishell 2.h	/^	char	**redir;$/;"	m	struct:s_cmd
+redir	TESTS/expansion_test/minishell.h	/^	char	**redir;$/;"	m	struct:s_cmd
+redir	minishell.h	/^	char	**redir;$/;"	m	struct:s_cmd
+remove_q	SAUVEGARDE/execution_test/parsing_quote_removing.c	/^int	remove_q(t_token *curr, int pos)$/;"	f
+remove_q	SAUVEGARDE/parsing/expansion_test/parsing_quote_removing.c	/^int	remove_q(t_token *curr, int pos)$/;"	f
+remove_q	SAUVEGARDE/parsing/quote_removing.c	/^int	remove_q(t_token *curr, int pos)$/;"	f
+remove_q	TESTS/execution_test/parsing_quote_removing.c	/^int	remove_q(t_token *curr, int pos)$/;"	f
+remove_q	TESTS/expansion_test/parsing_quote_removing 2.c	/^int	remove_q(t_token *curr, int pos)$/;"	f
+remove_q	TESTS/expansion_test/parsing_quote_removing.c	/^int	remove_q(t_token *curr, int pos)$/;"	f
+remove_q	parsing/quote_removing.c	/^int	remove_q(t_token *curr, int pos)$/;"	f
+replace_content	SAUVEGARDE/execution_test/parsing_expansion_expand_var_helper.c	/^static int	replace_content(t_token *tmp, char *s)$/;"	f	file:
+replace_content	SAUVEGARDE/parsing/expansion_expand_var_helper.c	/^static int	replace_content(t_token *tmp, char *s)$/;"	f	file:
+replace_content	SAUVEGARDE/parsing/expansion_test/parsing_expansion_expand_var_helper.c	/^static int	replace_content(t_token *tmp, char *s)$/;"	f	file:
+replace_content	TESTS/execution_test/parsing_expansion_expand_var_helper.c	/^static int	replace_content(t_token *tmp, char *s)$/;"	f	file:
+replace_content	TESTS/expansion_test/parsing_expansion_expand_var_helper 2.c	/^static int	replace_content(t_token *tmp, char *s)$/;"	f	file:
+replace_content	TESTS/expansion_test/parsing_expansion_expand_var_helper.c	/^static int	replace_content(t_token *tmp, char *s)$/;"	f	file:
+replace_content	parsing/expansion_expand_var_helper.c	/^static int	replace_content(t_token *tmp, char *s)$/;"	f	file:
+reset_env_tab	execution.c	/^static int	reset_env_tab(void)$/;"	f	file:
+s_bin	SAUVEGARDE/execution_test/minishell.h	/^typedef	struct	s_bin$/;"	s
+s_bin	SAUVEGARDE/minishell.h	/^typedef	struct	s_bin$/;"	s
+s_bin	TESTS/execution_test/minishell.h	/^typedef	struct	s_bin$/;"	s
+s_cmd	SAUVEGARDE/execution_test/minishell.h	/^typedef	struct	s_cmd$/;"	s
+s_cmd	SAUVEGARDE/minishell.h	/^typedef	struct	s_cmd$/;"	s
+s_cmd	SAUVEGARDE/parsing/expansion_test/minishell.h	/^typedef	struct	s_cmd$/;"	s
+s_cmd	TESTS/execution_test/minishell.h	/^typedef	struct	s_cmd$/;"	s
+s_cmd	TESTS/expansion_test/minishell 2.h	/^typedef	struct	s_cmd$/;"	s
+s_cmd	TESTS/expansion_test/minishell.h	/^typedef	struct	s_cmd$/;"	s
+s_cmd	minishell.h	/^typedef	struct	s_cmd$/;"	s
+s_env	SAUVEGARDE/execution_test/minishell.h	/^typedef struct s_env$/;"	s
+s_env	SAUVEGARDE/minishell.h	/^typedef struct s_env$/;"	s
+s_env	SAUVEGARDE/parsing/expansion_test/minishell.h	/^typedef struct s_env$/;"	s
+s_env	TESTS/execution_test/minishell.h	/^typedef struct s_env$/;"	s
+s_env	TESTS/expansion_test/minishell 2.h	/^typedef struct s_env$/;"	s
+s_env	TESTS/expansion_test/minishell.h	/^typedef struct s_env$/;"	s
+s_env	minishell.h	/^typedef struct s_env$/;"	s
+s_list	SAUVEGARDE/execution_test/libft/includes/libft.h	/^typedef struct s_list$/;"	s
+s_list	SAUVEGARDE/libft/includes/libft.h	/^typedef struct s_list$/;"	s
+s_list	SAUVEGARDE/parsing/expansion_test/libft/includes/libft.h	/^typedef struct s_list$/;"	s
+s_list	TESTS/execution_test/libft/includes/libft.h	/^typedef struct s_list$/;"	s
+s_list	TESTS/expansion_test/libft/includes/libft.h	/^typedef struct s_list$/;"	s
+s_list	libft/includes/libft.h	/^typedef struct s_list$/;"	s
+s_shell	SAUVEGARDE/execution_test/minishell.h	/^typedef struct s_shell$/;"	s
+s_shell	SAUVEGARDE/minishell.h	/^typedef struct s_shell$/;"	s
+s_shell	SAUVEGARDE/parsing/expansion_test/minishell.h	/^typedef struct s_shell$/;"	s
+s_shell	TESTS/execution_test/minishell.h	/^typedef struct s_shell$/;"	s
+s_shell	TESTS/expansion_test/minishell 2.h	/^typedef struct s_shell$/;"	s
+s_shell	TESTS/expansion_test/minishell.h	/^typedef struct s_shell$/;"	s
+s_shell	minishell.h	/^typedef struct s_shell$/;"	s
+s_token	SAUVEGARDE/execution_test/minishell.h	/^typedef struct s_token$/;"	s
+s_token	SAUVEGARDE/minishell.h	/^typedef struct s_token$/;"	s
+s_token	SAUVEGARDE/parsing/expansion_test/minishell.h	/^typedef struct s_token$/;"	s
+s_token	TESTS/execution_test/minishell.h	/^typedef struct s_token$/;"	s
+s_token	TESTS/expansion_test/minishell 2.h	/^typedef struct s_token$/;"	s
+s_token	TESTS/expansion_test/minishell.h	/^typedef struct s_token$/;"	s
+s_token	minishell.h	/^typedef struct s_token$/;"	s
+save_env	SAUVEGARDE/execution_test/minishell.h	/^	char	**save_env;$/;"	m	struct:s_shell
+save_env	SAUVEGARDE/minishell.h	/^	char	**save_env; \/\/$/;"	m	struct:s_shell
+save_env	SAUVEGARDE/parsing/expansion_test/minishell.h	/^	char	**save_env;$/;"	m	struct:s_shell
+save_env	TESTS/execution_test/minishell.h	/^	char	**save_env;$/;"	m	struct:s_shell
+save_env	TESTS/expansion_test/minishell 2.h	/^	char	**save_env;$/;"	m	struct:s_shell
+save_env	TESTS/expansion_test/minishell.h	/^	char	**save_env;$/;"	m	struct:s_shell
+save_env	minishell.h	/^	char	**save_env; \/\/$/;"	m	struct:s_shell
+search_path	execution/search_path_in_env_table.c	/^int	search_path(t_cmd *cmd, char **env)$/;"	f
+set_id	SAUVEGARDE/execution_test/token_routine_set_id.c	/^void	set_id(t_token *token)$/;"	f
+set_id	SAUVEGARDE/parsing/expansion_test/token_routine_set_id.c	/^void	set_id(t_token *token)$/;"	f
+set_id	SAUVEGARDE/tokens/token_routine_set_id.c	/^void	set_id(t_token *token)$/;"	f
+set_id	TESTS/execution_test/token_routine_set_id.c	/^void	set_id(t_token *token)$/;"	f
+set_id	TESTS/expansion_test/token_routine_set_id 2.c	/^void	set_id(t_token *token)$/;"	f
+set_id	TESTS/expansion_test/token_routine_set_id.c	/^void	set_id(t_token *token)$/;"	f
+set_id	tokens/token_routine_set_id.c	/^void	set_id(t_token *token)$/;"	f
+set_id_expansion	SAUVEGARDE/execution_test/token_routine_set_id.c	/^int	set_id_expansion(t_token *token)$/;"	f
+set_id_expansion	SAUVEGARDE/parsing/expansion_test/token_routine_set_id.c	/^int	set_id_expansion(t_token *token)$/;"	f
+set_id_expansion	SAUVEGARDE/tokens/token_routine_set_id.c	/^int	set_id_expansion(t_token *token)$/;"	f
+set_id_expansion	TESTS/execution_test/token_routine_set_id.c	/^int	set_id_expansion(t_token *token)$/;"	f
+set_id_expansion	TESTS/expansion_test/token_routine_set_id 2.c	/^int	set_id_expansion(t_token *token)$/;"	f
+set_id_expansion	TESTS/expansion_test/token_routine_set_id.c	/^int	set_id_expansion(t_token *token)$/;"	f
+set_id_expansion	tokens/token_routine_set_id.c	/^int	set_id_expansion(t_token *token)$/;"	f
+shell_no_env	SAUVEGARDE/execution_test/main.c	/^int	shell_no_env()$/;"	f
+shell_no_env	SAUVEGARDE/global_variable/init_global.c	/^int	shell_no_env()$/;"	f
+shell_no_env	TESTS/execution_test/main.c	/^int	shell_no_env()$/;"	f
+shell_no_env	global_variable/init_global.c	/^static int	shell_no_env(void)$/;"	f	file:
+sig_handler	SAUVEGARDE/execution_test/launch_setup.c	/^int	sig_handler(void)$/;"	f
+sig_handler	SAUVEGARDE/launch_setup.c	/^int	sig_handler(void)$/;"	f
+sig_handler	TESTS/execution_test/launch_setup.c	/^int	sig_handler(void)$/;"	f
+sig_handler	signal_handler/launch_setup.c	/^int	sig_handler(void)$/;"	f
+size_echo_cmd	builtins/echo.c	/^static int	size_echo_cmd(char **s)$/;"	f	file:
+size_tab2d	execution/execution_utils.c	/^int	size_tab2d(char **s)$/;"	f
+size_var	SAUVEGARDE/execution_test/parsing_expansion_expand_var_helper.c	/^int	size_var(char *s)$/;"	f
+size_var	SAUVEGARDE/parsing/expansion_expand_var_helper.c	/^int	size_var(char *s)$/;"	f
+size_var	SAUVEGARDE/parsing/expansion_test/parsing_expansion_expand_var_helper.c	/^int	size_var(char *s)$/;"	f
+size_var	TESTS/execution_test/parsing_expansion_expand_var_helper.c	/^int	size_var(char *s)$/;"	f
+size_var	TESTS/expansion_test/parsing_expansion_expand_var_helper 2.c	/^int	size_var(char *s)$/;"	f
+size_var	TESTS/expansion_test/parsing_expansion_expand_var_helper.c	/^int	size_var(char *s)$/;"	f
+size_var	parsing/expansion_expand_var_helper.c	/^int	size_var(char *s)$/;"	f
+split_path	SAUVEGARDE/cmd_is_bin.c	/^int	split_path(t_bin *bin)$/;"	f
+split_path	SAUVEGARDE/execution_test/cmd_is_bin.c	/^int	split_path(t_bin *bin)$/;"	f
+split_path	TESTS/execution_test/cmd_is_bin.c	/^int	split_path(t_bin *bin)$/;"	f
+split_tokens	SAUVEGARDE/execution_test/parsing_expansion_helper.c	/^int	split_tokens(t_token **new, char *s, int start, int len)$/;"	f
+split_tokens	SAUVEGARDE/parsing/expansion_helper.c	/^int	split_tokens(t_token **new, char *s, int start, int len)$/;"	f
+split_tokens	SAUVEGARDE/parsing/expansion_test/parsing_expansion_helper.c	/^int	split_tokens(t_token **new, char *s, int start, int len)$/;"	f
+split_tokens	TESTS/execution_test/parsing_expansion_helper.c	/^int	split_tokens(t_token **new, char *s, int start, int len)$/;"	f
+split_tokens	TESTS/expansion_test/parsing_expansion_helper 2.c	/^int	split_tokens(t_token **new, char *s, int start, int len)$/;"	f
+split_tokens	TESTS/expansion_test/parsing_expansion_helper.c	/^int	split_tokens(t_token **new, char *s, int start, int len)$/;"	f
+split_tokens	parsing/expansion_helper.c	/^int	split_tokens(t_token **new, char *s, int start, int len)$/;"	f
+splitted_path	SAUVEGARDE/execution_test/minishell.h	/^	char	**splitted_path;$/;"	m	struct:s_bin
+splitted_path	SAUVEGARDE/minishell.h	/^	char	**splitted_path;$/;"	m	struct:s_bin
+splitted_path	TESTS/execution_test/minishell.h	/^	char	**splitted_path;$/;"	m	struct:s_bin
+status	minishell.h	/^	int		status;$/;"	m	struct:s_cmd
+str_lowercase	SAUVEGARDE/execution_test/libft/libft/str_lowercase.c	/^char	*str_lowercase(char *str)$/;"	f
+str_lowercase	SAUVEGARDE/libft/libft/str_lowercase.c	/^char	*str_lowercase(char *str)$/;"	f
+str_lowercase	SAUVEGARDE/parsing/expansion_test/libft/libft/str_lowercase.c	/^char	*str_lowercase(char *str)$/;"	f
+str_lowercase	TESTS/execution_test/libft/libft/str_lowercase.c	/^char	*str_lowercase(char *str)$/;"	f
+str_lowercase	TESTS/expansion_test/libft/libft/str_lowercase.c	/^char	*str_lowercase(char *str)$/;"	f
+str_lowercase	libft/libft/str_lowercase.c	/^char	*str_lowercase(char *str)$/;"	f
+string_replace	SAUVEGARDE/execution_test/parsing_quote_removing.c	/^int	string_replace(t_token *curr, int start, int pos)$/;"	f
+string_replace	SAUVEGARDE/parsing/expansion_test/parsing_quote_removing.c	/^int	string_replace(t_token *curr, int start, int pos)$/;"	f
+string_replace	SAUVEGARDE/parsing/quote_removing.c	/^int	string_replace(t_token *curr, int start, int pos)$/;"	f
+string_replace	TESTS/execution_test/parsing_quote_removing.c	/^int	string_replace(t_token *curr, int start, int pos)$/;"	f
+string_replace	TESTS/expansion_test/parsing_quote_removing 2.c	/^int	string_replace(t_token *curr, int start, int pos)$/;"	f
+string_replace	TESTS/expansion_test/parsing_quote_removing.c	/^int	string_replace(t_token *curr, int start, int pos)$/;"	f
+string_replace	parsing/quote_removing.c	/^int	string_replace(t_token *curr, int start, int pos)$/;"	f
+syntax_error_check	SAUVEGARDE/execution_test/parsing_syntax_errors.c	/^int	syntax_error_check(char *s)$/;"	f
+syntax_error_check	SAUVEGARDE/parsing/expansion_test/parsing_syntax_errors.c	/^int	syntax_error_check(char *s)$/;"	f
+syntax_error_check	SAUVEGARDE/parsing/syntax_errors.c	/^int	syntax_error_check(char *s)$/;"	f
+syntax_error_check	TESTS/execution_test/parsing_syntax_errors.c	/^int	syntax_error_check(char *s)$/;"	f
+syntax_error_check	TESTS/expansion_test/parsing_syntax_errors 2.c	/^int	syntax_error_check(char *s)$/;"	f
+syntax_error_check	TESTS/expansion_test/parsing_syntax_errors.c	/^int	syntax_error_check(char *s)$/;"	f
+syntax_error_check	parsing/syntax_errors.c	/^int	syntax_error_check(char *s)$/;"	f
+t_bin	SAUVEGARDE/execution_test/minishell.h	/^}	t_bin;$/;"	t	typeref:struct:s_bin
+t_bin	SAUVEGARDE/minishell.h	/^}	t_bin;$/;"	t	typeref:struct:s_bin
+t_bin	TESTS/execution_test/minishell.h	/^}	t_bin;$/;"	t	typeref:struct:s_bin
+t_cmd	SAUVEGARDE/execution_test/minishell.h	/^}	t_cmd;$/;"	t	typeref:struct:s_cmd
+t_cmd	SAUVEGARDE/minishell.h	/^}	t_cmd;$/;"	t	typeref:struct:s_cmd
+t_cmd	SAUVEGARDE/parsing/expansion_test/minishell.h	/^}	t_cmd;$/;"	t	typeref:struct:s_cmd
+t_cmd	TESTS/execution_test/minishell.h	/^}	t_cmd;$/;"	t	typeref:struct:s_cmd
+t_cmd	TESTS/expansion_test/minishell 2.h	/^}	t_cmd;$/;"	t	typeref:struct:s_cmd
+t_cmd	TESTS/expansion_test/minishell.h	/^}	t_cmd;$/;"	t	typeref:struct:s_cmd
+t_cmd	minishell.h	/^}	t_cmd;$/;"	t	typeref:struct:s_cmd
+t_env	SAUVEGARDE/execution_test/minishell.h	/^}	t_env;$/;"	t	typeref:struct:s_env
+t_env	SAUVEGARDE/minishell.h	/^}	t_env;$/;"	t	typeref:struct:s_env
+t_env	SAUVEGARDE/parsing/expansion_test/minishell.h	/^}	t_env;$/;"	t	typeref:struct:s_env
+t_env	TESTS/execution_test/minishell.h	/^}	t_env;$/;"	t	typeref:struct:s_env
+t_env	TESTS/expansion_test/minishell 2.h	/^}	t_env;$/;"	t	typeref:struct:s_env
+t_env	TESTS/expansion_test/minishell.h	/^}	t_env;$/;"	t	typeref:struct:s_env
+t_env	minishell.h	/^}	t_env;$/;"	t	typeref:struct:s_env
+t_list	SAUVEGARDE/execution_test/libft/includes/libft.h	/^}					t_list;$/;"	t	typeref:struct:s_list
+t_list	SAUVEGARDE/libft/includes/libft.h	/^}					t_list;$/;"	t	typeref:struct:s_list
+t_list	SAUVEGARDE/parsing/expansion_test/libft/includes/libft.h	/^}					t_list;$/;"	t	typeref:struct:s_list
+t_list	TESTS/execution_test/libft/includes/libft.h	/^}					t_list;$/;"	t	typeref:struct:s_list
+t_list	TESTS/expansion_test/libft/includes/libft.h	/^}					t_list;$/;"	t	typeref:struct:s_list
+t_list	libft/includes/libft.h	/^}					t_list;$/;"	t	typeref:struct:s_list
+t_shell	SAUVEGARDE/execution_test/minishell.h	/^}	t_shell;$/;"	t	typeref:struct:s_shell
+t_shell	SAUVEGARDE/minishell.h	/^}	t_shell;$/;"	t	typeref:struct:s_shell
+t_shell	SAUVEGARDE/parsing/expansion_test/minishell.h	/^}	t_shell;$/;"	t	typeref:struct:s_shell
+t_shell	TESTS/execution_test/minishell.h	/^}	t_shell;$/;"	t	typeref:struct:s_shell
+t_shell	TESTS/expansion_test/minishell 2.h	/^}	t_shell;$/;"	t	typeref:struct:s_shell
+t_shell	TESTS/expansion_test/minishell.h	/^}	t_shell;$/;"	t	typeref:struct:s_shell
+t_shell	minishell.h	/^}	t_shell;$/;"	t	typeref:struct:s_shell
+t_token	SAUVEGARDE/execution_test/minishell.h	/^}	t_token;$/;"	t	typeref:struct:s_token
+t_token	SAUVEGARDE/minishell.h	/^}	t_token;$/;"	t	typeref:struct:s_token
+t_token	SAUVEGARDE/parsing/expansion_test/minishell.h	/^}	t_token;$/;"	t	typeref:struct:s_token
+t_token	TESTS/execution_test/minishell.h	/^}	t_token;$/;"	t	typeref:struct:s_token
+t_token	TESTS/expansion_test/minishell 2.h	/^}	t_token;$/;"	t	typeref:struct:s_token
+t_token	TESTS/expansion_test/minishell.h	/^}	t_token;$/;"	t	typeref:struct:s_token
+t_token	minishell.h	/^}	t_token;$/;"	t	typeref:struct:s_token
+there_is_n	SAUVEGARDE/execution_test/libft/get_next_line/get_next_line_utils.c	/^int	there_is_n(char *line)$/;"	f
+there_is_n	SAUVEGARDE/libft/get_next_line/get_next_line_utils.c	/^int	there_is_n(char *line)$/;"	f
+there_is_n	SAUVEGARDE/parsing/expansion_test/libft/get_next_line/get_next_line_utils.c	/^int	there_is_n(char *line)$/;"	f
+there_is_n	TESTS/execution_test/libft/get_next_line/get_next_line_utils.c	/^int	there_is_n(char *line)$/;"	f
+there_is_n	TESTS/expansion_test/libft/get_next_line/get_next_line_utils.c	/^int	there_is_n(char *line)$/;"	f
+there_is_n	libft/get_next_line/get_next_line_utils.c	/^int	there_is_n(char *line)$/;"	f
+token_linked_list	SAUVEGARDE/execution_test/token_routine.c	/^int	token_linked_list(t_token **head, char *line, int start, int len)$/;"	f
+token_linked_list	SAUVEGARDE/parsing/expansion_test/token_routine.c	/^int	token_linked_list(t_token **head, char *line, int start, int len)$/;"	f
+token_linked_list	SAUVEGARDE/tokens/token_routine.c	/^int	token_linked_list(t_token **head, char *line, int start, int len)$/;"	f
+token_linked_list	TESTS/execution_test/token_routine.c	/^int	token_linked_list(t_token **head, char *line, int start, int len)$/;"	f
+token_linked_list	TESTS/expansion_test/token_routine 2.c	/^int	token_linked_list(t_token **head, char *line, int start, int len)$/;"	f
+token_linked_list	TESTS/expansion_test/token_routine.c	/^int	token_linked_list(t_token **head, char *line, int start, int len)$/;"	f
+token_linked_list	tokens/token_routine.c	/^int	token_linked_list(t_token **head, char *line, int start, int len)$/;"	f
+token_list_size	SAUVEGARDE/execution_test/token_routine_delete.c	/^int	token_list_size(t_token	**head)$/;"	f
+token_list_size	SAUVEGARDE/parsing/expansion_test/token_routine_delete.c	/^int	token_list_size(t_token	**head)$/;"	f
+token_list_size	SAUVEGARDE/tokens/token_routine_delete.c	/^int	token_list_size(t_token	**head)$/;"	f
+token_list_size	TESTS/execution_test/token_routine_delete.c	/^int	token_list_size(t_token	**head)$/;"	f
+token_list_size	TESTS/expansion_test/token_routine_delete 2.c	/^int	token_list_size(t_token	**head)$/;"	f
+token_list_size	TESTS/expansion_test/token_routine_delete.c	/^int	token_list_size(t_token	**head)$/;"	f
+token_list_size	tokens/token_routine_delete.c	/^int	token_list_size(t_token	**head)$/;"	f
+transform	SAUVEGARDE/execution_test/libft/libft/ft_atoi_base.c	/^int	transform(char c)$/;"	f
+transform	SAUVEGARDE/libft/libft/ft_atoi_base.c	/^int	transform(char c)$/;"	f
+transform	SAUVEGARDE/parsing/expansion_test/libft/libft/ft_atoi_base.c	/^int	transform(char c)$/;"	f
+transform	TESTS/execution_test/libft/libft/ft_atoi_base.c	/^int	transform(char c)$/;"	f
+transform	TESTS/expansion_test/libft/libft/ft_atoi_base.c	/^int	transform(char c)$/;"	f
+transform	libft/libft/ft_atoi_base.c	/^int	transform(char c)$/;"	f
+trim_dollar	SAUVEGARDE/execution_test/parsing_expansion_trim_dollar.c	/^int	trim_dollar(t_token *curr, int pos)$/;"	f
+trim_dollar	SAUVEGARDE/parsing/expansion_test/parsing_expansion_trim_dollar.c	/^int	trim_dollar(t_token *curr, int pos)$/;"	f
+trim_dollar	SAUVEGARDE/parsing/expansion_trim_dollar.c	/^int	trim_dollar(t_token *curr, int pos)$/;"	f
+trim_dollar	TESTS/execution_test/parsing_expansion_trim_dollar 2.c	/^int	trim_dollar(t_token *curr, int pos)$/;"	f
+trim_dollar	TESTS/execution_test/parsing_expansion_trim_dollar.c	/^int	trim_dollar(t_token *curr, int pos)$/;"	f
+trim_dollar	TESTS/expansion_test/parsing_expansion_trim_dollar 2.c	/^int	trim_dollar(t_token *curr, int pos)$/;"	f
+trim_dollar	TESTS/expansion_test/parsing_expansion_trim_dollar.c	/^int	trim_dollar(t_token *curr, int pos)$/;"	f
+trim_dollar	parsing/expansion_trim_dollar.c	/^int	trim_dollar(t_token *curr, int pos)$/;"	f
+var_len	SAUVEGARDE/execution_test/parsing_expansion_helper.c	/^static int	var_len(char *s, int i)$/;"	f	file:
+var_len	SAUVEGARDE/parsing/expansion_helper.c	/^static int	var_len(char *s, int i)$/;"	f	file:
+var_len	SAUVEGARDE/parsing/expansion_test/parsing_expansion_helper.c	/^static int	var_len(char *s, int i)$/;"	f	file:
+var_len	TESTS/execution_test/parsing_expansion_helper.c	/^static int	var_len(char *s, int i)$/;"	f	file:
+var_len	TESTS/expansion_test/parsing_expansion_helper 2.c	/^static int	var_len(char *s, int i)$/;"	f	file:
+var_len	TESTS/expansion_test/parsing_expansion_helper.c	/^static int	var_len(char *s, int i)$/;"	f	file:
+var_len	parsing/expansion_helper.c	/^static int	var_len(char *s, int i)$/;"	f	file:
+var_name	SAUVEGARDE/execution_test/minishell.h	/^	char			*var_name;$/;"	m	struct:s_env
+var_name	SAUVEGARDE/minishell.h	/^	char			*var_name;$/;"	m	struct:s_env
+var_name	SAUVEGARDE/parsing/expansion_test/minishell.h	/^	char			*var_name;$/;"	m	struct:s_env
+var_name	TESTS/execution_test/minishell.h	/^	char			*var_name;$/;"	m	struct:s_env
+var_name	TESTS/expansion_test/minishell 2.h	/^	char			*var_name;$/;"	m	struct:s_env
+var_name	TESTS/expansion_test/minishell.h	/^	char			*var_name;$/;"	m	struct:s_env
+var_name	minishell.h	/^	char			*var_name;$/;"	m	struct:s_env
+var_value	SAUVEGARDE/execution_test/minishell.h	/^	char			*var_value;$/;"	m	struct:s_env
+var_value	SAUVEGARDE/minishell.h	/^	char			*var_value;$/;"	m	struct:s_env
+var_value	SAUVEGARDE/parsing/expansion_test/minishell.h	/^	char			*var_value;$/;"	m	struct:s_env
+var_value	TESTS/execution_test/minishell.h	/^	char			*var_value;$/;"	m	struct:s_env
+var_value	TESTS/expansion_test/minishell 2.h	/^	char			*var_value;$/;"	m	struct:s_env
+var_value	TESTS/expansion_test/minishell.h	/^	char			*var_value;$/;"	m	struct:s_env
+var_value	minishell.h	/^	char			*var_value;$/;"	m	struct:s_env
+word_extraction	SAUVEGARDE/execution_test/parsing_token_extraction.c	/^int	word_extraction(char *line, int ind)$/;"	f
+word_extraction	SAUVEGARDE/parsing/expansion_test/parsing_token_extraction.c	/^int	word_extraction(char *line, int ind)$/;"	f
+word_extraction	SAUVEGARDE/parsing/token_extraction.c	/^int	word_extraction(char *line, int ind)$/;"	f
+word_extraction	TESTS/execution_test/parsing_token_extraction.c	/^int	word_extraction(char *line, int ind)$/;"	f
+word_extraction	TESTS/expansion_test/parsing_token_extraction 2.c	/^int	word_extraction(char *line, int ind)$/;"	f
+word_extraction	TESTS/expansion_test/parsing_token_extraction.c	/^int	word_extraction(char *line, int ind)$/;"	f
+word_extraction	parsing/token_extraction.c	/^int	word_extraction(char *line, int ind)$/;"	f

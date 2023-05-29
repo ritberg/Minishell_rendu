@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 11:32:22 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/24 12:12:12 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/29 12:12:35 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -60,12 +60,14 @@ static int	check_exit_arguments(t_cmd **head)
 void	ft_exit(t_cmd **head)
 {
 	int	res;
+	int	exit_status;
 
 	res = check_exit_arguments(head);
 	if (!res)
 	{
+		exit_status = g_shell->exit_status;
 		free_before_exit(head);
 		printf("exit\n");
-		exit (0);
+		exit (exit_status);
 	}
 }
