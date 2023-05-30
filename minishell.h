@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:16:33 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/29 14:44:57 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/30 15:52:50 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # define BLU_2 "\e[1;34m"
 # define GRN    "\x1B[32m"
 # define YEL    "\x1B[33m"
-# define MAG    "\x1B[35m"
+# define MAG   	"\e[1;35m"
 # define CYN    "\x1B[36m"
 # define WHT    "\x1B[37m"
 # define RESET  "\x1B[0m"
@@ -79,11 +79,11 @@ typedef	struct	s_cmd
 	char	**redir;
 	char	*path;
 	int		status;
-//	int		ffd_in;
-//	int		ffd_out;
+	int		ffd_in;
+	int		ffd_out;
 //	int		pfd[2];
-	int		fdout;
-	int		fdin;
+	int		save_fdout;
+	int		save_fdin;
 	int		fd[2];
 	struct s_cmd	*next;
 }	t_cmd;
@@ -97,6 +97,14 @@ typedef struct s_shell
 }	t_shell;
 
 extern t_shell	*g_shell;
+
+/*		REDIRECTIONS */
+int		make_redirections(t_cmd *cmd);
+void	restaure_fds(t_cmd *cmd);
+int		redir_fdout(t_cmd *cmd, char *redir_op, char *file_path);
+int		redir_fdin(t_cmd *cmd,char *file_path);
+int		here_doc(t_cmd *cmd, char *key_word);
+int		append(t_cmd *cmd, char *file_path);
 
 /*		UTILS */
 void	free_before_exit(t_cmd **head);
@@ -229,11 +237,12 @@ char	*get_env_var_value(char *var_name);
 int		init_shell(char **envp);
 void	free_shell(void);
 
-	// NOT OK
-int		sig_handler(void);
-
-// prototypes
-void	handler_ctr_c(int code);
+/*		SIGNAL HANDLER */
+void	signals_init(sigset_t *set);
+int		parent_sig_handler(void);
+void	signal_handler(sigset_t *set);
+void	handler_sigint(int sig_code);
+void	child_sig_handler(void);
 
 //int	parsing_av(char *str);
 char	**ft_splitpath(char *s, char c);

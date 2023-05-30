@@ -6,37 +6,52 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:08:47 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/29 14:42:10 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/30 14:24:46 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
-static void	execute_one_bin(t_cmd *cmd, t_cmd **head)
+static void	execute_one_bin(t_cmd *cmd)
 {
-	int exit_status;
+	int	sig_code;
 
-	exit_status = 0;
+	sig_code = 0;
 	cmd->pid = fork();
 	if (cmd->pid < 0)
 		return (perror("Fork: "));
+	child_sig_handler();
 	if (cmd->pid == 0)
 	{
 		execute_bin(cmd);
-		exit_status = g_shell->exit_status;
-		free_before_exit(head);
-		exit(exit_status);
+		exit(g_shell->exit_status);
 	}
 	else
 	{
 		waitpid(cmd->pid, &cmd->status, 0);
-		g_shell->exit_status = WEXITSTATUS(cmd->status);
+		if (WIFEXITED(cmd->status))
+			g_shell->exit_status = WEXITSTATUS(cmd->status);
+		else if (WIFSIGNALED(cmd->status))
+		{
+			sig_code = WTERMSIG(cmd->status);
+			if (sig_code == SIGTERM)
+				ft_printf("Terminated: 15\n");
+			else if (sig_code == SIGKILL)
+				ft_printf("Killed: 9\n");
+			g_shell->exit_status = sig_code + 128;
+		}
 	}
 }
 
 void	one_cmd(t_cmd *cmd, t_cmd **head)
 {
+	int res;
+	
+	res = make_redirections(cmd);
+	if (res == ERROR_EXIT)
+		return ;
 	if (cmd_is_builtin(cmd->cmd[0]))
 		execute_builtin(cmd, head);
 	else
-		execute_one_bin(cmd, head);
+		execute_one_bin(cmd);
+	restaure_fds(cmd);
 }

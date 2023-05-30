@@ -6,11 +6,10 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:09:31 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/29 14:37:23 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/30 11:15:23 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
-
 static int	check_access(t_cmd *cmd)
 {
 	int	res;
@@ -81,5 +80,9 @@ void	execute_bin(t_cmd *cmd)
 	res = check_access(cmd);
 	if (res)
 		check_execve(cmd);
+	if (cmd->path)
+		free(cmd->path);
+	if (cmd->cmd)
+		free_tab2d(cmd->cmd);
 	return ;
 }

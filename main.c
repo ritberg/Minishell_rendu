@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 09:56:41 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/29 14:45:31 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/30 10:56:12 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ void	check_for_malloc_error(t_cmd **head)
 	}
 }
 
+
 int	main(int ac, char **av, char **envp)
 {
 	(void)av;
@@ -108,14 +109,14 @@ int	main(int ac, char **av, char **envp)
 	char	*line;
 	t_token	*token;
 	t_cmd	*cmd;
+	sigset_t set;
 	int		exit_status;
 
 	if (!init_shell(envp))
 		return (1);
-	if (sig_handler() == -1) // a modifier apres le parsing
-		return (1);
 	while (1)
 	{
+		signal_handler(&set);
 		line = readline_routine();
 		if (!line)
 			break ;

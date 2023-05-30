@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handler_ctr_c.c                                    :+:      :+:    :+:   */
+/*   child_sig_handler.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 13:12:07 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/19 12:09:54 by mmakarov         ###   ########.fr       */
+/*   Created: 2023/05/30 10:59:24 by mdanchev          #+#    #+#             */
+/*   Updated: 2023/05/30 13:29:20 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
-void	handler_ctr_c(int code)
+static void	child_sigquit(int sig_code)
 {
-	(void)code;
-	printf("\n");
-	rl_replace_line("", 0);
-	rl_on_new_line();
-	rl_redisplay();
+	(void)sig_code;
+	ft_printf("QUIT: 3\n");
+}
+
+void child_sig_handler(void)
+{
+	sigset_t	set;
+
+	signals_init(&set);
+	signal(SIGINT, handler_sigint);
+	signal(SIGQUIT, child_sigquit);
 }
