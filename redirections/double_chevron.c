@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 14:37:46 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/30 16:03:19 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/31 08:52:35 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -27,46 +27,26 @@ void	child_process(char *key_word)
 {
 	char *doc  = "here_doc";
 	char *line;
-	char *tmp1;
-	char *tmp2;
 	int	fd;
 	
-	line = NULL;
-	tmp1 = NULL;
-	tmp2 = NULL;
 	sig_handler();	
 	fd = open(doc, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	line = readline(MAG"> "RESET);
+	ft_dprintf(fd,"%s\n", line);
 	while (ft_strncmp(line, key_word, ft_strlen(key_word)) != 0)
 	{
-		if (tmp2)
-			tmp1 = ft_strjoin(tmp2, "\n");
-		else
-			tmp1 = ft_strjoin(line, "\n");
 		if (line)
 		{
 			free(line);
 			line = NULL;
 		}
 		line = readline(MAG"> "RESET);
+		ft_dprintf(fd,"%s\n", line);
 		if (!line)
 			break;
-		if (tmp2)
-		{
-			free(tmp2);
-			tmp2 = NULL;
-		}
-		tmp2 = ft_strjoin(tmp1, line);
-		free(tmp1);
-		tmp1 = NULL;
 	}
-	if (!line)
-		printf("%s\n", tmp1);
-	else
-	{
-		free(line);
-		printf("%s\n", tmp2);
-	}
+	close(fd);
+	exit(0);
 }
 
 int	here_doc(t_cmd *cmd, char *key_word)
@@ -93,5 +73,16 @@ int	here_doc(t_cmd *cmd, char *key_word)
 	}
 	else
 		waitpid(pid, &status, 0);
+	cmd->save_fdin = dup(STDIN_FILENO);
+	cmd->ffd_in = open("here_doc", O_RDONLY);
+	if (cmd->ffd_in < 0)
+	{
+		ft_dprintf(2, "minishell: open: %s\n", strerror(errno));
+		g_shell->exit_status = 1;
+		return (ERROR_EXIT);
+	}
+	dup2(cmd->ffd_in, STDIN_FILENO);
+	close(cmd->ffd_in);
+	cmd->ffd_in = -1;
 	return (1);
 }
