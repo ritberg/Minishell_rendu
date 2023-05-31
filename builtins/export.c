@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 14:59:32 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/27 15:29:22 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/31 11:39:57 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -133,5 +133,6 @@ void	_export(t_cmd *cmd, t_cmd **head)
 	}
 	if (!save)
 		g_shell->exit_status = 1;
-	g_shell->exit_status = 0;
+	else
+		g_shell->exit_status = 0;
 }

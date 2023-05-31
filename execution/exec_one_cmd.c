@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:08:47 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/30 14:24:46 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/31 12:01:25 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -38,6 +38,11 @@ static void	execute_one_bin(t_cmd *cmd)
 			else if (sig_code == SIGKILL)
 				ft_printf("Killed: 9\n");
 			g_shell->exit_status = sig_code + 128;
+		}
+		else if (WIFSTOPPED(cmd->status))
+		{
+			printf("hello\n");
+			g_shell->exit_status = WSTOPSIG(cmd->status) + 128;
 		}
 	}
 }

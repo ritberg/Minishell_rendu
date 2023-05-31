@@ -1,4 +1,4 @@
-cscope 15 $HOME/Documents/GitHub/minishell/rita -c -q 0000000496 0000490967
+cscope 15 $HOME/Documents/GitHub/minishell/rita -c -q 0000000553 0000499589
 	@TESTS/execution_test/cmd_is_bin.c
 
 1 #include 
@@ -28528,28 +28528,6 @@ exit_status
 "
 
 14 static void 
-	$free_before_exit
-(
-t_cmd
- **
-head
-)
-
-16 
-	`free_shell
-();
-
-17 
-	`free_cmd
-(
-head
-);
-
-18 
-	}
-}
-
-20 static void 
 	$first_argument_is_numeric
 (
 t_cmd
@@ -28559,23 +28537,23 @@ head
 size
 )
 
-22 int 
+16 int 
 exit_status
 ;
 
-24 
+18 
 exit_status
  = 0;
 
-25 if (
+19 if (
 size
  == 2)
 
-27 
+21 
 	`printf
 ("exit\n");
 
-28 
+22 
 exit_status
  = 
 	`ft_atoi
@@ -28585,41 +28563,41 @@ head
 cmd
 [1]);
 
-29 
+23 
 	`free_before_exit
 (
 head
 );
 
-30 
+24 
 	`exit
  (
 exit_status
  % 256);
 
-32 else if (
+26 else if (
 size
  > 2)
 
-34 
+28 
 	`ft_dprintf
 (2, "exit\n");
 
-35 
+29 
 	`ft_dprintf
 (2, "minishell: exit: too many arguments\n");
 
-36 
+30 
 g_shell
 ->
 exit_status
  = 1;
 
-38 
+32 
 	}
 }
 
-40 static int 
+34 static int 
 	$check_exit_arguments
 (
 t_cmd
@@ -28627,11 +28605,11 @@ t_cmd
 head
 )
 
-42 int 
+36 int 
 size
 ;
 
-44 
+38 
 size
  = 
 	`size_tab2d
@@ -28641,11 +28619,11 @@ head
 cmd
 );
 
-45 if (
+39 if (
 size
  == 1)
 
-47 if (
+41 if (
 	`is_numeric
 ((*
 head
@@ -28653,7 +28631,7 @@ head
 cmd
 [1]))
 
-48 
+42 
 	`first_argument_is_numeric
 (
 head
@@ -28661,11 +28639,11 @@ head
 size
 );
 
-51 
+45 
 	`ft_dprintf
 (2, "exit\n");
 
-52 
+46 
 	`ft_dprintf
 (2, "minishell: exit: %s: ", (*
 head
@@ -28673,25 +28651,25 @@ head
 cmd
 [1]);
 
-53 
+47 
 	`ft_dprintf
 (2, "numeric argument required\n");
 
-54 
+48 
 	`free_before_exit
 (
 head
 );
 
-55 
+49 
 	`exit
  (255);
 
-58 
+52 
 	}
 }
 
-60 void 
+54 void 
 	$ft_exit
 (
 t_cmd
@@ -28699,15 +28677,15 @@ t_cmd
 head
 )
 
-62 int 
+56 int 
 res
 ;
 
-63 int 
+57 int 
 exit_status
 ;
 
-65 
+59 
 res
  = 
 	`check_exit_arguments
@@ -28715,33 +28693,33 @@ res
 head
 );
 
-66 if (!
+60 if (!
 res
 )
 
-68 
+62 
 exit_status
  = 
 g_shell
 ->exit_status;
 
-69 
+63 
 	`free_before_exit
 (
 head
 );
 
-70 
+64 
 	`printf
 ("exit\n");
 
-71 
+65 
 	`exit
  (
 exit_status
 );
 
-73 
+67 
 	}
 }
 
@@ -29191,13 +29169,13 @@ g_shell
 exit_status
  = 1;
 
-136 
+137 
 g_shell
 ->
 exit_status
  = 0;
 
-137 
+138 
 	}
 }
 
@@ -29306,42 +29284,6 @@ next
 ;
 
 54 
-	}
-}
-
-	@builtins/free_and_exit_prog.c
-
-12 #include 
-	~"minishell.h
-"
-
-14 void 
-	$free_and_exit_prog
-(
-t_cmd
- **
-head
-, int 
-exit_code
-)
-
-16 
-	`free_cmd
-(
-head
-);
-
-17 
-	`free_shell
-();
-
-18 
-	`exit
- (
-exit_code
-);
-
-19 
 	}
 }
 
@@ -29932,18 +29874,34 @@ redir
 );
 
 43 
+tmp
+->
+cmd
+ = 
+NULL
+;
+
+44 
+tmp
+->
+redir
+ = 
+NULL
+;
+
+45 
 	`free
 (
 tmp
 );
 
-45 *
+47 *
 head
  = 
 NULL
 ;
 
-46 
+48 
 	}
 }
 
@@ -30019,7 +29977,43 @@ new
 	}
 }
 
-48 static 
+35 static void 
+	$init_fds
+(
+t_cmd
+ *
+cmd
+)
+
+37 
+cmd
+->
+ffd_in
+ = -1;
+
+38 
+cmd
+->
+ffd_out
+ = -1;
+
+39 
+cmd
+->
+save_fdout
+ = -1;
+
+40 
+cmd
+->
+save_fdin
+ = -1;
+
+41 
+	}
+}
+
+56 static 
 t_cmd
  *
 	$init_cmd
@@ -30029,21 +30023,21 @@ t_token
 token
 )
 
-50 
+58 
 t_cmd
  *
 cmd
 ;
 
-51 int 
+59 int 
 res
 ;
 
-53 
+61 
 res
  = 0;
 
-54 
+62 
 cmd
  = 
 	`ft_calloc
@@ -30051,19 +30045,19 @@ cmd
 t_cmd
 ));
 
-55 if (!
+63 if (!
 cmd
 )
 
-57 
+65 
 	`malloc_error_print_message
 ("ft_calloc failed");
 
-58 return (
+66 return (
 NULL
 );
 
-60 
+68 
 cmd
 ->
 next
@@ -30071,7 +30065,7 @@ next
 NULL
 ;
 
-61 
+69 
 res
  = 
 	`create_cmd
@@ -30081,21 +30075,21 @@ token
 cmd
 );
 
-62 if (!
+70 if (!
 res
 )
 
-64 
+72 
 	`free_cmd
 (&
 cmd
 );
 
-65 return (
+73 return (
 NULL
 );
 
-67 
+75 
 res
  = 
 	`create_redir
@@ -30105,29 +30099,35 @@ token
 cmd
 );
 
-68 if (!
+76 if (!
 res
 )
 
-70 
+78 
 	`free_cmd
 (&
 cmd
 );
 
-71 return (
+79 return (
 NULL
 );
 
-73 return (
+81 
+	`init_fds
+(
 cmd
 );
 
-74 
+82 return (
+cmd
+);
+
+83 
 	}
 }
 
-76 static void 
+85 static void 
 	$create_cmd_linked_list
 (
 t_token
@@ -30139,35 +30139,35 @@ t_cmd
 head
 )
 
-78 
+87 
 t_cmd
  *
 new
 ;
 
-79 
+88 
 t_token
  *
 ptr
 ;
 
-81 
+90 
 ptr
  = *
 token
 ;
 
-82 
+91 
 new
  = 
 NULL
 ;
 
-83 while (
+92 while (
 ptr
 )
 
-85 while (
+94 while (
 ptr
  && ptr->
 id
@@ -30175,23 +30175,23 @@ id
 PIPELINE
 )
 
-86 
+95 
 ptr
  = ptr->
 next
 ;
 
-87 if (!
+96 if (!
 ptr
 )
 
-89 
+98 
 ptr
  = ptr->
 next
 ;
 
-90 
+99 
 new
  = 
 	`init_cmd
@@ -30199,17 +30199,17 @@ new
 ptr
 );
 
-91 if (!
+100 if (!
 new
 )
 
-93 
+102 
 	`free_cmd
 (&
 head
 );
 
-96 
+105 
 	`cmd_backadd
 (&
 head
@@ -30217,11 +30217,11 @@ head
 new
 );
 
-98 
+107 
 	}
 }
 
-117 
+126 
 t_cmd
  *
 	$cmd_linked_list
@@ -30231,39 +30231,39 @@ t_token
 token
 )
 
-119 
+128 
 t_cmd
  *
 head
 ;
 
-120 
+129 
 t_token
  *
 ptr
 ;
 
-122 if (!
+131 if (!
 token
  || !*token)
 
-123 return (
+132 return (
 NULL
 );
 
-124 
+133 
 ptr
  = *
 token
 ;
 
-125 
+134 
 head
  = 
 NULL
 ;
 
-126 
+135 
 head
  = 
 	`init_cmd
@@ -30271,15 +30271,15 @@ head
 ptr
 );
 
-127 if (!
+136 if (!
 head
 )
 
-128 return (
+137 return (
 NULL
 );
 
-129 while (
+138 while (
 ptr
  && ptr->
 id
@@ -30287,13 +30287,13 @@ id
 PIPELINE
 )
 
-130 
+139 
 ptr
  = ptr->
 next
 ;
 
-131 
+140 
 	`create_cmd_linked_list
 (&
 ptr
@@ -30301,25 +30301,25 @@ ptr
 head
 );
 
-132 
+141 
 	`free_token
 (
 token
 );
 
-133 if (!
+142 if (!
 head
 )
 
-134 return (
+143 return (
 NULL
 );
 
-135 return (
+144 return (
 head
 );
 
-136 
+145 
 	}
 }
 
@@ -31781,7 +31781,7 @@ NULL
 	~"minishell.h
 "
 
-14 static int 
+13 static int 
 	$check_access
 (
 t_cmd
@@ -31789,39 +31789,33 @@ t_cmd
 cmd
 )
 
-16 int 
+15 int 
 res
 ;
 
-18 if (!
+17 if (!
 cmd
 ->
 path
 )
 
-20 
+19 
 	`printf
 ("access error: \n");
 
-21 
+20 
 	`ft_dprintf
 (2, "minishell: %s: command not found\n", 
 cmd
 ->cmd[0]);
 
-22 
+21 
 g_shell
 ->
 exit_status
  = 127;
 
-23 
-cmd
-->
-status
- = 127;
-
-27 
+25 
 res
  = 
 	`access
@@ -31835,15 +31829,15 @@ F_OK
 X_OK
 );
 
-28 if (
+26 if (
 res
 )
 
-30 
+28 
 	`printf
 ("access error: \n");
 
-31 
+29 
 	`ft_dprintf
 (2, "minishell: %s\n", 
 	`strerror
@@ -31851,23 +31845,17 @@ res
 errno
 ));
 
-32 
+30 
 g_shell
 ->
 exit_status
  = 127;
 
-33 
-cmd
-->
-status
- = 127;
-
-37 
+34 
 	}
 }
 
-39 static void 
+36 static void 
 	$check_execve
 (
 t_cmd
@@ -31875,19 +31863,19 @@ t_cmd
 cmd
 )
 
-41 int 
+38 int 
 res
 ;
 
-43 if (!
+40 if (!
 cmd
 ->cmd)
 
-45 
+42 
 	`printf
 ("execve error: \n");
 
-46 
+43 
 	`ft_dprintf
 (2, "minishell: %s: is a directory\n", 
 cmd
@@ -31895,19 +31883,13 @@ cmd
 path
 );
 
-47 
+44 
 g_shell
 ->
 exit_status
  = 126;
 
-48 
-cmd
-->
-status
- = 126;
-
-51 
+47 
 res
  = 
 	`execve
@@ -31921,50 +31903,62 @@ g_shell
 save_env
 );
 
-52 if (
+48 if (
 res
  < 0)
 
-54 
+50 
 	`printf
 ("execve error: \n");
 
-55 
+51 if (
+errno
+ == 
+ENOEXEC
+)
+
+53 
 	`ft_dprintf
-(2, "minishell: %s\n", 
+(2, "minishell: %s: Permission denied\n", 
+cmd
+->
+path
+);
+
+54 
+g_shell
+->
+exit_status
+ = 126;
+
+57 
+	`ft_dprintf
+(2, "minishell: %s: %s\n", 
+cmd
+->
+path
+, 
 	`strerror
 (
 errno
 ));
 
-56 if (
+58 if (
 errno
  == 
 EACCES
 )
 
-58 
+60 
 g_shell
 ->
 exit_status
  = 126;
-
-59 
-cmd
-->
-status
- = 126;
-
-62 
-g_shell
-->
-exit_status
- = 127;
 
 63 
-cmd
+g_shell
 ->
-status
+exit_status
  = 127;
 
 66 
@@ -31974,16 +31968,10 @@ exit_status
  = 0;
 
 67 
-cmd
-->
-status
- = 0;
-
-68 
 	}
 }
 
-70 void 
+69 void 
 	$execute_bin
 (
 t_cmd
@@ -31991,33 +31979,19 @@ t_cmd
 cmd
 )
 
-72 int 
+71 int 
 res
  = 0;
 
-74 if (!
+73 if (!
 cmd
  || !cmd->cmd)
 
-76 if (!
+75 if (!
 	`get_path
 (
 cmd
 ))
-
-78 
-	`printf
-("path = %s\n", 
-cmd
-->
-path
-);
-
-79 
-	`printf
-("cmd = %s\n", 
-cmd
-->cmd[0]);
 
 80 
 res
@@ -32037,7 +32011,31 @@ res
 cmd
 );
 
+83 if (
+cmd
+->
+path
+)
+
 84 
+	`free
+(
+cmd
+->
+path
+);
+
+85 if (
+cmd
+->cmd)
+
+86 
+	`free_tab2d
+(
+cmd
+->cmd);
+
+88 
 	}
 }
 
@@ -32221,7 +32219,15 @@ t_cmd
 cmd
 )
 
-16 
+16 int 
+sig_code
+;
+
+18 
+sig_code
+ = 0;
+
+19 
 cmd
 ->
 pid
@@ -32229,37 +32235,41 @@ pid
 	`fork
 ();
 
-17 if (
+20 if (
 cmd
 ->
 pid
  < 0)
 
-18 return (
+21 return (
 	`perror
 ("Fork: "));
 
-19 if (
+22 
+	`child_sig_handler
+();
+
+23 if (
 cmd
 ->
 pid
  == 0)
 
-21 
+25 
 	`execute_bin
 (
 cmd
 );
 
-22 
+26 
 	`exit
 (
-cmd
+g_shell
 ->
-status
+exit_status
 );
 
-26 
+30 
 	`waitpid
 (
 cmd
@@ -32269,7 +32279,15 @@ pid
 status
 , 0);
 
-27 
+31 if (
+	`WIFEXITED
+(
+cmd
+->
+status
+))
+
+32 
 g_shell
 ->
 exit_status
@@ -32281,11 +32299,81 @@ cmd
 status
 );
 
-29 
+33 else if (
+	`WIFSIGNALED
+(
+cmd
+->
+status
+))
+
+35 
+sig_code
+ = 
+	`WTERMSIG
+(
+cmd
+->
+status
+);
+
+36 if (
+sig_code
+ == 
+SIGTERM
+)
+
+37 
+	`ft_printf
+("Terminated: 15\n");
+
+38 else if (
+sig_code
+ == 
+SIGKILL
+)
+
+39 
+	`ft_printf
+("Killed: 9\n");
+
+40 
+g_shell
+->
+exit_status
+ = 
+sig_code
+ + 128;
+
+42 else if (
+	`WIFSTOPPED
+(
+cmd
+->
+status
+))
+
+44 
+	`printf
+("hello\n");
+
+45 
+g_shell
+->
+exit_status
+ = 
+	`WSTOPSIG
+(
+cmd
+->
+status
+) + 128;
+
+48 
 	}
 }
 
-31 void 
+50 void 
 	$one_cmd
 (
 t_cmd
@@ -32295,13 +32383,31 @@ cmd
 head
 )
 
-33 if (
+52 int 
+res
+;
+
+54 
+res
+ = 
+	`make_redirections
+(
+cmd
+);
+
+55 if (
+res
+ == 
+ERROR_EXIT
+)
+
+57 if (
 	`cmd_is_builtin
 (
 cmd
 ->cmd[0]))
 
-34 
+58 
 	`execute_builtin
 (
 cmd
@@ -32309,13 +32415,19 @@ cmd
 head
 );
 
-36 
+60 
 	`execute_one_bin
 (
 cmd
 );
 
-37 
+61 
+	`restaure_fds
+(
+cmd
+);
+
+62 
 	}
 }
 
@@ -32447,45 +32559,15 @@ nb_cmds
 head
 , head);
 
-54 
-	}
-}
-
-	@execution/execution_utils.c
-
-12 #include 
-	~"minishell.h
-"
-
-14 int 
-	$size_tab2d
-(char **
-s
-)
-
-16 int 
-i
-;
-
-18 
-i
- = 0;
-
-19 while (
-s
-[
-i
-])
-
-20 
-i
-++;
-
-21 return (
-i
+53 
+	`pipex
+(
+head
+, 
+nb_cmds
 );
 
-22 
+54 
 	}
 }
 
@@ -32533,11 +32615,17 @@ st_mode
 cmd
 ->cmd);
 
-27 
+23 
+cmd
+->cmd = 
+NULL
+;
+
+28 
 	}
 }
 
-29 static int 
+30 static int 
 	$extract_cmd_path
 (char *
 path
@@ -32547,23 +32635,23 @@ t_cmd
 cmd
 )
 
-31 int 
+32 int 
 start
 ;
 
-32 int 
+33 int 
 end
 ;
-
-34 
-start
- = 0;
 
 35 
+start
+ = 0;
+
+36 
 end
  = 0;
 
-36 if (
+37 if (
 	`is_dir
 (
 path
@@ -32571,45 +32659,45 @@ path
 cmd
 ))
 
-38 while (
+39 while (
 path
 [
 end
 ])
 
-39 
+40 
 end
 ++;
 
-40 
+41 
 start
  = 
 end
 --;
 
-41 while (
+42 while (
 path
 [
 start
 ] != '/')
 
-42 
+43 
 start
 --;
 
-43 
+44 
 	`free
 (
 cmd
 ->cmd[0]);
 
-44 
+45 
 cmd
 ->cmd[0] = 
 NULL
 ;
 
-45 
+46 
 cmd
 ->cmd[0] = 
 	`ft_substr
@@ -32621,19 +32709,19 @@ start
 end
  - start);
 
-46 if (!
+47 if (!
 cmd
 ->cmd[0])
 
-48 
+49 
 	`malloc_error_print_message
 ("ft_substr failed");
 
-52 
+53 
 	}
 }
 
-54 int 
+55 int 
 	$get_path
 (
 t_cmd
@@ -32641,13 +32729,13 @@ t_cmd
 cmd
 )
 
-56 if (
+57 if (
 	`ft_strchr
 (
 cmd
 ->cmd[0], '/'))
 
-58 
+59 
 cmd
 ->
 path
@@ -32655,17 +32743,17 @@ path
 	`ft_strdup
 (cmd->cmd[0]);
 
-59 if (!
+60 if (!
 cmd
 ->
 path
 )
 
-61 
+62 
 	`malloc_error_print_message
 ("ft_strdup failed");
 
-64 if (!
+65 if (!
 	`extract_cmd_path
 (
 cmd
@@ -32673,7 +32761,7 @@ cmd
 path
 , cmd))
 
-68 if (!
+69 if (!
 	`search_path
 (
 cmd
@@ -32683,7 +32771,239 @@ g_shell
 save_env
 ))
 
-72 
+73 
+	}
+}
+
+	@execution/pipex.c
+
+12 #include 
+	~"minishell.h
+"
+
+14 int 
+	$init_fd_pipe
+(int **
+fd_pipe
+, int 
+nb_cmds
+)
+
+16 int 
+i
+;
+
+18 
+i
+ = 0;
+
+19 
+fd_pipe
+ = 
+	`ft_calloc
+(
+nb_cmds
+, sizeof(int *));
+
+20 if (!
+fd_pipe
+)
+
+25 while (
+i
+ < 
+nb_cmds
+)
+
+27 
+fd_pipe
+[
+i
+] = 
+	`ft_calloc
+(2, sizeof(int));
+
+28 if (
+fd_pipe
+[
+i
+])
+
+34 
+i
+++;
+
+37 
+	}
+}
+
+40 void 
+	$pipex
+(
+t_cmd
+ **
+head
+, int 
+nb_cmds
+)
+
+42 int **
+fd_pipe
+;
+
+43 
+t_cmd
+ *
+cmd
+;
+
+44 int 
+sig_code
+;
+
+45 int 
+i
+;
+
+47 
+i
+ = 0;
+
+48 if (!
+head
+ || !*head)
+
+50 
+cmd
+ = *
+head
+;
+
+51 
+fd_pipe
+ = 0;
+
+52 if(!
+	`init_fd_pipe
+(
+fd_pipe
+, 
+nb_cmds
+))
+
+54 
+	`pipe
+(
+fd_pipe
+[
+i
+]);
+
+55 
+cmd
+->
+pid
+ = 
+	`fork
+();
+
+56 if (
+cmd
+->
+pid
+ == 0)
+
+58 
+	`exec_gauche
+(
+cmd
+, 
+head
+, 
+fd_pipe
+[
+i
+]);
+
+60 
+cmd
+->
+next
+->
+pid
+ = 
+	`fork
+();
+
+61 if (
+cmd
+->
+next
+->
+pid
+ = 0)
+
+63 
+	`exec_droite
+(
+cmd
+, 
+head
+, 
+fd_pipe
+[
+i
+]);
+
+65 
+	`close
+(
+fd_pipe
+[
+i
+][0]);
+
+66 
+	`close
+(
+fd_pipe
+[
+i
+][1]);
+
+69 
+	`waitpid
+(
+cmd
+->
+pid
+, &cmd->
+status
+, 0);
+
+70 
+	`waitpid
+(
+cmd
+->
+pid
+, &cmd->
+next
+->
+status
+, 0);
+
+73 
+cmd
+ = cmd->
+next
+;
+
+74 
+i
+++;
+
+75 
 	}
 }
 
@@ -33047,17 +33367,11 @@ g_shell
 exit_status
  = 127;
 
-96 
-cmd
-->
-status
- = 127;
-
-99 if (
+98 if (
 cmd
 ->cmd[0][0] == 0)
 
-101 
+100 
 res
  = 
 	`check_each_path
@@ -33069,11 +33383,11 @@ i
 cmd
 );
 
-102 return (
+101 return (
 res
 );
 
-103 
+102 
 	}
 }
 
@@ -40854,24 +41168,16 @@ error_exit
  == 1)
 
 100 
-	`free_cmd
+	`free_and_exit_prog
 (
 head
-);
-
-101 
-	`free_shell
-();
+, 1);
 
 102 
-	`exit
-(1);
-
-104 
 	}
 }
 
-106 int 
+105 int 
 	$main
 (int 
 ac
@@ -40881,28 +41187,34 @@ av
 envp
 )
 
-108 (void)
+107 (void)
 av
 ;
 
-109 (void)
+108 (void)
 ac
 ;
 
-110 char *
+109 char *
 line
 ;
 
-111 
+110 
 t_token
  *
 token
 ;
 
-112 
+111 
 t_cmd
  *
 cmd
+;
+
+112 
+sigset_t
+ 
+set
 ;
 
 113 int 
@@ -40915,21 +41227,23 @@ exit_status
 envp
 ))
 
-117 if (
-	`sig_handler
-() == -1)
+119 
+	`signal_handler
+(&
+set
+);
 
-121 
+120 
 line
  = 
 	`readline_routine
 ();
 
-122 if (!
+121 if (!
 line
 )
 
-124 
+123 
 token
  = 
 	`parsing
@@ -40937,7 +41251,7 @@ token
 line
 );
 
-125 
+124 
 cmd
  = 
 	`cmd_linked_list
@@ -40945,43 +41259,43 @@ cmd
 token
 );
 
-127 
+126 
 	`execution
 (&
 cmd
 );
 
-129 
+128 
 	`check_for_malloc_error
 (&
 cmd
 );
 
-130 
+129 
 	`free_cmd
 (&
 cmd
 );
 
-132 
+131 
 exit_status
  = 
 g_shell
 ->exit_status;
 
-133 
+132 
 	`free_shell
 ();
 
-134 
+133 
 	`printf
 ("exit\n");
 
-135 return (
+134 return (
 exit_status
 );
 
-136 
+135 
 	}
 }
 
@@ -41127,7 +41441,7 @@ MINISHELL_H
 
 39 #define 
 	#MAG
- "\x1B[35m"
+ "\e[1;35m"
 
 	)
 
@@ -41291,12 +41605,20 @@ pid_t
 	mstatus
 ;
 
+82 int 
+	mffd_in
+;
+
+83 int 
+	mffd_out
+;
+
 85 int 
-	mfdout
+	msave_fdout
 ;
 
 86 int 
-	mfdin
+	msave_fdin
 ;
 
 87 int 
@@ -41346,12 +41668,88 @@ g_shell
 ;
 
 102 int 
+make_redirections
+(
+t_cmd
+ *
+cmd
+);
+
+103 void 
+restaure_fds
+(
+t_cmd
+ *
+cmd
+);
+
+104 int 
+redir_fdout
+(
+t_cmd
+ *
+cmd
+, char *
+redir_op
+, char *
+file_path
+);
+
+105 int 
+redir_fdin
+(
+t_cmd
+ *
+cmd
+,char *
+file_path
+);
+
+106 int 
+here_doc
+(
+t_cmd
+ *
+cmd
+, char *
+key_word
+);
+
+107 int 
+append
+(
+t_cmd
+ *
+cmd
+, char *
+file_path
+);
+
+110 void 
+free_before_exit
+(
+t_cmd
+ **
+head
+);
+
+111 void 
+free_and_exit_prog
+(
+t_cmd
+ **
+head
+, int 
+exit_code
+);
+
+112 int 
 size_tab2d
 (char **
 s
 );
 
-103 void 
+115 void 
 execution
 (
 t_cmd
@@ -41359,11 +41757,11 @@ t_cmd
 head
 );
 
-104 int 
+116 int 
 copy_env_tab
 (void);
 
-105 void 
+117 void 
 one_cmd
 (
 t_cmd
@@ -41373,13 +41771,23 @@ cmd
 head
 );
 
-108 int 
+118 void 
+pipex
+(
+t_cmd
+ **
+head
+, int 
+nb_cmds
+);
+
+121 int 
 cmd_is_builtin
 (char *
 s
 );
 
-109 void 
+122 void 
 execute_builtin
 (
 t_cmd
@@ -41389,11 +41797,11 @@ cmd
 head
 );
 
-110 void 
+123 void 
 _pwd
 (void);
 
-111 void 
+124 void 
 _env
 (
 t_cmd
@@ -41405,13 +41813,13 @@ t_env
 env
 );
 
-112 void 
+125 void 
 print_getcwd_error
 (char *
 s
 );
 
-113 int 
+126 int 
 _echo
 (
 t_cmd
@@ -41419,7 +41827,7 @@ t_cmd
 cmd
 );
 
-114 void 
+127 void 
 ft_exit
 (
 t_cmd
@@ -41427,7 +41835,7 @@ t_cmd
 head
 );
 
-115 void 
+128 void 
 _cd
 (
 t_cmd
@@ -41437,7 +41845,7 @@ cmd
 head
 );
 
-116 void 
+129 void 
 _export
 (
 t_cmd
@@ -41447,13 +41855,13 @@ cmd
 head
 );
 
-117 int 
+130 int 
 check_if_var_exists
 (char *
 s
 );
 
-118 int 
+131 int 
 check_if_valid_identifier
 (char *
 s
@@ -41461,7 +41869,7 @@ s
 command
 );
 
-119 void 
+132 void 
 print_export_unset_error
 (char *
 identifier
@@ -41469,7 +41877,7 @@ identifier
 command
 );
 
-120 void 
+133 void 
 _unset
 (
 t_cmd
@@ -41477,17 +41885,7 @@ t_cmd
 cmd
 );
 
-121 void 
-free_and_exit_prog
-(
-t_cmd
- **
-head
-, int 
-exit_code
-);
-
-124 void 
+136 void 
 execute_bin
 (
 t_cmd
@@ -41495,7 +41893,7 @@ t_cmd
 cmd
 );
 
-125 int 
+137 int 
 search_path
 (
 t_cmd
@@ -41505,7 +41903,7 @@ cmd
 env
 );
 
-126 int 
+138 int 
 get_path
 (
 t_cmd
@@ -41513,7 +41911,7 @@ t_cmd
 cmd
 );
 
-129 
+141 
 t_cmd
  *
 cmd_linked_list
@@ -41523,13 +41921,13 @@ t_token
 token
 );
 
-130 void 
+142 void 
 free_tab2d
 (char **
 s
 );
 
-131 void 
+143 void 
 free_cmd
 (
 t_cmd
@@ -41537,7 +41935,7 @@ t_cmd
 head
 );
 
-134 int 
+146 int 
 create_redir
 (
 t_token
@@ -41549,7 +41947,7 @@ t_cmd
 cmd
 );
 
-137 int 
+149 int 
 create_cmd
 (
 t_token
@@ -41561,7 +41959,7 @@ t_cmd
 cmd
 );
 
-140 int 
+152 int 
 expansion
 (
 t_token
@@ -41573,7 +41971,7 @@ curr
 pos
 );
 
-141 int 
+153 int 
 check_dollar
 (
 t_token
@@ -41583,7 +41981,7 @@ curr
 i
 );
 
-142 int 
+154 int 
 trim_dollar
 (
 t_token
@@ -41593,7 +41991,7 @@ curr
 pos
 );
 
-145 int 
+157 int 
 is_dollar_to_expand
 (
 t_token
@@ -41603,7 +42001,7 @@ curr
 i
 );
 
-146 int 
+158 int 
 not_within_squotes
 (
 t_token
@@ -41613,7 +42011,7 @@ curr
 pos
 );
 
-149 int 
+161 int 
 trim_dollar
 (
 t_token
@@ -41623,7 +42021,7 @@ curr
 pos
 );
 
-152 int 
+164 int 
 loop_dollars
 (char *
 s
@@ -41631,7 +42029,7 @@ s
 i
 );
 
-153 int 
+165 int 
 loop_through
 (char *
 s
@@ -41639,13 +42037,13 @@ s
 i
 );
 
-156 int 
+168 int 
 size_var
 (char *
 s
 );
 
-157 int 
+169 int 
 check_var_exist
 (
 t_token
@@ -41653,7 +42051,7 @@ t_token
 tmp
 );
 
-160 int 
+172 int 
 join_tokens
 (
 t_token
@@ -41663,7 +42061,7 @@ new
 curr
 );
 
-163 int 
+175 int 
 prepare_expand
 (
 t_token
@@ -41673,7 +42071,7 @@ tmp
 i
 );
 
-164 int 
+176 int 
 set_id_expansion
 (
 t_token
@@ -41681,7 +42079,7 @@ t_token
 token
 );
 
-167 int 
+179 int 
 quote_removing
 (
 t_token
@@ -41693,7 +42091,7 @@ curr
 pos
 );
 
-169 
+181 
 t_token
  *
 delete_token
@@ -41701,7 +42099,7 @@ delete_token
 head
 );
 
-170 int 
+182 int 
 token_list_size
 (
 t_token
@@ -41709,7 +42107,7 @@ t_token
 head
 );
 
-173 
+185 
 t_token
  *
 parsing
@@ -41717,13 +42115,13 @@ parsing
 line
 );
 
-174 int 
+186 int 
 syntax_error_check
 (char *
 s
 );
 
-175 int 
+187 int 
 check_pipeline_errors
 (char *
 s
@@ -41735,7 +42133,7 @@ c
 num
 );
 
-176 int 
+188 int 
 check_quotes_errors
 (char *
 s
@@ -41745,7 +42143,7 @@ c
 i
 );
 
-177 int 
+189 int 
 count_metachar
 (char *
 s
@@ -41755,7 +42153,7 @@ c
 num
 );
 
-178 int 
+190 int 
 check_multiple_operators_error
 (int 
 i
@@ -41765,25 +42163,25 @@ num
 c
 );
 
-179 void 
+191 void 
 print_syntax_error_char
 (char 
 c
 );
 
-180 void 
+192 void 
 print_syntax_error_dchar
 (char 
 c
 );
 
-181 void 
+193 void 
 print_syntax_error_str
 (char *
 s
 );
 
-184 int 
+196 int 
 character_extraction
 (char *
 line
@@ -41791,7 +42189,7 @@ line
 ind
 );
 
-185 int 
+197 int 
 token_extraction
 (char *
 line
@@ -41799,7 +42197,7 @@ line
 ind
 );
 
-186 
+198 
 t_token
  *
 get_tokens
@@ -41807,7 +42205,7 @@ get_tokens
 line
 );
 
-187 int 
+199 int 
 get_tokens_size
 (char *
 line
@@ -41815,7 +42213,7 @@ line
 i
 );
 
-188 
+200 
 t_token
  *
 create_token_head
@@ -41829,13 +42227,13 @@ len
 flag
 );
 
-191 void 
+203 void 
 malloc_error_print_message
 (char *
 s
 );
 
-194 
+206 
 t_token
  *
 new_token
@@ -41847,7 +42245,7 @@ start
 len
 );
 
-195 void 
+207 void 
 set_id
 (
 t_token
@@ -41855,7 +42253,7 @@ t_token
 token
 );
 
-196 int 
+208 int 
 token_linked_list
 (
 t_token
@@ -41869,7 +42267,7 @@ start
 len
 );
 
-197 int 
+209 int 
 link_token
 (
 t_token
@@ -41879,7 +42277,7 @@ head
 new
 );
 
-198 void 
+210 void 
 free_token
 (
 t_token
@@ -41887,115 +42285,115 @@ t_token
 head
 );
 
-201 int 
+213 int 
 is_dollar
 (char 
 c
 );
 
-202 int 
+214 int 
 is_pipeline
 (char 
 c
 );
 
-203 int 
+215 int 
 is_chevron
 (char 
 c
 );
 
-204 int 
+216 int 
 is_lchevron
 (char 
 c
 );
 
-205 int 
+217 int 
 is_rchevron
 (char 
 c
 );
 
-206 int 
+218 int 
 is_operator
 (char 
 c
 );
 
-207 int 
+219 int 
 is_newline
 (char 
 c
 );
 
-208 int 
+220 int 
 is_white_space
 (char 
 c
 );
 
-209 int 
+221 int 
 is_blank
 (char 
 c
 );
 
-210 int 
+222 int 
 is_metacharacter
 (char 
 c
 );
 
-211 int 
+223 int 
 is_delimiter
 (char 
 c
 );
 
-212 int 
+224 int 
 is_word
 (char 
 c
 );
 
-213 int 
+225 int 
 is_double_quote
 (char 
 c
 );
 
-214 int 
+226 int 
 is_simple_quote
 (char 
 c
 );
 
-215 int 
+227 int 
 is_quote
 (char 
 c
 );
 
-216 int 
+228 int 
 is_question
 (char 
 c
 );
 
-217 int 
+229 int 
 is_punct
 (char 
 c
 );
 
-218 int 
+230 int 
 is_numeric
 (char *
 s
 );
 
-221 
+233 
 t_env
  *
 new_env
@@ -42003,7 +42401,7 @@ new_env
 envp
 );
 
-222 int 
+234 int 
 link_env
 (
 t_env
@@ -42013,33 +42411,53 @@ head
 last
 );
 
-223 char *
+235 char *
 get_env_var_value
 (char *
 var_name
 );
 
-226 int 
+238 int 
 init_shell
 (char **
 envp
 );
 
-227 void 
+239 void 
 free_shell
 (void);
 
-230 int 
-sig_handler
-(void);
-
-233 void 
-handler_ctr_c
-(int 
-code
+242 void 
+signals_init
+(
+sigset_t
+ *
+set
 );
 
-236 char **
+243 int 
+parent_sig_handler
+(void);
+
+244 void 
+signal_handler
+(
+sigset_t
+ *
+set
+);
+
+245 void 
+handler_sigint
+(int 
+sig_code
+);
+
+246 void 
+child_sig_handler
+(void);
+
+249 char **
 ft_splitpath
 (char *
 s
@@ -42047,7 +42465,7 @@ s
 c
 );
 
-240 
+253 
 t_env
  *
 get_envp
@@ -42055,7 +42473,7 @@ get_envp
 envp
 );
 
-241 void 
+254 void 
 free_env
 (
 t_env
@@ -45488,6 +45906,954 @@ head
 );
 
 149 
+	}
+}
+
+	@redirections/double_chevron.c
+
+12 #include 
+	~"minishell.h
+"
+
+14 void 
+	$sigint
+(int 
+key
+)
+
+16 (void)
+key
+;
+
+17 
+	`exit
+(0);
+
+18 
+	}
+}
+
+20 void 
+	$sig_handler
+(void)
+
+22 
+sigset_t
+ 
+set
+;
+
+24 
+	`signals_init
+(&
+set
+);
+
+25 
+	`signal
+(
+SIGQUIT
+, 
+SIG_IGN
+);
+
+26 
+	`signal
+(
+SIGINT
+, 
+sigint
+);
+
+27 
+	}
+}
+
+29 void 
+	$child_process
+(char *
+key_word
+)
+
+31 char *
+doc
+ = ".here_doc";
+
+32 char *
+line
+;
+
+33 int 
+fd
+;
+
+35 
+line
+ = 
+NULL
+;
+
+36 
+	`sig_handler
+();
+
+37 
+fd
+ = 
+	`open
+(
+doc
+, 
+O_WRONLY
+ | 
+O_CREAT
+ | 
+O_TRUNC
+, 0644);
+
+38 if (
+fd
+ < 0)
+
+40 
+	`ft_dprintf
+(2, "minishell: open: %s\n", 
+	`strerror
+(
+errno
+));
+
+41 
+	`exit
+(0);
+
+45 if (
+line
+)
+
+47 
+	`free
+(
+line
+);
+
+48 
+line
+ = 
+NULL
+;
+
+50 
+line
+ = 
+	`readline
+(
+MAG
+"> "
+RESET
+);
+
+51 if (!
+line
+)
+
+53 else if (
+	`ft_strncmp
+(
+line
+, 
+key_word
+, 
+	`ft_strlen
+(key_word)) == 0)
+
+55 
+	`free
+(
+line
+);
+
+59 
+	`ft_dprintf
+(
+fd
+,"%s\n", 
+line
+);
+
+61 
+	`close
+(
+fd
+);
+
+62 
+	`exit
+(1);
+
+63 
+	}
+}
+
+65 int 
+	$here_doc
+(
+t_cmd
+ *
+cmd
+, char *
+key_word
+)
+
+67 (void)
+cmd
+;
+
+68 int 
+pid
+;
+
+69 int 
+status
+;
+
+71 if (
+cmd
+->
+save_fdin
+ != -1)
+
+73 
+	`dup2
+(
+cmd
+->
+save_fdin
+, 
+STDIN_FILENO
+);
+
+74 
+	`close
+(
+cmd
+->
+save_fdin
+);
+
+75 
+cmd
+->
+save_fdin
+ = -1;
+
+77 if (
+cmd
+->
+ffd_in
+ != -1)
+
+79 
+	`close
+(
+cmd
+->
+ffd_in
+);
+
+80 
+cmd
+->
+ffd_in
+ = -1;
+
+82 
+pid
+ = 
+	`fork
+();
+
+83 if (
+pid
+ == 0)
+
+85 
+	`child_process
+(
+key_word
+);
+
+89 
+	`waitpid
+(
+pid
+, &
+status
+, 0);
+
+90 if (
+	`WIFEXITED
+(
+status
+) && 
+	`WEXITSTATUS
+(status) == 0)
+
+92 
+g_shell
+->
+exit_status
+ = 1;
+
+95 else if(
+	`WIFSIGNALED
+(
+status
+) && 
+	`WTERMSIG
+(status) == 
+SIGINT
+)
+
+97 
+g_shell
+->
+exit_status
+ = 1;
+
+100 else if(
+	`WIFSIGNALED
+(
+status
+) && 
+	`WTERMSIG
+(status) == 
+SIGTERM
+)
+
+102 
+g_shell
+->
+exit_status
+ = 1;
+
+106 
+cmd
+->
+save_fdin
+ = 
+	`dup
+(
+STDIN_FILENO
+);
+
+107 
+cmd
+->
+ffd_in
+ = 
+	`open
+(".here_doc", 
+O_RDONLY
+);
+
+108 if (
+cmd
+->
+ffd_in
+ < 0)
+
+110 
+	`ft_dprintf
+(2, "minishell: open: %s\n", 
+	`strerror
+(
+errno
+));
+
+111 
+g_shell
+->
+exit_status
+ = 1;
+
+112 return (
+ERROR_EXIT
+);
+
+114 
+	`dup2
+(
+cmd
+->
+ffd_in
+, 
+STDIN_FILENO
+);
+
+115 
+	`close
+(
+cmd
+->
+ffd_in
+);
+
+116 
+cmd
+->
+ffd_in
+ = -1;
+
+118 
+	}
+}
+
+	@redirections/make_redirection.c
+
+12 #include 
+	~"minishell.h
+"
+
+14 void 
+	$restaure_fds
+(
+t_cmd
+ *
+cmd
+)
+
+16 if (
+cmd
+->
+save_fdout
+ != -1)
+
+18 
+	`dup2
+(
+cmd
+->
+save_fdout
+, 
+STDOUT_FILENO
+);
+
+19 
+	`close
+(
+cmd
+->
+save_fdout
+);
+
+20 
+cmd
+->
+save_fdout
+ = -1;
+
+22 if (
+cmd
+->
+save_fdin
+ != -1)
+
+24 
+	`dup2
+(
+cmd
+->
+save_fdin
+, 
+STDIN_FILENO
+);
+
+25 
+	`close
+(
+cmd
+->
+save_fdin
+);
+
+26 
+cmd
+->
+save_fdin
+ = -1;
+
+28 if (
+	`access
+(".here_doc", 
+F_OK
+) == 0)
+
+30 
+	`unlink
+(".here_doc");
+
+34 
+	}
+}
+
+36 int 
+	$make_redirections
+(
+t_cmd
+ *
+cmd
+)
+
+38 int 
+i
+;
+
+39 int 
+res
+;
+
+41 
+i
+ = 0;
+
+42 if (!
+cmd
+->
+redir
+)
+
+44 while (
+cmd
+->
+redir
+[
+i
+])
+
+46 if (
+	`ft_strncmp
+(
+cmd
+->
+redir
+[
+i
+], ">", 2) == 0 || \
+
+47 
+	`ft_strncmp
+(
+cmd
+->
+redir
+[
+i
+], ">>", 3) == 0)
+
+49 
+res
+ = 
+	`redir_fdout
+(
+cmd
+, cmd->
+redir
+[
+i
+], cmd->redir[i + 1]);
+
+50 if (
+res
+ == 
+ERROR_EXIT
+)
+
+51 return (
+ERROR_EXIT
+);
+
+52 
+i
+++;
+
+54 else if (
+	`ft_strncmp
+(
+cmd
+->
+redir
+[
+i
+], "<", 2) == 0)
+
+56 
+res
+ = 
+	`redir_fdin
+(
+cmd
+, cmd->
+redir
+[
+i
+ + 1]);
+
+57 if (
+res
+ == 
+ERROR_EXIT
+)
+
+58 return (
+ERROR_EXIT
+);
+
+59 
+i
+++;
+
+61 else if (
+	`ft_strncmp
+(
+cmd
+->
+redir
+[
+i
+], "<<", 3) == 0)
+
+63 
+i
+++;
+
+64 
+res
+ = 
+	`here_doc
+(
+cmd
+, cmd->
+redir
+[
+i
+]);
+
+65 if (
+res
+ == 
+ERROR_EXIT
+ || res == 0)
+
+67 return (
+ERROR_EXIT
+);
+
+71 
+i
+++;
+
+73 return (
+res
+);
+
+74 
+	}
+}
+
+	@redirections/single_chevron.c
+
+12 #include 
+	~"minishell.h
+"
+
+14 int 
+	$redir_fdin
+(
+t_cmd
+ *
+cmd
+, char *
+file_path
+)
+
+16 if (
+cmd
+->
+save_fdin
+ != -1)
+
+18 
+	`dup2
+(
+cmd
+->
+save_fdin
+, 
+STDIN_FILENO
+);
+
+19 
+	`close
+(
+cmd
+->
+save_fdin
+);
+
+20 
+cmd
+->
+save_fdin
+ = -1;
+
+22 if (
+cmd
+->
+ffd_in
+ != -1)
+
+24 
+	`close
+(
+cmd
+->
+ffd_in
+);
+
+25 
+cmd
+->
+ffd_in
+ = -1;
+
+27 
+cmd
+->
+save_fdin
+ = 
+	`dup
+(
+STDIN_FILENO
+);
+
+28 
+cmd
+->
+ffd_in
+ = 
+	`open
+(
+file_path
+, 
+O_RDONLY
+);
+
+29 if (
+cmd
+->
+ffd_in
+ < 0)
+
+31 
+	`ft_dprintf
+(2, "minishell: open: %s\n", 
+	`strerror
+(
+errno
+));
+
+32 
+g_shell
+->
+exit_status
+ = 1;
+
+33 return (
+ERROR_EXIT
+);
+
+35 
+	`dup2
+(
+cmd
+->
+ffd_in
+, 
+STDIN_FILENO
+);
+
+36 
+	`close
+(
+cmd
+->
+ffd_in
+);
+
+37 
+cmd
+->
+ffd_in
+ = -1;
+
+39 
+	}
+}
+
+41 int 
+	$redir_fdout
+(
+t_cmd
+ *
+cmd
+, char *
+redir_op
+, char *
+file_path
+)
+
+43 if (
+cmd
+->
+save_fdout
+ != -1)
+
+45 
+	`dup2
+(
+cmd
+->
+save_fdout
+, 
+STDOUT_FILENO
+);
+
+46 
+	`close
+(
+cmd
+->
+save_fdout
+);
+
+48 if (
+cmd
+->
+ffd_out
+ != -1)
+
+49 
+	`close
+(
+cmd
+->
+ffd_out
+);
+
+50 
+cmd
+->
+save_fdout
+ = 
+	`dup
+(
+STDOUT_FILENO
+);
+
+51 if (
+	`ft_strlen
+(
+redir_op
+) == 1)
+
+52 
+cmd
+->
+ffd_out
+ = 
+	`open
+(
+file_path
+, 
+O_WRONLY
+ | 
+O_CREAT
+ | 
+O_TRUNC
+, 0644);
+
+53 else if (
+	`ft_strlen
+(
+redir_op
+) == 2)
+
+54 
+cmd
+->
+ffd_out
+ = 
+	`open
+(
+file_path
+, 
+O_WRONLY
+ | 
+O_CREAT
+ | 
+O_APPEND
+, 0644);
+
+55 if (
+cmd
+->
+ffd_out
+ < 0)
+
+57 
+	`ft_dprintf
+(2, "minishell: open: %s\n", 
+	`strerror
+(
+errno
+));
+
+58 
+g_shell
+->
+exit_status
+ = 1;
+
+59 return (
+ERROR_EXIT
+);
+
+61 
+	`dup2
+(
+cmd
+->
+ffd_out
+, 
+STDOUT_FILENO
+);
+
+62 
+	`close
+(
+cmd
+->
+ffd_out
+);
+
+63 
+cmd
+->
+ffd_out
+ = -1;
+
+65 
 	}
 }
 
@@ -89349,61 +90715,161 @@ WORD
 	}
 }
 
-	@signal_handler/handler_ctr_c.c
+	@signal_handler/child_sig_handler.c
 
 12 #include 
 	~"minishell.h
 "
 
-14 void 
-	$handler_ctr_c
+14 static void 
+	$child_sigquit
 (int 
-code
+sig_code
 )
 
 16 (void)
-code
+sig_code
 ;
 
 17 
-	`printf
-("\n");
+	`ft_printf
+("QUIT: 3\n");
 
 18 
-	`rl_replace_line
-("", 0);
-
-19 
-	`rl_on_new_line
-();
-
-20 
-	`rl_redisplay
-();
-
-21 
 	}
 }
 
-	@signal_handler/launch_setup.c
+20 static void 
+	$child_sigtstp
+(int 
+sig_code
+)
 
-12 #include 
-	~"minishell.h
-"
+22 (void)
+sig_code
+;
 
-24 int 
-	$sig_handler
+24 
+	}
+}
+
+26 static void 
+	$child_sigint
+(int 
+sig_code
+)
+
+28 (void)
+sig_code
+;
+
+29 
+	`printf
+("\n");
+
+30 
+	}
+}
+
+32 void 
+	$child_sig_handler
 (void)
 
-26 
+34 
+sigset_t
+ 
+set
+;
+
+36 
+	`signals_init
+(&
+set
+);
+
+37 
 	`signal
 (
 SIGINT
 , 
-handler_ctr_c
+child_sigint
 );
 
+38 
+	`signal
+(
+SIGQUIT
+, 
+child_sigquit
+);
+
+39 
+	`signal
+(
+SIGTSTP
+, 
+child_sigtstp
+);
+
+41 
+	}
+}
+
+	@signal_handler/parent_sig_handler.c
+
+12 #include 
+	~"minishell.h
+"
+
+22 void 
+	$handler_sigint
+(int 
+sig_code
+)
+
+24 (void)
+sig_code
+;
+
+25 
+	`printf
+("\n");
+
+26 
+g_shell
+->
+exit_status
+ = 1;
+
 27 
+	`rl_replace_line
+("", 0);
+
+28 
+	`rl_on_new_line
+();
+
+29 
+	`rl_redisplay
+();
+
+30 
+	}
+}
+
+32 int 
+	$parent_sig_handler
+(void)
+
+34 
+	`signal
+(
+SIGINT
+, 
+handler_sigint
+);
+
+35 
 	`signal
 (
 SIGQUIT
@@ -89411,7 +90877,95 @@ SIGQUIT
 SIG_IGN
 );
 
-29 
+36 
+	`signal
+(
+SIGTERM
+, 
+SIG_IGN
+);
+
+37 
+	`signal
+(
+SIGTSTP
+, 
+SIG_IGN
+);
+
+39 
+	}
+}
+
+41 void 
+	$signals_init
+(
+sigset_t
+ *
+set
+)
+
+43 
+	`sigemptyset
+(
+set
+);
+
+44 
+	`sigaddset
+(
+set
+, 
+SIGINT
+);
+
+45 
+	`sigaddset
+(
+set
+, 
+SIGQUIT
+);
+
+46 
+	`sigaddset
+(
+set
+, 
+SIGTERM
+);
+
+47 
+	`sigaddset
+(
+set
+, 
+SIGTSTP
+);
+
+49 
+	}
+}
+
+51 void 
+	$signal_handler
+(
+sigset_t
+ *
+set
+)
+
+53 
+	`signals_init
+(
+set
+);
+
+54 
+	`parent_sig_handler
+();
+
+55 
 	}
 }
 
@@ -90129,12 +91683,102 @@ WORD
 	}
 }
 
+	@utils.c
+
+12 #include 
+	~"minishell.h
+"
+
+14 void 
+	$free_before_exit
+(
+t_cmd
+ **
+head
+)
+
+16 
+	`free_shell
+();
+
+17 
+	`free_cmd
+(
+head
+);
+
+18 
+	}
+}
+
+20 int 
+	$size_tab2d
+(char **
+s
+)
+
+22 int 
+i
+;
+
+24 
+i
+ = 0;
+
+25 while (
+s
+[
+i
+])
+
+26 
+i
+++;
+
+27 return (
+i
+);
+
+28 
+	}
+}
+
+30 void 
+	$free_and_exit_prog
+(
+t_cmd
+ **
+head
+, int 
+exit_code
+)
+
+32 
+	`free_cmd
+(
+head
+);
+
+33 
+	`free_shell
+();
+
+34 
+	`exit
+ (
+exit_code
+);
+
+35 
+	}
+}
+
 	@
 1
 .
 0
-650
-28342
+653
+28412
 TESTS/execution_test/cmd_is_bin.c
 TESTS/execution_test/copy_env_tab.c
 TESTS/execution_test/envp_routine.c
@@ -90349,7 +91993,6 @@ builtins/env.c
 builtins/exit.c
 builtins/export.c
 builtins/export_unset_helper.c
-builtins/free_and_exit_prog.c
 builtins/pwd.c
 builtins/unset.c
 command_struct/free_cmd.c
@@ -90363,8 +92006,8 @@ execution/exec_bin.c
 execution/exec_builtins.c
 execution/exec_one_cmd.c
 execution/execution.c
-execution/execution_utils.c
 execution/get_path.c
+execution/pipex.c
 execution/search_path_in_env_table.c
 global_variable/init_global.c
 is_smth/is_dollar.c
@@ -90462,6 +92105,9 @@ parsing/quote_removing.c
 parsing/syntax_errors.c
 parsing/syntax_errors_print_message.c
 parsing/token_extraction.c
+redirections/double_chevron.c
+redirections/make_redirection.c
+redirections/single_chevron.c
 sauvegarde/builtins.c
 sauvegarde/cmd_is_bin.c
 sauvegarde/cmd_is_builtin.c
@@ -90780,8 +92426,9 @@ sauvegarde/test_tgetent.c
 sauvegarde/tokens/token_routine.c
 sauvegarde/tokens/token_routine_delete.c
 sauvegarde/tokens/token_routine_set_id.c
-signal_handler/handler_ctr_c.c
-signal_handler/launch_setup.c
+signal_handler/child_sig_handler.c
+signal_handler/parent_sig_handler.c
 tokens/token_routine.c
 tokens/token_routine_delete.c
 tokens/token_routine_set_id.c
+utils.c

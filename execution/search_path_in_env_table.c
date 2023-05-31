@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   search_path.c                                      :+:      :+:    :+:   */
+/*   search_path_in_env_table.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 12:00:14 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/29 10:52:26 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/31 10:51:35 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -93,7 +93,6 @@ int	search_path(t_cmd *cmd, char **env)
    {
 	   ft_dprintf(2, "minishell: %s: No such file or directory\n", cmd->cmd[0]);
 	   g_shell->exit_status = 127;
-	   cmd->status = 127;
 	   return (0);
    }
 	if (cmd->cmd[0][0] == 0)

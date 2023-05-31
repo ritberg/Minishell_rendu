@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 14:19:00 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/30 15:52:25 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/31 09:47:09 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -24,6 +24,11 @@ void	restaure_fds(t_cmd *cmd)
 		dup2(cmd->save_fdin, STDIN_FILENO);
 		close(cmd->save_fdin);
 		cmd->save_fdin = -1;
+	}
+	if (access(".here_doc", F_OK) == 0)
+	{
+		unlink(".here_doc");
+		//gestion d'erreur
 	}
 	
 }
@@ -57,8 +62,10 @@ int	make_redirections(t_cmd *cmd)
 		{
 			i++;
 			res = here_doc(cmd, cmd->redir[i]);
-			if (res == ERROR_EXIT)
+			if (res == ERROR_EXIT || res == 0)
+			{
 				return (ERROR_EXIT);
+			}
 		}
 		else	
 			i++;

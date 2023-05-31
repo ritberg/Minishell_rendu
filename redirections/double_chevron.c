@@ -6,11 +6,11 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 14:37:46 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/31 08:52:35 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/31 11:57:20 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
-
+//rl_on_new_line, rl_replace_line, rl_redisplay,
 void	sigint(int key)
 {
 	(void)key;
@@ -19,21 +19,28 @@ void	sigint(int key)
 
 void sig_handler(void)
 {
+	sigset_t set;
+
+	signals_init(&set);	
 	signal(SIGQUIT, SIG_IGN);
 	signal(SIGINT, sigint);
 }
 
 void	child_process(char *key_word)
 {
-	char *doc  = "here_doc";
+	char *doc  = ".here_doc";
 	char *line;
 	int	fd;
-	
-	sig_handler();	
+
+	line = NULL;	
+	sig_handler();// sa marche pas comme il faut	
 	fd = open(doc, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	line = readline(MAG"> "RESET);
-	ft_dprintf(fd,"%s\n", line);
-	while (ft_strncmp(line, key_word, ft_strlen(key_word)) != 0)
+	if (fd < 0)
+	{
+		ft_dprintf(2, "minishell: open: %s\n", strerror(errno));
+		exit(0);
+	}
+	while (1)
 	{
 		if (line)
 		{
@@ -41,12 +48,18 @@ void	child_process(char *key_word)
 			line = NULL;
 		}
 		line = readline(MAG"> "RESET);
-		ft_dprintf(fd,"%s\n", line);
 		if (!line)
 			break;
+		else if (ft_strncmp(line, key_word, ft_strlen(key_word)) == 0)
+		{
+			free(line);
+			break ;
+		}
+		else 
+			ft_dprintf(fd,"%s\n", line);
 	}
 	close(fd);
-	exit(0);
+	exit(1);
 }
 
 int	here_doc(t_cmd *cmd, char *key_word)
@@ -72,9 +85,26 @@ int	here_doc(t_cmd *cmd, char *key_word)
 		child_process(key_word);
 	}
 	else
+	{
 		waitpid(pid, &status, 0);
+		if (WIFEXITED(status) && WEXITSTATUS(status) == 0)
+		{
+			g_shell->exit_status = 1;
+			return (0);
+		}
+		else if(WIFSIGNALED(status) && WTERMSIG(status) == SIGINT)
+		{
+			g_shell->exit_status = 1;
+			return (0);
+		}
+		else if(WIFSIGNALED(status) && WTERMSIG(status) == SIGTERM)
+		{
+			g_shell->exit_status = 1;
+			return (0);
+		}
+	}
 	cmd->save_fdin = dup(STDIN_FILENO);
-	cmd->ffd_in = open("here_doc", O_RDONLY);
+	cmd->ffd_in = open(".here_doc", O_RDONLY);
 	if (cmd->ffd_in < 0)
 	{
 		ft_dprintf(2, "minishell: open: %s\n", strerror(errno));

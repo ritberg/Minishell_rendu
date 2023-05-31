@@ -6,7 +6,7 @@
 /*   By: mmakarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:03:39 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/05/30 13:22:53 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/31 10:06:02 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -34,6 +34,7 @@ int	parent_sig_handler(void)
 	signal(SIGINT, handler_sigint);
 	signal(SIGQUIT, SIG_IGN);
 	signal(SIGTERM, SIG_IGN);
+	signal(SIGTSTP, SIG_IGN);
 	return (0);
 }
 
@@ -43,6 +44,7 @@ void	signals_init(sigset_t *set)
 	sigaddset(set, SIGINT);		// ctrl + c == SIGINT, signo = 2
 	sigaddset(set, SIGQUIT);	// ctrl + \ == SIGQUIT, signo = 3
 	sigaddset(set, SIGTERM);	// ctrl + d == SIGTERM, signo = 15
+	sigaddset(set, SIGTSTP);	// ctrl + d == SIGTERM, signo = 15
 
 }
 

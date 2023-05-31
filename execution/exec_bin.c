@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:09:31 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/30 11:15:23 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/31 10:54:08 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -19,7 +19,6 @@ static int	check_access(t_cmd *cmd)
 		printf("access error: \n");
 		ft_dprintf(2, "minishell: %s: command not found\n", cmd->cmd[0]);
 		g_shell->exit_status = 127;
-	//	cmd->status = 127;
 		return (0);	
 
 	}
@@ -29,7 +28,6 @@ static int	check_access(t_cmd *cmd)
 		printf("access error: \n");
 		ft_dprintf(2, "minishell: %s\n", strerror(errno));
 		g_shell->exit_status = 127;
-//		cmd->status = 127;
 		return (0);
 	}
 	return (1);
@@ -44,26 +42,28 @@ static void	check_execve(t_cmd *cmd)
 		printf("execve error: \n");
 		ft_dprintf(2, "minishell: %s: is a directory\n", cmd->path);
 		g_shell->exit_status = 126;
-//		cmd->status = 126;
 		return ;
 	}
 	res = execve(cmd->path, cmd->cmd, g_shell->save_env);
 	if (res < 0)
 	{
 		printf("execve error: \n");
-		ft_dprintf(2, "minishell: %s\n", strerror(errno));
+		if (errno == ENOEXEC)
+		{
+			ft_dprintf(2, "minishell: %s: Permission denied\n", cmd->path);
+			g_shell->exit_status = 126;
+			return ;
+		}
+		ft_dprintf(2, "minishell: %s: %s\n", cmd->path, strerror(errno));
 		if (errno == EACCES)
 		{
 			g_shell->exit_status = 126;
-//			cmd->status = 126;
 			return ;
 		}
 		g_shell->exit_status = 127;
-//		cmd->status = 127;
 		return ;
 	}
 	g_shell->exit_status = 0;
-//	cmd->status = 0;
 }
 
 void	execute_bin(t_cmd *cmd)
@@ -74,9 +74,9 @@ void	execute_bin(t_cmd *cmd)
 		return ;
 	if (!get_path(cmd))
 		return ;
-	printf("path = %s\n", cmd->path);
-	if (cmd->cmd)
-		printf("cmd = %s\n", cmd->cmd[0]);
+//	printf("path = %s\n", cmd->path);	 // A SUPPRIMER
+//	if (cmd->cmd) 							// A SUPPRIMER
+//		printf("cmd = %s\n", cmd->cmd[0]);  // A SUPPRIMER
 	res = check_access(cmd);
 	if (res)
 		check_execve(cmd);

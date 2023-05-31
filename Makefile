@@ -6,7 +6,7 @@
 #    By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 12:23:37 by mdanchev          #+#    #+#              #
-#    Updated: 2023/05/30 14:51:10 by mdanchev         ###   lausanne.ch        #
+#    Updated: 2023/05/31 12:25:35 by mdanchev         ###   lausanne.ch        #
 #                                                                              #
 # **************************************************************************** #
 GREEN 		= \033[32;6m
@@ -53,6 +53,7 @@ SRCS		= main.c \
 			  redirections/double_chevron.c \
 			  redirections/make_redirection.c \
 			  execution/execution.c \
+			  execution/pipex.c \
 			  execution/get_path.c \
 			  execution/search_path_in_env_table.c \
 			  execution/copy_env_tab.c\

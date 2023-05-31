@@ -6,11 +6,10 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 14:20:24 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/30 15:52:34 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/05/31 09:31:23 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
-
 
 int	redir_fdin(t_cmd *cmd, char *file_path)
 {
