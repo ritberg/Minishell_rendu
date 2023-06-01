@@ -6,7 +6,7 @@
 #    By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 12:23:37 by mdanchev          #+#    #+#              #
-#    Updated: 2023/05/31 12:25:35 by mdanchev         ###   lausanne.ch        #
+#    Updated: 2023/05/31 18:05:08 by mmakarov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 GREEN 		= \033[32;6m

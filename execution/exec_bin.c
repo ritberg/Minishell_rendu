@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:09:31 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/31 10:54:08 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/01 16:58:57 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -79,7 +79,10 @@ void	execute_bin(t_cmd *cmd)
 //		printf("cmd = %s\n", cmd->cmd[0]);  // A SUPPRIMER
 	res = check_access(cmd);
 	if (res)
+	{
+
 		check_execve(cmd);
+	}
 	if (cmd->path)
 		free(cmd->path);
 	if (cmd->cmd)

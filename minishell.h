@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:16:33 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/31 12:25:18 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/01 16:11:53 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,10 +240,8 @@ void	free_shell(void);
 
 /*		SIGNAL HANDLER */
 void	signals_init(sigset_t *set);
-int		parent_sig_handler(void);
-void	signal_handler(sigset_t *set);
-void	handler_sigint(int sig_code);
-void	child_sig_handler(void);
+void	parent_signal_handler(void);
+void	child_signal_handler(int pid);
 
 //int	parsing_av(char *str);
 char	**ft_splitpath(char *s, char c);

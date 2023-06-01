@@ -6,44 +6,60 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:08:47 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/31 12:01:25 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/01 17:26:47 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
+void	test(int code)
+{
+	(void)code;
+	printf("sig tstp\n");
+}
+
 static void	execute_one_bin(t_cmd *cmd)
 {
 	int	sig_code;
-
 	sig_code = 0;
 	cmd->pid = fork();
 	if (cmd->pid < 0)
 		return (perror("Fork: "));
-	child_sig_handler();
 	if (cmd->pid == 0)
 	{
+		child_signal_handler(cmd->pid);
 		execute_bin(cmd);
 		exit(g_shell->exit_status);
 	}
 	else
 	{
 		waitpid(cmd->pid, &cmd->status, 0);
-		if (WIFEXITED(cmd->status))
-			g_shell->exit_status = WEXITSTATUS(cmd->status);
-		else if (WIFSIGNALED(cmd->status))
+		if (WIFSIGNALED(cmd->status))
 		{
 			sig_code = WTERMSIG(cmd->status);
-			if (sig_code == SIGTERM)
+			if (sig_code == SIGINT)
+				ft_printf("\n");
+			else if (sig_code == SIGTSTP)
+				ft_printf("\n");
+			else if (sig_code == SIGTERM)
 				ft_printf("Terminated: 15\n");
+			else if (sig_code == SIGQUIT)
+				ft_printf("coucou QUIT: 3\n");
 			else if (sig_code == SIGKILL)
 				ft_printf("Killed: 9\n");
 			g_shell->exit_status = sig_code + 128;
 		}
+		else if (WIFEXITED(cmd->status))
+		{
+		//	printf("coucou\n");
+		//	printf("status = %d\n", WEXITSTATUS(cmd->status));
+			g_shell->exit_status = WEXITSTATUS(cmd->status);
+		}
 		else if (WIFSTOPPED(cmd->status))
 		{
-			printf("hello\n");
+		//	printf("hello\n");
 			g_shell->exit_status = WSTOPSIG(cmd->status) + 128;
 		}
+		parent_signal_handler();
 	}
 }
 

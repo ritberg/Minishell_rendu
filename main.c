@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 09:56:41 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/30 10:56:12 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/01 16:23:45 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,14 +109,13 @@ int	main(int ac, char **av, char **envp)
 	char	*line;
 	t_token	*token;
 	t_cmd	*cmd;
-	sigset_t set;
 	int		exit_status;
 
+	parent_signal_handler();
 	if (!init_shell(envp))
 		return (1);
 	while (1)
 	{
-		signal_handler(&set);
 		line = readline_routine();
 		if (!line)
 			break ;

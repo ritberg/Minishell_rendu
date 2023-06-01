@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 12:02:52 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/31 17:41:30 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/01 15:26:21 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -40,7 +40,7 @@ static void	exec_bin(t_cmd *cmd)
 	int	sig_code;
 
 	sig_code = 0;
-	child_sig_handler();
+//	child_sig_handler();
 	execute_bin(cmd);
 	exit(g_shell->exit_status);
 }
