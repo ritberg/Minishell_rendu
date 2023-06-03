@@ -357,11 +357,10 @@ check_var_exist	sauvegarde/parsing/expansion_test/parsing_expansion_expand_var_h
 child	TESTS/execution_test/minishell.h	/^	pid_t	child;$/;"	m	struct:s_bin
 child	sauvegarde/execution_test/minishell.h	/^	pid_t	child;$/;"	m	struct:s_bin
 child	sauvegarde/minishell.h	/^	pid_t	child;$/;"	m	struct:s_bin
+child_handler	signal_handler/child_sig_handler.c	/^static void child_handler(int sig_code)$/;"	f	file:
 child_process	redirections/double_chevron.c	/^void	child_process(char *key_word)$/;"	f
-child_sig_handler	signal_handler/child_sig_handler.c	/^void child_sig_handler(void)$/;"	f
-child_sigint	signal_handler/child_sig_handler.c	/^static void child_sigint(int sig_code)$/;"	f	file:
-child_sigquit	signal_handler/child_sig_handler.c	/^static void	child_sigquit(int sig_code)$/;"	f	file:
-child_sigtstp	signal_handler/child_sig_handler.c	/^static void child_sigtstp(int sig_code)$/;"	f	file:
+child_signal_handler	signal_handler/child_sig_handler.c	/^void	child_signal_handler(int pid)$/;"	f
+child_signals_init	signal_handler/child_sig_handler.c	/^void	child_signals_init(sigset_t *set)$/;"	f
 cmd	TESTS/execution_test/minishell.h	/^	char	**cmd;$/;"	m	struct:s_cmd
 cmd	TESTS/execution_test/minishell.h	/^	char	*cmd;$/;"	m	struct:s_bin
 cmd	TESTS/expansion_test/minishell.h	/^	char	**cmd;$/;"	m	struct:s_cmd
@@ -504,7 +503,7 @@ env	sauvegarde/execution_test/minishell.h	/^	t_env	*env;$/;"	m	struct:s_shell
 env	sauvegarde/minishell.h	/^	t_env	*env;$/;"	m	struct:s_shell
 env	sauvegarde/parsing/expansion_test/minishell.h	/^	t_env	*env;$/;"	m	struct:s_shell
 env_list_size	builtins/unset.c	/^static int	env_list_size(t_env **head)$/;"	f	file:
-error_exit	minishell.h	/^	int		error_exit;$/;"	m	struct:s_shell
+error_exit	minishell.h	/^	int					error_exit;$/;"	m	struct:s_shell
 exec_bin	TESTS/execution_test/execution.c	/^void	exec_bin(t_token *token, t_bin *bin)$/;"	f
 exec_bin	execution/pipex.c	/^static void	exec_bin(t_cmd *cmd)$/;"	f	file:
 exec_bin	sauvegarde/execution_test/execution.c	/^void	exec_bin(t_token *token, t_bin *bin)$/;"	f
@@ -516,7 +515,7 @@ execution_bin	sauvegarde/execution.c	/^void	execution_bin(t_cmd *cmd, t_bin *bin
 exit_status	TESTS/execution_test/minishell.h	/^	int		exit_status;$/;"	m	struct:s_shell
 exit_status	TESTS/expansion_test/minishell.h	/^	int		exit_status;$/;"	m	struct:s_shell
 exit_status	TESTS/parsing tests/main_parsing_token_extraction.c	/^int	exit_status = 0;$/;"	v
-exit_status	minishell.h	/^	int		exit_status;$/;"	m	struct:s_shell
+exit_status	minishell.h	/^	volatile int		exit_status;$/;"	m	struct:s_shell
 exit_status	sauvegarde/execution_test/minishell.h	/^	int		exit_status;$/;"	m	struct:s_shell
 exit_status	sauvegarde/minishell.h	/^	int		exit_status;$/;"	m	struct:s_shell
 exit_status	sauvegarde/parsing/expansion_test/minishell.h	/^	int		exit_status;$/;"	m	struct:s_shell
@@ -1106,10 +1105,10 @@ get_tokens_size	parsing/token_extraction.c	/^int	get_tokens_size(char *line, int
 get_tokens_size	sauvegarde/execution_test/parsing_token_extraction.c	/^int	get_tokens_size(char *line, int *i)$/;"	f
 get_tokens_size	sauvegarde/parsing/expansion_test/parsing_token_extraction.c	/^int	get_tokens_size(char *line, int *i)$/;"	f
 get_tokens_size	sauvegarde/parsing/token_extraction.c	/^int	get_tokens_size(char *line, int *i)$/;"	f
+handler	signal_handler/parent_sig_handler.c	/^static void handler(int sig_code)$/;"	f	file:
 handler_ctr_c	TESTS/execution_test/handler_ctr_c.c	/^void	handler_ctr_c(int code)$/;"	f
 handler_ctr_c	sauvegarde/execution_test/handler_ctr_c.c	/^void	handler_ctr_c(int code)$/;"	f
 handler_ctr_c	sauvegarde/handler_ctr_c.c	/^void	handler_ctr_c(int code)$/;"	f
-handler_sigint	signal_handler/parent_sig_handler.c	/^void	handler_sigint(int sig_code)$/;"	f
 here_doc	redirections/double_chevron.c	/^int	here_doc(t_cmd *cmd, char *key_word)$/;"	f
 id	TESTS/execution_test/minishell.h	/^	int					id;$/;"	m	struct:s_token
 id	TESTS/expansion_test/minishell.h	/^	int					id;$/;"	m	struct:s_token
@@ -1350,7 +1349,7 @@ ok	TESTS/execution_test/minishell.h	/^	int		ok;$/;"	m	struct:s_bin
 ok	sauvegarde/execution_test/minishell.h	/^	int		ok;$/;"	m	struct:s_bin
 ok	sauvegarde/minishell.h	/^	int		ok;$/;"	m	struct:s_bin
 one_cmd	execution/exec_one_cmd.c	/^void	one_cmd(t_cmd *cmd, t_cmd **head)$/;"	f
-parent_sig_handler	signal_handler/parent_sig_handler.c	/^int	parent_sig_handler(void)$/;"	f
+parent_signal_handler	signal_handler/parent_sig_handler.c	/^void	parent_signal_handler(void)$/;"	f
 parsing	TESTS/execution_test/parsing.c	/^t_token	*parsing(char *line)$/;"	f
 parsing	TESTS/expansion_test/parsing.c	/^t_token	*parsing(char *line)$/;"	f
 parsing	parsing/parsing.c	/^t_token	*parsing(char *line)$/;"	f
@@ -1403,6 +1402,7 @@ print_env	sauvegarde/global_variable/init_global.c	/^void	print_env()$/;"	f
 print_env	sauvegarde/parsing/expansion_test/main.c	/^void	print_env(t_env	**head)$/;"	f
 print_export_unset_error	builtins/export_unset_helper.c	/^void	print_export_unset_error(char *identifier, char *command)$/;"	f
 print_getcwd_error	builtins/pwd.c	/^void	print_getcwd_error(char *s)$/;"	f
+print_signal_message	execution/exec_one_cmd.c	/^void	print_signal_message(int sig_code)$/;"	f
 print_syntax_error_char	TESTS/execution_test/parsing_syntax_errors_print_message.c	/^void	print_syntax_error_char(char c)$/;"	f
 print_syntax_error_char	TESTS/expansion_test/parsing_syntax_errors_print_message.c	/^void	print_syntax_error_char(char c)$/;"	f
 print_syntax_error_char	parsing/syntax_errors_print_message.c	/^void	print_syntax_error_char(char c)$/;"	f
@@ -1498,7 +1498,7 @@ s_token	sauvegarde/minishell.h	/^typedef struct s_token$/;"	s
 s_token	sauvegarde/parsing/expansion_test/minishell.h	/^typedef struct s_token$/;"	s
 save_env	TESTS/execution_test/minishell.h	/^	char	**save_env;$/;"	m	struct:s_shell
 save_env	TESTS/expansion_test/minishell.h	/^	char	**save_env;$/;"	m	struct:s_shell
-save_env	minishell.h	/^	char	**save_env; \/\/$/;"	m	struct:s_shell
+save_env	minishell.h	/^	char				**save_env; $/;"	m	struct:s_shell
 save_env	sauvegarde/execution_test/minishell.h	/^	char	**save_env;$/;"	m	struct:s_shell
 save_env	sauvegarde/minishell.h	/^	char	**save_env; \/\/$/;"	m	struct:s_shell
 save_env	sauvegarde/parsing/expansion_test/minishell.h	/^	char	**save_env;$/;"	m	struct:s_shell
@@ -1525,8 +1525,12 @@ sig_handler	TESTS/execution_test/launch_setup.c	/^int	sig_handler(void)$/;"	f
 sig_handler	redirections/double_chevron.c	/^void sig_handler(void)$/;"	f
 sig_handler	sauvegarde/execution_test/launch_setup.c	/^int	sig_handler(void)$/;"	f
 sig_handler	sauvegarde/launch_setup.c	/^int	sig_handler(void)$/;"	f
+sig_int	minishell.h	/^	struct sigaction	sig_int;$/;"	m	struct:s_shell	typeref:struct:s_shell::sigaction
+sig_quit	minishell.h	/^	struct sigaction	sig_quit;$/;"	m	struct:s_shell	typeref:struct:s_shell::sigaction
+sig_stop	minishell.h	/^	struct sigaction	sig_stop;$/;"	m	struct:s_shell	typeref:struct:s_shell::sigaction
+sig_term	minishell.h	/^	struct sigaction	sig_term;$/;"	m	struct:s_shell	typeref:struct:s_shell::sigaction
+sig_tstp	minishell.h	/^	struct sigaction	sig_tstp;$/;"	m	struct:s_shell	typeref:struct:s_shell::sigaction
 sigint	redirections/double_chevron.c	/^void	sigint(int key)$/;"	f
-signal_handler	signal_handler/parent_sig_handler.c	/^void	signal_handler(sigset_t *set)$/;"	f
 signals_init	signal_handler/parent_sig_handler.c	/^void	signals_init(sigset_t *set)$/;"	f
 size_echo_cmd	builtins/echo.c	/^static int	size_echo_cmd(char **s)$/;"	f	file:
 size_tab2d	utils.c	/^int	size_tab2d(char **s)$/;"	f
@@ -1561,6 +1565,7 @@ string_replace	parsing/quote_removing.c	/^int	string_replace(t_token *curr, int 
 string_replace	sauvegarde/execution_test/parsing_quote_removing.c	/^int	string_replace(t_token *curr, int start, int pos)$/;"	f
 string_replace	sauvegarde/parsing/expansion_test/parsing_quote_removing.c	/^int	string_replace(t_token *curr, int start, int pos)$/;"	f
 string_replace	sauvegarde/parsing/quote_removing.c	/^int	string_replace(t_token *curr, int start, int pos)$/;"	f
+suspended	minishell.h	/^	volatile int		suspended;$/;"	m	struct:s_shell
 syntax_error_check	TESTS/execution_test/parsing_syntax_errors.c	/^int	syntax_error_check(char *s)$/;"	f
 syntax_error_check	TESTS/expansion_test/parsing_syntax_errors.c	/^int	syntax_error_check(char *s)$/;"	f
 syntax_error_check	parsing/syntax_errors.c	/^int	syntax_error_check(char *s)$/;"	f
@@ -1600,6 +1605,7 @@ t_token	minishell.h	/^}	t_token;$/;"	t	typeref:struct:s_token
 t_token	sauvegarde/execution_test/minishell.h	/^}	t_token;$/;"	t	typeref:struct:s_token
 t_token	sauvegarde/minishell.h	/^}	t_token;$/;"	t	typeref:struct:s_token
 t_token	sauvegarde/parsing/expansion_test/minishell.h	/^}	t_token;$/;"	t	typeref:struct:s_token
+terminated	minishell.h	/^	volatile int		terminated;$/;"	m	struct:s_shell
 there_is_n	TESTS/execution_test/libft/get_next_line/get_next_line_utils.c	/^int	there_is_n(char *line)$/;"	f
 there_is_n	TESTS/expansion_test/libft/get_next_line/get_next_line_utils.c	/^int	there_is_n(char *line)$/;"	f
 there_is_n	libft/get_next_line/get_next_line_utils.c	/^int	there_is_n(char *line)$/;"	f

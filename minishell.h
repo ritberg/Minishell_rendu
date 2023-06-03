@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:16:33 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/01 16:11:53 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/03 12:39:35 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,17 @@ typedef	struct	s_cmd
 typedef struct s_shell
 {
 	t_env	*env;
-	int		exit_status;
-	int		error_exit;
-	char	**save_env; //
+	volatile int		exit_status;
+	int					error_exit;
+	char				**save_env; 
+	struct sigaction	sig_quit;
+	struct sigaction	sig_tstp;
+	struct sigaction	sig_int;
+	struct sigaction	sig_term;
+	struct sigaction	sig_stop;
+	volatile int		suspended;
+	volatile int		terminated;
+	int					pid;
 }	t_shell;
 
 extern t_shell	*g_shell;

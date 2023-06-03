@@ -6,7 +6,7 @@
 /*   By: mmakarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:03:39 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/06/01 16:15:41 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/03 12:48:38 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -37,6 +37,7 @@ void	signals_init(sigset_t *set)
 	sigaddset(set, SIGQUIT);	// ctrl + \ == SIGQUIT, signo = 3
 	sigaddset(set, SIGTERM);	// ctrl + d == SIGTERM, signo = 15
 	sigaddset(set, SIGTSTP);	// ctrl 
+	sigaddset(set, SIGSTOP);	// ctrl 
 
 }
 
@@ -47,10 +48,10 @@ void	parent_signal_handler(void)
 	ft_memset(&act, 0, sizeof(struct sigaction));
 	signals_init(&act.sa_mask);
 	act.sa_handler = SIG_IGN;
-	sigaction(SIGQUIT, &act, NULL); // ctrl + \'
-	sigaction(SIGTERM, &act, NULL); // kill -15 PID (depuis le terminal)
-	sigaction(SIGTSTP, &act, NULL); // ctrl + z
+	sigaction(SIGQUIT, &act, &g_shell->sig_quit); // ctrl + '\'
+	sigaction(SIGTERM, &act, &g_shell->sig_term); // kill -15 PID (depuis le terminal)
+	sigaction(SIGTSTP, &act, &g_shell->sig_tstp); // ctrl + z
 	
 	act.sa_handler = handler;
-	sigaction(SIGINT, &act, NULL); // ctrl + c
+	sigaction(SIGINT, &act, &g_shell->sig_int); // ctrl + c
 }

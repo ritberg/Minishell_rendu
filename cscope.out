@@ -1,4 +1,4 @@
-cscope 15 $HOME/Documents/GitHub/minishell/rita -c -q 0000000553 0000499589
+cscope 15 $HOME/Documents/GitHub/minishell/rita -c -q 0000000561 0000501619
 	@TESTS/execution_test/cmd_is_bin.c
 
 1 #include 
@@ -32005,19 +32005,19 @@ cmd
 res
 )
 
-82 
+84 
 	`check_execve
 (
 cmd
 );
 
-83 if (
+86 if (
 cmd
 ->
 path
 )
 
-84 
+87 
 	`free
 (
 cmd
@@ -32025,17 +32025,17 @@ cmd
 path
 );
 
-85 if (
+88 if (
 cmd
 ->cmd)
 
-86 
+89 
 	`free_tab2d
 (
 cmd
 ->cmd);
 
-88 
+91 
 	}
 }
 
@@ -32211,7 +32211,47 @@ cmd
 	~"minishell.h
 "
 
-14 static void 
+14 void 
+	$print_signal_message
+(int 
+sig_code
+)
+
+16 if (
+sig_code
+ == 
+SIGTERM
+)
+
+18 
+g_shell
+->
+terminated
+++;
+
+19 
+	`ft_printf
+("[%d]\t Terminated: 15\n", 
+g_shell
+->
+terminated
+);
+
+21 else if (
+sig_code
+ == 
+SIGQUIT
+)
+
+23 
+	`printf
+("QUIT: 3\n");
+
+25 
+	}
+}
+
+27 static void 
 	$execute_one_bin
 (
 t_cmd
@@ -32219,15 +32259,15 @@ t_cmd
 cmd
 )
 
-16 int 
+29 int 
 sig_code
 ;
 
-18 
+30 
 sig_code
  = 0;
 
-19 
+31 
 cmd
 ->
 pid
@@ -32235,33 +32275,47 @@ pid
 	`fork
 ();
 
-20 if (
+32 
+	`child_signal_handler
+(
+cmd
+->
+pid
+);
+
+33 if (
 cmd
 ->
 pid
  < 0)
 
-21 return (
+34 return (
 	`perror
 ("Fork: "));
 
-22 
-	`child_sig_handler
-();
-
-23 if (
+35 if (
 cmd
 ->
 pid
  == 0)
 
-25 
+37 
 	`execute_bin
 (
 cmd
 );
 
-26 
+38 
+cmd
+->
+status
+ = 
+g_shell
+->
+exit_status
+;
+
+39 
 	`exit
 (
 g_shell
@@ -32269,7 +32323,7 @@ g_shell
 exit_status
 );
 
-30 
+43 
 	`waitpid
 (
 cmd
@@ -32279,27 +32333,7 @@ pid
 status
 , 0);
 
-31 if (
-	`WIFEXITED
-(
-cmd
-->
-status
-))
-
-32 
-g_shell
-->
-exit_status
- = 
-	`WEXITSTATUS
-(
-cmd
-->
-status
-);
-
-33 else if (
+44 if (
 	`WIFSIGNALED
 (
 cmd
@@ -32307,73 +32341,53 @@ cmd
 status
 ))
 
-35 
-sig_code
+46 
+	`print_signal_message
+(
+	`WTERMSIG
+(
+cmd
+->
+status
+));
+
+47 
+g_shell
+->
+exit_status
  = 
 	`WTERMSIG
 (
 cmd
 ->
 status
-);
+) + 128;
 
-36 if (
-sig_code
- == 
-SIGTERM
-)
-
-37 
-	`ft_printf
-("Terminated: 15\n");
-
-38 else if (
-sig_code
- == 
-SIGKILL
-)
-
-39 
-	`ft_printf
-("Killed: 9\n");
-
-40 
-g_shell
-->
-exit_status
- = 
-sig_code
- + 128;
-
-42 else if (
-	`WIFSTOPPED
+49 else if (
+	`WIFEXITED
 (
 cmd
 ->
 status
 ))
 
-44 
-	`printf
-("hello\n");
-
-45 
+51 if (
 g_shell
 ->
 exit_status
- = 
-	`WSTOPSIG
-(
-cmd
-->
-status
-) + 128;
+ == 146)
 
-48 
+52 
+	`ft_printf
+("\t\t\t%s\n", 
+cmd
+->cmd[0]);
+
+59 
 	}
 }
 
-50 void 
+61 void 
 	$one_cmd
 (
 t_cmd
@@ -32383,11 +32397,11 @@ cmd
 head
 )
 
-52 int 
+63 int 
 res
 ;
 
-54 
+65 
 res
  = 
 	`make_redirections
@@ -32395,19 +32409,19 @@ res
 cmd
 );
 
-55 if (
+66 if (
 res
  == 
 ERROR_EXIT
 )
 
-57 if (
+68 if (
 	`cmd_is_builtin
 (
 cmd
 ->cmd[0]))
 
-58 
+69 
 	`execute_builtin
 (
 cmd
@@ -32415,19 +32429,19 @@ cmd
 head
 );
 
-60 
+71 
 	`execute_one_bin
 (
 cmd
 );
 
-61 
+72 
 	`restaure_fds
 (
 cmd
 );
 
-62 
+73 
 	}
 }
 
@@ -32837,7 +32851,119 @@ i
 	}
 }
 
-40 void 
+38 static void 
+	$exec_bin
+(
+t_cmd
+ *
+cmd
+)
+
+40 int 
+sig_code
+;
+
+42 
+sig_code
+ = 0;
+
+43 
+	`execute_bin
+(
+cmd
+);
+
+44 
+	`exit
+(
+g_shell
+->
+exit_status
+);
+
+45 
+	}
+}
+
+48 int 
+	$ft_exe
+(int 
+save_fdin
+, 
+t_cmd
+ *
+cmd
+, t_cmd **
+head
+)
+
+50 int 
+res
+;
+
+52 
+	`dup2
+(
+save_fdin
+, 
+STDIN_FILENO
+);
+
+53 
+	`close
+(
+save_fdin
+);
+
+54 
+res
+ = 
+	`make_redirections
+(
+cmd
+);
+
+55 if (
+res
+ == 
+ERROR_EXIT
+)
+
+57 if (!
+cmd
+->cmd)
+
+59 if (
+	`cmd_is_builtin
+(
+cmd
+->cmd[0]))
+
+60 
+	`execute_builtin
+(
+cmd
+, 
+head
+);
+
+62 
+	`exec_bin
+(
+cmd
+);
+
+63 
+	`restaure_fds
+(
+cmd
+);
+
+65 
+	}
+}
+
+68 void 
 	$pipex
 (
 t_cmd
@@ -32847,163 +32973,203 @@ head
 nb_cmds
 )
 
-42 int **
-fd_pipe
+70 (void)
+nb_cmds
 ;
 
-43 
+71 int 
+fd_pipe
+[2];
+
+72 int 
+save_fdin
+;
+
+73 
 t_cmd
  *
 cmd
 ;
 
-44 int 
-sig_code
-;
-
-45 int 
+74 int 
 i
 ;
 
-47 
+76 
 i
  = 0;
 
-48 if (!
+77 if (!
 head
  || !*head)
 
-50 
+79 
 cmd
  = *
 head
 ;
 
-51 
-fd_pipe
- = 0;
+80 while (
+cmd
+)
 
-52 if(!
-	`init_fd_pipe
-(
-fd_pipe
-, 
-nb_cmds
-))
-
-54 
+82 
 	`pipe
 (
 fd_pipe
-[
-i
-]);
+);
 
-55 
+83 
 cmd
 ->
 pid
- = 
+= 
 	`fork
 ();
 
-56 if (
+84 
+	`child_signal_handler
+(
+cmd
+->
+pid
+);
+
+85 if (
 cmd
 ->
 pid
  == 0)
 
-58 
-	`exec_gauche
-(
-cmd
-, 
-head
-, 
-fd_pipe
-[
-i
-]);
-
-60 
+87 if (
 cmd
 ->
 next
+ != 
+NULL
+)
+
+88 
+	`dup2
+(
+fd_pipe
+[1], 
+STDOUT_FILENO
+);
+
+89 
+	`close
+(
+fd_pipe
+[0]);
+
+90 
+	`close
+(
+fd_pipe
+[1]);
+
+91 
+	`ft_exe
+(
+save_fdin
+, 
+cmd
+, 
+head
+);
+
+92 
+	`exit
+(
+g_shell
 ->
-pid
+exit_status
+);
+
+96 
+	`close
+(
+fd_pipe
+[1]);
+
+97 
+	`close
+(
+save_fdin
+);
+
+98 
+save_fdin
  = 
-	`fork
-();
-
-61 if (
-cmd
-->
-next
-->
-pid
- = 0)
-
-63 
-	`exec_droite
-(
-cmd
-, 
-head
-, 
 fd_pipe
-[
-i
-]);
+[0];
 
-65 
-	`close
-(
-fd_pipe
-[
-i
-][0]);
-
-66 
-	`close
-(
-fd_pipe
-[
-i
-][1]);
-
-69 
-	`waitpid
-(
-cmd
-->
-pid
-, &cmd->
-status
-, 0);
-
-70 
-	`waitpid
-(
-cmd
-->
-pid
-, &cmd->
-next
-->
-status
-, 0);
-
-73 
+100 
 cmd
  = cmd->
 next
 ;
 
-74 
-i
-++;
+102 
+cmd
+ = *
+head
+;
 
-75 
+103 while (
+cmd
+)
+
+105 
+	`waitpid
+(
+cmd
+->
+pid
+, &cmd->
+status
+, 
+WUNTRACED
+);
+
+106 if (
+	`WIFEXITED
+(
+cmd
+->
+status
+))
+
+108 
+g_shell
+->
+exit_status
+ = 
+cmd
+->
+status
+ % 256;
+
+110 
+cmd
+ = cmd->
+next
+;
+
+112 
+cmd
+ = *
+head
+;
+
+113 
+	`close
+(
+save_fdin
+);
+
+114 
 	}
 }
 
@@ -41211,39 +41377,31 @@ t_cmd
 cmd
 ;
 
-112 
-sigset_t
- 
-set
-;
-
-113 int 
+112 int 
 exit_status
 ;
 
-115 if (!
+114 if (!
 	`init_shell
 (
 envp
 ))
 
-119 
-	`signal_handler
-(&
-set
-);
+118 
+	`parent_signal_handler
+();
 
-120 
+119 
 line
  = 
 	`readline_routine
 ();
 
-121 if (!
+120 if (!
 line
 )
 
-123 
+122 
 token
  = 
 	`parsing
@@ -41251,7 +41409,7 @@ token
 line
 );
 
-124 
+123 
 cmd
  = 
 	`cmd_linked_list
@@ -41259,43 +41417,43 @@ cmd
 token
 );
 
-126 
+125 
 	`execution
 (&
 cmd
 );
 
-128 
+127 
 	`check_for_malloc_error
 (&
 cmd
 );
 
-129 
+128 
 	`free_cmd
 (&
 cmd
 );
 
-131 
+130 
 exit_status
  = 
 g_shell
 ->exit_status;
 
-132 
+131 
 	`free_shell
 ();
 
-133 
+132 
 	`printf
 ("exit\n");
 
-134 return (
+133 return (
 exit_status
 );
 
-135 
+134 
 	}
 }
 
@@ -41645,7 +41803,7 @@ t_env
 	menv
 ;
 
-94 int 
+94 volatile int 
 	mexit_status
 ;
 
@@ -41657,17 +41815,55 @@ t_env
 	msave_env
 ;
 
-97 } 
+97 struct 
+sigaction
+ 
+	msig_quit
+;
+
+98 struct 
+sigaction
+ 
+	msig_tstp
+;
+
+99 struct 
+sigaction
+ 
+	msig_int
+;
+
+100 struct 
+sigaction
+ 
+	msig_term
+;
+
+101 struct 
+sigaction
+ 
+	msig_stop
+;
+
+102 volatile int 
+	msuspended
+;
+
+103 volatile int 
+	mterminated
+;
+
+104 } 
 	tt_shell
 ;
 
-99 extern 
+106 extern 
 t_shell
  *
 g_shell
 ;
 
-102 int 
+109 int 
 make_redirections
 (
 t_cmd
@@ -41675,7 +41871,7 @@ t_cmd
 cmd
 );
 
-103 void 
+110 void 
 restaure_fds
 (
 t_cmd
@@ -41683,7 +41879,7 @@ t_cmd
 cmd
 );
 
-104 int 
+111 int 
 redir_fdout
 (
 t_cmd
@@ -41695,7 +41891,7 @@ redir_op
 file_path
 );
 
-105 int 
+112 int 
 redir_fdin
 (
 t_cmd
@@ -41705,7 +41901,7 @@ cmd
 file_path
 );
 
-106 int 
+113 int 
 here_doc
 (
 t_cmd
@@ -41715,7 +41911,7 @@ cmd
 key_word
 );
 
-107 int 
+114 int 
 append
 (
 t_cmd
@@ -41725,7 +41921,7 @@ cmd
 file_path
 );
 
-110 void 
+117 void 
 free_before_exit
 (
 t_cmd
@@ -41733,7 +41929,7 @@ t_cmd
 head
 );
 
-111 void 
+118 void 
 free_and_exit_prog
 (
 t_cmd
@@ -41743,13 +41939,13 @@ head
 exit_code
 );
 
-112 int 
+119 int 
 size_tab2d
 (char **
 s
 );
 
-115 void 
+122 void 
 execution
 (
 t_cmd
@@ -41757,11 +41953,11 @@ t_cmd
 head
 );
 
-116 int 
+123 int 
 copy_env_tab
 (void);
 
-117 void 
+124 void 
 one_cmd
 (
 t_cmd
@@ -41771,7 +41967,7 @@ cmd
 head
 );
 
-118 void 
+125 void 
 pipex
 (
 t_cmd
@@ -41781,13 +41977,13 @@ head
 nb_cmds
 );
 
-121 int 
+128 int 
 cmd_is_builtin
 (char *
 s
 );
 
-122 void 
+129 void 
 execute_builtin
 (
 t_cmd
@@ -41797,11 +41993,11 @@ cmd
 head
 );
 
-123 void 
+130 void 
 _pwd
 (void);
 
-124 void 
+131 void 
 _env
 (
 t_cmd
@@ -41813,13 +42009,13 @@ t_env
 env
 );
 
-125 void 
+132 void 
 print_getcwd_error
 (char *
 s
 );
 
-126 int 
+133 int 
 _echo
 (
 t_cmd
@@ -41827,7 +42023,7 @@ t_cmd
 cmd
 );
 
-127 void 
+134 void 
 ft_exit
 (
 t_cmd
@@ -41835,7 +42031,7 @@ t_cmd
 head
 );
 
-128 void 
+135 void 
 _cd
 (
 t_cmd
@@ -41845,7 +42041,7 @@ cmd
 head
 );
 
-129 void 
+136 void 
 _export
 (
 t_cmd
@@ -41855,13 +42051,13 @@ cmd
 head
 );
 
-130 int 
+137 int 
 check_if_var_exists
 (char *
 s
 );
 
-131 int 
+138 int 
 check_if_valid_identifier
 (char *
 s
@@ -41869,7 +42065,7 @@ s
 command
 );
 
-132 void 
+139 void 
 print_export_unset_error
 (char *
 identifier
@@ -41877,7 +42073,7 @@ identifier
 command
 );
 
-133 void 
+140 void 
 _unset
 (
 t_cmd
@@ -41885,7 +42081,7 @@ t_cmd
 cmd
 );
 
-136 void 
+143 void 
 execute_bin
 (
 t_cmd
@@ -41893,7 +42089,7 @@ t_cmd
 cmd
 );
 
-137 int 
+144 int 
 search_path
 (
 t_cmd
@@ -41903,7 +42099,7 @@ cmd
 env
 );
 
-138 int 
+145 int 
 get_path
 (
 t_cmd
@@ -41911,7 +42107,7 @@ t_cmd
 cmd
 );
 
-141 
+148 
 t_cmd
  *
 cmd_linked_list
@@ -41921,13 +42117,13 @@ t_token
 token
 );
 
-142 void 
+149 void 
 free_tab2d
 (char **
 s
 );
 
-143 void 
+150 void 
 free_cmd
 (
 t_cmd
@@ -41935,7 +42131,7 @@ t_cmd
 head
 );
 
-146 int 
+153 int 
 create_redir
 (
 t_token
@@ -41947,7 +42143,7 @@ t_cmd
 cmd
 );
 
-149 int 
+156 int 
 create_cmd
 (
 t_token
@@ -41959,7 +42155,7 @@ t_cmd
 cmd
 );
 
-152 int 
+159 int 
 expansion
 (
 t_token
@@ -41971,7 +42167,7 @@ curr
 pos
 );
 
-153 int 
+160 int 
 check_dollar
 (
 t_token
@@ -41979,36 +42175,6 @@ t_token
 curr
 , int 
 i
-);
-
-154 int 
-trim_dollar
-(
-t_token
- *
-curr
-, int 
-pos
-);
-
-157 int 
-is_dollar_to_expand
-(
-t_token
- *
-curr
-, int 
-i
-);
-
-158 int 
-not_within_squotes
-(
-t_token
- *
-curr
-, int 
-pos
 );
 
 161 int 
@@ -42022,6 +42188,36 @@ pos
 );
 
 164 int 
+is_dollar_to_expand
+(
+t_token
+ *
+curr
+, int 
+i
+);
+
+165 int 
+not_within_squotes
+(
+t_token
+ *
+curr
+, int 
+pos
+);
+
+168 int 
+trim_dollar
+(
+t_token
+ *
+curr
+, int 
+pos
+);
+
+171 int 
 loop_dollars
 (char *
 s
@@ -42029,7 +42225,7 @@ s
 i
 );
 
-165 int 
+172 int 
 loop_through
 (char *
 s
@@ -42037,13 +42233,13 @@ s
 i
 );
 
-168 int 
+175 int 
 size_var
 (char *
 s
 );
 
-169 int 
+176 int 
 check_var_exist
 (
 t_token
@@ -42051,7 +42247,7 @@ t_token
 tmp
 );
 
-172 int 
+179 int 
 join_tokens
 (
 t_token
@@ -42061,7 +42257,7 @@ new
 curr
 );
 
-175 int 
+182 int 
 prepare_expand
 (
 t_token
@@ -42071,7 +42267,7 @@ tmp
 i
 );
 
-176 int 
+183 int 
 set_id_expansion
 (
 t_token
@@ -42079,7 +42275,7 @@ t_token
 token
 );
 
-179 int 
+186 int 
 quote_removing
 (
 t_token
@@ -42091,7 +42287,7 @@ curr
 pos
 );
 
-181 
+188 
 t_token
  *
 delete_token
@@ -42099,7 +42295,7 @@ delete_token
 head
 );
 
-182 int 
+189 int 
 token_list_size
 (
 t_token
@@ -42107,7 +42303,7 @@ t_token
 head
 );
 
-185 
+192 
 t_token
  *
 parsing
@@ -42115,13 +42311,13 @@ parsing
 line
 );
 
-186 int 
+193 int 
 syntax_error_check
 (char *
 s
 );
 
-187 int 
+194 int 
 check_pipeline_errors
 (char *
 s
@@ -42133,7 +42329,7 @@ c
 num
 );
 
-188 int 
+195 int 
 check_quotes_errors
 (char *
 s
@@ -42143,7 +42339,7 @@ c
 i
 );
 
-189 int 
+196 int 
 count_metachar
 (char *
 s
@@ -42153,7 +42349,7 @@ c
 num
 );
 
-190 int 
+197 int 
 check_multiple_operators_error
 (int 
 i
@@ -42163,25 +42359,25 @@ num
 c
 );
 
-191 void 
+198 void 
 print_syntax_error_char
 (char 
 c
 );
 
-192 void 
+199 void 
 print_syntax_error_dchar
 (char 
 c
 );
 
-193 void 
+200 void 
 print_syntax_error_str
 (char *
 s
 );
 
-196 int 
+203 int 
 character_extraction
 (char *
 line
@@ -42189,7 +42385,7 @@ line
 ind
 );
 
-197 int 
+204 int 
 token_extraction
 (char *
 line
@@ -42197,7 +42393,7 @@ line
 ind
 );
 
-198 
+205 
 t_token
  *
 get_tokens
@@ -42205,7 +42401,7 @@ get_tokens
 line
 );
 
-199 int 
+206 int 
 get_tokens_size
 (char *
 line
@@ -42213,7 +42409,7 @@ line
 i
 );
 
-200 
+207 
 t_token
  *
 create_token_head
@@ -42227,13 +42423,13 @@ len
 flag
 );
 
-203 void 
+210 void 
 malloc_error_print_message
 (char *
 s
 );
 
-206 
+213 
 t_token
  *
 new_token
@@ -42245,7 +42441,7 @@ start
 len
 );
 
-207 void 
+214 void 
 set_id
 (
 t_token
@@ -42253,7 +42449,7 @@ t_token
 token
 );
 
-208 int 
+215 int 
 token_linked_list
 (
 t_token
@@ -42267,7 +42463,7 @@ start
 len
 );
 
-209 int 
+216 int 
 link_token
 (
 t_token
@@ -42277,7 +42473,7 @@ head
 new
 );
 
-210 void 
+217 void 
 free_token
 (
 t_token
@@ -42285,115 +42481,115 @@ t_token
 head
 );
 
-213 int 
+220 int 
 is_dollar
 (char 
 c
 );
 
-214 int 
+221 int 
 is_pipeline
 (char 
 c
 );
 
-215 int 
+222 int 
 is_chevron
 (char 
 c
 );
 
-216 int 
+223 int 
 is_lchevron
 (char 
 c
 );
 
-217 int 
+224 int 
 is_rchevron
 (char 
 c
 );
 
-218 int 
+225 int 
 is_operator
 (char 
 c
 );
 
-219 int 
+226 int 
 is_newline
 (char 
 c
 );
 
-220 int 
+227 int 
 is_white_space
 (char 
 c
 );
 
-221 int 
+228 int 
 is_blank
 (char 
 c
 );
 
-222 int 
+229 int 
 is_metacharacter
 (char 
 c
 );
 
-223 int 
+230 int 
 is_delimiter
 (char 
 c
 );
 
-224 int 
+231 int 
 is_word
 (char 
 c
 );
 
-225 int 
+232 int 
 is_double_quote
 (char 
 c
 );
 
-226 int 
+233 int 
 is_simple_quote
 (char 
 c
 );
 
-227 int 
+234 int 
 is_quote
 (char 
 c
 );
 
-228 int 
+235 int 
 is_question
 (char 
 c
 );
 
-229 int 
+236 int 
 is_punct
 (char 
 c
 );
 
-230 int 
+237 int 
 is_numeric
 (char *
 s
 );
 
-233 
+240 
 t_env
  *
 new_env
@@ -42401,7 +42597,7 @@ new_env
 envp
 );
 
-234 int 
+241 int 
 link_env
 (
 t_env
@@ -42411,23 +42607,23 @@ head
 last
 );
 
-235 char *
+242 char *
 get_env_var_value
 (char *
 var_name
 );
 
-238 int 
+245 int 
 init_shell
 (char **
 envp
 );
 
-239 void 
+246 void 
 free_shell
 (void);
 
-242 void 
+249 void 
 signals_init
 (
 sigset_t
@@ -42435,29 +42631,17 @@ sigset_t
 set
 );
 
-243 int 
-parent_sig_handler
+250 void 
+parent_signal_handler
 (void);
 
-244 void 
-signal_handler
-(
-sigset_t
- *
-set
-);
-
-245 void 
-handler_sigint
+251 void 
+child_signal_handler
 (int 
-sig_code
+pid
 );
 
-246 void 
-child_sig_handler
-(void);
-
-249 char **
+254 char **
 ft_splitpath
 (char *
 s
@@ -42465,7 +42649,7 @@ s
 c
 );
 
-253 
+258 
 t_env
  *
 get_envp
@@ -42473,7 +42657,7 @@ get_envp
 envp
 );
 
-254 void 
+259 void 
 free_env
 (
 t_env
@@ -90722,96 +90906,214 @@ WORD
 "
 
 14 static void 
-	$child_sigquit
+	$child_handler
 (int 
 sig_code
 )
 
-16 (void)
+16 if (
 sig_code
-;
-
-17 
-	`ft_printf
-("QUIT: 3\n");
+ == 
+SIGINT
+)
 
 18 
-	}
-}
-
-20 static void 
-	$child_sigtstp
-(int 
-sig_code
-)
-
-22 (void)
-sig_code
-;
-
-24 
-	}
-}
-
-26 static void 
-	$child_sigint
-(int 
-sig_code
-)
-
-28 (void)
-sig_code
-;
-
-29 
 	`printf
 ("\n");
 
+20 else if (
+sig_code
+ == 
+SIGQUIT
+)
+
+22 
+	`printf
+("QUIT: 3\n");
+
+24 else if (
+sig_code
+ == 
+SIGTSTP
+)
+
+26 
+	`ft_printf
+("\n");
+
+27 
+g_shell
+->
+suspended
+++;
+
+28 
+	`ft_printf
+("[%d]+ Stopped\n", 
+g_shell
+->
+suspended
+);
+
 30 
+g_shell
+->
+exit_status
+ = 
+sig_code
+ + 128;
+
+31 
 	}
 }
 
-32 void 
-	$child_sig_handler
-(void)
-
-34 
+33 void 
+	$child_signals_init
+(
 sigset_t
- 
+ *
 set
-;
+)
+
+35 
+	`sigemptyset
+(
+set
+);
 
 36 
-	`signals_init
-(&
+	`sigaddset
+(
 set
+, 
+SIGINT
 );
 
 37 
-	`signal
+	`sigaddset
 (
-SIGINT
+set
 , 
-child_sigint
+SIGQUIT
 );
 
 38 
-	`signal
+	`sigaddset
 (
-SIGQUIT
+set
 , 
-child_sigquit
+SIGTERM
 );
 
 39 
-	`signal
+	`sigaddset
 (
-SIGTSTP
+set
 , 
-child_sigtstp
+SIGTSTP
 );
 
-41 
+40 
+	`sigaddset
+(
+set
+, 
+SIGSTOP
+);
+
+42 
+	}
+}
+
+44 void 
+	$child_signal_handler
+(int 
+pid
+)
+
+46 (void)
+pid
+;
+
+47 struct 
+sigaction
+ 
+act
+;
+
+49 
+	`ft_memset
+(&
+act
+, 0, sizeof(struct 
+sigaction
+));
+
+50 
+	`child_signals_init
+(&
+act
+.
+sa_mask
+);
+
+51 
+act
+.
+sa_handler
+ = &
+child_handler
+;
+
+52 
+	`sigaction
+(
+SIGQUIT
+, &
+act
+, &
+g_shell
+->
+sig_quit
+);
+
+53 
+	`sigaction
+(
+SIGINT
+, &
+act
+, &
+g_shell
+->
+sig_int
+);
+
+54 
+	`sigaction
+(
+SIGTSTP
+, &
+act
+, &
+g_shell
+->
+sig_tstp
+);
+
+55 
+	`sigaction
+(
+SIGTERM
+, &
+act
+, &
+g_shell
+->
+sig_term
+);
+
+57 
 	}
 }
 
@@ -90821,15 +91123,17 @@ child_sigtstp
 	~"minishell.h
 "
 
-22 void 
-	$handler_sigint
+21 static void 
+	$handler
 (int 
 sig_code
 )
 
-24 (void)
+23 if (
 sig_code
-;
+ == 
+SIGINT
+)
 
 25 
 	`printf
@@ -90853,51 +91157,23 @@ exit_status
 	`rl_redisplay
 ();
 
-30 
-	}
-}
+31 else if (
+sig_code
+ == 
+SIGSTOP
+)
 
-32 int 
-	$parent_sig_handler
-(void)
-
-34 
-	`signal
+33 
+	`exit
 (
-SIGINT
-, 
-handler_sigint
-);
+sig_code
+ + 128);
 
 35 
-	`signal
-(
-SIGQUIT
-, 
-SIG_IGN
-);
-
-36 
-	`signal
-(
-SIGTERM
-, 
-SIG_IGN
-);
-
-37 
-	`signal
-(
-SIGTSTP
-, 
-SIG_IGN
-);
-
-39 
 	}
 }
 
-41 void 
+37 void 
 	$signals_init
 (
 sigset_t
@@ -90905,13 +91181,13 @@ sigset_t
 set
 )
 
-43 
+39 
 	`sigemptyset
 (
 set
 );
 
-44 
+40 
 	`sigaddset
 (
 set
@@ -90919,7 +91195,7 @@ set
 SIGINT
 );
 
-45 
+41 
 	`sigaddset
 (
 set
@@ -90927,7 +91203,7 @@ set
 SIGQUIT
 );
 
-46 
+42 
 	`sigaddset
 (
 set
@@ -90935,7 +91211,7 @@ set
 SIGTERM
 );
 
-47 
+43 
 	`sigaddset
 (
 set
@@ -90943,29 +91219,121 @@ set
 SIGTSTP
 );
 
-49 
+44 
+	`sigaddset
+(
+set
+, 
+SIGSTOP
+);
+
+46 
 	}
 }
 
-51 void 
-	$signal_handler
-(
-sigset_t
- *
-set
-)
+48 void 
+	$parent_signal_handler
+(void)
+
+50 struct 
+sigaction
+ 
+act
+;
+
+52 
+	`ft_memset
+(&
+act
+, 0, sizeof(struct 
+sigaction
+));
 
 53 
 	`signals_init
-(
-set
+(&
+act
+.
+sa_mask
 );
 
 54 
-	`parent_sig_handler
-();
+act
+.
+sa_handler
+ = 
+SIG_IGN
+;
 
 55 
+	`sigaction
+(
+SIGQUIT
+, &
+act
+, &
+g_shell
+->
+sig_quit
+);
+
+56 
+	`sigaction
+(
+SIGTERM
+, &
+act
+, &
+g_shell
+->
+sig_term
+);
+
+57 
+	`sigaction
+(
+SIGTSTP
+, &
+act
+, &
+g_shell
+->
+sig_tstp
+);
+
+59 
+act
+.
+sa_handler
+ = 
+handler
+;
+
+60 
+	`sigaction
+(
+SIGINT
+, &
+act
+, &
+g_shell
+->
+sig_int
+);
+
+61 
+	`sigaction
+(
+SIGSTOP
+, &
+act
+, &
+g_shell
+->
+sig_int
+);
+
+62 
 	}
 }
 

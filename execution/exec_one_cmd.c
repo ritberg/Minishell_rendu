@@ -6,15 +6,22 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:08:47 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/01 17:26:47 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/03 13:01:03 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
-void	test(int code)
+void	print_signal_message(int sig_code)
 {
-	(void)code;
-	printf("sig tstp\n");
+	if (sig_code == SIGTERM)
+	{
+		g_shell->terminated++;
+		ft_printf("[%d]\t Terminated: 15\n", g_shell->terminated);
+	}
+	else if (sig_code == SIGQUIT)
+	{
+		printf(" main QUIT: 3\n");
+	}
 }
 
 static void	execute_one_bin(t_cmd *cmd)
@@ -22,44 +29,29 @@ static void	execute_one_bin(t_cmd *cmd)
 	int	sig_code;
 	sig_code = 0;
 	cmd->pid = fork();
+	child_signal_handler(g_shell->pid);
 	if (cmd->pid < 0)
 		return (perror("Fork: "));
 	if (cmd->pid == 0)
 	{
-		child_signal_handler(cmd->pid);
 		execute_bin(cmd);
+		cmd->status = g_shell->exit_status;
 		exit(g_shell->exit_status);
 	}
 	else
 	{
+		g_shell->pid = cmd->pid;
 		waitpid(cmd->pid, &cmd->status, 0);
 		if (WIFSIGNALED(cmd->status))
 		{
-			sig_code = WTERMSIG(cmd->status);
-			if (sig_code == SIGINT)
-				ft_printf("\n");
-			else if (sig_code == SIGTSTP)
-				ft_printf("\n");
-			else if (sig_code == SIGTERM)
-				ft_printf("Terminated: 15\n");
-			else if (sig_code == SIGQUIT)
-				ft_printf("coucou QUIT: 3\n");
-			else if (sig_code == SIGKILL)
-				ft_printf("Killed: 9\n");
-			g_shell->exit_status = sig_code + 128;
+			print_signal_message(WTERMSIG(cmd->status));
+			g_shell->exit_status = WTERMSIG(cmd->status) + 128;
 		}
 		else if (WIFEXITED(cmd->status))
 		{
-		//	printf("coucou\n");
-		//	printf("status = %d\n", WEXITSTATUS(cmd->status));
-			g_shell->exit_status = WEXITSTATUS(cmd->status);
+			if (g_shell->exit_status == 146)
+				ft_printf("\t\t\t%s\n", cmd->cmd[0]);
 		}
-		else if (WIFSTOPPED(cmd->status))
-		{
-		//	printf("hello\n");
-			g_shell->exit_status = WSTOPSIG(cmd->status) + 128;
-		}
-		parent_signal_handler();
 	}
 }
 
