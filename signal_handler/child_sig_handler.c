@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 10:59:24 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/03 13:04:12 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/03 14:12:15 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -15,11 +15,11 @@ static void child_handler(int sig_code)
 {
 	if (sig_code == SIGINT)
 	{
-		printf("child process \n");
+		printf("\n");
 	}
 	else if (sig_code == SIGQUIT)
 	{
-		printf(" child process QUIT: 3\n");
+		printf("QUIT: 3\n");
 	}
 	else if (sig_code == SIGTSTP)
 	{
@@ -32,8 +32,7 @@ static void child_handler(int sig_code)
 		printf("sig stop recieved\n");
 	}
 	g_shell->exit_status = sig_code + 128;
-	printf("pid = %d\n", g_shell->pid);
-	kill(g_shell->pid, sig_code);
+//	kill(g_shell->pid, sig_code);
 }
 
 void	child_signals_init(sigset_t *set)

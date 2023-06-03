@@ -6,62 +6,32 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 12:02:52 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/03 11:56:53 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/03 14:41:13 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
-int	init_fd_pipe(int **fd_pipe, int nb_cmds)
-{
-	int	i;
 
-	i = 0;
-	fd_pipe = ft_calloc(nb_cmds, sizeof(int *));
-	if (!fd_pipe)
-	{
-		//erreur
-		return (0);
-	}
-	while (i < nb_cmds)
-	{
-		fd_pipe[i] = ft_calloc(2, sizeof(int));
-		if (fd_pipe[i])
-		{
-			//free fd_pipe
-			//message d'erreur
-			return (0);
-		}
-		i++;
-	}
-	return (1);
-}
-static void	exec_bin(t_cmd *cmd)
-{
-	int	sig_code;
-
-	sig_code = 0;
-	execute_bin(cmd);
-	exit(g_shell->exit_status);
-}
-
-
-int ft_exe(int save_fdin, t_cmd *cmd, t_cmd **head)
+void ft_exe(int i, int save_fdin, t_cmd *cmd, t_cmd **head)
 {
 	int res;
 
-	dup2(save_fdin, STDIN_FILENO);
-	close(save_fdin);
+	if (i != 0)
+	{
+		dup2(save_fdin, STDIN_FILENO);
+		close(save_fdin);
+	}
 	res = make_redirections(cmd);
 	if (res == ERROR_EXIT)
-		return (0);
+		return ;
 	if (!cmd->cmd)
-		return (1);
+		return ;
 	if (cmd_is_builtin(cmd->cmd[0]))
 		execute_builtin(cmd, head);
 	else
-		exec_bin(cmd);
+		execute_bin(cmd);
 	restaure_fds(cmd);
-	return (1);
+	return ;
 }
 	
 
@@ -88,7 +58,7 @@ void	pipex(t_cmd **head, int nb_cmds)
 				dup2(fd_pipe[1], STDOUT_FILENO);
 			close(fd_pipe[0]);
 			close(fd_pipe[1]);
-			ft_exe(save_fdin, cmd, head);
+			ft_exe(i, save_fdin, cmd, head);
 			exit(g_shell->exit_status);
 		} 
 		else 
@@ -98,14 +68,17 @@ void	pipex(t_cmd **head, int nb_cmds)
 			save_fdin = fd_pipe[0]; 
 		}
 		cmd = cmd->next;
+		i++;
 	}
 	cmd = *head;
 	while (cmd)
 	{
-		waitpid(cmd->pid, &cmd->status, WUNTRACED);
+		waitpid(cmd->pid, &cmd->status, 0);
+	//	printf("cmd status = %d\n", cmd->status);
 		if (WIFEXITED(cmd->status))
 		{
-			g_shell->exit_status = cmd->status % 256;
+	//		printf("normal exit\n");
+			g_shell->exit_status = cmd->status / 256;
 		}
 		cmd = cmd->next;
 	}
