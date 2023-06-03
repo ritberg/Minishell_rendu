@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 14:37:46 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/31 11:57:20 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/03 14:59:28 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -61,6 +61,7 @@ void	child_process(char *key_word)
 	close(fd);
 	exit(1);
 }
+
 
 int	here_doc(t_cmd *cmd, char *key_word)
 {

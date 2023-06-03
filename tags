@@ -505,7 +505,6 @@ env	sauvegarde/parsing/expansion_test/minishell.h	/^	t_env	*env;$/;"	m	struct:s_
 env_list_size	builtins/unset.c	/^static int	env_list_size(t_env **head)$/;"	f	file:
 error_exit	minishell.h	/^	int					error_exit;$/;"	m	struct:s_shell
 exec_bin	TESTS/execution_test/execution.c	/^void	exec_bin(t_token *token, t_bin *bin)$/;"	f
-exec_bin	execution/pipex.c	/^static void	exec_bin(t_cmd *cmd)$/;"	f	file:
 exec_bin	sauvegarde/execution_test/execution.c	/^void	exec_bin(t_token *token, t_bin *bin)$/;"	f
 execute_bin	execution/exec_bin.c	/^void	execute_bin(t_cmd *cmd)$/;"	f
 execute_builtin	execution/exec_builtins.c	/^void	execute_builtin(t_cmd *cmd, t_cmd **head)$/;"	f
@@ -654,7 +653,7 @@ ft_dprintf	libft/ft_printf/ft_dprintf.c	/^int	ft_dprintf(int fd, const char *las
 ft_dprintf	sauvegarde/execution_test/libft/ft_printf/ft_dprintf.c	/^int	ft_dprintf(int fd, const char *last, ...)$/;"	f
 ft_dprintf	sauvegarde/libft/ft_printf/ft_dprintf.c	/^int	ft_dprintf(int fd, const char *last, ...)$/;"	f
 ft_dprintf	sauvegarde/parsing/expansion_test/libft/ft_printf/ft_dprintf.c	/^int	ft_dprintf(int fd, const char *last, ...)$/;"	f
-ft_exe	execution/pipex.c	/^int ft_exe(int save_fdin, t_cmd *cmd, t_cmd **head)$/;"	f
+ft_exe	execution/pipex.c	/^void ft_exe(int i, int save_fdin, t_cmd *cmd, t_cmd **head)$/;"	f
 ft_exit	builtins/exit.c	/^void	ft_exit(t_cmd **head)$/;"	f
 ft_fill_big_table	sauvegarde/complicated_split.c	/^static char	**ft_fill_big_table(char *src, char c, char **dst, int *lens)$/;"	f	file:
 ft_format_specifier	TESTS/execution_test/libft/ft_printf/ft_printf.c	/^void	ft_format_specifier(char format, va_list ap, int *count)$/;"	f
@@ -1119,7 +1118,6 @@ id	sauvegarde/parsing/expansion_test/minishell.h	/^	int					id;$/;"	m	struct:s_t
 increment_shlvl	global_variable/init_global.c	/^static int increment_shlvl(void)$/;"	f	file:
 init_cmd	command_struct/init_cmd.c	/^static t_cmd	*init_cmd(t_token **token)$/;"	f	file:
 init_cmd	sauvegarde/init_cmd.c	/^t_cmd *init_cmd(t_token **token)$/;"	f
-init_fd_pipe	execution/pipex.c	/^int	init_fd_pipe(int **fd_pipe, int nb_cmds)$/;"	f
 init_fds	command_struct/init_cmd.c	/^static void	init_fds(t_cmd *cmd)$/;"	f	file:
 init_shell	TESTS/execution_test/main.c	/^int	init_shell(char **envp)$/;"	f
 init_shell	TESTS/execution_test/sans_readline_main.c	/^int	init_shell(char **envp)$/;"	f
@@ -1287,6 +1285,7 @@ main	sauvegarde/parsing/tests/main_parsing_token_extraction.c	/^int	main(int ac,
 main	sauvegarde/parsing/tests/main_token_routine.c	/^int	main(int ac, char **av)$/;"	f
 main	sauvegarde/test_getenv.c	/^int	main(int ac, char **av, char **envp)$/;"	f
 main	sauvegarde/test_tgetent.c	/^int main() {$/;"	f
+main	test.c	/^int	main(void)$/;"	f
 make_redirections	redirections/make_redirection.c	/^int	make_redirections(t_cmd *cmd)$/;"	f
 malloc_error_print_message	TESTS/execution_test/malloc_error_print_message.c	/^void	malloc_error_print_message(char *s)$/;"	f
 malloc_error_print_message	TESTS/expansion_test/malloc_error_print_message.c	/^void	malloc_error_print_message(char *s)$/;"	f
@@ -1368,6 +1367,7 @@ path	sauvegarde/parsing/expansion_test/minishell.h	/^	char	**path;$/;"	m	struct:
 path_index	TESTS/execution_test/cmd_is_bin.c	/^int	path_index(t_bin *bin, char **table)$/;"	f
 path_index	sauvegarde/cmd_is_bin.c	/^int	path_index(t_bin *bin, char **table)$/;"	f
 path_index	sauvegarde/execution_test/cmd_is_bin.c	/^int	path_index(t_bin *bin, char **table)$/;"	f
+pid	minishell.h	/^	int					pid;$/;"	m	struct:s_shell
 pid	minishell.h	/^	pid_t	pid;$/;"	m	struct:s_cmd
 pipex	execution/pipex.c	/^void	pipex(t_cmd **head, int nb_cmds)$/;"	f
 power	TESTS/execution_test/libft/libft/power.c	/^int	power(int str_base, int power)$/;"	f

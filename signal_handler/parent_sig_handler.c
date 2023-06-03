@@ -6,7 +6,7 @@
 /*   By: mmakarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:03:39 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/06/03 12:48:38 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/03 14:51:40 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -51,7 +51,6 @@ void	parent_signal_handler(void)
 	sigaction(SIGQUIT, &act, &g_shell->sig_quit); // ctrl + '\'
 	sigaction(SIGTERM, &act, &g_shell->sig_term); // kill -15 PID (depuis le terminal)
 	sigaction(SIGTSTP, &act, &g_shell->sig_tstp); // ctrl + z
-	
 	act.sa_handler = handler;
 	sigaction(SIGINT, &act, &g_shell->sig_int); // ctrl + c
 }
