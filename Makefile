@@ -6,7 +6,7 @@
 #    By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 12:23:37 by mdanchev          #+#    #+#              #
-#    Updated: 2023/05/31 18:05:08 by mmakarov         ###   ########.fr        #
+#    Updated: 2023/06/04 11:05:33 by mdanchev         ###   lausanne.ch        #
 #                                                                              #
 # **************************************************************************** #
 GREEN 		= \033[32;6m
@@ -29,7 +29,6 @@ SRCS		= main.c \
 			  is_smth/is_question.c \
 			  is_smth/is_numeric.c \
 			  signal_handler/parent_sig_handler.c \
-			  signal_handler/child_sig_handler.c \
 			  tokens/token_routine.c \
 			  tokens/token_routine_set_id.c \
 			  tokens/token_routine_delete.c \

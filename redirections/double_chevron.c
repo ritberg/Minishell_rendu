@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 14:37:46 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/03 14:59:28 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/04 11:06:18 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -19,9 +19,9 @@ void	sigint(int key)
 
 void sig_handler(void)
 {
-	sigset_t set;
+//	sigset_t set;
 
-	signals_init(&set);	
+//	signals_init(&set);	
 	signal(SIGQUIT, SIG_IGN);
 	signal(SIGINT, sigint);
 }

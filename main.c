@@ -6,10 +6,9 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 09:56:41 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/03 10:37:22 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/03 15:47:03 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "minishell.h"
 
 t_shell	*g_shell;

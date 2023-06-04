@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 12:02:52 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/03 14:50:29 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/04 11:00:10 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -51,7 +51,7 @@ void	pipex(t_cmd **head, int nb_cmds)
 	{
 		pipe(fd_pipe);
 		cmd->pid= fork();
-		child_signal_handler(cmd->pid);
+	//	child_signal_handler(cmd->pid);
 		if (cmd->pid == 0)
 		{
 			if (cmd->next != NULL)
@@ -70,15 +70,16 @@ void	pipex(t_cmd **head, int nb_cmds)
 		cmd = cmd->next;
 		i++;
 	}
-	cmd = *head;
+	cmd = *head;;
 	while (cmd)
 	{
+		signal(SIGINT, SIG_IGN);
 		waitpid(cmd->pid, &cmd->status, 0);
 	//	printf("cmd status = %d\n", cmd->status);
 		if (WIFEXITED(cmd->status))
 		{
 	//		printf("normal exit\n");
-			g_shell->exit_status = cmd->status / 256;
+			g_shell->exit_status = WEXITSTATUS(cmd->status);
 		}
 		cmd = cmd->next;
 	}

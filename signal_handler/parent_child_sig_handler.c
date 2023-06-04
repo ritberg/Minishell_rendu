@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parent_sig_handler.c                               :+:      :+:    :+:   */
+/*   parent_child_sig_handler.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:03:39 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/06/03 14:51:40 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/04 11:23:21 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -15,9 +15,13 @@
    Function that manages ctrl c, ctrl d and ctrl \
 
    ctrl + d -> doesn't send signals;
-   ctrl + \ -> sends SEGQUIT
-   ctrl + c -> exit status is 1
+   SIGQUIT	-> ctrl +\
+   SIGINT	-> ctrl + c -> exit status is 1
+   SIGTSTP	-> ctrl + z
+   SIGKILL -> from command line kill -SIGKILL [pid]
+   SIGTERM -> from command line kill -SIGTERM [pid]
 */
+
 static void handler(int sig_code)
 {
 	if (sig_code == SIGINT)
@@ -30,15 +34,28 @@ static void handler(int sig_code)
 	}
 }
 
-void	signals_init(sigset_t *set)
+static void	signals_init(sigset_t *set)
 {
 	sigemptyset(set);
-	sigaddset(set, SIGINT);		// ctrl + c == SIGINT, signo = 2
-	sigaddset(set, SIGQUIT);	// ctrl + \ == SIGQUIT, signo = 3
-	sigaddset(set, SIGTERM);	// ctrl + d == SIGTERM, signo = 15
-	sigaddset(set, SIGTSTP);	// ctrl 
-	sigaddset(set, SIGSTOP);	// ctrl 
+	sigaddset(set, SIGINT);		
+	sigaddset(set, SIGQUIT);	
+	sigaddset(set, SIGTERM);	
+	sigaddset(set, SIGTSTP);	
+	sigaddset(set, SIGKILL);	
 
+}
+
+void	child_signal_handler(void)
+{
+	struct sigaction	act;
+
+	ft_memset(&act, 0, sizeof(struct sigaction));
+	signals_init(&act.sa_mask);
+	act.sa_handler = SIG_DFL;
+	sigaction(SIGQUIT, &act, 0);
+	sigaction(SIGINT, &act, 0);
+	sigaction(SIGTERM, &act, 0);
+	sigaction(SIGKILL, &act, 0);
 }
 
 void	parent_signal_handler(void)
@@ -48,9 +65,9 @@ void	parent_signal_handler(void)
 	ft_memset(&act, 0, sizeof(struct sigaction));
 	signals_init(&act.sa_mask);
 	act.sa_handler = SIG_IGN;
-	sigaction(SIGQUIT, &act, &g_shell->sig_quit); // ctrl + '\'
-	sigaction(SIGTERM, &act, &g_shell->sig_term); // kill -15 PID (depuis le terminal)
-	sigaction(SIGTSTP, &act, &g_shell->sig_tstp); // ctrl + z
+	sigaction(SIGQUIT, &act, 0);
+	sigaction(SIGTERM, &act, 0);
+	sigaction(SIGTSTP, &act, 0);
 	act.sa_handler = handler;
-	sigaction(SIGINT, &act, &g_shell->sig_int); // ctrl + c
+	sigaction(SIGINT, &act, 0);
 }

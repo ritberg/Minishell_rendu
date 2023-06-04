@@ -6,12 +6,12 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:08:47 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/03 13:01:03 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/04 11:17:38 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
-void	print_signal_message(int sig_code)
+static void	print_signal_message(int sig_code)
 {
 	if (sig_code == SIGTERM)
 	{
@@ -19,28 +19,28 @@ void	print_signal_message(int sig_code)
 		ft_printf("[%d]\t Terminated: 15\n", g_shell->terminated);
 	}
 	else if (sig_code == SIGQUIT)
-	{
-		printf(" main QUIT: 3\n");
-	}
+		ft_printf("QUIT: 3\n");
+	else if (sig_code == SIGINT)
+		ft_printf("\n");
+	else if (sig_code == SIGKILL)
+		ft_printf("Killed: 9 \n");
 }
 
 static void	execute_one_bin(t_cmd *cmd)
 {
-	int	sig_code;
-	sig_code = 0;
 	cmd->pid = fork();
-	child_signal_handler(g_shell->pid);
 	if (cmd->pid < 0)
-		return (perror("Fork: "));
+		return (perror("minishell: fork: "));
 	if (cmd->pid == 0)
 	{
+		child_signal_handler();
 		execute_bin(cmd);
 		cmd->status = g_shell->exit_status;
 		exit(g_shell->exit_status);
 	}
 	else
 	{
-		g_shell->pid = cmd->pid;
+		signal(SIGINT, SIG_IGN);
 		waitpid(cmd->pid, &cmd->status, 0);
 		if (WIFSIGNALED(cmd->status))
 		{
@@ -48,10 +48,7 @@ static void	execute_one_bin(t_cmd *cmd)
 			g_shell->exit_status = WTERMSIG(cmd->status) + 128;
 		}
 		else if (WIFEXITED(cmd->status))
-		{
-			if (g_shell->exit_status == 146)
-				ft_printf("\t\t\t%s\n", cmd->cmd[0]);
-		}
+			g_shell->exit_status = WEXITSTATUS(cmd->status);
 	}
 }
 
