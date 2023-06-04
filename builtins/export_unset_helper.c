@@ -6,15 +6,15 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 22:04:51 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/27 15:13:21 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/04 17:13:24 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
 void	print_export_unset_error(char *identifier, char *command)
 {
-	ft_printf("minishell: %s: ", command);
-	ft_printf("`%s': not a valid identifier\n", identifier);
+	ft_dprintf(2, "minishell: %s: ", command);
+	ft_dprintf(2, "`%s': not a valid identifier\n", identifier);
 	g_shell->exit_status = 1;
 }
 

@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:09:31 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/03 14:32:43 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/04 17:04:21 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -16,7 +16,7 @@ static int	check_access(t_cmd *cmd)
 	
 	if (!cmd->path)
 	{
-		printf("access error: \n");
+//		printf("access error: \n"); \\ A SUPPRIMER
 		ft_dprintf(2, "minishell: %s: command not found\n", cmd->cmd[0]);
 		g_shell->exit_status = 127;
 		return (0);	
@@ -25,7 +25,7 @@ static int	check_access(t_cmd *cmd)
 	res = access(cmd->path, F_OK & X_OK);
 	if (res)
 	{
-		printf("access error: \n");
+//		printf("access error: \n"); \\ A SUPPRIMER
 		ft_dprintf(2, "minishell: %s\n", strerror(errno));
 		g_shell->exit_status = 127;
 		return (0);
@@ -39,7 +39,7 @@ static void	check_execve(t_cmd *cmd)
 
 	if (!cmd->cmd)
 	{
-		printf("execve error: \n");
+	//	printf("execve error: \n"); \\ A SUPPRIMER
 		ft_dprintf(2, "minishell: %s: is a directory\n", cmd->path);
 		g_shell->exit_status = 126;
 		return ;
@@ -47,7 +47,7 @@ static void	check_execve(t_cmd *cmd)
 	res = execve(cmd->path, cmd->cmd, g_shell->save_env);
 	if (res < 0)
 	{
-		printf("execve error: \n");
+//		printf("execve error: \n"); \\ A SUPPRIMER
 		if (errno == ENOEXEC)
 		{
 			ft_dprintf(2, "minishell: %s: Permission denied\n", cmd->path);
