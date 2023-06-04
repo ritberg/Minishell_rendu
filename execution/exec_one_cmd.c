@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:08:47 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/04 11:17:38 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/04 13:43:33 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -57,7 +57,7 @@ void	one_cmd(t_cmd *cmd, t_cmd **head)
 	int res;
 	
 	res = make_redirections(cmd);
-	if (res == ERROR_EXIT)
+	if (!res)
 		return ;
 	if (cmd_is_builtin(cmd->cmd[0]))
 		execute_builtin(cmd, head);

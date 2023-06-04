@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   make_redirection.c                                 :+:      :+:    :+:   */
+/*   loop_redirections.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 14:19:00 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/31 09:47:09 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/04 14:48:46 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -26,11 +26,7 @@ void	restaure_fds(t_cmd *cmd)
 		cmd->save_fdin = -1;
 	}
 	if (access(".here_doc", F_OK) == 0)
-	{
 		unlink(".here_doc");
-		//gestion d'erreur
-	}
-	
 }
 
 int	make_redirections(t_cmd *cmd)
@@ -40,35 +36,27 @@ int	make_redirections(t_cmd *cmd)
 
 	i = 0;
 	if (!cmd->redir)
-		return (0);
+		return (1);
 	while (cmd->redir[i])
 	{
 		if (ft_strncmp(cmd->redir[i], ">", 2) == 0 || \
 			ft_strncmp(cmd->redir[i], ">>", 3) == 0)
 		{
 			res = redir_fdout(cmd, cmd->redir[i], cmd->redir[i + 1]);
-			if (res == ERROR_EXIT)
-				return (ERROR_EXIT);
+			if (!res)
+				return (0);
 			i++;
 		}
-		else if (ft_strncmp(cmd->redir[i], "<", 2) == 0)
+		else if (ft_strncmp(cmd->redir[i], "<", 2) == 0 || \
+				ft_strncmp(cmd->redir[i], "<<", 3) == 0)
 		{
-			res = redir_fdin(cmd, cmd->redir[i + 1]);
-			if (res == ERROR_EXIT)
-				return (ERROR_EXIT);
+			res = redir_fdin(cmd, cmd->redir[i], cmd->redir[i + 1]);
+			if (!res)
+				return (0);
 			i++;
-		}
-		else if (ft_strncmp(cmd->redir[i], "<<", 3) == 0)
-		{
-			i++;
-			res = here_doc(cmd, cmd->redir[i]);
-			if (res == ERROR_EXIT || res == 0)
-			{
-				return (ERROR_EXIT);
-			}
 		}
 		else	
 			i++;
 	}
-	return (res);
+	return (1);
 }

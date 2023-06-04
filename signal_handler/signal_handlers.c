@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parent_child_sig_handler.c                         :+:      :+:    :+:   */
+/*   signal_handlers.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:03:39 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/06/04 11:23:21 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/04 14:21:10 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -31,18 +31,29 @@ static void handler(int sig_code)
 		rl_replace_line("", 0);
 		rl_on_new_line();
 		rl_redisplay();
+	//	printf("coucou\n");
 	}
 }
 
-static void	signals_init(sigset_t *set)
+void	here_doc_handler(int sig_code)
 {
-	sigemptyset(set);
-	sigaddset(set, SIGINT);		
-	sigaddset(set, SIGQUIT);	
-	sigaddset(set, SIGTERM);	
-	sigaddset(set, SIGTSTP);	
-	sigaddset(set, SIGKILL);	
+	(void)sig_code;
+	ft_printf(MAG"> \n"RESET);
+	exit(1);
+}
 
+void	here_doc_signal_handler(void)
+{
+	struct sigaction	act;
+
+	ft_memset(&act, 0, sizeof(struct sigaction));
+	init_sigset(&act.sa_mask);
+	act.sa_handler = SIG_IGN;
+	sigaction(SIGQUIT, &act, 0);
+	sigaction(SIGTSTP, &act, 0);
+	
+	act.sa_handler = here_doc_handler;
+	sigaction(SIGINT, &act, 0);
 }
 
 void	child_signal_handler(void)
@@ -50,7 +61,7 @@ void	child_signal_handler(void)
 	struct sigaction	act;
 
 	ft_memset(&act, 0, sizeof(struct sigaction));
-	signals_init(&act.sa_mask);
+	init_sigset(&act.sa_mask);
 	act.sa_handler = SIG_DFL;
 	sigaction(SIGQUIT, &act, 0);
 	sigaction(SIGINT, &act, 0);
@@ -63,7 +74,7 @@ void	parent_signal_handler(void)
 	struct sigaction	act;
 
 	ft_memset(&act, 0, sizeof(struct sigaction));
-	signals_init(&act.sa_mask);
+	init_sigset(&act.sa_mask);
 	act.sa_handler = SIG_IGN;
 	sigaction(SIGQUIT, &act, 0);
 	sigaction(SIGTERM, &act, 0);

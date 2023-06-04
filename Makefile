@@ -6,7 +6,7 @@
 #    By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 12:23:37 by mdanchev          #+#    #+#              #
-#    Updated: 2023/06/04 11:05:33 by mdanchev         ###   lausanne.ch        #
+#    Updated: 2023/06/04 12:29:08 by mdanchev         ###   lausanne.ch        #
 #                                                                              #
 # **************************************************************************** #
 GREEN 		= \033[32;6m
@@ -28,7 +28,8 @@ SRCS		= main.c \
 			  is_smth/is_white_space.c \
 			  is_smth/is_question.c \
 			  is_smth/is_numeric.c \
-			  signal_handler/parent_sig_handler.c \
+			  signal_handler/signal_handlers.c \
+			  signal_handler/init_sigset.c \
 			  tokens/token_routine.c \
 			  tokens/token_routine_set_id.c \
 			  tokens/token_routine_delete.c \
@@ -48,9 +49,8 @@ SRCS		= main.c \
 			  command_struct/init_cmd_cmd.c \
 			  command_struct/init_cmd_redir.c \
 			  command_struct/free_cmd.c \
-			  redirections/single_chevron.c \
-			  redirections/double_chevron.c \
-			  redirections/make_redirection.c \
+			  redirections/do_redirections.c \
+			  redirections/loop_redirections.c \
 			  execution/execution.c \
 			  execution/pipex.c \
 			  execution/get_path.c \
