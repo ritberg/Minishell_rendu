@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:16:33 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/04 13:35:40 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/04 15:45:39 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int		size_tab2d(char **s);
 void	execution(t_cmd **head);
 int		copy_env_tab(void);
 void	one_cmd(t_cmd *cmd, t_cmd **head);
-void	pipex(t_cmd **head, int nb_cmds);
+void	pipex(t_cmd **head);
 
 /* 		EXECUTION BUILTINS */
 int		cmd_is_builtin(char *s);
