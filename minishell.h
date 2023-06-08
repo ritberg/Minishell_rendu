@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:16:33 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/08 12:00:49 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/08 17:11:15 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@
 # define EXPAND		9
 # define DELETE		10
 # define EXPANDED	11
+# define KEY_WORD	12
 # define ERROR_EXIT	-1
 
 //int	g_exit_status;
@@ -69,6 +70,7 @@ typedef struct s_token
 	char				*content;
 	int					id;
 	int					res; //Rita: trick pour la norminette
+	int					pos;
 	struct s_token		*next;
 }	t_token;
 
@@ -206,7 +208,7 @@ void	malloc_error_print_message(char *s);
 
 /* 		TOKEN EXTRACTION - TOKEN LINKED LIST (token_routine_.c) */
 t_token	*new_token(char *line, int start, int len);
-void	set_id(t_token *token);
+void	set_id(t_token **head, t_token *token);
 int		token_linked_list(t_token **head, char *line, int start, int len);
 int		link_token(t_token **head, t_token *new);
 void	free_token(t_token **head);

@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 09:56:41 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/07 17:50:04 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/08 17:12:37 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -72,6 +72,7 @@ void	print_cmd(t_cmd **head)
 		i++;
 		ptr = ptr->next;
 	}
+	printf("command print end\n");
 }
 
 /* FOR TESTING PRINTING ENV
@@ -115,9 +116,11 @@ int	main(int ac, char **av, char **envp)
 		line = readline_routine();
 		if (!line)
 			break ;
+	//	printf("hello\n");
 		token = parsing(line);
+	//	printf("coucou\n");
 		cmd = cmd_linked_list(&token);
-//		print_cmd(&cmd); // FOR TESTING
+	//	print_cmd(&cmd); // FOR TESTING
 		execution(&cmd);
 //		print_env(); // FOR TESTING
 		check_for_malloc_error(&cmd);

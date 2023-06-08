@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 09:37:00 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/06 12:10:32 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/08 17:02:12 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -19,8 +19,15 @@ static int	get_redir_size(t_token *ptr)
 	while (ptr && ptr->id != PIPELINE)
 	{
 		if (ptr->id == L_CHEVRON || ptr->id == R_CHEVRON || \
-				ptr->id == APPEND || ptr->id == HERE_DOC)
+				ptr->id == APPEND)			
 			i = i + 2;
+		else if (ptr->id == HERE_DOC && ptr->next && ptr->next->id == KEY_WORD)
+			i = i + 2;
+		else if (ptr->id == HERE_DOC)
+	/*	else if (ptr->id == HERE_DOC && \
+				((ptr->next && ptr->next->id != KEY_WORD) || \
+				(!ptr->next)))*/
+			i = i + 1;
 		ptr = ptr->next;
 	}
 	return (i);
@@ -32,15 +39,18 @@ static int	copy_redir_helper(t_token *ptr, t_cmd *cmd, int i)
 	if (!cmd->redir[i])
 	{
 		malloc_error_print_message("ft_strdup failed");
-		return (0);
+		return (-1);
 	}
+	if (ptr->id == HERE_DOC/* && (!ptr->next || \
+				(ptr->next && ptr->next->id != KEY_WORD))*/)
+		return (i);
 	i++;
 	ptr = ptr->next;
 	cmd->redir[i] = ft_strdup(ptr->content);
 	if (!cmd->redir[i])
 	{
 		malloc_error_print_message("ft_strdup failed");
-		return (0);
+		return (-1);
 	}
 	return (i);
 }
@@ -75,13 +85,13 @@ static int	copy_redir(t_token **token, t_cmd *cmd)
 	while (ptr && ptr->id != PIPELINE)
 	{
 		if (ptr->id == L_CHEVRON || ptr->id == R_CHEVRON || \
-				ptr->id == APPEND || ptr->id == HERE_DOC)
+				ptr->id == APPEND || ptr->id == HERE_DOC)		
 		{
 			i = copy_redir_helper(ptr, cmd, i);
-			if (!i)
+			if (i == -1)
 				return (0);
 			i++;
-		}
+		} 
 		ptr = ptr->next;
 	}
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 11:54:50 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/06 12:09:56 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/08 17:02:48 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -127,7 +127,7 @@ t_cmd	*cmd_linked_list(t_token **token)
 {
 	t_cmd	*head;
 	t_token	*ptr;
-
+	
 	if (!token || !*token)
 		return (NULL);
 	ptr = *token;

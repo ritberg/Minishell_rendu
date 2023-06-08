@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:11:25 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/19 12:01:06 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/08 17:05:23 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -46,7 +46,6 @@ void	free_token(t_token **head)
 t_token	*new_token(char *line, int start, int len)
 {
 	t_token	*token;
-
 	token = NULL;
 	token = malloc(sizeof(t_token));
 	if (!token)
@@ -60,7 +59,6 @@ t_token	*new_token(char *line, int start, int len)
 		malloc_error_print_message(strerror(errno));
 		return (free_token(&token), NULL);
 	}
-	set_id(token);
 	token->next = NULL;
 	return (token);
 }
@@ -75,7 +73,9 @@ t_token	*new_token(char *line, int start, int len)
 int	link_token(t_token **head, t_token *new)
 {
 	t_token	*ptr;
+	int		pos;
 
+	pos = 0;
 	if (!new)
 		return (0);
 	ptr = *head;
@@ -84,8 +84,11 @@ int	link_token(t_token **head, t_token *new)
 		if (!ptr->next)
 			break ;
 		ptr = ptr->next;
+		pos++;
 	}
 	ptr->next = new;
+	new->pos = pos;
+	set_id(head, new);
 	return (1);
 }
 

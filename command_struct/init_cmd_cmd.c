@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 09:36:56 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/06 12:29:14 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/08 17:00:37 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -53,8 +53,17 @@ static int	copy_cmd(t_token **token, t_cmd *cmd)
 	while (ptr && ptr->id != PIPELINE)
 	{
 		if (ptr->id == L_CHEVRON || ptr->id == R_CHEVRON || \
-				ptr->id == APPEND || ptr->id == HERE_DOC)
+				ptr->id == APPEND)
 			ptr = ptr->next->next;
+		else if (ptr->id == HERE_DOC)
+		{
+			if (!ptr->next)
+				break;
+			else if (ptr->next->id == KEY_WORD && ptr->next->next)
+				ptr = ptr->next->next;
+			else 
+				break;
+		}
 		else
 		{
 			if (!copy_cmd_helper(ptr, cmd, i))
@@ -74,14 +83,23 @@ static int	get_cmd_size(t_token **token)
 
 	i = 0;
 	ptr = *token;
-	if (!token || !*token)
-		return (0);
+//	if (!token || !*token)
+//		return (0);
 	while (ptr && ptr->id != PIPELINE)
 	{
 		if (ptr->id == L_CHEVRON || ptr->id == R_CHEVRON || \
-				ptr->id == APPEND || ptr->id == HERE_DOC)
+				ptr->id == APPEND)
 		{
 			ptr = ptr->next->next;
+		}
+		else if (ptr->id == HERE_DOC)
+		{
+			if (!ptr->next)
+				break;
+			else if (ptr->next->id == KEY_WORD && ptr->next->next)
+				ptr = ptr->next->next;
+			else 
+				break;
 		}
 		else
 		{

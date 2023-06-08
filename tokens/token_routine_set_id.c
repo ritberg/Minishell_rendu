@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:26:32 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/19 12:02:27 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/08 17:22:28 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -18,8 +18,35 @@ int	set_id_expansion(t_token *token)
 	return (WORD);
 }
 
-void	set_id(t_token *token)
+int	check_for_heredoc(t_token **head, int pos)
 {
+	t_token *token;
+	t_token *prev;
+
+	if (!head || !*head || pos == 0)
+		return (0);
+	token = *head;
+	prev = NULL;
+	while (token)
+	{
+		if (prev && prev->pos == pos)
+			break ;
+		if (token->next != NULL)
+			prev = token;
+		token = token->next;
+	}
+	if (prev->id == HERE_DOC)
+	{
+		return (1);
+	}
+	return (0);
+}
+
+
+void	set_id(t_token **head, t_token *token)
+{
+	int	res= 0;
+	res = check_for_heredoc(head, token->pos);
 	if (ft_strncmp(token->content, "|", 2) == 0)
 		token->id = PIPELINE;
 	else if (ft_strncmp(token->content, "<", 2) == 0)
@@ -33,6 +60,11 @@ void	set_id(t_token *token)
 	else if (ft_strchr(token->content, '$'))
 		token->id = DOLLAR;
 	else
-		token->id = WORD;
+	{
+		if (!res)
+			token->id = WORD;
+		else
+			token->id = KEY_WORD;
+	}
 	return ;
 }

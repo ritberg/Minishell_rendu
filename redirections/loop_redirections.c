@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 14:19:00 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/07 18:32:00 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/08 17:23:11 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -42,9 +42,12 @@ int	make_redirections(t_cmd *cmd, int j)
 
 	i = 0;
 	if (!cmd->redir)
+	{
 		return (1);
+	}
 	while (cmd->redir[i])
 	{
+	//	printf("cmd redir = %s\n", cmd->redir[i]);
 		if (ft_strncmp(cmd->redir[i], ">", 2) == 0 || \
 			ft_strncmp(cmd->redir[i], ">>", 3) == 0)
 		{
@@ -52,11 +55,18 @@ int	make_redirections(t_cmd *cmd, int j)
 				return (0);
 			i++;
 		}
-		else if (ft_strncmp(cmd->redir[i], "<", 2) == 0 || \
-				ft_strncmp(cmd->redir[i], "<<", 3) == 0)
+		else if (ft_strncmp(cmd->redir[i], "<", 2) == 0)
 		{
 			if (!redir_fdin(cmd, cmd->redir[i], cmd->redir[i + 1], j))
 				return (0);
+			i++;
+		}
+		else if (ft_strncmp(cmd->redir[i], "<<", 3) == 0)
+		{
+			if (!redir_fdin(cmd, cmd->redir[i], NULL, j))
+				return (0);
+			if (cmd->redir[i + 1])
+				i++;
 			i++;
 		}
 		else
