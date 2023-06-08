@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 12:00:14 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/31 10:51:35 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/06 12:19:08 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -34,12 +34,12 @@ static void	copy_path(int start, int end, char *s, t_cmd *cmd)
 	cmd->path[i] = '\0';
 }
 
-static int check_access(int start, int end, char *s, t_cmd *cmd)
+static int	check_access(int start, int end, char *s, t_cmd *cmd)
 {
 	int	size;
 
 	size = end - start + ft_strlen(cmd->cmd[0]) + 2;
-	cmd->path = malloc(sizeof(char) * size);	
+	cmd->path = malloc(sizeof(char) * size);
 	if (!cmd->path)
 	{
 		malloc_error_print_message("ft_substr failed");
@@ -48,7 +48,7 @@ static int check_access(int start, int end, char *s, t_cmd *cmd)
 	}
 	copy_path(start, end, s, cmd);
 	if (access(cmd->path, F_OK & X_OK) == 0)
-	  return (1);
+		return (1);
 	free(cmd->path);
 	cmd->path = NULL;
 	return (0);
@@ -56,9 +56,9 @@ static int check_access(int start, int end, char *s, t_cmd *cmd)
 
 static int	check_each_path(char *s, t_cmd *cmd)
 {
-	int i;
-	int start;
-	int res;
+	int	i;
+	int	start;
+	int	res;
 
 	i = 0;
 	start = 0;
@@ -83,20 +83,20 @@ static int	check_each_path(char *s, t_cmd *cmd)
 
 int	search_path(t_cmd *cmd, char **env)
 {
-	int i;
-  	int res;
-  
-  	i = 0;
+	int	i;
+	int	res;
+
+	i = 0;
 	while (env[i] && ft_strncmp("PATH=", env[i], 5) != 0)
-  		i++;
-   if (!env[i])
-   {
-	   ft_dprintf(2, "minishell: %s: No such file or directory\n", cmd->cmd[0]);
-	   g_shell->exit_status = 127;
-	   return (0);
-   }
+		i++;
+	if (!env[i])
+	{
+		ft_dprintf(2, "minishell: %s: No such file or directory\n", cmd->cmd[0]);
+		g_shell->exit_status = 127;
+		return (0);
+	}
 	if (cmd->cmd[0][0] == 0)
 		return (1);
-   res = check_each_path((env[i] + 5), cmd);
-   return (res);
+	res = check_each_path((env[i] + 5), cmd);
+	return (res);
 }

@@ -6,29 +6,29 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 12:17:01 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/31 12:03:54 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/05 18:54:51 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
-int cmd_is_builtin(char *s)
+int	cmd_is_builtin(char *s)
 {
 	if (s)
 	{
 		if (ft_strncmp(s, "echo", 5) == 0)
-	    	return (1);
+			return (1);
 		else if (ft_strncmp(s, "cd", 3) == 0)
-	    	return (1);
-    	else if (ft_strncmp(s, "pwd", 4) == 0)
-	    	return (1);
-    	else if (ft_strncmp(s, "export", 7) == 0)
-	    	return (1);
-    	else if (ft_strncmp(s, "unset", 6) == 0)
-	    	return (1);
-    	else if (ft_strncmp(s, "env", 4) == 0)
-	    	return (1);
-    	else if (ft_strncmp(s, "exit", 5) == 0)
-	    	return (1);
+			return (1);
+		else if (ft_strncmp(s, "pwd", 4) == 0)
+			return (1);
+		else if (ft_strncmp(s, "export", 7) == 0)
+			return (1);
+		else if (ft_strncmp(s, "unset", 6) == 0)
+			return (1);
+		else if (ft_strncmp(s, "env", 4) == 0)
+			return (1);
+		else if (ft_strncmp(s, "exit", 5) == 0)
+			return (1);
 	}
 	return (0);
 }

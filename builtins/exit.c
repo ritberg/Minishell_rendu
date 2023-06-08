@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 11:32:22 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/29 14:46:39 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/06 12:00:57 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -14,7 +14,7 @@
 static void	first_argument_is_numeric(t_cmd **head, int size)
 {
 	int	exit_status;
-	
+
 	exit_status = 0;
 	if (size == 2)
 	{

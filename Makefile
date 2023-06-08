@@ -6,7 +6,7 @@
 #    By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 12:23:37 by mdanchev          #+#    #+#              #
-#    Updated: 2023/06/04 12:29:08 by mdanchev         ###   lausanne.ch        #
+#    Updated: 2023/06/08 12:00:32 by mmakarov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 GREEN 		= \033[32;6m
@@ -37,6 +37,7 @@ SRCS		= main.c \
 			  parsing/syntax_errors.c\
 			  parsing/syntax_errors_print_message.c \
 			  parsing/token_extraction.c\
+			  parsing/here_doc.c \
 			  parsing/expansion.c \
 			  parsing/expansion_helper.c \
 			  parsing/expansion_dollar_conditions.c \

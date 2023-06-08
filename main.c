@@ -6,37 +6,38 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 09:56:41 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/03 15:47:03 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/07 17:50:04 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
 t_shell	*g_shell;
 
-//extern int g_exit_status;
-
 char	*readline_routine(void)
 {
 	char	*line;
-	
+
 	line = NULL;
-	line = readline(BLU_2"minishell$ "RESET);
-	if (!line) // s'il y a une erreur de malloc ou CNTR+D
+	line = readline("minishell$ ");
+	if (!line)
 	{
 		rl_clear_history();
-		return (NULL) ;
+		return (NULL);
 	}
 	if (line[0])
 		add_history(line);
 	return (line);
 }
 
+/* FOR TESTING, TO DELETE */
 void	print_cmd(t_cmd **head)
 {
 	t_cmd	*ptr;
-	int	i = 0;
-	int	j = 0;
-	
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
 	ft_printf("command print\n");
 	if (!head || !*head)
 		return ;
@@ -45,7 +46,7 @@ void	print_cmd(t_cmd **head)
 	{
 		if (ptr->cmd)
 		{
-			while(ptr->cmd[j])
+			while (ptr->cmd[j])
 			{
 				ft_printf("cmd[%d] = ", i);
 				ft_printf("%s\n", ptr->cmd[j]);
@@ -73,8 +74,7 @@ void	print_cmd(t_cmd **head)
 	}
 }
 
-// FOR TESTING PRINTING ENV
-/*
+/* FOR TESTING PRINTING ENV
 static void	print_env()
 {
 	t_env	*ptr;
@@ -95,11 +95,8 @@ static void	print_env()
 void	check_for_malloc_error(t_cmd **head)
 {
 	if (g_shell->error_exit == 1)
-	{
 		free_and_exit_prog(head, 1);
-	}
 }
-
 
 int	main(int ac, char **av, char **envp)
 {

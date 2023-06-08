@@ -6,13 +6,18 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 14:19:00 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/04 14:48:46 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/07 18:32:00 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
-void	restaure_fds(t_cmd *cmd)
+void	restaure_fds(t_cmd *cmd, int i)
 {
+	char *file;
+
+	file = ft_strjoin(".here_doc", ft_itoa(i));
+	if (!file)									// A SUPPRIMER
+		printf("error restauring here doc\n"); // A SUPPRIMER
 	if (cmd->save_fdout != -1)
 	{
 		dup2(cmd->save_fdout, STDOUT_FILENO);
@@ -25,14 +30,15 @@ void	restaure_fds(t_cmd *cmd)
 		close(cmd->save_fdin);
 		cmd->save_fdin = -1;
 	}
-	if (access(".here_doc", F_OK) == 0)
-		unlink(".here_doc");
+	if (!file)
+		return ;
+	if (access(file, F_OK) == 0)
+		unlink(file);
 }
 
-int	make_redirections(t_cmd *cmd)
+int	make_redirections(t_cmd *cmd, int j)
 {
 	int	i;
-	int res;
 
 	i = 0;
 	if (!cmd->redir)
@@ -42,20 +48,18 @@ int	make_redirections(t_cmd *cmd)
 		if (ft_strncmp(cmd->redir[i], ">", 2) == 0 || \
 			ft_strncmp(cmd->redir[i], ">>", 3) == 0)
 		{
-			res = redir_fdout(cmd, cmd->redir[i], cmd->redir[i + 1]);
-			if (!res)
+			if (!redir_fdout(cmd, cmd->redir[i], cmd->redir[i + 1]))
 				return (0);
 			i++;
 		}
 		else if (ft_strncmp(cmd->redir[i], "<", 2) == 0 || \
 				ft_strncmp(cmd->redir[i], "<<", 3) == 0)
 		{
-			res = redir_fdin(cmd, cmd->redir[i], cmd->redir[i + 1]);
-			if (!res)
+			if (!redir_fdin(cmd, cmd->redir[i], cmd->redir[i + 1], j))
 				return (0);
 			i++;
 		}
-		else	
+		else
 			i++;
 	}
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 14:59:32 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/31 11:39:57 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/06 12:01:55 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -19,12 +19,12 @@ static int	change_env_var(char *s, char *var_name, int i)
 	while (env)
 	{
 		if (ft_strncmp(var_name, env->var_name, ft_strlen(var_name)) == 0)
-			break;
+			break ;
 		env = env->next;
 	}
 	free(env->var_value);
 	env->var_value = NULL;
-	env->var_value = ft_substr(s, i + 1, ft_strlen(s) - (i + 1)) ;
+	env->var_value = ft_substr(s, i + 1, ft_strlen(s) - (i + 1));
 	if (!env->var_value)
 	{
 		malloc_error_print_message("ft_strdup failed");
@@ -37,7 +37,7 @@ static int	export_with_args_helper(char *var_name, char *s, int i)
 {
 	int		res;
 	t_env	*new;
-	
+
 	res = check_if_var_exists(var_name);
 	if (!res)
 	{
@@ -113,7 +113,7 @@ void	_export(t_cmd *cmd, t_cmd **head)
 	int	i;
 	int	res;
 	int	save;
-	
+
 	save = 1;
 	i = size_tab2d(cmd->cmd);
 	if (i == 1)

@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:08:47 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/04 13:43:33 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/08 12:13:32 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -54,14 +54,17 @@ static void	execute_one_bin(t_cmd *cmd)
 
 void	one_cmd(t_cmd *cmd, t_cmd **head)
 {
-	int res;
-	
-	res = make_redirections(cmd);
-	if (!res)
+	int	res;
+
+	res = make_redirections(cmd, 0);
+	if (!res || !cmd->cmd)
+	{
+		restaure_fds(cmd, 0);
 		return ;
+	}
 	if (cmd_is_builtin(cmd->cmd[0]))
 		execute_builtin(cmd, head);
 	else
 		execute_one_bin(cmd);
-	restaure_fds(cmd);
+	restaure_fds(cmd, 0);
 }

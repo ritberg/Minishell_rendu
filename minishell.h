@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:16:33 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/04 15:45:39 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/08 12:00:49 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,43 +68,44 @@ typedef struct s_token
 {
 	char				*content;
 	int					id;
+	int					res; //Rita: trick pour la norminette
 	struct s_token		*next;
 }	t_token;
 
-//NOT OK
-typedef	struct	s_cmd
+typedef struct s_cmd
 {
-	pid_t	pid;
-	char	**cmd;
-	char	**redir;
-	char	*path;
-	int		status;
-	int		ffd_in;
-	int		ffd_out;
-//	int		pfd[2];
-	int		save_fdout;
-	int		save_fdin;
-	int		fd[2];
+	pid_t			pid;
+	char			**cmd;
+	char			**redir;
+	char			*path;
+	int				status;
+	int				ffd_in;
+	int				ffd_out;
+	int				save_fdout;
+	int				save_fdin;
+	int				fd[2];
+	int				res; // Rita: trick pour la norminette
 	struct s_cmd	*next;
 }	t_cmd;
 
 typedef struct s_shell
 {
-	t_env	*env;
+	t_env				*env;
 	volatile int		exit_status;
-	int					error_exit;
-	char				**save_env; 
 	volatile int		terminated;
+	int					error_exit;
+	char				**save_env;
 	int					pid;
 }	t_shell;
 
 extern t_shell	*g_shell;
-
+/*		HERE DOC*/
+int		here_doc(t_token **head);
 /*		REDIRECTIONS */
-int		make_redirections(t_cmd *cmd);
-void	restaure_fds(t_cmd *cmd);
+int		make_redirections(t_cmd *cmd, int i);
+void	restaure_fds(t_cmd *cmd, int i);
 int		redir_fdout(t_cmd *cmd, char *redir_op, char *file_path);
-int		redir_fdin(t_cmd *cmd, char *redir_op, char *file_path);
+int		redir_fdin(t_cmd *cmd, char *redir_op, char *file_path, int j);
 int		append(t_cmd *cmd, char *file_path);
 
 /*		UTILS */
@@ -200,7 +201,7 @@ t_token	*get_tokens(char *line);
 int		get_tokens_size(char *line, int *i);
 t_token	*create_token_head(char *line, int i, int len, int *flag);
 
-/* 		MALLOC ERROR PRINT MESSAGE */ 
+/* 		MALLOC ERROR PRINT MESSAGE */
 void	malloc_error_print_message(char *s);
 
 /* 		TOKEN EXTRACTION - TOKEN LINKED LIST (token_routine_.c) */
@@ -210,7 +211,7 @@ int		token_linked_list(t_token **head, char *line, int start, int len);
 int		link_token(t_token **head, t_token *new);
 void	free_token(t_token **head);
 
-/* 		IS SOMETHING (folder: is_smth) */ 
+/* 		IS SOMETHING (folder: is_smth) */
 int		is_dollar(char c);
 int		is_pipeline(char c);
 int		is_chevron(char c);
@@ -247,7 +248,6 @@ void	here_doc_signal_handler(void);
 
 //int	parsing_av(char *str);
 char	**ft_splitpath(char *s, char c);
-
 
 /* GETENVP */
 t_env	*get_envp(char **envp);

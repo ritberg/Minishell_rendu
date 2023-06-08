@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 12:39:56 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/25 10:12:33 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/06 11:55:43 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -66,7 +66,7 @@ static int	change_dir(char *oldpwd, char *path)
 	{
 		free(oldpwd);
 		print_chdir_error(path, strerror(errno));
-		return 0;
+		return (0);
 	}
 	g_shell->exit_status = 0;
 	return (1);
@@ -75,9 +75,9 @@ static int	change_dir(char *oldpwd, char *path)
 // EST-CE QU'IL FAUT EXIT PROG SI OLDPWD ET PWD NE SE MALLOC PAS
 void	_cd(t_cmd *cmd, t_cmd **head)
 {
-	int	res;
-	char *oldpwd;
-	char *pwd;
+	int		res;
+	char	*oldpwd;
+	char	*pwd;
 
 	oldpwd = getcwd(NULL, 0);
 	if (!oldpwd)

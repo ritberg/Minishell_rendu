@@ -6,7 +6,7 @@
 /*   By: mmakarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 17:39:06 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/05/27 15:29:12 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/05 18:39:17 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -26,6 +26,19 @@ int	column_size(t_env **head)
 	return (count);
 }
 
+char	*joined_malloc(int len_name, int len_value)
+{
+	char	*joined_1;
+
+	joined_1 = malloc(sizeof(char) * (len_name + len_value + 2));
+	if (!joined_1)
+	{
+		malloc_error_print_message(strerror(errno));
+		return (NULL);
+	}
+	return (joined_1);
+}
+
 char	*name_plus_value(char *name, char *value)
 {
 	char	*joined;
@@ -37,16 +50,10 @@ char	*name_plus_value(char *name, char *value)
 	i = 0;
 	j = 0;
 	len_name = ft_strlen(name);
+	len_value = 0;
 	if (value)
 		len_value = ft_strlen(value);
-	else
-		len_value = 0;
-	joined = malloc(sizeof(char) * (len_name + len_value + 2));
-	if (!joined)
-	{
-		malloc_error_print_message(strerror(errno));
-		return (NULL);
-	}
+	joined = joined_malloc(len_name, len_value);
 	while (i < len_name)
 		joined[i++] = name[j++];
 	joined[i] = '=';

@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 09:34:50 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/29 14:49:56 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/06 12:04:58 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -28,7 +28,7 @@ void	free_tab2d(char **s)
 
 void	free_cmd(t_cmd **head)
 {
-	t_cmd *ptr;
+	t_cmd	*ptr;
 	t_cmd	*tmp;
 
 	if (!head || !*head)

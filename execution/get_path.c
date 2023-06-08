@@ -6,18 +6,18 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 10:03:32 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/29 14:29:41 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/05 19:07:50 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
 static int	is_dir(char *path, t_cmd *cmd)
 {
-	struct stat buf;
+	struct stat	buf;
 
 	if (stat(path, &buf) == 0)
 	{
-		if(S_ISDIR(buf.st_mode))
+		if (S_ISDIR(buf.st_mode))
 		{
 			free_tab2d(cmd->cmd);
 			cmd->cmd = NULL;
@@ -69,5 +69,4 @@ int	get_path(t_cmd *cmd)
 		if (!search_path(cmd, g_shell->save_env))
 			return (0);
 	return (1);
-
 }

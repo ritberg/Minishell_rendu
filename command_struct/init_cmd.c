@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 11:54:50 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/30 14:06:43 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/06 12:09:56 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -34,10 +34,10 @@ static void	cmd_backadd(t_cmd **head, t_cmd *new)
 
 static void	init_fds(t_cmd *cmd)
 {
-	cmd->ffd_in = -1;	
-	cmd->ffd_out = -1;	
-	cmd->save_fdout = -1;	
-	cmd->save_fdin = -1;	
+	cmd->ffd_in = -1;
+	cmd->ffd_out = -1;
+	cmd->save_fdout = -1;
+	cmd->save_fdin = -1;
 }
 
 /*
@@ -84,7 +84,7 @@ static t_cmd	*init_cmd(t_token **token)
 
 static void	create_cmd_linked_list(t_token **token, t_cmd *head)
 {
-	t_cmd *new;
+	t_cmd	*new;
 	t_token	*ptr;
 
 	ptr = *token;
@@ -125,7 +125,7 @@ static void	create_cmd_linked_list(t_token **token, t_cmd *head)
  */
 t_cmd	*cmd_linked_list(t_token **token)
 {
-	t_cmd *head;
+	t_cmd	*head;
 	t_token	*ptr;
 
 	if (!token || !*token)
@@ -143,4 +143,3 @@ t_cmd	*cmd_linked_list(t_token **token)
 		return (NULL);
 	return (head);
 }
-

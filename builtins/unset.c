@@ -6,15 +6,15 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 08:04:29 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/27 15:37:27 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/06 12:04:13 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
 static int	env_list_size(t_env **head)
 {
-	t_env *env;
-	int	i;
+	t_env	*env;
+	int		i;
 
 	env = *head;
 	i = 0;
@@ -34,7 +34,7 @@ static void	free_env_var(t_env *curr)
 	free(curr);
 }
 
-static void delete_env_helper(t_env **head, t_env *curr, \
+static void	delete_env_helper(t_env **head, t_env *curr, \
 								t_env *prev, int i)
 {
 	int		size;
@@ -59,7 +59,7 @@ static void delete_env_helper(t_env **head, t_env *curr, \
 	return ;
 }
 
-static void delete_env_var(t_env **head, char *s)
+static void	delete_env_var(t_env **head, char *s)
 {
 	int		i;
 	t_env	*curr;
@@ -84,8 +84,8 @@ static void delete_env_var(t_env **head, char *s)
 void	_unset(t_cmd *cmd)
 {
 	int	i;
-	int		res;
-	int		save;
+	int	res;
+	int	save;
 
 	i = 1;
 	res = 0;

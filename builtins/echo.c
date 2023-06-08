@@ -6,14 +6,14 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 12:35:31 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/27 14:51:12 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/06 11:59:07 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
 static void	print_echo(char **s, int i)
 {
-	int size;
+	int	size;
 
 	size = i;
 	while (s[size])
@@ -52,7 +52,7 @@ int	_echo(t_cmd *cmd)
 		print_echo(cmd->cmd, 1);
 		ft_printf("\n");
 	}
-	else 
+	else
 		print_echo(cmd->cmd, 2);
 	g_shell->exit_status = 0;
 	return (1);

@@ -42,7 +42,7 @@ void	free_env(t_env **head)
 
 int	new_env_helper(char *envp, int end)
 {
-	while (envp[end] != '=' && envp[end]) // NOUVEL AJOUT
+	while (envp[end] != '=' && envp[end])
 		end++;
 	return (end);
 }
@@ -64,7 +64,7 @@ t_env	*new_env(char *envp)
 	env->var_name = ft_substr(envp, 0, end);
 	if (!env->var_name)
 		return (NULL);
-	if (envp[end++] == '\0') // NOUVEL AJOUT
+	if (envp[end++] == '\0')
 		return (env);
 	start = end;
 	while (envp[end] != '\0')

@@ -6,7 +6,7 @@
 /*   By: mmakarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:03:39 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/06/04 14:21:10 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/07 15:12:12 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -21,8 +21,7 @@
    SIGKILL -> from command line kill -SIGKILL [pid]
    SIGTERM -> from command line kill -SIGTERM [pid]
 */
-
-static void handler(int sig_code)
+static void	handler(int sig_code)
 {
 	if (sig_code == SIGINT)
 	{
@@ -31,14 +30,13 @@ static void handler(int sig_code)
 		rl_replace_line("", 0);
 		rl_on_new_line();
 		rl_redisplay();
-	//	printf("coucou\n");
 	}
 }
 
 void	here_doc_handler(int sig_code)
 {
 	(void)sig_code;
-	ft_printf(MAG"> \n"RESET);
+	ft_printf("> \n");
 	exit(1);
 }
 
@@ -51,7 +49,6 @@ void	here_doc_signal_handler(void)
 	act.sa_handler = SIG_IGN;
 	sigaction(SIGQUIT, &act, 0);
 	sigaction(SIGTSTP, &act, 0);
-	
 	act.sa_handler = here_doc_handler;
 	sigaction(SIGINT, &act, 0);
 }

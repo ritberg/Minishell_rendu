@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 12:36:17 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/24 13:47:12 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/06 17:04:16 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -20,6 +20,7 @@ void	print_getcwd_error(char *s)
 void	_pwd(void)
 {
 	char	*cwd;
+
 	cwd = getcwd(NULL, 0);
 	if (!cwd)
 	{

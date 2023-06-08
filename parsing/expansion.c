@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_expansion.c                                :+:      :+:    :+:   */
+/*   expansion.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 12:13:21 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/19 12:20:41 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:53:07 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -40,8 +40,6 @@
  */
 int	check_dollar(t_token *curr, int i)
 {
-	int	res;
-
 	while (curr->content[i])
 	{
 		if (is_dollar(curr->content[i]) && not_within_squotes(curr, i))
@@ -52,10 +50,10 @@ int	check_dollar(t_token *curr, int i)
 				i = loop_dollars(curr->content, i);
 			else if (is_quote(curr->content[i + 1]))
 			{
-				res = trim_dollar(curr, i);
-				if (res == ERROR_EXIT)
+				curr->res = trim_dollar(curr, i);
+				if (curr->res == ERROR_EXIT)
 					return (ERROR_EXIT);
-				i += res;
+				i += curr->res;
 			}
 			else if (curr->content[i + 1] == '\0')
 				break ;

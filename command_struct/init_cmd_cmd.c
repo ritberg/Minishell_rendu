@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 09:36:56 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/29 10:43:57 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/06 12:29:14 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -58,7 +58,7 @@ static int	copy_cmd(t_token **token, t_cmd *cmd)
 		else
 		{
 			if (!copy_cmd_helper(ptr, cmd, i))
-					return (0);
+				return (0);
 			ptr = ptr->next;
 			i++;
 		}

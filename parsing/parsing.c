@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:00:49 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/22 15:58:44 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/08 11:52:23 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -97,6 +97,7 @@ t_token	*parsing(char *line)
 	token = get_tokens(line);
 	if (!token)
 		return (NULL);
+	here_doc(&token);
 	if (!expansion(&token, token, 0))
 		return (NULL);
 	if (!quote_removing(&token, token, 0))

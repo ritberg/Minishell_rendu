@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 09:37:00 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/05/24 10:22:06 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/06 12:10:32 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -86,6 +86,7 @@ static int	copy_redir(t_token **token, t_cmd *cmd)
 	}
 	return (1);
 }
+
 /*
  * create_redir() function
  *

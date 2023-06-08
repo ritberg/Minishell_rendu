@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 22:04:51 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/04 17:13:24 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/06 12:02:32 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -41,7 +41,7 @@ int	check_if_valid_identifier(char *s, char *command)
 
 int	check_if_var_exists(char *s)
 {
-	t_env *env;
+	t_env	*env;
 
 	env = g_shell->env;
 	while (env)
@@ -52,4 +52,3 @@ int	check_if_var_exists(char *s)
 	}
 	return (0);
 }
-
