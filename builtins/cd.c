@@ -6,22 +6,22 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 12:39:56 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/06 11:55:43 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/09 09:59:17 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
-static void	change_env_error(char *oldpwd, char *pwd, t_cmd **head)
+static void	change_env_error(char *oldpwd, char *pwd, t_cmd *cmd)
 {
 	malloc_error_print_message("ft_strdup failed");
 	if (oldpwd)
 		free (oldpwd);
 	if (pwd)
 		free (pwd);
-	free_and_exit_prog(head, 1);
+	free_and_exit_prog(&cmd, 1);
 }
 
-static void	change_env(char *oldpwd, char *pwd, t_cmd **head)
+static void	change_env(char *oldpwd, char *pwd, t_cmd *cmd)
 {
 	t_env	*env;
 
@@ -34,7 +34,7 @@ static void	change_env(char *oldpwd, char *pwd, t_cmd **head)
 			env->var_value = NULL;
 			env->var_value = ft_strdup(oldpwd);
 			if (!env->var_value)
-				change_env_error(oldpwd, pwd, head);
+				change_env_error(oldpwd, pwd, cmd);
 		}
 		if (ft_strncmp(env->var_name, "PWD", 4) == 0)
 		{
@@ -42,7 +42,7 @@ static void	change_env(char *oldpwd, char *pwd, t_cmd **head)
 			env->var_value = NULL;
 			env->var_value = ft_strdup(pwd);
 			if (!env->var_value)
-				change_env_error(oldpwd, pwd, head);
+				change_env_error(oldpwd, pwd, cmd);
 		}
 		env = env->next;
 	}
@@ -73,7 +73,7 @@ static int	change_dir(char *oldpwd, char *path)
 }
 
 // EST-CE QU'IL FAUT EXIT PROG SI OLDPWD ET PWD NE SE MALLOC PAS
-void	_cd(t_cmd *cmd, t_cmd **head)
+void	_cd(t_cmd *cmd)
 {
 	int		res;
 	char	*oldpwd;
@@ -98,5 +98,5 @@ void	_cd(t_cmd *cmd, t_cmd **head)
 		print_getcwd_error(strerror(errno));
 		return ;
 	}
-	change_env(oldpwd, pwd, head);
+	change_env(oldpwd, pwd, cmd);
 }

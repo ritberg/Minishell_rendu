@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 12:17:01 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/05 18:54:51 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/09 10:24:27 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -33,10 +33,10 @@ int	cmd_is_builtin(char *s)
 	return (0);
 }
 
-void	execute_builtin(t_cmd *cmd, t_cmd **head)
+void	execute_builtin(t_cmd *cmd)
 {
 	if (ft_strncmp(cmd->cmd[0], "exit", 6) == 0)
-		ft_exit(&cmd);
+		ft_exit(cmd);
 	else if (ft_strncmp(cmd->cmd[0], "pwd", 4) == 0)
 		_pwd();
 	else if (ft_strncmp(cmd->cmd[0], "echo", 5) == 0)
@@ -44,9 +44,9 @@ void	execute_builtin(t_cmd *cmd, t_cmd **head)
 	else if (ft_strncmp(cmd->cmd[0], "env", 4) == 0)
 		_env(cmd, g_shell->env);
 	else if (ft_strncmp(cmd->cmd[0], "cd", 3) == 0)
-		_cd(cmd, head);
+		_cd(cmd);
 	else if (ft_strncmp(cmd->cmd[0], "export", 7) == 0)
-		_export(cmd, head);
+		_export(cmd);
 	else if (ft_strncmp(cmd->cmd[0], "unset", 6) == 0)
 		_unset(cmd);
 	return ;

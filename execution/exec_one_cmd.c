@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:08:47 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/08 15:22:45 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/09 10:07:15 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -52,7 +52,7 @@ static void	execute_one_bin(t_cmd *cmd)
 	}
 }
 
-void	one_cmd(t_cmd *cmd, t_cmd **head)
+void	one_cmd(t_cmd *cmd)
 {
 	int	res;
 
@@ -63,7 +63,7 @@ void	one_cmd(t_cmd *cmd, t_cmd **head)
 		return ;
 	}
 	if (cmd_is_builtin(cmd->cmd[0]))
-		execute_builtin(cmd, head);
+		execute_builtin(cmd);
 	else
 		execute_one_bin(cmd);
 	restaure_fds(cmd, 0);

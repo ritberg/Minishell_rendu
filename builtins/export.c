@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 14:59:32 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/06 12:01:55 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/09 10:03:04 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -108,7 +108,7 @@ static void	export_no_args(void)
  * ONE - 1 - indicates success, even if the function print an error message
  */
 
-void	_export(t_cmd *cmd, t_cmd **head)
+void	_export(t_cmd *cmd)
 {
 	int	i;
 	int	res;
@@ -126,7 +126,7 @@ void	_export(t_cmd *cmd, t_cmd **head)
 	{
 		res = export_with_args(cmd->cmd[i]);
 		if (res == ERROR_EXIT)
-			free_and_exit_prog(head, 1);
+			free_and_exit_prog(&cmd, 1);
 		else if (!res)
 			save = res;
 		i++;

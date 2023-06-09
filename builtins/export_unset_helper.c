@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 22:04:51 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/06 12:02:32 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/09 10:19:43 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -25,7 +25,18 @@ void	print_export_unset_error(char *identifier, char *command)
 
 int	check_if_valid_identifier(char *s, char *command)
 {
+	int	i;
+
+	i = 0;
 	if (is_punct(s[0]) || ft_isdigit(s[0]) || s[0] == '_')
+	{
+		print_export_unset_error(s, command);
+		return (0);
+	}
+	while (s[i] && s[i] != '=')
+		i++;
+	i--;
+	if (is_punct(s[i]) || s[i] == ' ')
 	{
 		print_export_unset_error(s, command);
 		return (0);

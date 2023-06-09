@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 12:39:31 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/08 11:47:25 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/09 10:12:32 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -48,7 +48,7 @@ void	execution(t_cmd **head)
 	if (!reset_env_tab())
 		return ;
 	if (nb_cmds == 1)
-		one_cmd(*head, head);
+		one_cmd(*head);
 	else
 		pipex(head);
 }

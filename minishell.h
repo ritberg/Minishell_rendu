@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:16:33 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/08 17:11:15 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/09 10:48:27 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,19 +118,20 @@ int		size_tab2d(char **s);
 /*		EXECUTION */
 void	execution(t_cmd **head);
 int		copy_env_tab(void);
-void	one_cmd(t_cmd *cmd, t_cmd **head);
+void	one_cmd(t_cmd *cmd);
 void	pipex(t_cmd **head);
 
 /* 		EXECUTION BUILTINS */
 int		cmd_is_builtin(char *s);
-void	execute_builtin(t_cmd *cmd, t_cmd **head);
+void	execute_builtin(t_cmd *cmd);
 void	_pwd(void);
 void	_env(t_cmd *cmd, t_env *env);
 void	print_getcwd_error(char *s);
 int		_echo(t_cmd *cmd);
-void	ft_exit(t_cmd **head);
-void	_cd(t_cmd *cmd, t_cmd **head);
-void	_export(t_cmd *cmd, t_cmd **head);
+void	ft_exit(t_cmd *cmd);
+int		no_int_errors(char *str);
+void	_cd(t_cmd *cmd);
+void	_export(t_cmd *cmd);
 int		check_if_var_exists(char *s);
 int		check_if_valid_identifier(char *s, char *command);
 void	print_export_unset_error(char *identifier, char *command);

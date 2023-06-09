@@ -6,7 +6,7 @@
 #    By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 12:23:37 by mdanchev          #+#    #+#              #
-#    Updated: 2023/06/08 12:00:32 by mmakarov         ###   ########.fr        #
+#    Updated: 2023/06/09 10:47:59 by mdanchev         ###   lausanne.ch        #
 #                                                                              #
 # **************************************************************************** #
 GREEN 		= \033[32;6m
@@ -61,6 +61,7 @@ SRCS		= main.c \
 			  execution/exec_builtins.c \
 			  execution/exec_bin.c \
 			  builtins/exit.c \
+			  builtins/int_min_max.c \
 			  builtins/env.c \
 			  builtins/echo.c \
 			  builtins/pwd.c \

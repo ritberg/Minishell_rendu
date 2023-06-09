@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 12:02:52 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/08 10:17:57 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/09 10:14:05 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -32,7 +32,7 @@ int	check_fdin_redir(t_cmd *cmd)
 	return (flag);
 }
 
-void	ft_exe(int i, int save_fdin, t_cmd *cmd, t_cmd **head)
+void	ft_exe(int i, int save_fdin, t_cmd *cmd)
 {
 	int	res;
 
@@ -48,7 +48,7 @@ void	ft_exe(int i, int save_fdin, t_cmd *cmd, t_cmd **head)
 		return ;
 	}
 	if (cmd_is_builtin(cmd->cmd[0]))
-		execute_builtin(cmd, head);
+		execute_builtin(cmd);
 	else
 		execute_bin(cmd);
 	restaure_fds(cmd, i);
@@ -149,7 +149,7 @@ void	pipex(t_cmd **head)
 				dup2(fd_pipe[1], STDOUT_FILENO);
 			close(fd_pipe[0]);
 			close(fd_pipe[1]);
-			ft_exe(i, save_fdin, cmd, head);
+			ft_exe(i, save_fdin, cmd);
 			exit(g_shell->exit_status);
 		} 
 		else 

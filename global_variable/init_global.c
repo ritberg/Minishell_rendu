@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 09:45:47 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/06 12:21:32 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/09 11:16:45 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -66,6 +66,23 @@ static int	increment_shlvl(void)
 	return (1);
 }
 
+void	reset_oldpwd(void)
+{
+	t_env	*env;
+
+	env = g_shell->env;
+	while (env)
+	{
+		if (ft_strncmp(env->var_name, "OLDPWD", 7) == 0)
+		{
+			free(env->var_value);
+			env->var_value = NULL;
+			break ;
+		}
+		env = env->next;
+	}
+}
+
 int	init_shell(char **envp)
 {
 	g_shell = ft_calloc(1, sizeof(t_shell));
@@ -86,6 +103,7 @@ int	init_shell(char **envp)
 			return (free_shell(), 0);
 		if (!increment_shlvl())
 			return (free_shell(), 0);
+		reset_oldpwd();
 	}
 	return (1);
 }
