@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:16:33 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/09 10:48:27 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/09 12:58:53 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "libft/includes/libft.h"
-//# include <boolean.h>
 
 # define RED    "\x1b[31m"
 # define BLU    "\x1B[34m"
@@ -69,7 +68,7 @@ typedef struct s_token
 {
 	char				*content;
 	int					id;
-	int					res; //Rita: trick pour la norminette
+	int					res;
 	int					pos;
 	struct s_token		*next;
 }	t_token;
@@ -86,7 +85,7 @@ typedef struct s_cmd
 	int				save_fdout;
 	int				save_fdin;
 	int				fd[2];
-	int				res; // Rita: trick pour la norminette
+	int				res;
 	struct s_cmd	*next;
 }	t_cmd;
 
@@ -101,6 +100,7 @@ typedef struct s_shell
 }	t_shell;
 
 extern t_shell	*g_shell;
+
 /*		HERE DOC*/
 int		here_doc(t_token **head);
 /*		REDIRECTIONS */
@@ -248,6 +248,7 @@ void	init_sigset(sigset_t *set);
 void	parent_signal_handler(void);
 void	child_signal_handler(void);
 void	here_doc_signal_handler(void);
+void	pipex_signal_handler(void);
 
 //int	parsing_av(char *str);
 char	**ft_splitpath(char *s, char c);

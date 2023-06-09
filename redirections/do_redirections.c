@@ -6,14 +6,14 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 14:20:24 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/08 15:52:48 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/09 11:58:51 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
 int	redir_fdin(t_cmd *cmd, char *redir_op, char *file_path, int j)
 {
-	char *here_doc_file;
+	char	*here_doc_file;
 
 	if (cmd->save_fdin != -1 || cmd->ffd_in != -1)
 		restaure_fds(cmd, 1);

@@ -6,11 +6,11 @@
 /*   By: mmakarov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 11:53:08 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/06/08 12:42:46 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/09 11:58:08 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
-	
+
 static void	child_process(char *key_word, int j)
 {
 	char	*line;
@@ -52,7 +52,6 @@ static void	child_process(char *key_word, int j)
 			free(line);
 			break ;
 		}
-
 		ft_dprintf(fd, "%s\n", line);
 	}
 	close(fd);
@@ -86,7 +85,7 @@ static int	write_in_heredoc(char *key_word, int j)
 
 int	here_doc(t_token **head)
 {
-	t_token *token;
+	t_token	*token;
 	int		i;
 
 	i = 0;
@@ -104,4 +103,3 @@ int	here_doc(t_token **head)
 	}
 	return (0);
 }
-

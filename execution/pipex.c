@@ -6,10 +6,11 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 12:02:52 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/09 10:14:05 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/09 13:13:24 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
+
 int	check_fdin_redir(t_cmd *cmd)
 {
 	int	i;
@@ -25,7 +26,7 @@ int	check_fdin_redir(t_cmd *cmd)
 				ft_strncmp(cmd->redir[i], "<", 2) == 0)
 		{
 			flag = 1;
-			break;
+			break ;
 		}
 		i++;
 	}
@@ -70,27 +71,7 @@ static void	print_signal_message(int sig_code)
 		ft_printf("Killed: 9 \n");
 }
 
-void	pipex_handler(int sig_code)
-{
-	(void)sig_code;
-	return ;
-}
-
-static void	pipex_signal_handler(void)
-{
-	struct sigaction	act;
-
-	ft_memset(&act, 0, sizeof(struct sigaction));
-	init_sigset(&act.sa_mask);
-	act.sa_handler = SIG_DFL;
-	sigaction(SIGTERM, &act, 0);
-	sigaction(SIGKILL, &act, 0);
-	act.sa_handler = pipex_handler;
-	sigaction(SIGQUIT, &act, 0);
-	sigaction(SIGINT, &act, 0);
-}
-/*
-void	pipex_signals(t_cmd *cmd, t_cmd **head)
+static void	pipex_get_exit_status(t_cmd *cmd, t_cmd **head)
 {
 	t_cmd	*last;
 	int		flag;
@@ -124,15 +105,34 @@ void	pipex_signals(t_cmd *cmd, t_cmd **head)
 		}
 		cmd = cmd->next;
 	}
-}*/
+}
+
+void	pipex_helper(int fd_pipe[2], t_cmd *cmd, int i, int *save_fdin)
+{
+	if (cmd->pid == 0)
+	{
+		if (cmd->next != NULL)
+			dup2(fd_pipe[1], STDOUT_FILENO);
+		close(fd_pipe[0]);
+		close(fd_pipe[1]);
+		ft_exe(i, *save_fdin, cmd);
+		exit(g_shell->exit_status);
+	}
+	else
+	{
+		close(fd_pipe[1]);
+		close(*save_fdin);
+		*save_fdin = fd_pipe[0];
+	}
+
+}
 
 void	pipex(t_cmd **head)
 {
-	int	fd_pipe[2];
-	int	save_fdin;
-	t_cmd *cmd;
-	int	i;
-	int	flag = 0;
+	int		fd_pipe[2];
+	int		save_fdin;
+	t_cmd	*cmd;
+	int		i;
 
 	i = 0;
 	if (!head || !*head)
@@ -141,7 +141,34 @@ void	pipex(t_cmd **head)
 	while (cmd)
 	{
 		pipe(fd_pipe);
-		cmd->pid= fork();
+		cmd->pid = fork();
+		pipex_signal_handler();
+		pipex_helper(fd_pipe, cmd, i, &save_fdin);
+		cmd = cmd->next;
+		i++;
+	}
+	pipex_get_exit_status(cmd, head);
+	close(save_fdin);
+}
+
+/*
+void	pipex(t_cmd **head)
+{
+	int		fd_pipe[2];
+	int		save_fdin;
+	t_cmd	*cmd;
+	int		i;
+	int		flag;
+
+	flag = 0;
+	i = 0;
+	if (!head || !*head)
+		return ;
+	cmd = *head;
+	while (cmd)
+	{
+		pipe(fd_pipe);
+		cmd->pid = fork();
 		pipex_signal_handler();
 		if (cmd->pid == 0)
 		{
@@ -152,17 +179,17 @@ void	pipex(t_cmd **head)
 			ft_exe(i, save_fdin, cmd);
 			exit(g_shell->exit_status);
 		} 
-		else 
+		else
 		{
 			close(fd_pipe[1]);
 			close(save_fdin);
-			save_fdin = fd_pipe[0]; 
+			save_fdin = fd_pipe[0];
 		}
 		cmd = cmd->next;
 		i++;
 	}
 	cmd = *head;
-	t_cmd *last;
+	t_cmd	*last;
 	while (cmd)
 	{
 		waitpid(cmd->pid, &cmd->status, 0);
@@ -181,54 +208,16 @@ void	pipex(t_cmd **head)
 		g_shell->exit_status = WTERMSIG(last->status) + 128;
 	}
 	cmd = *head;
-	int res;
+	int	res;
 	while (cmd)
 	{
 		res = waitpid(cmd->pid, &cmd->status, 0);
 		if (res >= 0 && WIFSIGNALED(cmd->status) && \
-			   	WTERMSIG(cmd->status) == SIGINT && flag == 0)
+				WTERMSIG(cmd->status) == SIGINT && flag == 0)
 		{
 			print_signal_message(WTERMSIG(cmd->status));
 		}
 		cmd = cmd->next;
 	}
-	close(save_fdin);
-}
-/*
-void	pipex(t_cmd **head)
-{
-	int		fd_pipe[2];
-	int		save_fdin;
-	t_cmd	*cmd;
-	int		i;
-
-	i = 0;
-	if (!head || !*head)
-		return ;
-	cmd = *head;
-	while (cmd)
-	{
-		pipe(fd_pipe);
-		cmd->pid = fork();
-		pipex_signal_handler();
-		if (cmd->pid == 0)
-		{
-			if (cmd->next != NULL)
-				dup2(fd_pipe[1], STDOUT_FILENO);
-			close(fd_pipe[0]);
-			close(fd_pipe[1]);
-			ft_exe(i, save_fdin, cmd, head);
-			exit(g_shell->exit_status);
-		}
-		else
-		{
-			close(fd_pipe[1]);
-			close(save_fdin);
-			save_fdin = fd_pipe[0];
-		}
-		cmd = cmd->next;
-		i++;
-	}
-	pipex_signals(cmd, head);
 	close(save_fdin);
 }*/

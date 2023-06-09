@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:00:21 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/08 17:12:30 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/09 11:44:31 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -89,7 +89,7 @@ t_token	*create_token_head(char *line, int i, int len, int *flag)
 		return (NULL);
 	*flag = 1;
 	head->pos = 0;
-	set_id(&head,head); 
+	set_id(&head, head);
 	return (head);
 }
 /*

@@ -6,7 +6,7 @@
 #    By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 12:23:37 by mdanchev          #+#    #+#              #
-#    Updated: 2023/06/09 10:47:59 by mdanchev         ###   lausanne.ch        #
+#    Updated: 2023/06/09 12:59:13 by mdanchev         ###   lausanne.ch        #
 #                                                                              #
 # **************************************************************************** #
 GREEN 		= \033[32;6m
@@ -30,6 +30,7 @@ SRCS		= main.c \
 			  is_smth/is_numeric.c \
 			  signal_handler/signal_handlers.c \
 			  signal_handler/init_sigset.c \
+			  signal_handler/pipex_handler.c \
 			  tokens/token_routine.c \
 			  tokens/token_routine_set_id.c \
 			  tokens/token_routine_delete.c \

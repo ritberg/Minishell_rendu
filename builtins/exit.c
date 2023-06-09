@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 11:32:22 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/09 11:00:30 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/09 12:54:31 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -31,6 +31,18 @@ static void	first_argument_is_numeric(t_cmd *cmd, int size)
 	}
 }
 
+static int	change_i(t_cmd *cmd, int i)
+{
+	while (cmd->cmd[1][i] == 32 || \
+			(cmd->cmd[1][i] >= 9 && cmd->cmd[1][i] <= 13))
+		i++;
+	if (cmd->cmd[1][i] == '-')
+		i++;
+	else if (cmd->cmd[1][i] == '+')
+		i++;
+	return (i);
+}
+
 static int	check_exit_arguments(t_cmd *cmd)
 {
 	int	size;
@@ -40,16 +52,10 @@ static int	check_exit_arguments(t_cmd *cmd)
 	size = size_tab2d(cmd->cmd);
 	if (size == 1)
 		return (0);
-	while (cmd->cmd[1][i] == 32 || \
-			(cmd->cmd[1][i] >= 9 && cmd->cmd[1][i] <= 13))
-		i++;
-	if (cmd->cmd[1][i] == '-')
-		i++;
-	else if (cmd->cmd[1][i] == '+')
-		i++;
+	i = change_i(cmd, i);
 	if (cmd->cmd[1][i] >= '0' && cmd->cmd[1][i] <= '9' && \
 			no_int_errors(cmd->cmd[1]))
-			first_argument_is_numeric(cmd, size);
+		first_argument_is_numeric(cmd, size);
 	else
 	{
 		ft_dprintf(2, "exit\n");

@@ -6,14 +6,14 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 14:19:00 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/08 17:23:11 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/09 11:59:46 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
 void	restaure_fds(t_cmd *cmd, int i)
 {
-	char *file;
+	char	*file;
 
 	file = ft_strjoin(".here_doc", ft_itoa(i));
 	if (!file)									// A SUPPRIMER
@@ -47,7 +47,6 @@ int	make_redirections(t_cmd *cmd, int j)
 	}
 	while (cmd->redir[i])
 	{
-	//	printf("cmd redir = %s\n", cmd->redir[i]);
 		if (ft_strncmp(cmd->redir[i], ">", 2) == 0 || \
 			ft_strncmp(cmd->redir[i], ">>", 3) == 0)
 		{
