@@ -6,7 +6,7 @@
 /*   By: mmakarov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 11:53:08 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/06/09 14:16:43 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/09 17:40:57 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -86,6 +86,7 @@ static int	write_in_heredoc(char *key_word, int j)
 			return (0);
 		}
 	}
+//	parent_signal_handler();
 	return (1);
 }
 

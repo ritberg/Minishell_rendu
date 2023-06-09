@@ -1,4 +1,4 @@
-cscope 15 $HOME/Documents/GitHub/minishell/rita -c -q 0000000534 0000113124
+cscope 15 $HOME/Documents/GitHub/minishell/rita -c -q 0000000535 0000113677
 	@builtins/cd.c
 
 12 #include 
@@ -4905,7 +4905,9 @@ pid
 
 36 
 	`child_signal_handler
-();
+(
+cmd
+, 0);
 
 37 
 	`execute_bin
@@ -4957,7 +4959,7 @@ cmd
 status
 ))
 
-47 
+48 
 	`print_signal_message
 (
 	`WTERMSIG
@@ -4967,7 +4969,7 @@ cmd
 status
 ));
 
-48 
+49 
 g_shell
 ->
 exit_status
@@ -4979,7 +4981,7 @@ cmd
 status
 ) + 128;
 
-50 else if (
+51 else if (
 	`WIFEXITED
 (
 cmd
@@ -4987,7 +4989,11 @@ cmd
 status
 ))
 
-51 
+53 
+	`printf
+("normal exit\n");
+
+54 
 g_shell
 ->
 exit_status
@@ -4999,11 +5005,11 @@ cmd
 status
 );
 
-53 
+57 
 	}
 }
 
-55 void 
+59 void 
 	$one_cmd
 (
 t_cmd
@@ -5011,11 +5017,11 @@ t_cmd
 cmd
 )
 
-57 int 
+61 int 
 res
 ;
 
-59 
+63 
 res
  = 
 	`make_redirections
@@ -5023,43 +5029,53 @@ res
 cmd
 , 0);
 
-60 if (!
+64 if (!
 res
  || !
 cmd
 ->cmd)
 
-62 
+66 
 	`restaure_fds
 (
 cmd
 , 0);
 
-65 if (
+69 if (
 	`cmd_is_builtin
 (
 cmd
 ->cmd[0]))
 
-66 
+70 
 	`execute_builtin
 (
 cmd
 );
 
-68 
+72 
 	`execute_one_bin
 (
 cmd
 );
 
-69 
+73 if (
+g_shell
+->
+exit_status
+ == 130 || g_shell->exit_status == 131)
+
+74 
+	`printf
+("\n");
+
+75 
 	`restaure_fds
 (
 cmd
 , 0);
 
-70 
+76 
 	}
 }
 
@@ -14127,7 +14143,7 @@ head
 	}
 }
 
-38 int 
+89 int 
 	$main
 (int 
 ac
@@ -14137,55 +14153,55 @@ av
 envp
 )
 
-40 char *
+91 char *
 line
 ;
 
-41 
+92 
 t_token
  *
 token
 ;
 
-42 
+93 
 t_cmd
  *
 cmd
 ;
 
-43 int 
+94 int 
 exit_status
 ;
 
-45 (void)
+96 (void)
 av
 ;
 
-46 (void)
+97 (void)
 ac
 ;
 
-47 if (!
+98 if (!
 	`init_shell
 (
 envp
 ))
 
-51 
+102 
 	`parent_signal_handler
 ();
 
-52 
+103 
 line
  = 
 	`readline_routine
 ();
 
-53 if (!
+104 if (!
 line
 )
 
-55 
+106 
 token
  = 
 	`parsing
@@ -14193,7 +14209,7 @@ token
 line
 );
 
-56 
+107 
 cmd
  = 
 	`cmd_linked_list
@@ -14201,43 +14217,43 @@ cmd
 token
 );
 
-57 
+109 
 	`execution
 (&
 cmd
 );
 
-58 
+110 
 	`check_for_malloc_error
 (&
 cmd
 );
 
-59 
+111 
 	`free_cmd
 (&
 cmd
 );
 
-61 
+113 
 exit_status
  = 
 g_shell
 ->exit_status;
 
-62 
+114 
 	`free_shell
 ();
 
-63 
+115 
 	`printf
 ("exit\n");
 
-64 return (
+116 return (
 exit_status
 );
 
-65 
+117 
 	}
 }
 
@@ -15425,7 +15441,13 @@ parent_signal_handler
 
 250 void 
 child_signal_handler
-(void);
+(
+t_cmd
+ *
+cmd
+, int 
+i
+);
 
 251 void 
 here_doc_signal_handler
@@ -19097,7 +19119,81 @@ head
 	~"minishell.h
 "
 
-14 int 
+14 static char *
+	$redir_fdin_helper
+(
+t_cmd
+ *
+cmd
+, int 
+j
+)
+
+16 char *
+nb
+;
+
+17 char *
+here_doc_file
+;
+
+19 
+nb
+ = 
+	`ft_itoa
+(
+j
+);
+
+20 if (!
+nb
+)
+
+22 
+here_doc_file
+ = 
+	`ft_strjoin
+(".here_doc", 
+nb
+);
+
+23 if (!
+here_doc_file
+)
+
+25 
+	`free
+(
+nb
+);
+
+28 
+cmd
+->
+ffd_in
+ = 
+	`open
+(
+here_doc_file
+, 
+O_RDONLY
+);
+
+29 
+	`free
+(
+nb
+);
+
+30 return (
+here_doc_file
+);
+
+31 
+	}
+}
+
+33 int 
 	$redir_fdin
 (
 t_cmd
@@ -19111,11 +19207,11 @@ file_path
 j
 )
 
-16 char *
+35 char *
 here_doc_file
 ;
 
-18 if (
+37 if (
 cmd
 ->
 save_fdin
@@ -19123,13 +19219,13 @@ save_fdin
 ffd_in
  != -1)
 
-19 
+38 
 	`restaure_fds
 (
 cmd
 , 1);
 
-20 if (
+39 if (
 	`ft_strlen
 (
 redir_op
@@ -19137,7 +19233,7 @@ redir_op
 file_path
 )
 
-21 
+40 
 cmd
 ->
 ffd_in
@@ -19149,33 +19245,21 @@ file_path
 O_RDONLY
 );
 
-24 
+43 
 here_doc_file
  = 
-	`ft_strjoin
-(".here_doc", 
-	`ft_itoa
+	`redir_fdin_helper
 (
+cmd
+, 
 j
-));
+);
 
-25 if (!
+44 if (!
 here_doc_file
 )
 
-27 
-cmd
-->
-ffd_in
- = 
-	`open
-(
-here_doc_file
-, 
-O_RDONLY
-);
-
-29 
+47 
 cmd
 ->
 save_fdin
@@ -19185,13 +19269,13 @@ save_fdin
 STDIN_FILENO
 );
 
-30 if (
+48 if (
 cmd
 ->
 ffd_in
  < 0)
 
-32 
+50 
 	`ft_dprintf
 (2, "minishell: open: %s\n", 
 	`strerror
@@ -19199,13 +19283,13 @@ ffd_in
 errno
 ));
 
-33 
+51 
 g_shell
 ->
 exit_status
  = 1;
 
-36 
+54 
 	`dup2
 (
 cmd
@@ -19215,7 +19299,7 @@ ffd_in
 STDIN_FILENO
 );
 
-37 
+55 
 	`close
 (
 cmd
@@ -19223,17 +19307,23 @@ cmd
 ffd_in
 );
 
-38 
+56 
 cmd
 ->
 ffd_in
  = -1;
 
-40 
+57 
+	`free
+(
+here_doc_file
+);
+
+59 
 	}
 }
 
-42 int 
+61 int 
 	$redir_fdout
 (
 t_cmd
@@ -19245,7 +19335,7 @@ redir_op
 file_path
 )
 
-44 if (
+63 if (
 cmd
 ->
 save_fdout
@@ -19253,13 +19343,13 @@ save_fdout
 ffd_out
  != -1)
 
-45 
+64 
 	`restaure_fds
 (
 cmd
 , 1);
 
-46 
+65 
 cmd
 ->
 save_fdout
@@ -19269,13 +19359,13 @@ save_fdout
 STDOUT_FILENO
 );
 
-47 if (
+66 if (
 	`ft_strlen
 (
 redir_op
 ) == 1)
 
-48 
+67 
 cmd
 ->
 ffd_out
@@ -19291,7 +19381,7 @@ O_CREAT
 O_TRUNC
 , 0644);
 
-50 
+69 
 cmd
 ->
 ffd_out
@@ -19307,13 +19397,13 @@ O_CREAT
 O_APPEND
 , 0644);
 
-51 if (
+70 if (
 cmd
 ->
 ffd_out
  < 0)
 
-53 
+72 
 	`ft_dprintf
 (2, "minishell: open: %s\n", 
 	`strerror
@@ -19321,13 +19411,13 @@ ffd_out
 errno
 ));
 
-54 
+73 
 g_shell
 ->
 exit_status
  = 1;
 
-57 
+76 
 	`dup2
 (
 cmd
@@ -19337,7 +19427,7 @@ ffd_out
 STDOUT_FILENO
 );
 
-58 
+77 
 	`close
 (
 cmd
@@ -19345,13 +19435,13 @@ cmd
 ffd_out
 );
 
-59 
+78 
 cmd
 ->
 ffd_out
  = -1;
 
-61 
+80 
 	}
 }
 
@@ -20055,17 +20145,31 @@ act
 	}
 }
 
-56 void 
+57 void 
 	$child_signal_handler
-(void)
+(
+t_cmd
+ *
+cmd
+, int 
+i
+)
 
-58 struct 
+59 struct 
 sigaction
  
 act
 ;
 
-60 
+61 
+	`restaure_fds
+(
+cmd
+, 
+i
+);
+
+62 
 	`ft_memset
 (&
 act
@@ -20073,7 +20177,7 @@ act
 sigaction
 ));
 
-61 
+63 
 	`init_sigset
 (&
 act
@@ -20081,29 +20185,13 @@ act
 sa_mask
 );
 
-62 
+64 
 act
 .
 sa_handler
  = 
 SIG_DFL
 ;
-
-63 
-	`sigaction
-(
-SIGQUIT
-, &
-act
-, 0);
-
-64 
-	`sigaction
-(
-SIGINT
-, &
-act
-, 0);
 
 65 
 	`sigaction
@@ -20122,44 +20210,6 @@ act
 , 0);
 
 67 
-	}
-}
-
-69 void 
-	$parent_signal_handler
-(void)
-
-71 struct 
-sigaction
- 
-act
-;
-
-73 
-	`ft_memset
-(&
-act
-, 0, sizeof(struct 
-sigaction
-));
-
-74 
-	`init_sigset
-(&
-act
-.
-sa_mask
-);
-
-75 
-act
-.
-sa_handler
- = 
-SIG_IGN
-;
-
-76 
 	`sigaction
 (
 SIGQUIT
@@ -20167,31 +20217,7 @@ SIGQUIT
 act
 , 0);
 
-77 
-	`sigaction
-(
-SIGTERM
-, &
-act
-, 0);
-
-78 
-	`sigaction
-(
-SIGTSTP
-, &
-act
-, 0);
-
-79 
-act
-.
-sa_handler
- = 
-handler
-;
-
-80 
+68 
 	`sigaction
 (
 SIGINT
@@ -20199,7 +20225,85 @@ SIGINT
 act
 , 0);
 
+69 
+	}
+}
+
+71 void 
+	$parent_signal_handler
+(void)
+
+73 struct 
+sigaction
+ 
+act
+;
+
+75 
+	`ft_memset
+(&
+act
+, 0, sizeof(struct 
+sigaction
+));
+
+76 
+	`init_sigset
+(&
+act
+.
+sa_mask
+);
+
+77 
+act
+.
+sa_handler
+ = 
+SIG_IGN
+;
+
+78 
+	`sigaction
+(
+SIGQUIT
+, &
+act
+, 0);
+
+79 
+	`sigaction
+(
+SIGTERM
+, &
+act
+, 0);
+
+80 
+	`sigaction
+(
+SIGTSTP
+, &
+act
+, 0);
+
 81 
+act
+.
+sa_handler
+ = 
+handler
+;
+
+82 
+	`sigaction
+(
+SIGINT
+, &
+act
+, 0);
+
+83 
 	}
 }
 

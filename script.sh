@@ -3,5 +3,5 @@
 while true
 do
     ps -j
-    sleep 3
+    sleep 5
 done

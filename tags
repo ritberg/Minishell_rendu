@@ -90,7 +90,7 @@ check_quotes_errors	parsing/syntax_errors.c	/^int	check_quotes_errors(char *s, c
 check_var_exist	parsing/expansion_expand_var_helper.c	/^int	check_var_exist(t_token *tmp)$/;"	f
 child_process	parsing/here_doc.c	/^static void	child_process(char *key_word, int j)$/;"	f	file:
 child_process_helper	parsing/here_doc.c	/^static void	child_process_helper(char *key_word, int flag, int fd)$/;"	f	file:
-child_signal_handler	signal_handler/signal_handlers.c	/^void	child_signal_handler(void)$/;"	f
+child_signal_handler	signal_handler/signal_handlers.c	/^void	child_signal_handler(t_cmd *cmd, int i)$/;"	f
 cmd	minishell.h	/^	char			**cmd;$/;"	m	struct:s_cmd
 cmd_backadd	command_struct/init_cmd.c	/^static void	cmd_backadd(t_cmd **head, t_cmd *new)$/;"	f	file:
 cmd_is_builtin	execution/exec_builtins.c	/^int	cmd_is_builtin(char *s)$/;"	f
@@ -324,6 +324,7 @@ read_fd	libft/get_next_line/get_next_line.c	/^char	*read_fd(char *line, int fd, 
 readline_routine	main.c	/^char	*readline_routine(void)$/;"	f
 redir	minishell.h	/^	char			**redir;$/;"	m	struct:s_cmd
 redir_fdin	redirections/do_redirections.c	/^int	redir_fdin(t_cmd *cmd, char *redir_op, char *file_path, int j)$/;"	f
+redir_fdin_helper	redirections/do_redirections.c	/^static char	*redir_fdin_helper(t_cmd *cmd, int j)$/;"	f	file:
 redir_fdout	redirections/do_redirections.c	/^int	redir_fdout(t_cmd *cmd, char *redir_op, char *file_path)$/;"	f
 remove_q	parsing/quote_removing.c	/^int	remove_q(t_token *curr, int pos)$/;"	f
 replace_content	parsing/expansion_expand_var_helper.c	/^static int	replace_content(t_token *tmp, char *s)$/;"	f	file:

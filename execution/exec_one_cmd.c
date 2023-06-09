@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:08:47 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/09 10:07:15 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/09 18:15:40 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -33,7 +33,12 @@ static void	execute_one_bin(t_cmd *cmd)
 		return (perror("minishell: fork: "));
 	if (cmd->pid == 0)
 	{
-		child_signal_handler();
+		child_signal_handler(cmd, 0);
+		if (!make_redirections(cmd, 0))
+		{
+			restaure_fds(cmd, 0);
+			exit (1);
+		}
 		execute_bin(cmd);
 		cmd->status = g_shell->exit_status;
 		exit(g_shell->exit_status);
@@ -48,7 +53,9 @@ static void	execute_one_bin(t_cmd *cmd)
 			g_shell->exit_status = WTERMSIG(cmd->status) + 128;
 		}
 		else if (WIFEXITED(cmd->status))
+		{
 			g_shell->exit_status = WEXITSTATUS(cmd->status);
+		}
 	}
 }
 
@@ -56,15 +63,21 @@ void	one_cmd(t_cmd *cmd)
 {
 	int	res;
 
-	res = make_redirections(cmd, 0);
-	if (!res || !cmd->cmd)
-	{
-		restaure_fds(cmd, 0);
+	if (!cmd->cmd)
 		return ;
-	}
 	if (cmd_is_builtin(cmd->cmd[0]))
+	{
+		res = make_redirections(cmd, 0);
+		if (!res)
+		{
+			restaure_fds(cmd, 0);
+			return ;
+		}
 		execute_builtin(cmd);
+	}
 	else
 		execute_one_bin(cmd);
+//	if (g_shell->exit_status == 130 || g_shell->exit_status == 131)
+//		printf("\n");
 	restaure_fds(cmd, 0);
 }

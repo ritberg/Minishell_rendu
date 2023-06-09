@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:16:33 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/09 14:02:15 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/09 15:52:08 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,7 +247,7 @@ void	free_shell(void);
 /*		SIGNAL HANDLER */
 void	init_sigset(sigset_t *set);
 void	parent_signal_handler(void);
-void	child_signal_handler(void);
+void	child_signal_handler(t_cmd *cmd, int i);
 void	here_doc_signal_handler(void);
 void	pipex_signal_handler(void);
 

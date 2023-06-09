@@ -6,7 +6,7 @@
 #    By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 12:23:37 by mdanchev          #+#    #+#              #
-#    Updated: 2023/06/09 14:40:32 by mdanchev         ###   lausanne.ch        #
+#    Updated: 2023/06/09 15:44:57 by mdanchev         ###   lausanne.ch        #
 #                                                                              #
 # **************************************************************************** #
 GREEN 		= \033[32;6m
@@ -121,11 +121,13 @@ ${NAME}:	${OBJS} ${HEADERS}
 	@		${CC} ${CFLAGS} ${LIBFT} ${READLINE} -o ${NAME} ${OBJS}
 	@echo	"${YELLOW} Compilation ${NAME} done ${RESET}"
 
-all:	norminette ${NAME}
+all: ${NAME}
 
-norminette:
-	@		norminette ${SRCS} ${HEADERS}
-	@echo "${GREEN} Norminette minishell done ${COLOR_END}"
+#norminette 
+#
+#norminette:
+#	@		norminette ${SRCS} ${HEADERS}
+#	@echo "${GREEN} Norminette minishell done ${COLOR_END}"
 
 clean:
 	@		${MAKE} -C ${LIBFT_FOLD} clean
