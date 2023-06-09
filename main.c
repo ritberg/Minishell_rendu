@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 09:56:41 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/08 17:12:37 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/09 14:15:05 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -29,7 +29,45 @@ char	*readline_routine(void)
 	return (line);
 }
 
-/* FOR TESTING, TO DELETE */
+void	check_for_malloc_error(t_cmd **head)
+{
+	if (g_shell->error_exit == 1)
+		free_and_exit_prog(head, 1);
+}
+
+int	main(int ac, char **av, char **envp)
+{
+	char	*line;
+	t_token	*token;
+	t_cmd	*cmd;
+	int		exit_status;
+
+	(void)av;
+	(void)ac;
+	if (!init_shell(envp))
+		return (1);
+	while (1)
+	{
+		parent_signal_handler();
+		line = readline_routine();
+		if (!line)
+			break ;
+		token = parsing(line);
+		cmd = cmd_linked_list(&token);
+		execution(&cmd);
+		check_for_malloc_error(&cmd);
+		free_cmd(&cmd);
+	}
+	exit_status = g_shell->exit_status;
+	free_shell();
+	printf("exit\n");
+	return (exit_status);
+}
+
+/* FOR TESTING
+ *
+ * use print_cmd(&cmd);
+ *
 void	print_cmd(t_cmd **head)
 {
 	t_cmd	*ptr;
@@ -74,8 +112,12 @@ void	print_cmd(t_cmd **head)
 	}
 	printf("command print end\n");
 }
+*/
 
 /* FOR TESTING PRINTING ENV
+ *
+ * use print_env();
+ *
 static void	print_env()
 {
 	t_env	*ptr;
@@ -92,42 +134,3 @@ static void	print_env()
 	}
 	g_shell->env = ptr;
 }*/
-
-void	check_for_malloc_error(t_cmd **head)
-{
-	if (g_shell->error_exit == 1)
-		free_and_exit_prog(head, 1);
-}
-
-int	main(int ac, char **av, char **envp)
-{
-	(void)av;
-	(void)ac;
-	char	*line;
-	t_token	*token;
-	t_cmd	*cmd;
-	int		exit_status;
-
-	if (!init_shell(envp))
-		return (1);
-	while (1)
-	{
-		parent_signal_handler();
-		line = readline_routine();
-		if (!line)
-			break ;
-	//	printf("hello\n");
-		token = parsing(line);
-	//	printf("coucou\n");
-		cmd = cmd_linked_list(&token);
-	//	print_cmd(&cmd); // FOR TESTING
-		execution(&cmd);
-//		print_env(); // FOR TESTING
-		check_for_malloc_error(&cmd);
-		free_cmd(&cmd);
-	}
-	exit_status = g_shell->exit_status;
-	free_shell();
-	printf("exit\n");
-	return (exit_status);
-}

@@ -6,10 +6,29 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 14:20:24 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/09 11:58:51 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/09 15:11:55 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
+
+static char	*redir_fdin_helper()
+{
+	char	*nb;
+	
+	nb = ft_itoa(j);
+	if (!nb)
+		return (0);
+	here_doc_file = ft_strjoin(".here_doc", nb);
+	if (!here_doc_file)
+	{
+		free(nb);
+		return (0);
+	}
+	cmd->ffd_in = open(here_doc_file, O_RDONLY);
+	free(nb);
+	return (here_doc_file);
+
+}
 
 int	redir_fdin(t_cmd *cmd, char *redir_op, char *file_path, int j)
 {
@@ -21,10 +40,9 @@ int	redir_fdin(t_cmd *cmd, char *redir_op, char *file_path, int j)
 		cmd->ffd_in = open(file_path, O_RDONLY);
 	else
 	{
-		here_doc_file = ft_strjoin(".here_doc", ft_itoa(j));
+		here_doc_file = redir_fdin_helper();
 		if (!here_doc_file)
 			return (0);
-		cmd->ffd_in = open(here_doc_file, O_RDONLY);
 	}
 	cmd->save_fdin = dup(STDIN_FILENO);
 	if (cmd->ffd_in < 0)
@@ -36,6 +54,7 @@ int	redir_fdin(t_cmd *cmd, char *redir_op, char *file_path, int j)
 	dup2(cmd->ffd_in, STDIN_FILENO);
 	close(cmd->ffd_in);
 	cmd->ffd_in = -1;
+	free(here_doc_file);
 	return (1);
 }
 

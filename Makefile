@@ -6,7 +6,7 @@
 #    By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 12:23:37 by mdanchev          #+#    #+#              #
-#    Updated: 2023/06/09 12:59:13 by mdanchev         ###   lausanne.ch        #
+#    Updated: 2023/06/09 14:40:32 by mdanchev         ###   lausanne.ch        #
 #                                                                              #
 # **************************************************************************** #
 GREEN 		= \033[32;6m
@@ -55,6 +55,7 @@ SRCS		= main.c \
 			  redirections/loop_redirections.c \
 			  execution/execution.c \
 			  execution/pipex.c \
+			  execution/pipex_helper.c \
 			  execution/get_path.c \
 			  execution/search_path_in_env_table.c \
 			  execution/copy_env_tab.c\
@@ -117,10 +118,14 @@ endif
 
 ${NAME}:	${OBJS} ${HEADERS}
 	@		${MAKE} -C ${LIBFT_FOLD}
-	@ 		${CC} ${CFLAGS} ${LIBFT} ${READLINE} -o ${NAME} ${OBJS}
+	@		${CC} ${CFLAGS} ${LIBFT} ${READLINE} -o ${NAME} ${OBJS}
 	@echo	"${YELLOW} Compilation ${NAME} done ${RESET}"
 
-all:		${NAME}
+all:	norminette ${NAME}
+
+norminette:
+	@		norminette ${SRCS} ${HEADERS}
+	@echo "${GREEN} Norminette minishell done ${COLOR_END}"
 
 clean:
 	@		${MAKE} -C ${LIBFT_FOLD} clean

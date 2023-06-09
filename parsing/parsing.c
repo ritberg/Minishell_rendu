@@ -6,12 +6,13 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:00:49 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/08 15:21:48 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/09 14:07:37 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
-//FOR TESTING
+/*
+ * FOR TESTING use this function: print_token(&token); 
 
 void	print_token(t_token **head)
 {
@@ -50,7 +51,7 @@ void	print_token(t_token **head)
 		tmp = tmp->next;
 	}
 	printf("----END----\n");
-}
+}*/
 
 /*
  * parsing() function
@@ -102,6 +103,5 @@ t_token	*parsing(char *line)
 		return (NULL);
 	if (!quote_removing(&token, token, 0))
 		return (NULL);
-//	print_token(&token); // FOR TESTING
 	return (token);
 }

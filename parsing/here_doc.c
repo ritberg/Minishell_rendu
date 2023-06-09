@@ -6,34 +6,16 @@
 /*   By: mmakarov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 11:53:08 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/06/09 11:58:08 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/09 14:16:43 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
-static void	child_process(char *key_word, int j)
+static void	child_process_helper(char *key_word, int flag, int fd)
 {
 	char	*line;
-	char	*file;
-	int		fd;
-	int		flag;
 
-	flag = 0;
-	if (ft_strncmp(key_word, "\'\'", 3) == 0 || \
-			ft_strncmp(key_word, "\"\"", 3) == 0)
-	{
-		flag = 1;
-	}
 	line = NULL;
-	file = ft_strjoin(".here_doc", ft_itoa(j));
-	if (access(file, F_OK))
-		unlink(file);
-	fd = open(file, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	if (fd < 0)
-	{
-		ft_dprintf(2, "minishell: open: %s\n", strerror(errno));
-		exit(1);
-	}
 	while (1)
 	{
 		if (line)
@@ -54,6 +36,30 @@ static void	child_process(char *key_word, int j)
 		}
 		ft_dprintf(fd, "%s\n", line);
 	}
+}
+
+static void	child_process(char *key_word, int j)
+{
+	char	*file;
+	int		fd;
+	int		flag;
+
+	flag = 0;
+	if (ft_strncmp(key_word, "\'\'", 3) == 0 || \
+			ft_strncmp(key_word, "\"\"", 3) == 0)
+	{
+		flag = 1;
+	}
+	file = ft_strjoin(".here_doc", ft_itoa(j));
+	if (access(file, F_OK))
+		unlink(file);
+	fd = open(file, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (fd < 0)
+	{
+		ft_dprintf(2, "minishell: open: %s\n", strerror(errno));
+		exit(1);
+	}
+	child_process_helper(key_word, flag, fd);
 	close(fd);
 }
 

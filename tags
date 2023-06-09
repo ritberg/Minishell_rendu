@@ -69,6 +69,7 @@ change_dir	builtins/cd.c	/^static int	change_dir(char *oldpwd, char *path)$/;"	f
 change_env	builtins/cd.c	/^static void	change_env(char *oldpwd, char *pwd, t_cmd *cmd)$/;"	f	file:
 change_env_error	builtins/cd.c	/^static void	change_env_error(char *oldpwd, char *pwd, t_cmd *cmd)$/;"	f	file:
 change_env_var	builtins/export.c	/^static int	change_env_var(char *s, char *var_name, int i)$/;"	f	file:
+change_i	builtins/exit.c	/^static int	change_i(t_cmd *cmd, int i)$/;"	f	file:
 character_extraction	parsing/token_extraction.c	/^int	character_extraction(char *line, int ind)$/;"	f
 check_access	execution/exec_bin.c	/^static int	check_access(t_cmd *cmd)$/;"	f	file:
 check_access	execution/search_path_in_env_table.c	/^static int	check_access(int start, int end, char *s, t_cmd *cmd)$/;"	f	file:
@@ -78,7 +79,7 @@ check_env	builtins/env.c	/^static int	check_env(t_cmd *cmd)$/;"	f	file:
 check_errors	libft/get_next_line/get_next_line.c	/^int	check_errors(int fd, char **line)$/;"	f
 check_execve	execution/exec_bin.c	/^static void	check_execve(t_cmd *cmd)$/;"	f	file:
 check_exit_arguments	builtins/exit.c	/^static int	check_exit_arguments(t_cmd *cmd)$/;"	f	file:
-check_fdin_redir	execution/pipex.c	/^int	check_fdin_redir(t_cmd *cmd)$/;"	f
+check_fdin_redir	execution/pipex_helper.c	/^static int	check_fdin_redir(t_cmd *cmd)$/;"	f	file:
 check_for_heredoc	tokens/token_routine_set_id.c	/^int	check_for_heredoc(t_token **head, int pos)$/;"	f
 check_for_malloc_error	main.c	/^void	check_for_malloc_error(t_cmd **head)$/;"	f
 check_if_valid_identifier	builtins/export_unset_helper.c	/^int	check_if_valid_identifier(char *s, char *command)$/;"	f
@@ -88,6 +89,7 @@ check_pipeline_errors	parsing/syntax_errors.c	/^int	check_pipeline_errors(char *
 check_quotes_errors	parsing/syntax_errors.c	/^int	check_quotes_errors(char *s, char c, int *i)$/;"	f
 check_var_exist	parsing/expansion_expand_var_helper.c	/^int	check_var_exist(t_token *tmp)$/;"	f
 child_process	parsing/here_doc.c	/^static void	child_process(char *key_word, int j)$/;"	f	file:
+child_process_helper	parsing/here_doc.c	/^static void	child_process_helper(char *key_word, int flag, int fd)$/;"	f	file:
 child_signal_handler	signal_handler/signal_handlers.c	/^void	child_signal_handler(void)$/;"	f
 cmd	minishell.h	/^	char			**cmd;$/;"	m	struct:s_cmd
 cmd_backadd	command_struct/init_cmd.c	/^static void	cmd_backadd(t_cmd **head, t_cmd *new)$/;"	f	file:
@@ -158,7 +160,7 @@ ft_count_nbchar	libft/libft/ft_itoa.c	/^size_t	ft_count_nbchar(int n)$/;"	f
 ft_count_nbsubstr	libft/libft/ft_split.c	/^size_t	ft_count_nbsubstr(const char *s, char c)$/;"	f
 ft_count_unsigned_int	libft/ft_printf/ft_count_unsigned_int.c	/^int	ft_count_unsigned_int(unsigned int n)$/;"	f
 ft_dprintf	libft/ft_printf/ft_dprintf.c	/^int	ft_dprintf(int fd, const char *last, ...)$/;"	f
-ft_exe	execution/pipex.c	/^void	ft_exe(int i, int save_fdin, t_cmd *cmd)$/;"	f
+ft_exe	execution/pipex_helper.c	/^void	ft_exe(int i, int save_fdin, t_cmd *cmd)$/;"	f
 ft_exit	builtins/exit.c	/^void	ft_exit(t_cmd *cmd)$/;"	f
 ft_format_specifier	libft/ft_printf/ft_printf.c	/^void	ft_format_specifier(char format, va_list ap, int *count)$/;"	f
 ft_format_specifier_fd	libft/ft_printf/ft_dprintf.c	/^void	ft_format_specifier_fd(char format, va_list ap, int *count, int fd)$/;"	f
@@ -232,6 +234,7 @@ get_expanded_size	parsing/expansion_join_tokens.c	/^static int	get_expanded_size
 get_new_size	parsing/expansion_join_tokens.c	/^static int	get_new_size(t_token **new)$/;"	f	file:
 get_next_line	libft/get_next_line/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f
 get_next_line_maxopen	libft/get_next_line/get_next_line_bonus.c	/^char	*get_next_line_maxopen(int fd)$/;"	f
+get_next_ptr	command_struct/init_cmd_cmd.c	/^static t_token	*get_next_ptr(t_token *ptr)$/;"	f	file:
 get_path	execution/get_path.c	/^int	get_path(t_cmd *cmd)$/;"	f
 get_redir_size	command_struct/init_cmd_redir.c	/^static int	get_redir_size(t_token *ptr)$/;"	f	file:
 get_tokens	parsing/token_extraction.c	/^t_token	*get_tokens(char *line)$/;"	f
@@ -269,6 +272,7 @@ is_white_space	is_smth/is_white_space.c	/^int	is_white_space(char c)$/;"	f
 is_word	is_smth/is_token.c	/^int	is_word(char c)$/;"	f
 join_tokens	parsing/expansion_join_tokens.c	/^int	join_tokens(t_token **new, t_token *curr)$/;"	f
 joined_malloc	execution/copy_env_tab.c	/^char	*joined_malloc(int len_name, int len_value)$/;"	f
+kill_zombies	execution/pipex.c	/^static void	kill_zombies(t_cmd **head, int flag)$/;"	f	file:
 link_env	environnement/envp_routine.c	/^int	link_env(t_env **head, t_env *last)$/;"	f
 link_token	tokens/token_routine.c	/^int	link_token(t_token **head, t_token *new)$/;"	f
 loop_dollars	parsing/expansion_looping.c	/^int	loop_dollars(char *s, int i)$/;"	f
@@ -276,6 +280,7 @@ loop_through	parsing/expansion_looping.c	/^int	loop_through(char *s, int i)$/;"	
 main	main.c	/^int	main(int ac, char **av, char **envp)$/;"	f
 main	tester/test_files/loop.c	/^int	main(int argc, char const *argv[])$/;"	f
 make_redirections	redirections/loop_redirections.c	/^int	make_redirections(t_cmd *cmd, int j)$/;"	f
+make_redirections_helper	redirections/loop_redirections.c	/^static int	make_redirections_helper(t_cmd *cmd, int j, int i)$/;"	f	file:
 malloc_error_print_message	malloc_error/malloc_error_print_message.c	/^void	malloc_error_print_message(char *s)$/;"	f
 name_plus_value	execution/copy_env_tab.c	/^char	*name_plus_value(char *name, char *value)$/;"	f
 negative_int_check	builtins/int_min_max.c	/^static int	negative_int_check(char *str)$/;"	f	file:
@@ -296,24 +301,24 @@ path	minishell.h	/^	char			*path;$/;"	m	struct:s_cmd
 pid	minishell.h	/^	int					pid;$/;"	m	struct:s_shell
 pid	minishell.h	/^	pid_t			pid;$/;"	m	struct:s_cmd
 pipex	execution/pipex.c	/^void	pipex(t_cmd **head)$/;"	f
-pipex_handler	execution/pipex.c	/^void	pipex_handler(int sig_code)$/;"	f
-pipex_signal_handler	execution/pipex.c	/^static void	pipex_signal_handler(void)$/;"	f	file:
+pipex_get_exit_status	execution/pipex.c	/^static void	pipex_get_exit_status(t_cmd *cmd, t_cmd **head)$/;"	f	file:
+pipex_handler	signal_handler/pipex_handler.c	/^static void	pipex_handler(int sig_code)$/;"	f	file:
+pipex_helper	execution/pipex.c	/^static void	pipex_helper(int fd_pipe[2], t_cmd *cmd, int i, int *save_fdin)$/;"	f	file:
+pipex_signal_handler	signal_handler/pipex_handler.c	/^void	pipex_signal_handler(void)$/;"	f
 pos	minishell.h	/^	int					pos;$/;"	m	struct:s_token
 positive_int_check	builtins/int_min_max.c	/^static int	positive_int_check(char *str)$/;"	f	file:
 power	libft/libft/power.c	/^int	power(int str_base, int power)$/;"	f
 prepare_expand	parsing/expansion_helper.c	/^int	prepare_expand(t_token *curr, int i)$/;"	f
 prepare_forstash	libft/get_next_line/get_next_line_utils.c	/^void	prepare_forstash(char **line, char **buffer)$/;"	f
 print_chdir_error	builtins/cd.c	/^static void	print_chdir_error(char *arg, char *err)$/;"	f	file:
-print_cmd	main.c	/^void	print_cmd(t_cmd **head)$/;"	f
 print_echo	builtins/echo.c	/^static void	print_echo(char **s, int i)$/;"	f	file:
 print_export_unset_error	builtins/export_unset_helper.c	/^void	print_export_unset_error(char *identifier, char *command)$/;"	f
 print_getcwd_error	builtins/pwd.c	/^void	print_getcwd_error(char *s)$/;"	f
 print_signal_message	execution/exec_one_cmd.c	/^static void	print_signal_message(int sig_code)$/;"	f	file:
-print_signal_message	execution/pipex.c	/^static void	print_signal_message(int sig_code)$/;"	f	file:
+print_signal_message	execution/pipex.c	/^static void	print_signal_message(int sig_code, int *flag)$/;"	f	file:
 print_syntax_error_char	parsing/syntax_errors_print_message.c	/^void	print_syntax_error_char(char c)$/;"	f
 print_syntax_error_dchar	parsing/syntax_errors_print_message.c	/^void	print_syntax_error_dchar(char c)$/;"	f
 print_syntax_error_str	parsing/syntax_errors_print_message.c	/^void	print_syntax_error_str(char *s)$/;"	f
-print_token	parsing/parsing.c	/^void	print_token(t_token **head)$/;"	f
 quote_removing	parsing/quote_removing.c	/^int	quote_removing(t_token **head, t_token *curr, int pos)$/;"	f
 read_fd	libft/get_next_line/get_next_line.c	/^char	*read_fd(char *line, int fd, int *error)$/;"	f
 readline_routine	main.c	/^char	*readline_routine(void)$/;"	f
@@ -322,10 +327,12 @@ redir_fdin	redirections/do_redirections.c	/^int	redir_fdin(t_cmd *cmd, char *red
 redir_fdout	redirections/do_redirections.c	/^int	redir_fdout(t_cmd *cmd, char *redir_op, char *file_path)$/;"	f
 remove_q	parsing/quote_removing.c	/^int	remove_q(t_token *curr, int pos)$/;"	f
 replace_content	parsing/expansion_expand_var_helper.c	/^static int	replace_content(t_token *tmp, char *s)$/;"	f	file:
-res	minishell.h	/^	int					res; \/\/Rita: trick pour la norminette$/;"	m	struct:s_token
-res	minishell.h	/^	int				res; \/\/ Rita: trick pour la norminette$/;"	m	struct:s_cmd
+res	minishell.h	/^	int					res;$/;"	m	struct:s_token
+res	minishell.h	/^	int				res;$/;"	m	struct:s_cmd
 reset_env_tab	execution/execution.c	/^static int	reset_env_tab(void)$/;"	f	file:
+reset_oldpwd	global_variable/init_global.c	/^void	reset_oldpwd(void)$/;"	f
 restaure_fds	redirections/loop_redirections.c	/^void	restaure_fds(t_cmd *cmd, int i)$/;"	f
+restaure_fds_helper	redirections/loop_redirections.c	/^void	restaure_fds_helper(int i)$/;"	f
 s_cmd	minishell.h	/^typedef struct s_cmd$/;"	s
 s_env	minishell.h	/^typedef struct s_env$/;"	s
 s_list	libft/includes/libft.h	/^typedef struct s_list$/;"	s
