@@ -6,7 +6,7 @@
 /*   By: mmakarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:03:39 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/06/09 15:54:40 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/09 22:29:23 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -54,11 +54,10 @@ void	here_doc_signal_handler(void)
 }
 
 
-void	child_signal_handler(t_cmd *cmd, int i)
+void	child_signal_handler(void)
 {
 	struct sigaction	act;
 
-	restaure_fds(cmd, i);
 	ft_memset(&act, 0, sizeof(struct sigaction));
 	init_sigset(&act.sa_mask);
 	act.sa_handler = SIG_DFL;

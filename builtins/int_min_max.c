@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 19:39:34 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/09 11:01:59 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/09 20:32:48 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -46,11 +46,9 @@ static int	positive_int_check(char *str)
 static int	int_check(char *str)
 {
 	char	*s_int_max;
-	int		i;
 	int		len;
 
 	s_int_max = "9223372036854775807";
-	i = 0;
 	if (!str)
 		return (0);
 	len = ft_strlen(str);

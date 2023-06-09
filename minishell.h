@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:16:33 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/09 15:52:08 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/09 23:00:07 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,9 @@ typedef struct s_shell
 {
 	t_env				*env;
 	volatile int		exit_status;
-	volatile int		terminated;
 	int					error_exit;
 	char				**save_env;
-	int					pid;
+	int					heredoc_flag;
 }	t_shell;
 
 extern t_shell	*g_shell;
@@ -106,6 +105,7 @@ int		here_doc(t_token **head);
 /*		REDIRECTIONS */
 int		make_redirections(t_cmd *cmd, int i);
 void	restaure_fds(t_cmd *cmd, int i);
+void	delete_here_doc(int i);
 int		redir_fdout(t_cmd *cmd, char *redir_op, char *file_path);
 int		redir_fdin(t_cmd *cmd, char *redir_op, char *file_path, int j);
 int		append(t_cmd *cmd, char *file_path);
@@ -247,7 +247,7 @@ void	free_shell(void);
 /*		SIGNAL HANDLER */
 void	init_sigset(sigset_t *set);
 void	parent_signal_handler(void);
-void	child_signal_handler(t_cmd *cmd, int i);
+void	child_signal_handler(void /*t_cmd *cmd, int i*/);
 void	here_doc_signal_handler(void);
 void	pipex_signal_handler(void);
 

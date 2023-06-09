@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 12:02:52 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/09 15:02:10 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/09 23:05:46 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -14,10 +14,7 @@
 static void	print_signal_message(int sig_code, int *flag)
 {
 	if (sig_code == SIGTERM)
-	{
-		g_shell->terminated++;
-		ft_printf("[%d]\t Terminated: 15\n", g_shell->terminated);
-	}
+		ft_printf("Terminated: 15\n");
 	else if (sig_code == SIGQUIT)
 		ft_printf("Quit: 3\n");
 	else if (sig_code == SIGINT)

@@ -6,7 +6,7 @@
 /*   By: mmakarov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 11:53:08 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/06/09 17:40:57 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/09 22:33:19 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -38,7 +38,7 @@ static void	child_process_helper(char *key_word, int flag, int fd)
 	}
 }
 
-static void	child_process(char *key_word, int j)
+static void	heredoc_child_process(char *key_word, int j)
 {
 	char	*file;
 	int		fd;
@@ -69,24 +69,25 @@ static int	write_in_heredoc(char *key_word, int j)
 	int	status;
 
 	pid = fork();
+	if (pid < 0)
+	{
+		ft_dprintf(2, "minishell: fork: %s\n", strerror(errno));
+		return (1);
+	}
+	here_doc_signal_handler();
 	if (pid == 0)
 	{
-		here_doc_signal_handler();
-		child_process(key_word, j);
-		parent_signal_handler();
+		heredoc_child_process(key_word, j);
 		exit(0);
 	}
-	else
+	signal(SIGINT, SIG_IGN);
+	waitpid(pid, &status, 0);
+	if (WIFEXITED(status))
 	{
-		signal(SIGINT, SIG_IGN);
-		waitpid(pid, &status, 0);
-		if (WIFEXITED(status) && WEXITSTATUS(status) == 1)
-		{
-			g_shell->exit_status = 1;
-			return (0);
-		}
+		g_shell->exit_status = WEXITSTATUS(status);
+		g_shell->heredoc_flag = WEXITSTATUS(status);
+		return (0);
 	}
-//	parent_signal_handler();
 	return (1);
 }
 

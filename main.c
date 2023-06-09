@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 09:56:41 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/09 15:46:10 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/09 20:29:16 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -105,7 +105,6 @@ int	main(int ac, char **av, char **envp)
 			break ;
 		token = parsing(line);
 		cmd = cmd_linked_list(&token);
-//		 print_cmd(&cmd);
 		execution(&cmd);
 		check_for_malloc_error(&cmd);
 		free_cmd(&cmd);
