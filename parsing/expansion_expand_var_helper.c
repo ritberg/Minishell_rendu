@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:28:54 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/10 15:02:17 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/10 18:25:20 by mdanchev         ###   lausanne.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -29,20 +29,20 @@ static int	replace_content(t_token *tmp, char *s)
 int	check_var_exist(t_token *tmp)
 {
 	char	*status;
-    int     res;
+	int		res;
 
 	status = NULL;
 	if (ft_strncmp(&tmp->content[1], "?", 1) == 0)
 	{
 		status = ft_itoa(g_shell->exit_status);
 		if (!status)
-        {
+		{
 			error_message("ft_itoa failed");
 			return (ERROR_EXIT);
 		}
 		res = replace_content(tmp, status);
-        free (status);
-        return (res);
+		free (status);
+		return (res);
 	}
 	else if (g_shell && g_shell->env && g_shell->env->var_name)
 	{
