@@ -6,7 +6,7 @@
 #    By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 12:23:37 by mdanchev          #+#    #+#              #
-#    Updated: 2023/06/10 14:27:28 by mmakarov         ###   ########.fr        #
+#    Updated: 2023/06/10 16:34:37 by mmakarov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 GREEN 		= \033[32;6m
@@ -124,6 +124,7 @@ ${NAME}:	${OBJS} ${HEADERS}
 	@echo	"${YELLOW} Compilation ${NAME} done ${RESET}"
 
 all: ${NAME}
+
 #all: norminette ${NAME}
 
 #norminette:

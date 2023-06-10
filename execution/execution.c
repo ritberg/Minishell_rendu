@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 12:39:31 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/10 14:09:03 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/10 16:45:01 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -24,7 +24,7 @@ static int	count_nb_cmds(t_cmd **head)
 		cmd = cmd->next;
 	}
 	return (i);
-}	
+}
 
 static int	reset_env_tab(void)
 {

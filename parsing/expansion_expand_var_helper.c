@@ -18,7 +18,6 @@ static int	replace_content(t_token *tmp, char *s)
 	free(tmp->content);
 	tmp->content = NULL;
 	tmp->content = ft_strdup(s);
-	free(s);
 	if (!tmp->content)
 	{
 		malloc_error_print_message("ft_strdup failed");
@@ -30,17 +29,20 @@ static int	replace_content(t_token *tmp, char *s)
 int	check_var_exist(t_token *tmp)
 {
 	char	*status;
+    int     res;
 
 	status = NULL;
 	if (ft_strncmp(&tmp->content[1], "?", 1) == 0)
 	{
 		status = ft_itoa(g_shell->exit_status);
 		if (!status)
-		{
+        {
 			error_message("ft_itoa failed");
 			return (ERROR_EXIT);
 		}
-		return (replace_content(tmp, status));
+		res = replace_content(tmp, status);
+        free (status);
+        return (res);
 	}
 	else if (g_shell && g_shell->env && g_shell->env->var_name)
 	{

@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 12:02:52 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/10 14:26:57 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/10 18:00:56 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
