@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:08:47 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/09 22:56:27 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/10 13:23:13 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -44,11 +44,12 @@ static void	execute_one_bin(t_cmd *cmd)
 
 	cmd->pid = fork();
 	if (cmd->pid < 0)
-		return (perror("minishell: fork: "));
+	{
+		error_message2("fork:", strerror(errno));
+		return ;
+	}
 	if (cmd->pid == 0)
 	{
-		if (g_shell->heredoc_flag == 1)
-			exit(1);
 		child_signal_handler();
 		res = make_redirections(cmd, 0);
 		if (!res)
@@ -77,7 +78,8 @@ void	one_cmd(t_cmd *cmd)
 	}
 	else
 	{
-		execute_one_bin(cmd);
+		if (g_shell->heredoc_flag == 0)
+			execute_one_bin(cmd);
 		delete_here_doc(0);
 	}
 }

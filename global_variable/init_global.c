@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 09:45:47 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/09 11:16:45 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/10 15:28:59 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -49,7 +49,9 @@ static int	increment_shlvl(void)
 		if (ft_strncmp(env->var_name, "SHLVL", 6) == 0)
 		{
 			if (!is_numeric(env->var_value))
+			{
 				return (1);
+			}
 			i = ft_atoi(env->var_value) + 1;
 			free(env->var_value);
 			env->var_value = NULL;

@@ -6,7 +6,7 @@
 /*   By: mmakarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 17:39:06 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/06/05 18:39:17 by mmakarov         ###   ########.fr       */
+/*   Updated: 2023/06/10 14:59:12 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -59,7 +59,7 @@ char	*name_plus_value(char *name, char *value)
 	joined[i] = '=';
 	j = 0;
 	i++;
-	while (j < len_value)
+	while (i < len_value)
 		joined[i++] = value[j++];
 	joined[i] = '\0';
 	return (joined);

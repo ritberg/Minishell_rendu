@@ -6,7 +6,7 @@
 #    By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 12:23:37 by mdanchev          #+#    #+#              #
-#    Updated: 2023/06/09 15:44:57 by mdanchev         ###   lausanne.ch        #
+#    Updated: 2023/06/10 14:27:28 by mmakarov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 GREEN 		= \033[32;6m
@@ -39,6 +39,7 @@ SRCS		= main.c \
 			  parsing/syntax_errors_print_message.c \
 			  parsing/token_extraction.c\
 			  parsing/here_doc.c \
+			  parsing/delete_all_heredocs.c \
 			  parsing/expansion.c \
 			  parsing/expansion_helper.c \
 			  parsing/expansion_dollar_conditions.c \
@@ -53,6 +54,7 @@ SRCS		= main.c \
 			  command_struct/free_cmd.c \
 			  redirections/do_redirections.c \
 			  redirections/loop_redirections.c \
+			  redirections/restaure_fds.c \
 			  execution/execution.c \
 			  execution/pipex.c \
 			  execution/pipex_helper.c \
@@ -122,9 +124,8 @@ ${NAME}:	${OBJS} ${HEADERS}
 	@echo	"${YELLOW} Compilation ${NAME} done ${RESET}"
 
 all: ${NAME}
+#all: norminette ${NAME}
 
-#norminette 
-#
 #norminette:
 #	@		norminette ${SRCS} ${HEADERS}
 #	@echo "${GREEN} Norminette minishell done ${COLOR_END}"

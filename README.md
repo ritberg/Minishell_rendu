@@ -1,21 +1,21 @@
 **TESTS**
 
-**Done**
+**OK**
 1. heredoc - segfault\
-`cat << test  | << test1 cat`\
+`cat << test | << test1 cat`\
 `cat << coucou << g | cat << ''`
 
 2. heredoc avec pipes - il faut créer plusieurs heredocs différents\
 et pas écrire dans le même
 
-3. il faut fermer heredoc dans le bon endroit, il reste.\
-Le problème qui vient de là : si on change les permissions `chmod 000 .heredoc`,\
-on pourra pas écrire dessus `cat << test`
+3. `cat << d | wc > b`
 
-4. problème avec `cat << d| wc>b`
+4. les test du dossier `tester` ok
 
 **To do**
 - supprimer correctement les heredocs
-- retester les signaux
-- norminette
+il faut fermer heredoc dans le bon endroit, il reste.\
+Le problème qui vient de là : si on change les permissions\
+`chmod 000 .heredoc`, on pourra pas écrire dessus `cat << test`
+
 - tests de la feuille d'éval

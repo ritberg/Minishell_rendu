@@ -6,18 +6,17 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 14:20:24 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/09 21:17:39 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/10 13:59:06 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
-static int	redir_fdin_helper2(t_cmd *cmd)
+static int	redir_stdin(t_cmd *cmd)
 {
 	cmd->save_fdin = dup(STDIN_FILENO);
 	if (cmd->ffd_in < 0)
 	{
-		ft_dprintf(2, "minishell: open: %s\n", strerror(errno));
-		g_shell->exit_status = 1;
+		error_message(strerror(errno));
 		return (0);
 	}
 	dup2(cmd->ffd_in, STDIN_FILENO);
@@ -26,7 +25,7 @@ static int	redir_fdin_helper2(t_cmd *cmd)
 	return (1);
 }
 
-static char	*redir_fdin_helper(t_cmd *cmd, int j)
+static int	redir_heredoc(t_cmd *cmd, int j)
 {
 	char	*nb;
 	char	*here_doc_file;
@@ -37,33 +36,42 @@ static char	*redir_fdin_helper(t_cmd *cmd, int j)
 	here_doc_file = ft_strjoin(".here_doc", nb);
 	if (!here_doc_file)
 	{
+		error_message("ft_strjoin failed\n");
 		free(nb);
 		return (0);
 	}
 	cmd->ffd_in = open(here_doc_file, O_RDONLY);
 	free(nb);
-	return (here_doc_file);
+	free(here_doc_file);
+	if (cmd->ffd_in < 0)
+	{
+		error_message2("here_doc:", strerror(errno));
+		return (0);
+	}
+	return (1);
 }
 
 int	redir_fdin(t_cmd *cmd, char *redir_op, char *file_path, int j)
 {
-	char	*here_doc_file;
 	int		res;
 
-	here_doc_file = NULL;
-	if (cmd->save_fdin != -1 || cmd->ffd_in != -1)
-		restaure_fds(cmd, 1);
 	if (ft_strlen(redir_op) == 1 && file_path)
+	{
+		if (cmd->save_fdin != -1 || cmd->ffd_in != -1)
+			restaure_fdin(cmd);
 		cmd->ffd_in = open(file_path, O_RDONLY);
+		if (cmd->ffd_in < 0)
+		{
+			error_message2(file_path, strerror(errno));
+			return (0);
+		}
+	}
 	else
 	{
-		here_doc_file = redir_fdin_helper(cmd, j);
-		if (!here_doc_file)
+		if (!redir_heredoc(cmd, j))
 			return (0);
 	}
-	res = redir_fdin_helper2(cmd);
-	if (here_doc_file)
-		free(here_doc_file);
+	res = redir_stdin(cmd);
 	if (!res)
 		return (0);
 	return (1);
@@ -72,7 +80,7 @@ int	redir_fdin(t_cmd *cmd, char *redir_op, char *file_path, int j)
 int	redir_fdout(t_cmd *cmd, char *redir_op, char *file_path)
 {
 	if (cmd->save_fdout != -1 || cmd->ffd_out != -1)
-		restaure_fds(cmd, 1);
+		restaure_fdout(cmd);
 	cmd->save_fdout = dup(STDOUT_FILENO);
 	if (ft_strlen(redir_op) == 1)
 	{
@@ -82,8 +90,7 @@ int	redir_fdout(t_cmd *cmd, char *redir_op, char *file_path)
 		cmd->ffd_out = open(file_path, O_WRONLY | O_CREAT | O_APPEND, 0644);
 	if (cmd->ffd_out < 0)
 	{
-		ft_dprintf(2, "minishell: open: %s\n", strerror(errno));
-		g_shell->exit_status = 1;
+		error_message2("open", strerror(errno));
 		return (0);
 	}
 	dup2(cmd->ffd_out, STDOUT_FILENO);

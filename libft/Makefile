@@ -6,7 +6,7 @@
 #    By: mdanchev <mdanchev@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/15 12:21:59 by mdanchev          #+#    #+#              #
-#    Updated: 2023/06/09 15:57:02 by mdanchev         ###   lausanne.ch        #
+#    Updated: 2023/06/10 09:39:56 by mmakarov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,14 +97,14 @@ COLOR_END = \033[0m
 .c.o:
 	@	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-all:	${NAME}
+#all:	${NAME}
 
-#all:	norminette ${NAME}
+all:	norminette ${NAME}
 
-#norminette:
-#	 norminette ${SRCS} ${HEADERS}
-#	@echo "${GREEN} Norminette libft done ${COLOR_END}"
-#
+norminette:
+	 norminette ${SRCS} ${HEADERS}
+	@echo "${GREEN} Norminette libft done ${COLOR_END}"
+
 
 $(NAME): ${OBJS}
 	@	ar rcs ${NAME} ${OBJS}

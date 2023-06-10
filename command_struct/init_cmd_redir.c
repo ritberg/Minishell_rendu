@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 09:37:00 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/09 11:48:06 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/10 14:02:56 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -39,6 +39,8 @@ static int	copy_redir_helper(t_token *ptr, t_cmd *cmd, int i)
 		return (-1);
 	}
 	if (ptr->id == HERE_DOC)
+		return (i);
+	if (!ptr->next || ptr->next->id != KEY_WORD)
 		return (i);
 	i++;
 	ptr = ptr->next;

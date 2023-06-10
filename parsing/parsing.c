@@ -6,14 +6,15 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:00:49 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/09 17:38:17 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/10 14:17:26 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
 /*
  * FOR TESTING use this function: print_token(&token); 
-
+*/
+/*
 void	print_token(t_token **head)
 {
 	int		i;
@@ -40,6 +41,8 @@ void	print_token(t_token **head)
 			printf("HERE_DOC   :");
 		else if (tmp->id == DOLLAR)
 			printf("DOLLAR     :");
+		else if (tmp->id == KEY_WORD)
+			printf("KEY_WORD   :");
 		while (tmp->content[i])
 		{
 			printf ("%c", tmp->content[i]);
@@ -98,7 +101,11 @@ t_token	*parsing(char *line)
 	token = get_tokens(line);
 	if (!token)
 		return (NULL);
-	here_doc(&token);
+	if (!here_doc(&token))
+	{
+		free_token(&token);
+		return (NULL);
+	}
 	if (!expansion(&token, token, 0))
 		return (NULL);
 	if (!quote_removing(&token, token, 0))

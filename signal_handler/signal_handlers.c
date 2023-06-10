@@ -6,7 +6,7 @@
 /*   By: mmakarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:03:39 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/06/09 22:29:23 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/10 09:41:05 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -52,7 +52,6 @@ void	here_doc_signal_handler(void)
 	act.sa_handler = here_doc_handler;
 	sigaction(SIGINT, &act, 0);
 }
-
 
 void	child_signal_handler(void)
 {

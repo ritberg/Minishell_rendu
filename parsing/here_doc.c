@@ -6,12 +6,12 @@
 /*   By: mmakarov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 11:53:08 by mmakarov          #+#    #+#             */
-/*   Updated: 2023/06/09 22:33:19 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/10 13:42:13 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
 
-static void	child_process_helper(char *key_word, int flag, int fd)
+static void	helper(char *key_word, int flag, int fd)
 {
 	char	*line;
 
@@ -38,7 +38,28 @@ static void	child_process_helper(char *key_word, int flag, int fd)
 	}
 }
 
-static void	heredoc_child_process(char *key_word, int j)
+static char	*create_heredoc_name(int j)
+{
+	char	*file;
+	char	*nb;
+
+	nb = ft_itoa(j);
+	if (!nb)
+	{
+		error_message("ft_itoa failed");
+		exit(1);
+	}
+	file = ft_strjoin(".here_doc", nb);
+	free(nb);
+	if (!file)
+	{
+		error_message("ft_strjoin failed");
+		exit(1);
+	}
+	return (file);
+}
+
+static void	write_in_heredoc(char *key_word, int j)
 {
 	char	*file;
 	int		fd;
@@ -50,20 +71,21 @@ static void	heredoc_child_process(char *key_word, int j)
 	{
 		flag = 1;
 	}
-	file = ft_strjoin(".here_doc", ft_itoa(j));
+	file = create_heredoc_name(j);
 	if (access(file, F_OK))
 		unlink(file);
 	fd = open(file, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fd < 0)
 	{
+		free(file);
 		ft_dprintf(2, "minishell: open: %s\n", strerror(errno));
 		exit(1);
 	}
-	child_process_helper(key_word, flag, fd);
+	helper(key_word, flag, fd);
 	close(fd);
 }
 
-static int	write_in_heredoc(char *key_word, int j)
+static int	heredoc_child_process(char *key_word, int j)
 {
 	int	pid;
 	int	status;
@@ -71,13 +93,13 @@ static int	write_in_heredoc(char *key_word, int j)
 	pid = fork();
 	if (pid < 0)
 	{
-		ft_dprintf(2, "minishell: fork: %s\n", strerror(errno));
-		return (1);
+		error_message2("fork:", strerror(errno));
+		return (0);
 	}
 	here_doc_signal_handler();
 	if (pid == 0)
 	{
-		heredoc_child_process(key_word, j);
+		write_in_heredoc(key_word, j);
 		exit(0);
 	}
 	signal(SIGINT, SIG_IGN);
@@ -86,15 +108,15 @@ static int	write_in_heredoc(char *key_word, int j)
 	{
 		g_shell->exit_status = WEXITSTATUS(status);
 		g_shell->heredoc_flag = WEXITSTATUS(status);
-		return (0);
 	}
-	return (1);
+	return (g_shell->exit_status);
 }
 
 int	here_doc(t_token **head)
 {
 	t_token	*token;
 	int		i;
+	int		res;
 
 	i = 0;
 	token = *head;
@@ -105,9 +127,14 @@ int	here_doc(t_token **head)
 		if (token->id == HERE_DOC)
 		{
 			token = token->next;
-			write_in_heredoc(token->content, i);
+			res = heredoc_child_process(token->content, i);
+			if (res == 1)
+			{
+				delete_all_heredocs(i);
+				return (0);
+			}
 		}
 		token = token->next;
 	}
-	return (0);
+	return (1);
 }

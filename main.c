@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 09:56:41 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/09 20:29:16 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/10 15:16:43 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -114,7 +114,6 @@ int	main(int ac, char **av, char **envp)
 	printf("exit\n");
 	return (exit_status);
 }
-
 
 /* FOR TESTING PRINTING ENV
  *

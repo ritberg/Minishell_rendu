@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 12:39:56 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/09 09:59:17 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/10 15:37:36 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -72,7 +72,7 @@ static int	change_dir(char *oldpwd, char *path)
 	return (1);
 }
 
-// EST-CE QU'IL FAUT EXIT PROG SI OLDPWD ET PWD NE SE MALLOC PAS
+/* EST-CE QU'IL FAUT EXIT PROG SI OLDPWD ET PWD NE SE MALLOC PAS */
 void	_cd(t_cmd *cmd)
 {
 	int		res;

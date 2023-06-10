@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:16:33 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/09 23:00:07 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/10 14:16:34 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,13 @@ extern t_shell	*g_shell;
 
 /*		HERE DOC*/
 int		here_doc(t_token **head);
+void	delete_all_heredocs(int nb);
+
 /*		REDIRECTIONS */
 int		make_redirections(t_cmd *cmd, int i);
 void	restaure_fds(t_cmd *cmd, int i);
+void	restaure_fdout(t_cmd *cmd);
+void	restaure_fdin(t_cmd *cmd);
 void	delete_here_doc(int i);
 int		redir_fdout(t_cmd *cmd, char *redir_op, char *file_path);
 int		redir_fdin(t_cmd *cmd, char *redir_op, char *file_path, int j);
@@ -121,6 +125,7 @@ int		copy_env_tab(void);
 void	one_cmd(t_cmd *cmd);
 void	pipex(t_cmd **head);
 void	ft_exe(int i, int save_fdin, t_cmd *cmd);
+void	kill_zombies(t_cmd **head, int flag);
 
 /* 		EXECUTION BUILTINS */
 int		cmd_is_builtin(char *s);
@@ -207,6 +212,8 @@ t_token	*create_token_head(char *line, int i, int len, int *flag);
 
 /* 		MALLOC ERROR PRINT MESSAGE */
 void	malloc_error_print_message(char *s);
+void	error_message(char *s);
+void	error_message2(char *s1, char *s2);
 
 /* 		TOKEN EXTRACTION - TOKEN LINKED LIST (token_routine_.c) */
 t_token	*new_token(char *line, int start, int len);
@@ -247,7 +254,8 @@ void	free_shell(void);
 /*		SIGNAL HANDLER */
 void	init_sigset(sigset_t *set);
 void	parent_signal_handler(void);
-void	child_signal_handler(void /*t_cmd *cmd, int i*/);
+void	child_signal_handler(void);
+//void	child_signal_handler(void /*t_cmd *cmd, int i*/);
 void	here_doc_signal_handler(void);
 void	pipex_signal_handler(void);
 

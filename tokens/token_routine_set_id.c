@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:26:32 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/09 11:49:18 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/10 15:09:17 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -35,7 +35,8 @@ int	check_for_heredoc(t_token **head, int pos)
 			prev = token;
 		token = token->next;
 	}
-	if (prev->id == HERE_DOC)
+	if (prev->id == HERE_DOC || prev->id == L_CHEVRON || \
+			prev->id == R_CHEVRON || prev->id == APPEND)
 		return (1);
 	return (0);
 }
@@ -46,7 +47,9 @@ void	set_id(t_token **head, t_token *token)
 
 	res = 0;
 	res = check_for_heredoc(head, token->pos);
-	if (ft_strncmp(token->content, "|", 2) == 0)
+	if (res == 1)
+			token->id = KEY_WORD;
+	else if (ft_strncmp(token->content, "|", 2) == 0)
 		token->id = PIPELINE;
 	else if (ft_strncmp(token->content, "<", 2) == 0)
 		token->id = L_CHEVRON;
@@ -59,11 +62,6 @@ void	set_id(t_token **head, t_token *token)
 	else if (ft_strchr(token->content, '$'))
 		token->id = DOLLAR;
 	else
-	{
-		if (!res)
-			token->id = WORD;
-		else
-			token->id = KEY_WORD;
-	}
+		token->id = WORD;
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:11:25 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/09 11:52:31 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/10 12:25:14 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -88,7 +88,7 @@ int	link_token(t_token **head, t_token *new)
 		pos++;
 	}
 	ptr->next = new;
-	new->pos = pos;
+	new->pos = pos + 1;
 	set_id(head, new);
 	return (1);
 }

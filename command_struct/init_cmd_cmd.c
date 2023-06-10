@@ -6,7 +6,7 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 09:36:56 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/09 12:55:05 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/10 13:12:42 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -42,7 +42,7 @@ static int	copy_cmd_helper(t_token *ptr, t_cmd *cmd, int i)
  * 		 - If the current token is the first encountered token marked as WORD,
  * 		   a simple strdup is made.
  */
-
+/*
 static t_token	*get_next_ptr(t_token *ptr)
 {
 	if (ptr->id == L_CHEVRON || ptr->id == R_CHEVRON || \
@@ -58,7 +58,7 @@ static t_token	*get_next_ptr(t_token *ptr)
 			return (NULL);
 	}
 	return (ptr);
-}
+}*/
 
 static int	copy_cmd(t_token **token, t_cmd *cmd)
 {
@@ -69,16 +69,13 @@ static int	copy_cmd(t_token **token, t_cmd *cmd)
 	i = 0;
 	while (ptr && ptr->id != PIPELINE)
 	{
-		if (ptr->id == L_CHEVRON || ptr->id == R_CHEVRON || \
-				ptr->id == APPEND || ptr->id == HERE_DOC)
-			ptr = get_next_ptr(ptr);
-		else
+		if (ptr->id == WORD)
 		{
 			if (!copy_cmd_helper(ptr, cmd, i))
 				return (0);
-			ptr = ptr->next;
 			i++;
 		}
+		ptr = ptr->next;
 	}
 	cmd->cmd[i] = NULL;
 	return (1);
@@ -93,14 +90,9 @@ static int	get_cmd_size(t_token **token)
 	ptr = *token;
 	while (ptr && ptr->id != PIPELINE)
 	{
-		if (ptr->id == L_CHEVRON || ptr->id == R_CHEVRON || \
-				ptr->id == APPEND || ptr->id == HERE_DOC)
-			ptr = get_next_ptr(ptr);
-		else
-		{
+		if (ptr->id == WORD)
 			i++;
-			ptr = ptr->next;
-		}
+		ptr = ptr->next;
 	}
 	return (i);
 }

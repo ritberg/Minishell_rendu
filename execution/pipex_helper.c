@@ -6,10 +6,29 @@
 /*   By: mdanchev <mdanchev@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 14:01:29 by mdanchev          #+#    #+#             */
-/*   Updated: 2023/06/09 14:01:49 by mdanchev         ###   lausanne.ch       */
+/*   Updated: 2023/06/10 14:23:28 by mmakarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
+
+void	kill_zombies(t_cmd **head, int flag)
+{
+	t_cmd	*cmd;
+	int		res;
+
+	cmd = *head;
+	while (cmd)
+	{
+		res = waitpid(cmd->pid, &cmd->status, 0);
+		if (res >= 0 && WIFSIGNALED(cmd->status) && \
+				WTERMSIG(cmd->status) == SIGINT)
+		{
+			if (flag == 0)
+				ft_printf("\n");
+		}
+		cmd = cmd->next;
+	}
+}
 
 static int	check_fdin_redir(t_cmd *cmd)
 {
@@ -52,6 +71,5 @@ void	ft_exe(int i, int save_fdin, t_cmd *cmd)
 		execute_builtin(cmd);
 	else
 		execute_bin(cmd);
-	restaure_fds(cmd, i);
 	return ;
 }
